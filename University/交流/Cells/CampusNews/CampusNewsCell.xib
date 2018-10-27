@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CampusNewsCell" id="KGk-i7-Jjw" customClass="CampusNewsCell" customModule="University" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="明天起，2019年度国考开始报名！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dE8-Pb-cLM">
+                        <rect key="frame" x="20" y="10" width="170" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="RFI-Mj-6vz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="校内" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZG-3j-jt1">
+                        <rect key="frame" x="16" y="74" width="25" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RSb-V4-2c7">
+                        <rect key="frame" x="200" y="10" width="100" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="8GS-W5-tLf"/>
+                            <constraint firstAttribute="width" constant="100" id="QhF-9R-jVr"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10-16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fA-w4-pc0">
+                        <rect key="frame" x="157" y="74" width="33" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 阅读" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iq-KA-K29">
+                        <rect key="frame" x="51" y="74" width="42" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="2iq-KA-K29" firstAttribute="leading" secondItem="PZG-3j-jt1" secondAttribute="trailing" constant="10" id="2ze-C9-6J5"/>
+                    <constraint firstItem="RSb-V4-2c7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="3pb-Gd-2tr"/>
+                    <constraint firstItem="dE8-Pb-cLM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="5sM-k7-xjj"/>
+                    <constraint firstItem="dE8-Pb-cLM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="749-cu-xPx"/>
+                    <constraint firstItem="PZG-3j-jt1" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="DJ1-59-r07"/>
+                    <constraint firstItem="RSb-V4-2c7" firstAttribute="leading" secondItem="dE8-Pb-cLM" secondAttribute="trailing" constant="10" id="L0V-j0-Lli"/>
+                    <constraint firstItem="PZG-3j-jt1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="MoR-J2-R1H"/>
+                    <constraint firstAttribute="trailing" secondItem="RSb-V4-2c7" secondAttribute="trailing" constant="20" id="c1F-3u-JwH"/>
+                    <constraint firstItem="5fA-w4-pc0" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="kV8-cz-iib"/>
+                    <constraint firstItem="RSb-V4-2c7" firstAttribute="leading" secondItem="5fA-w4-pc0" secondAttribute="trailing" constant="10" id="lVp-rM-Djp"/>
+                    <constraint firstItem="2iq-KA-K29" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="t2X-bS-xwB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="5fA-w4-pc0" id="rK0-pb-xZK"/>
+                <outlet property="newsImageView" destination="RSb-V4-2c7" id="w3d-N9-AxK"/>
+                <outlet property="originalLabel" destination="PZG-3j-jt1" id="PwD-I9-1WY"/>
+                <outlet property="readCountLabel" destination="2iq-KA-K29" id="ow0-Uq-uzu"/>
+                <outlet property="titleLabel" destination="dE8-Pb-cLM" id="Y1A-Au-Otp"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="127.736131934033"/>
+        </tableViewCell>
+    </objects>
+</document>

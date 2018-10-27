@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CampusFuncCell" id="gTV-IL-0wX" customClass="CampusFuncCell" customModule="University" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WeChat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYw-T3-K9m" userLabel="Name">
+                        <rect key="frame" x="0.0" y="58.5" width="80" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wechat" translatesAutoresizingMaskIntoConstraints="NO" id="VBx-MV-2t7" userLabel="Icon">
+                        <rect key="frame" x="20" y="10" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="92s-hX-oUR"/>
+                            <constraint firstAttribute="height" constant="40" id="9u6-vF-AJr"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="DYw-T3-K9m" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="46L-G8-EwH"/>
+                <constraint firstAttribute="bottom" secondItem="DYw-T3-K9m" secondAttribute="bottom" id="8sc-IS-K11"/>
+                <constraint firstItem="VBx-MV-2t7" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Dhq-Oz-Gna"/>
+                <constraint firstItem="VBx-MV-2t7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="aDd-iO-SNi"/>
+                <constraint firstAttribute="trailing" secondItem="DYw-T3-K9m" secondAttribute="trailing" id="y92-r6-AnW"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="iconImageView" destination="VBx-MV-2t7" id="Jm5-Zd-jfO"/>
+                <outlet property="nameLabel" destination="DYw-T3-K9m" id="dkI-v5-Yem"/>
+            </connections>
+            <point key="canvasLocation" x="-78" y="124"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="wechat" width="200" height="200"/>
+    </resources>
+</document>
