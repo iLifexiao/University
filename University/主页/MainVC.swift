@@ -17,8 +17,9 @@ class MainVC: UIViewController {
     var bannerImages: [URL] = []
     var countdowns: [CountdownModel] = []
     var campusFuncs: [CampusFuncModel] = []
-    var adModels: [ADModel] = []
+//    var adModels: [ADModel] = []
     
+    let sectionCount = 3
     let bannerCell = "bannerCell"
     let dateCell = "dateCell"
     let campusCell = "campusCell"
@@ -67,29 +68,6 @@ class MainVC: UIViewController {
         let campusFuncModel12 = CampusFuncModel(icon: UIImage.init(named: "directory"), name: "通讯录")
         campusFuncs = [campusFuncModel, campusFuncModel2, campusFuncModel3, campusFuncModel4, campusFuncModel5, campusFuncModel6, campusFuncModel7, campusFuncModel8, campusFuncModel9, campusFuncModel10, campusFuncModel11, campusFuncModel12]
         
-        // AD
-        let adDicts = [["icon": "github", "title": "GitHub",
-                     "content": "We’re supporting a community where more than 31 million* people learn, share, and work together to build software.",
-                        "type": "工具"],
-                       ["icon": "netlesson", "title": "网易公开课",
-                     "content": "作为中国最大最全的课程视频平台，拥有来自国内外顶尖学府的海量名师名课，覆盖文学艺术、历史哲学、经济社会、物理化学、心理管理、计算机技术等二十多个专业领域",
-                        "type": "教育"],
-                       ["icon": "ted", "title": "TED",
-                        "content": "TED官方安卓软件可为您展现世界上各界人士的演讲：教育精英，科技天才，医疗技师，商业领袖，以及音乐传奇。 ",
-                        "type": "教育"],
-                       ["icon": "swift", "title": "Swift",
-                     "content": "工业级别的编程语言，类型安全、面向接口、类型推断的全平台开发语言",
-                        "type": "编程"],
-                       ["icon": "MOOC", "title": "中国大学MOOC",
-                        "content": "中国大学MOOC(慕课)是由网易公司与教育部爱课程网携手推出的在线教育平台，汇集中国名牌大校的MOOC(慕课)课程。在这里，每一个有意愿提升自己的人都可以免费获得优质的高等教育资源。",
-                        "type": "教育"]
-            
-        ]
-        for dict in adDicts {
-            let adModel = ADModel(icon: UIImage.init(named: dict["icon"]!), title: dict["title"], content: dict["content"], type: dict["type"])
-            adModels.append(adModel)
-        }
-
     }
     
     private func getFormatDate(format: String) -> String {
@@ -104,7 +82,13 @@ class MainVC: UIViewController {
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: bannerCell)
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: dateCell)
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: campusCell)
-        tableView.register(UINib.init(nibName: "ADCell", bundle: nil), forCellReuseIdentifier: "ADCell")
+        
+        // 适配不同系统下的偏移问题
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
 
 }
@@ -151,10 +135,6 @@ extension MainVC: UITableViewDelegate {
         case 2:
             let tipsHeaderView = Bundle.main.loadNibNamed("TipsHeaderView", owner: nil, options: nil)?[0] as! TipsHeaderView
             return tipsHeaderView
-        case 3:
-            let aDHeaderView = Bundle.main.loadNibNamed("ADHeaderView", owner: nil, options: nil)?[0] as! ADHeaderView
-            aDHeaderView.delegate = self
-            return aDHeaderView
         default:
             return nil
         }
@@ -176,16 +156,11 @@ extension MainVC: UITableViewDataSource {
     
     // 将主页分为四个区域（banner、日期、校园、推荐）
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return sectionCount
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0, 1, 2:
-            return 1  
-        default:
-            return adModels.count
-        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -254,12 +229,6 @@ extension MainVC: UITableViewDataSource {
             
             cell.selectionStyle = .none
             return cell
-        case 3:
-            // 资源推荐
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ADCell", for: indexPath) as! ADCell
-            cell.setupData(adModels[indexPath.row])
-            cell.selectionStyle = .none
-            return cell
         default:
             // 默认空白的
             let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
@@ -311,13 +280,6 @@ extension MainVC: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CampusFuncCell", for: indexPath) as! CampusFuncCell
         cell.setupData(campusFuncs[indexPath.row])
         return cell
-    }
-}
-
-// MARK: AccessButtonDelegate
-extension MainVC: AccessButtonDelegate {
-    func pressAccess(title: String?) {
-        view.makeToast(title)
     }
 }
 

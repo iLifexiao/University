@@ -46,15 +46,20 @@ class LifeVC: UIViewController {
         lifeServers = [lifeFunc1, lifeFunc2, lifeFunc3, lifeFunc4]
         
         // campusAround
-        let campusFunc1 = LifeFuncModel(icon: UIImage.init(named: "food"), title: "美食推荐")
-        let campusFunc2 = LifeFuncModel(icon: UIImage.init(named: "express"), title: "快递寄送")
-        let campusFunc3 = LifeFuncModel(icon: UIImage.init(named: "asume"), title: "娱乐推荐")
-        let campusFunc4 = LifeFuncModel(icon: UIImage.init(named: "partJob"), title: "兼职信息")
-        campusAround = [campusFunc1, campusFunc2, campusFunc3, campusFunc4]
+        let campusFunc1 = LifeFuncModel(icon: UIImage.init(named: "store"), title: "好店推荐")
+        let campusFunc2 = LifeFuncModel(icon: UIImage.init(named: "partJob"), title: "兼职信息")
+        campusAround = [campusFunc1, campusFunc2]
     }
     
     private func setupTableView() {
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: bannerCell)
+        
+        // 适配不同系统下的偏移问题
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
     
 }
@@ -99,11 +104,11 @@ extension LifeVC: UITableViewDelegate {
         switch section {
         case 1:
             let tipsHeaderView = Bundle.main.loadNibNamed("TipsHeaderView", owner: nil, options: nil)?[0] as! TipsHeaderView
-            tipsHeaderView.setTips(title: "生活服务")
+            tipsHeaderView.setTips(title: "生活服务", icon: UIImage(named: "life_server"))
             return tipsHeaderView
         case 2:
             let tipsHeaderView = Bundle.main.loadNibNamed("TipsHeaderView", owner: nil, options: nil)?[0] as! TipsHeaderView
-            tipsHeaderView.setTips(title: "校园周边")
+            tipsHeaderView.setTips(title: "校园周边", icon: UIImage(named: "around"))
             return tipsHeaderView
         default:
             return nil

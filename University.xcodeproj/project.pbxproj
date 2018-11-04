@@ -61,8 +61,6 @@
 		8BAEA3FD217F62CE00FC2CBB /* CampusFuncCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA3FB217F62CE00FC2CBB /* CampusFuncCell.swift */; };
 		8BAEA3FE217F62CE00FC2CBB /* CampusFuncCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BAEA3FC217F62CE00FC2CBB /* CampusFuncCell.xib */; };
 		8BAEA401217F707600FC2CBB /* CampusFuncModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA400217F707600FC2CBB /* CampusFuncModel.swift */; };
-		8BAEA40321807BC400FC2CBB /* ADHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA40221807BC400FC2CBB /* ADHeaderView.swift */; };
-		8BAEA40521807BD000FC2CBB /* ADHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BAEA40421807BD000FC2CBB /* ADHeaderView.xib */; };
 		8BAEA4072180919600FC2CBB /* HeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA4062180919600FC2CBB /* HeadlineView.swift */; };
 		8BAEA409218091B300FC2CBB /* HeadlineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BAEA408218091B300FC2CBB /* HeadlineView.xib */; };
 		8BAEA40D2180AEFA00FC2CBB /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA40B2180AEFA00FC2CBB /* NewsCell.swift */; };
@@ -159,8 +157,6 @@
 		8BAEA3FB217F62CE00FC2CBB /* CampusFuncCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusFuncCell.swift; sourceTree = "<group>"; };
 		8BAEA3FC217F62CE00FC2CBB /* CampusFuncCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CampusFuncCell.xib; sourceTree = "<group>"; };
 		8BAEA400217F707600FC2CBB /* CampusFuncModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusFuncModel.swift; sourceTree = "<group>"; };
-		8BAEA40221807BC400FC2CBB /* ADHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADHeaderView.swift; sourceTree = "<group>"; };
-		8BAEA40421807BD000FC2CBB /* ADHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ADHeaderView.xib; sourceTree = "<group>"; };
 		8BAEA4062180919600FC2CBB /* HeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineView.swift; sourceTree = "<group>"; };
 		8BAEA408218091B300FC2CBB /* HeadlineView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadlineView.xib; sourceTree = "<group>"; };
 		8BAEA40B2180AEFA00FC2CBB /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
@@ -327,15 +323,6 @@
 				8BAEA3F2217F2C8700FC2CBB /* TipsHeaderView.xib */,
 			);
 			path = TipsHeaderView;
-			sourceTree = "<group>";
-		};
-		8B0EF33621833BAC000EA64E /* ADHeaderView */ = {
-			isa = PBXGroup;
-			children = (
-				8BAEA40221807BC400FC2CBB /* ADHeaderView.swift */,
-				8BAEA40421807BD000FC2CBB /* ADHeaderView.xib */,
-			);
-			path = ADHeaderView;
 			sourceTree = "<group>";
 		};
 		8B0EF33D21834814000EA64E /* ReadingBook */ = {
@@ -520,7 +507,6 @@
 			children = (
 				8B0EF33421833B85000EA64E /* DateHeaderView */,
 				8B0EF33521833B9E000EA64E /* TipsHeaderView */,
-				8B0EF33621833BAC000EA64E /* ADHeaderView */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -709,7 +695,6 @@
 				8B0EF31B2182F324000EA64E /* QuestionVC.xib in Resources */,
 				8B0EF32821832BB3000EA64E /* CampusNewsCell.xib in Resources */,
 				8B0EF341218350F0000EA64E /* QuestionCell.xib in Resources */,
-				8BAEA40521807BD000FC2CBB /* ADHeaderView.xib in Resources */,
 				8B0EF3132182F204000EA64E /* CampusVC.xib in Resources */,
 				8BAEA3F3217F2C8700FC2CBB /* TipsHeaderView.xib in Resources */,
 				8B3002FE218B35CE00D53D34 /* CountdownView.xib in Resources */,
@@ -849,7 +834,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BAEA40321807BC400FC2CBB /* ADHeaderView.swift in Sources */,
 				8B3002FC218B35CE00D53D34 /* CountdownModel.swift in Sources */,
 				8BAEA4192181632B00FC2CBB /* LifeFuncModel.swift in Sources */,
 				8BAEA3AD217EFB2E00FC2CBB /* LifeVC.swift in Sources */,

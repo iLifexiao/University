@@ -46,12 +46,18 @@ class UserVC: UIViewController {
         let schoolFunc1 = MyServerModel(icon: UIImage.init(named: "studentCard"), title: "我的学籍")
         let schoolFunc2 = MyServerModel(icon: UIImage.init(named: "myGrade"), title: "我的成绩")
         let schoolFunc3 = MyServerModel(icon: UIImage.init(named: "myHonner"), title: "我的荣誉")
-        let schoolFunc4 = MyServerModel(icon: UIImage.init(named: "myCup"), title: "我的比赛")
-        studentStatus = [schoolFunc1 ,schoolFunc2, schoolFunc3, schoolFunc4]
+        studentStatus = [schoolFunc1 ,schoolFunc2, schoolFunc3]
     }
     
     private func setupTableView() {
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: userCell)
+        
+        // 适配不同系统下的偏移问题
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
     
     @IBAction func userSettingPress(_ sender: UIBarButtonItem) {
@@ -69,7 +75,7 @@ extension UserVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 300
+            return 290
         default:
             return 60
         }

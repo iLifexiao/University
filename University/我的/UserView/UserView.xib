@@ -13,11 +13,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UserView" customModule="University" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="290"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userBG" translatesAutoresizingMaskIntoConstraints="NO" id="Bbo-rQ-4oE">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="雨后微笑的天空" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ca-d8-9wh">
                     <rect key="frame" x="95.5" y="130" width="184.5" height="31.5"/>
@@ -33,13 +33,13 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YsL-Pu-g28">
-                    <rect key="frame" x="0.0" y="200" width="375" height="100"/>
+                    <rect key="frame" x="0.0" y="190" width="375" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hcv-uo-L2b">
                             <rect key="frame" x="0.0" y="0.0" width="94" height="100"/>
                             <subviews>
                                 <button opaque="NO" tag="40001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTZ-Cb-Rex">
-                                    <rect key="frame" x="23.5" y="20" width="47" height="40"/>
+                                    <rect key="frame" x="23.5" y="10" width="47" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                     <state key="normal" title="私信">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,7 +49,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEf-0Q-7Rv">
-                                    <rect key="frame" x="41.5" y="70" width="10.5" height="20.5"/>
+                                    <rect key="frame" x="41.5" y="60" width="10.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                             <constraints>
                                 <constraint firstItem="LTZ-Cb-Rex" firstAttribute="centerX" secondItem="Hcv-uo-L2b" secondAttribute="centerX" id="MiR-x6-oNX"/>
                                 <constraint firstItem="QEf-0Q-7Rv" firstAttribute="centerX" secondItem="Hcv-uo-L2b" secondAttribute="centerX" id="keL-kB-n1Y"/>
-                                <constraint firstItem="LTZ-Cb-Rex" firstAttribute="top" secondItem="Hcv-uo-L2b" secondAttribute="top" constant="20" id="tOU-Xz-1GI"/>
+                                <constraint firstItem="LTZ-Cb-Rex" firstAttribute="top" secondItem="Hcv-uo-L2b" secondAttribute="top" constant="10" id="tOU-Xz-1GI"/>
                                 <constraint firstItem="QEf-0Q-7Rv" firstAttribute="top" secondItem="LTZ-Cb-Rex" secondAttribute="bottom" constant="10" id="zLS-ad-2iT"/>
                             </constraints>
                         </view>
@@ -67,7 +67,7 @@
                             <rect key="frame" x="94" y="0.0" width="93.5" height="100"/>
                             <subviews>
                                 <button opaque="NO" tag="40002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISg-bw-Wpb">
-                                    <rect key="frame" x="23" y="20" width="47" height="40"/>
+                                    <rect key="frame" x="23" y="10" width="47" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                     <state key="normal" title="文章">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,7 +77,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8h-s0-HEY">
-                                    <rect key="frame" x="41.5" y="70" width="10.5" height="20.5"/>
+                                    <rect key="frame" x="41.5" y="60" width="10.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -86,7 +86,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="ISg-bw-Wpb" firstAttribute="centerX" secondItem="2lg-DN-U9v" secondAttribute="centerX" id="3Lv-BT-Lih"/>
-                                <constraint firstItem="ISg-bw-Wpb" firstAttribute="top" secondItem="2lg-DN-U9v" secondAttribute="top" constant="20" id="NaQ-ko-QyG"/>
+                                <constraint firstItem="ISg-bw-Wpb" firstAttribute="top" secondItem="2lg-DN-U9v" secondAttribute="top" constant="10" id="NaQ-ko-QyG"/>
                                 <constraint firstItem="h8h-s0-HEY" firstAttribute="top" secondItem="ISg-bw-Wpb" secondAttribute="bottom" constant="10" id="OJ6-Jz-uzg"/>
                                 <constraint firstItem="h8h-s0-HEY" firstAttribute="centerX" secondItem="2lg-DN-U9v" secondAttribute="centerX" id="VxM-5D-db9"/>
                             </constraints>
@@ -95,7 +95,7 @@
                             <rect key="frame" x="187.5" y="0.0" width="94" height="100"/>
                             <subviews>
                                 <button opaque="NO" tag="40003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHo-7Y-XXP">
-                                    <rect key="frame" x="23.5" y="20" width="47" height="40"/>
+                                    <rect key="frame" x="23.5" y="10" width="47" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                     <state key="normal" title="粉丝">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,7 +105,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ie1-Mo-f1a">
-                                    <rect key="frame" x="41.5" y="70" width="10.5" height="20.5"/>
+                                    <rect key="frame" x="41.5" y="60" width="10.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -114,7 +114,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="ie1-Mo-f1a" firstAttribute="centerX" secondItem="1lS-l4-ZyN" secondAttribute="centerX" id="WY4-VF-iXp"/>
-                                <constraint firstItem="hHo-7Y-XXP" firstAttribute="top" secondItem="1lS-l4-ZyN" secondAttribute="top" constant="20" id="dzX-Nk-ekW"/>
+                                <constraint firstItem="hHo-7Y-XXP" firstAttribute="top" secondItem="1lS-l4-ZyN" secondAttribute="top" constant="10" id="dzX-Nk-ekW"/>
                                 <constraint firstItem="hHo-7Y-XXP" firstAttribute="centerX" secondItem="1lS-l4-ZyN" secondAttribute="centerX" id="he2-bX-lEi"/>
                                 <constraint firstItem="ie1-Mo-f1a" firstAttribute="top" secondItem="hHo-7Y-XXP" secondAttribute="bottom" constant="10" id="qKT-we-Rdz"/>
                             </constraints>
@@ -123,7 +123,7 @@
                             <rect key="frame" x="281.5" y="0.0" width="93.5" height="100"/>
                             <subviews>
                                 <button opaque="NO" tag="40004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4CC-F8-4Mf">
-                                    <rect key="frame" x="23" y="20" width="47" height="40"/>
+                                    <rect key="frame" x="23" y="10" width="47" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                     <state key="normal" title="收藏">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,7 +133,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJh-St-d6N">
-                                    <rect key="frame" x="41.5" y="70" width="10.5" height="20.5"/>
+                                    <rect key="frame" x="41.5" y="60" width="10.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -141,7 +141,7 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="4CC-F8-4Mf" firstAttribute="top" secondItem="dlk-x7-GIt" secondAttribute="top" constant="20" id="AaD-DM-i0E"/>
+                                <constraint firstItem="4CC-F8-4Mf" firstAttribute="top" secondItem="dlk-x7-GIt" secondAttribute="top" constant="10" id="AaD-DM-i0E"/>
                                 <constraint firstItem="MJh-St-d6N" firstAttribute="top" secondItem="4CC-F8-4Mf" secondAttribute="bottom" constant="10" id="LuK-wq-iJK"/>
                                 <constraint firstItem="4CC-F8-4Mf" firstAttribute="centerX" secondItem="dlk-x7-GIt" secondAttribute="centerX" id="xyM-AP-h87"/>
                                 <constraint firstItem="MJh-St-d6N" firstAttribute="centerX" secondItem="dlk-x7-GIt" secondAttribute="centerX" id="z4Q-Hj-p0D"/>
@@ -179,7 +179,7 @@
                 <outlet property="userHeadImageView" destination="IDy-eT-70l" id="3a0-WM-UDf"/>
                 <outlet property="userNameLabel" destination="1Ca-d8-9wh" id="R73-Am-dsl"/>
             </connections>
-            <point key="canvasLocation" x="88.799999999999997" y="84.557721139430285"/>
+            <point key="canvasLocation" x="88.799999999999997" y="80.059970014992516"/>
         </view>
     </objects>
     <resources>

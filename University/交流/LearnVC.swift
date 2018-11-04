@@ -22,8 +22,7 @@ class LearnVC: UIViewController {
         // 创建DNSPageStyle，设置样式
         let style = DNSPageStyle()
         style.isTitleViewScrollEnabled = true
-        style.isTitleScaleEnabled = true                
-        style.titleViewHeight = 50
+        style.isTitleScaleEnabled = true                        
         
         // 设置标题内容
         let titles = ["推荐", "关注", "校园", "阅读", "问答", "经验", "资源"]
@@ -40,7 +39,7 @@ class LearnVC: UIViewController {
         
         // 创建对应的DNSPageView，并设置它的frame
         // titleView和contentView会连在一起
-        let pageView = DNSPageView(frame: CGRect(x: 0, y: TopBarHeight, width: ScreenWidth, height: ScreenHeight - TopBarHeight - 80), style: style, titles: titles, childViewControllers: childViewControllers)
+        let pageView = DNSPageView(frame: CGRect(x: 0, y: TopBarHeight, width: ScreenWidth, height: ScreenHeight - TopBarHeight - TabBarHeight), style: style, titles: titles, childViewControllers: childViewControllers)
         view.addSubview(pageView)
     }    
     
@@ -53,7 +52,10 @@ class LearnVC: UIViewController {
         manager.popMenuDelegate = self
         manager.actions = [
             PopMenuDefaultAction(title: "写文章", image: UIImage(named: "writeEssay")),
-            PopMenuDefaultAction(title: "找朋友", image: UIImage(named: "addFriend"))
+            PopMenuDefaultAction(title: "提问题", image: UIImage(named: "question")),
+            PopMenuDefaultAction(title: "推荐书", image: UIImage(named: "book")),
+            PopMenuDefaultAction(title: "写经验", image: UIImage(named: "exp")),
+            PopMenuDefaultAction(title: "荐资源", image: UIImage(named: "resource"))
         ]
         manager.present(sourceView: sender)
     }

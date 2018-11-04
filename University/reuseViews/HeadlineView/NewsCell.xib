@@ -19,8 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无新闻..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zih-nc-BeO">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无新闻..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zih-nc-BeO">
+                        <rect key="frame" x="10" y="0.0" width="190" height="50"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -29,15 +29,16 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="zih-nc-BeO" secondAttribute="bottom" id="0N4-D5-cz0"/>
-                <constraint firstAttribute="trailing" secondItem="zih-nc-BeO" secondAttribute="trailing" id="F89-qH-h0J"/>
-                <constraint firstItem="zih-nc-BeO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="NVL-VU-chi"/>
-                <constraint firstItem="zih-nc-BeO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WQq-fl-UOj"/>
+                <constraint firstItem="zih-nc-BeO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Khd-Jj-KQ1"/>
+                <constraint firstItem="zih-nc-BeO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="c7c-ev-rcE"/>
+                <constraint firstAttribute="bottom" secondItem="zih-nc-BeO" secondAttribute="bottom" id="q9h-qU-MEP"/>
+                <constraint firstAttribute="trailing" secondItem="zih-nc-BeO" secondAttribute="trailing" id="tXq-AV-Q0M"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="newsLabel" destination="zih-nc-BeO" id="D3a-eo-Z35"/>
             </connections>
+            <point key="canvasLocation" x="64" y="62.968515742128943"/>
         </collectionViewCell>
     </objects>
 </document>

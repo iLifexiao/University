@@ -15,6 +15,7 @@ let ScreenHeight = UIScreen.main.bounds.size.height
 // 适配IphoneX系列
 let IsIphoneXSeries = (ScreenHeight == 812.0 || ScreenHeight == 896.0) ? true : false
 let TopBarHeight = (IsIphoneXSeries ? CGFloat(88) : CGFloat(64))
+let TabBarHeight = (IsIphoneXSeries ? CGFloat(83) : CGFloat(49))
 
 //屏幕适配（以iPhone 6为基础）
 func FitWidth(value: Float) -> Float {
