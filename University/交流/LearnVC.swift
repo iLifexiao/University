@@ -15,7 +15,7 @@ class LearnVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initUI()
+        initUI()        
     }
     
     private func initUI() {

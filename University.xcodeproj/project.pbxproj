@@ -34,6 +34,11 @@
 		8B24EE3F2181E1010044514C /* EssayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B24EE3D2181E1010044514C /* EssayCell.swift */; };
 		8B24EE402181E1010044514C /* EssayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B24EE3E2181E1010044514C /* EssayCell.xib */; };
 		8B24EE422181E11F0044514C /* EssayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B24EE412181E11F0044514C /* EssayModel.swift */; };
+		8B3002FA218B35CE00D53D34 /* CountdownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3002F5218B35CE00D53D34 /* CountdownCell.swift */; };
+		8B3002FB218B35CE00D53D34 /* CountdownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3002F6218B35CE00D53D34 /* CountdownCell.xib */; };
+		8B3002FC218B35CE00D53D34 /* CountdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3002F7218B35CE00D53D34 /* CountdownModel.swift */; };
+		8B3002FD218B35CE00D53D34 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3002F8218B35CE00D53D34 /* CountdownView.swift */; };
+		8B3002FE218B35CE00D53D34 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3002F9218B35CE00D53D34 /* CountdownView.xib */; };
 		8BAEA34C217EF88F00FC2CBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA34B217EF88F00FC2CBB /* AppDelegate.swift */; };
 		8BAEA34E217EF88F00FC2CBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA34D217EF88F00FC2CBB /* ViewController.swift */; };
 		8BAEA353217EF89000FC2CBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BAEA352217EF89000FC2CBB /* Assets.xcassets */; };
@@ -67,11 +72,7 @@
 		8BAEA43D2181A7FB00FC2CBB /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA43C2181A7FB00FC2CBB /* UserView.swift */; };
 		8BAEA43F2181A80D00FC2CBB /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BAEA43E2181A80D00FC2CBB /* UserView.xib */; };
 		8BDD2E9121835D6E00E01B4D /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD2E9021835D6E00E01B4D /* QuestionModel.swift */; };
-		8BDD2E962183F5BF00E01B4D /* CountdownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD2E942183F5BF00E01B4D /* CountdownCell.swift */; };
-		8BDD2E972183F5BF00E01B4D /* CountdownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD2E952183F5BF00E01B4D /* CountdownCell.xib */; };
-		8BDD2E992183F5D700E01B4D /* CountdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD2E982183F5D700E01B4D /* CountdownModel.swift */; };
-		8BDD2E9C2183FD9D00E01B4D /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD2E9B2183FD9D00E01B4D /* CountdownView.swift */; };
-		8BDD2E9E2183FDB000E01B4D /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD2E9D2183FDB000E01B4D /* CountdownView.xib */; };
+		8BDD2EC8218487A800E01B4D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD2EC7218487A800E01B4D /* Login.storyboard */; };
 		E3B847BED6AB5EB84BF2B9B2 /* Pods_UniversityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE10B5202AAC32A3941E7F5 /* Pods_UniversityTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,11 @@
 		8B24EE3D2181E1010044514C /* EssayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayCell.swift; sourceTree = "<group>"; };
 		8B24EE3E2181E1010044514C /* EssayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EssayCell.xib; sourceTree = "<group>"; };
 		8B24EE412181E11F0044514C /* EssayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayModel.swift; sourceTree = "<group>"; };
+		8B3002F5218B35CE00D53D34 /* CountdownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownCell.swift; sourceTree = "<group>"; };
+		8B3002F6218B35CE00D53D34 /* CountdownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownCell.xib; sourceTree = "<group>"; };
+		8B3002F7218B35CE00D53D34 /* CountdownModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownModel.swift; sourceTree = "<group>"; };
+		8B3002F8218B35CE00D53D34 /* CountdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
+		8B3002F9218B35CE00D53D34 /* CountdownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
 		8BAEA348217EF88F00FC2CBB /* University.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = University.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BAEA34B217EF88F00FC2CBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BAEA34D217EF88F00FC2CBB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -164,11 +170,8 @@
 		8BAEA43C2181A7FB00FC2CBB /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		8BAEA43E2181A80D00FC2CBB /* UserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
 		8BDD2E9021835D6E00E01B4D /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
-		8BDD2E942183F5BF00E01B4D /* CountdownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCell.swift; sourceTree = "<group>"; };
-		8BDD2E952183F5BF00E01B4D /* CountdownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountdownCell.xib; sourceTree = "<group>"; };
-		8BDD2E982183F5D700E01B4D /* CountdownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownModel.swift; sourceTree = "<group>"; };
-		8BDD2E9B2183FD9D00E01B4D /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
-		8BDD2E9D2183FDB000E01B4D /* CountdownView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
+		8BDD2EC3218453C600E01B4D /* University-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "University-Bridging-Header.h"; sourceTree = "<group>"; };
+		8BDD2EC7218487A800E01B4D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9501AE27AA40D52E090DB849 /* Pods_University.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_University.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB131C05EFFBB21E33E5C1B9 /* Pods_UniversityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UniversityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -373,6 +376,27 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		8B3002F1218B33A700D53D34 /* reuseViews */ = {
+			isa = PBXGroup;
+			children = (
+				8B3002F4218B35CE00D53D34 /* CountdownView */,
+				8BAEA40A218091C700FC2CBB /* HeadlineView */,
+			);
+			path = reuseViews;
+			sourceTree = "<group>";
+		};
+		8B3002F4218B35CE00D53D34 /* CountdownView */ = {
+			isa = PBXGroup;
+			children = (
+				8B3002F5218B35CE00D53D34 /* CountdownCell.swift */,
+				8B3002F6218B35CE00D53D34 /* CountdownCell.xib */,
+				8B3002F7218B35CE00D53D34 /* CountdownModel.swift */,
+				8B3002F8218B35CE00D53D34 /* CountdownView.swift */,
+				8B3002F9218B35CE00D53D34 /* CountdownView.xib */,
+			);
+			path = CountdownView;
+			sourceTree = "<group>";
+		};
 		8BAEA33F217EF88F00FC2CBB = {
 			isa = PBXGroup;
 			children = (
@@ -399,14 +423,17 @@
 			isa = PBXGroup;
 			children = (
 				8BAEA37A217EFAFE00FC2CBB /* Main.storyboard */,
+				8BDD2EC7218487A800E01B4D /* Login.storyboard */,
 				8BAEA3DE217EFE0C00FC2CBB /* 主页 */,
 				8BAEA3DF217EFE1E00FC2CBB /* 交流 */,
 				8BAEA3E0217EFE2600FC2CBB /* 生活 */,
 				8BAEA3E1217EFE2D00FC2CBB /* 我的 */,
+				8B3002F1218B33A700D53D34 /* reuseViews */,
 				8BAEA3F4217F57D000FC2CBB /* thirdKit */,
 				8BAEA379217EFA9F00FC2CBB /* SupportingFiles */,
 				8BAEA352217EF89000FC2CBB /* Assets.xcassets */,
 				8BAEA357217EF89000FC2CBB /* Info.plist */,
+				8BDD2EC3218453C600E01B4D /* University-Bridging-Header.h */,
 			);
 			path = University;
 			sourceTree = "<group>";
@@ -443,8 +470,6 @@
 		8BAEA3DE217EFE0C00FC2CBB /* 主页 */ = {
 			isa = PBXGroup;
 			children = (
-				8BAEA40A218091C700FC2CBB /* HeadlineView */,
-				8BDD2E9A2183FCF600E01B4D /* CountdownView */,
 				8BAEA3E8217F0CD900FC2CBB /* Cells */,
 				8BAEA3EF217F290C00FC2CBB /* Headers */,
 				8BAEA3FF217F62D700FC2CBB /* CampusServers */,
@@ -548,26 +573,6 @@
 			path = ADCell;
 			sourceTree = "<group>";
 		};
-		8BDD2E9A2183FCF600E01B4D /* CountdownView */ = {
-			isa = PBXGroup;
-			children = (
-				8BDD2E9F2183FDBC00E01B4D /* Cells */,
-				8BDD2E9B2183FD9D00E01B4D /* CountdownView.swift */,
-				8BDD2E9D2183FDB000E01B4D /* CountdownView.xib */,
-			);
-			name = CountdownView;
-			sourceTree = "<group>";
-		};
-		8BDD2E9F2183FDBC00E01B4D /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				8BDD2E942183F5BF00E01B4D /* CountdownCell.swift */,
-				8BDD2E952183F5BF00E01B4D /* CountdownCell.xib */,
-				8BDD2E982183F5D700E01B4D /* CountdownModel.swift */,
-			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
 		AD29D92AB1A971D82865F75A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +658,7 @@
 				TargetAttributes = {
 					8BAEA347217EF88F00FC2CBB = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					8BAEA35B217EF89000FC2CBB = {
 						CreatedOnToolsVersion = 10.0;
@@ -692,11 +698,12 @@
 				8BAEA3FE217F62CE00FC2CBB /* CampusFuncCell.xib in Resources */,
 				8B0EF3172182F21E000EA64E /* ReadingVC.xib in Resources */,
 				8BAEA3E5217F077700FC2CBB /* ADCell.xib in Resources */,
+				8B3002FB218B35CE00D53D34 /* CountdownCell.xib in Resources */,
 				8BAEA40E2180AEFA00FC2CBB /* NewsCell.xib in Resources */,
 				8B0EF30F2182F1E8000EA64E /* FocusVC.xib in Resources */,
 				8B0EF30B2182F197000EA64E /* RecommandVC.xib in Resources */,
 				8B0EF31F2182F344000EA64E /* ResourcesVC.xib in Resources */,
-				8BDD2E972183F5BF00E01B4D /* CountdownCell.xib in Resources */,
+				8BDD2EC8218487A800E01B4D /* Login.storyboard in Resources */,
 				8B0EF33A21833FF7000EA64E /* ReadingCell.xib in Resources */,
 				8BAEA409218091B300FC2CBB /* HeadlineView.xib in Resources */,
 				8B0EF31B2182F324000EA64E /* QuestionVC.xib in Resources */,
@@ -705,13 +712,13 @@
 				8BAEA40521807BD000FC2CBB /* ADHeaderView.xib in Resources */,
 				8B0EF3132182F204000EA64E /* CampusVC.xib in Resources */,
 				8BAEA3F3217F2C8700FC2CBB /* TipsHeaderView.xib in Resources */,
+				8B3002FE218B35CE00D53D34 /* CountdownView.xib in Resources */,
 				8BAEA3EE217F253700FC2CBB /* DateHeaderView.xib in Resources */,
 				8B24EE402181E1010044514C /* EssayCell.xib in Resources */,
 				8B0EF3242182FCE9000EA64E /* ExperienceVC.xib in Resources */,
 				8BAEA356217EF89000FC2CBB /* LaunchScreen.storyboard in Resources */,
 				8BAEA43F2181A80D00FC2CBB /* UserView.xib in Resources */,
 				8BAEA353217EF89000FC2CBB /* Assets.xcassets in Resources */,
-				8BDD2E9E2183FDB000E01B4D /* CountdownView.xib in Resources */,
 				8BAEA393217EFAFE00FC2CBB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -843,7 +850,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BAEA40321807BC400FC2CBB /* ADHeaderView.swift in Sources */,
-				8BDD2E992183F5D700E01B4D /* CountdownModel.swift in Sources */,
+				8B3002FC218B35CE00D53D34 /* CountdownModel.swift in Sources */,
 				8BAEA4192181632B00FC2CBB /* LifeFuncModel.swift in Sources */,
 				8BAEA3AD217EFB2E00FC2CBB /* LifeVC.swift in Sources */,
 				8BAEA43D2181A7FB00FC2CBB /* UserView.swift in Sources */,
@@ -857,7 +864,7 @@
 				8BAEA401217F707600FC2CBB /* CampusFuncModel.swift in Sources */,
 				8B0EF32721832BB3000EA64E /* CampusNewsCell.swift in Sources */,
 				8B24EE422181E11F0044514C /* EssayModel.swift in Sources */,
-				8BDD2E962183F5BF00E01B4D /* CountdownCell.swift in Sources */,
+				8B3002FA218B35CE00D53D34 /* CountdownCell.swift in Sources */,
 				8BAEA417218162D700FC2CBB /* MyServerModel.swift in Sources */,
 				8B0EF3122182F204000EA64E /* CampusVC.swift in Sources */,
 				8BAEA40D2180AEFA00FC2CBB /* NewsCell.swift in Sources */,
@@ -873,7 +880,7 @@
 				8B0EF32A218330D6000EA64E /* CampusNewsModel.swift in Sources */,
 				8BAEA34C217EF88F00FC2CBB /* AppDelegate.swift in Sources */,
 				8BAEA3E7217F0B4800FC2CBB /* ADModel.swift in Sources */,
-				8BDD2E9C2183FD9D00E01B4D /* CountdownView.swift in Sources */,
+				8B3002FD218B35CE00D53D34 /* CountdownView.swift in Sources */,
 				8BDD2E9121835D6E00E01B4D /* QuestionModel.swift in Sources */,
 				8B0EF30A2182F197000EA64E /* RecommandVC.swift in Sources */,
 				8BAEA3EA217F12F700FC2CBB /* SizeHeader.swift in Sources */,
@@ -1046,6 +1053,7 @@
 			baseConfigurationReference = 6360141ADFF2DAC90E54A364 /* Pods-University.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 54AK3K68R5;
 				INFOPLIST_FILE = University/Info.plist;
@@ -1056,6 +1064,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = iLife.University;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "University/University-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1066,6 +1076,7 @@
 			baseConfigurationReference = 828E447D048F6F683ECCFAA7 /* Pods-University.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 54AK3K68R5;
 				INFOPLIST_FILE = University/Info.plist;
@@ -1076,6 +1087,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = iLife.University;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "University/University-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -18,9 +18,13 @@ class LifeVC: UIViewController {
     var news: [String] = []
     var lifeServers: [LifeFuncModel] = []
     var campusAround: [LifeFuncModel] = []
+    
+    let bannerCell = "bannerCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initData()
+        setupTableView()
     }
     
     private func initData() {
@@ -47,6 +51,10 @@ class LifeVC: UIViewController {
         let campusFunc3 = LifeFuncModel(icon: UIImage.init(named: "asume"), title: "娱乐推荐")
         let campusFunc4 = LifeFuncModel(icon: UIImage.init(named: "partJob"), title: "兼职信息")
         campusAround = [campusFunc1, campusFunc2, campusFunc3, campusFunc4]
+    }
+    
+    private func setupTableView() {
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: bannerCell)
     }
     
 }
@@ -124,7 +132,7 @@ extension LifeVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: bannerCell, for: indexPath)
             if cell.contentView.subviews.count == 0 {
                 // Banner视图
                 let pagerView = FSPagerView(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth, height: 250))

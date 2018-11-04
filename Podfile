@@ -14,6 +14,7 @@ target 'University' do
   pod 'Toast-Swift', '~> 4.0.0'
   pod 'DNSPageView'
   pod 'NewPopMenu', '~> 2.0'
+  pod 'BmobSDK'
 
   target 'UniversityTests' do
     inherit! :search_paths

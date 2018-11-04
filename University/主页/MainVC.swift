@@ -19,6 +19,10 @@ class MainVC: UIViewController {
     var campusFuncs: [CampusFuncModel] = []
     var adModels: [ADModel] = []
     
+    let bannerCell = "bannerCell"
+    let dateCell = "dateCell"
+    let campusCell = "campusCell"
+    
     // 日期默认
     var week: String = "星期三"
     var date: String = "2018-10-22"
@@ -96,6 +100,10 @@ class MainVC: UIViewController {
     }
     
     private func setupTableView() {
+        // 每一个复用的Cell都需要注册，发现通过代码创建的cell有复用问题
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: bannerCell)
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: dateCell)
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: campusCell)
         tableView.register(UINib.init(nibName: "ADCell", bundle: nil), forCellReuseIdentifier: "ADCell")
     }
 
@@ -183,7 +191,7 @@ extension MainVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: bannerCell, for: indexPath)
             if cell.contentView.subviews.count == 0 {
                 // Banner视图
                 let pagerView = FSPagerView(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth, height: 250))
@@ -207,7 +215,7 @@ extension MainVC: UITableViewDataSource {
             cell.selectionStyle = .none
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: dateCell, for: indexPath)
             if cell.contentView.subviews.count == 0 {
                 let countdownView = Bundle.main.loadNibNamed("CountdownView", owner: nil, options: nil)?[0] as! CountdownView
                 countdownView.frame = CGRect(x: 0, y: 0, width: ScreenWidth, height: 100)
@@ -215,12 +223,11 @@ extension MainVC: UITableViewDataSource {
                 countdownView.countdowns = countdowns
                 cell.contentView.addSubview(countdownView)
             }
-                
             cell.selectionStyle = .none
             return cell
         case 2:
             // 校园服务
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: campusCell, for: indexPath)
             if cell.contentView.subviews.count == 0 {
                 // 1. 布局设置
                 let flowLayout = UICollectionViewFlowLayout()

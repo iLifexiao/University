@@ -11,6 +11,8 @@ import Toast_Swift
 
 class UserVC: UIViewController {
 
+    
+    @IBOutlet weak var tableView: UITableView!
     private var weCulture: [MyServerModel] = []
     private var studentStatus: [MyServerModel] = []
     
@@ -19,9 +21,12 @@ class UserVC: UIViewController {
     private var fansCount: Int?
     private var collectionCount: Int?
     
+    let userCell = "userCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initData()
+        setupTableView()
     }
     
     private func initData() {
@@ -45,6 +50,10 @@ class UserVC: UIViewController {
         studentStatus = [schoolFunc1 ,schoolFunc2, schoolFunc3, schoolFunc4]
     }
     
+    private func setupTableView() {
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: userCell)
+    }
+    
     @IBAction func userSettingPress(_ sender: UIBarButtonItem) {
         view.makeToast("设置")
     }
@@ -66,9 +75,11 @@ extension UserVC: UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
+            return 0
+        case 1:
             return 20
         default:
             return 10
@@ -97,9 +108,10 @@ extension UserVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: userCell, for: indexPath)
             if cell.contentView.subviews.count == 0 {
                 let userView = Bundle.main.loadNibNamed("UserView", owner: nil, options: nil)?[0] as! UserView
+                userView.frame = CGRect(x: 0, y: 0, width: ScreenWidth, height: 300)
                 userView.delegate = self
                 userView.setMessageCount(messageCount)
                 userView.setEssayCount(essayCount)
