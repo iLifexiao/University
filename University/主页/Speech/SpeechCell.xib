@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="KGk-i7-Jjw" customClass="SpeechCell" customModule="University" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="159.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="海洋生物资源高值化开发与中试研究" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2u-tr-cug">
+                        <rect key="frame" x="10" y="10" width="300" height="49"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="演讲者:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7s-SZ-AgS">
+                        <rect key="frame" x="10" y="70" width="51" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="洪专  国家海洋局第三海洋研究所教授" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGt-m7-KjO">
+                        <rect key="frame" x="66" y="71" width="219.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mff-eX-RF9">
+                        <rect key="frame" x="0.0" y="64" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="WWI-sr-K8g"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地点:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLF-uq-mSw">
+                        <rect key="frame" x="10" y="93" width="35" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="向高园报告厅（一）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzX-Tv-nMu">
+                        <rect key="frame" x="66" y="94" width="120" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuH-Wc-BbO">
+                        <rect key="frame" x="10" y="116" width="35" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018年09月30日（星期日） 下午2：30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IX6-AC-h83">
+                        <rect key="frame" x="66" y="117" width="237" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="举办者:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qv-KZ-eeX">
+                        <rect key="frame" x="10" y="139" width="51" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="海洋与生化工程学院" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2I4-o2-fxC">
+                        <rect key="frame" x="66" y="140" width="120" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zuH-Wc-BbO" firstAttribute="top" secondItem="MLF-uq-mSw" secondAttribute="bottom" constant="5" id="0xr-DP-xIj"/>
+                    <constraint firstItem="2I4-o2-fxC" firstAttribute="leading" secondItem="IX6-AC-h83" secondAttribute="leading" id="21F-mW-o32"/>
+                    <constraint firstItem="mff-eX-RF9" firstAttribute="top" secondItem="c2u-tr-cug" secondAttribute="bottom" constant="5" id="7Fv-wr-2dx"/>
+                    <constraint firstItem="IX6-AC-h83" firstAttribute="centerY" secondItem="zuH-Wc-BbO" secondAttribute="centerY" id="9JQ-10-hB4"/>
+                    <constraint firstItem="WGt-m7-KjO" firstAttribute="leading" secondItem="C7s-SZ-AgS" secondAttribute="trailing" constant="5" id="FoL-DK-etL"/>
+                    <constraint firstAttribute="trailing" secondItem="c2u-tr-cug" secondAttribute="trailing" constant="10" id="K33-C5-EqH"/>
+                    <constraint firstItem="c2u-tr-cug" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Mtu-b6-zDb"/>
+                    <constraint firstItem="mff-eX-RF9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NOC-te-xB7"/>
+                    <constraint firstItem="4qv-KZ-eeX" firstAttribute="top" secondItem="zuH-Wc-BbO" secondAttribute="bottom" constant="5" id="Nyq-pa-3lw"/>
+                    <constraint firstItem="c2u-tr-cug" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="T3H-Jq-uak"/>
+                    <constraint firstItem="MLF-uq-mSw" firstAttribute="top" secondItem="C7s-SZ-AgS" secondAttribute="bottom" constant="5" id="WRN-XV-9aX"/>
+                    <constraint firstItem="C7s-SZ-AgS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ZgC-de-SAD"/>
+                    <constraint firstAttribute="trailing" secondItem="mff-eX-RF9" secondAttribute="trailing" id="caG-k2-abo"/>
+                    <constraint firstItem="vzX-Tv-nMu" firstAttribute="centerY" secondItem="MLF-uq-mSw" secondAttribute="centerY" id="ekj-Jg-BcQ"/>
+                    <constraint firstItem="C7s-SZ-AgS" firstAttribute="top" secondItem="mff-eX-RF9" secondAttribute="bottom" constant="5" id="h5v-DU-EM6"/>
+                    <constraint firstItem="vzX-Tv-nMu" firstAttribute="leading" secondItem="WGt-m7-KjO" secondAttribute="leading" id="iF9-Nk-GnT"/>
+                    <constraint firstItem="2I4-o2-fxC" firstAttribute="centerY" secondItem="4qv-KZ-eeX" secondAttribute="centerY" id="ko8-K6-LEV"/>
+                    <constraint firstItem="MLF-uq-mSw" firstAttribute="leading" secondItem="C7s-SZ-AgS" secondAttribute="leading" id="lMt-XW-4mt"/>
+                    <constraint firstItem="WGt-m7-KjO" firstAttribute="centerY" secondItem="C7s-SZ-AgS" secondAttribute="centerY" id="o8g-sQ-11N"/>
+                    <constraint firstItem="zuH-Wc-BbO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="s7P-Ys-AaE"/>
+                    <constraint firstItem="4qv-KZ-eeX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="sEy-2R-nr4"/>
+                    <constraint firstItem="IX6-AC-h83" firstAttribute="leading" secondItem="vzX-Tv-nMu" secondAttribute="leading" id="ume-k0-2SX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="companyLabel" destination="2I4-o2-fxC" id="DO7-v1-RZr"/>
+                <outlet property="nameLabel" destination="c2u-tr-cug" id="Br8-hN-Jvm"/>
+                <outlet property="siteLabel" destination="vzX-Tv-nMu" id="1CZ-4d-r5o"/>
+                <outlet property="speakerLabel" destination="WGt-m7-KjO" id="I7u-6a-h4X"/>
+                <outlet property="timeLabel" destination="IX6-AC-h83" id="E5d-el-SCG"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="154.72263868065968"/>
+        </tableViewCell>
+    </objects>
+</document>

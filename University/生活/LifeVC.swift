@@ -9,17 +9,33 @@
 import UIKit
 import FSPagerView
 import Toast_Swift
+import Alamofire
+import SwiftyJSON
 
 class LifeVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    var pagerView: FSPagerView?
+    var headlineView: HeadlineView?
     
-    var bannerImages: [URL] = []
-    var news: [String] = []
+//    var news: [String] = []
     var lifeServers: [LifeFuncModel] = []
     var campusAround: [LifeFuncModel] = []
     
     let bannerCell = "bannerCell"
+    
+    // 网络数据
+    var adBanners: [ADBanner] = []
+    var notifications: [Notification] = []
+    var news: [String] {
+        get {
+            var titles: [String] = []
+            for notifi in notifications {
+                titles.append(notifi.title)
+            }
+            return titles
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +44,9 @@ class LifeVC: UIViewController {
     }
     
     private func initData() {
-        // Banner
-        for index in 0...4 {
-            if let url = URL(string: "https://picsum.photos/375/200/?image=\(200+index)") {
-                bannerImages.append(url)
-            }
-        }
-        
-        // News
-        news = ["5#207 打印低至19.9", "丰富晚餐仅需19.9", "今日优惠请查收"]
+        // Banner、ad
+        getADBanner()
+        getNotifications()
         
         // lifeServers
         let lifeFunc1 = LifeFuncModel(icon: UIImage.init(named: "secondHand"), title: "校园闲鱼")
@@ -59,6 +69,50 @@ class LifeVC: UIViewController {
             tableView.contentInsetAdjustmentBehavior = .never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
+        // 下拉刷新
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            // 重新获取
+            self.getADBanner()
+            self.getNotifications()
+            
+            self.tableView.mj_header.endRefreshing()
+            self.view.makeToast("刷新成功", position: .top)
+        })
+    }
+    
+    private func getADBanner() {
+        Alamofire.request(baseURL + "/api/v1/adbanner/all/life", headers: headers).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.adBanners.removeAll()
+                // json是数组
+                for (_,subJson):(String, JSON) in json {
+                    self.adBanners.append(ADBanner(jsonData: subJson))
+                }
+                self.pagerView?.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func getNotifications() {
+        Alamofire.request(baseURL + "/api/v1/notification/all/life", headers: headers).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                // json是数组
+                self.notifications.removeAll()
+                for (_,subJson):(String, JSON) in json {
+                    self.notifications.append(Notification(jsonData: subJson))
+                }
+                self.headlineView?.setNews(self.news)
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     
@@ -140,25 +194,24 @@ extension LifeVC: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: bannerCell, for: indexPath)
             if cell.contentView.subviews.count == 0 {
                 // Banner视图
-                let pagerView = FSPagerView(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth, height: 250))
-                pagerView.automaticSlidingInterval = 3.0
-                pagerView.isInfinite = true
+                pagerView = FSPagerView(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth, height: 250))
+                pagerView?.automaticSlidingInterval = 3.0
+                pagerView?.isInfinite = true
                 // 显示的样式下，需要调整itemSize才能显示完全
-                pagerView.transformer = FSPagerViewTransformer(type: .linear)
-//                pagerView.itemSize = CGSize(width: ScreenWidth - 40, height: 200)
-                pagerView.dataSource = self
-                pagerView.delegate = self
-                pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "BannerCell")
-                cell.contentView.addSubview(pagerView)
+                pagerView?.transformer = FSPagerViewTransformer(type: .linear)
+                pagerView?.itemSize = CGSize(width: ScreenWidth - 40, height: 200)
+                pagerView?.dataSource = self
+                pagerView?.delegate = self
+                pagerView?.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "BannerCell")
+                cell.contentView.addSubview(pagerView!)
                 
                 // 通知栏
-                let headlineView = Bundle.main.loadNibNamed("HeadlineView", owner: nil, options: nil)?[0] as! HeadlineView
-                headlineView.frame = CGRect.init(x: 0, y: 250, width: ScreenWidth, height: 50)
-                headlineView.setIcon(UIImage.init(named: "gift"))
-                headlineView.setTitle("活动")
-                headlineView.delegate = self
-                headlineView.setNews(news)
-                cell.contentView.addSubview(headlineView)
+                headlineView = Bundle.main.loadNibNamed("HeadlineView", owner: nil, options: nil)?[0] as? HeadlineView
+                headlineView?.frame = CGRect.init(x: 0, y: 250, width: ScreenWidth, height: 50)
+                headlineView?.setIcon(UIImage.init(named: "gift"))
+                headlineView?.setTitle("活动")
+                headlineView?.delegate = self
+                cell.contentView.addSubview(headlineView!)
             }
             cell.accessoryType = .none
             cell.selectionStyle = .none
@@ -199,13 +252,14 @@ extension LifeVC: FSPagerViewDelegate {
 // MARK: FSPagerViewDataSource
 extension LifeVC: FSPagerViewDataSource {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return bannerImages.count
+        return adBanners.count
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "BannerCell", at: index)
-        cell.imageView?.sd_setImage(with: bannerImages[index], completed: nil)
-        cell.textLabel?.text = String(index)
+        let adBanner = adBanners[index]
+        cell.imageView?.sd_setImage(with: URL(string: baseURL + adBanner.imageURL), completed: nil)
+        cell.textLabel?.text = adBanner.title
         return cell
     }
 }
@@ -213,6 +267,7 @@ extension LifeVC: FSPagerViewDataSource {
 // MARK: NotificationDelegate
 extension LifeVC: HeadlineViewDelegate {
     func headlineView(_ headlineView: HeadlineView, didSelectItemAt index: Int) {
-        view.makeToast("news: \(index)")
+        let notifi = notifications[index]
+        view.makeToast("NotifiID: \(notifi.id ?? 0)")
     }
 }

@@ -35,7 +35,8 @@ class HeadlineView: UIView {
     
 //    var autoScroll = true
 //    var infiniteLoop = true
-    var autoScrollTimeInterval = 2
+    // 开放属性
+    var autoScrollTimeInterval = 3
     weak var delegate: HeadlineViewDelegate?
     
     // 计算属性
@@ -67,6 +68,8 @@ class HeadlineView: UIView {
     
     // MARK: setNews
     func setNews(_ news: [String]) {
+        // 每次设置都需要销毁Timer，导致叠加
+        invalidateTimer()
         self.news = news
         collectionView.reloadData()
         setTimer()
@@ -75,6 +78,11 @@ class HeadlineView: UIView {
     private func setTimer() {
         timer = Timer(timeInterval: TimeInterval(autoScrollTimeInterval), target: self, selector: #selector(nextNews), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: .common)
+    }
+    
+    private func invalidateTimer() {
+        timer?.invalidate()
+        timer = nil
     }
     
     @objc private func nextNews() {

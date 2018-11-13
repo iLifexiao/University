@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 // 常用物理常量，添加前缀K
 let ScreenWidth = UIScreen.main.bounds.size.width
@@ -17,7 +18,7 @@ let IsIphoneXSeries = (ScreenHeight == 812.0 || ScreenHeight == 896.0) ? true : 
 let TopBarHeight = (IsIphoneXSeries ? CGFloat(88) : CGFloat(64))
 let TabBarHeight = (IsIphoneXSeries ? CGFloat(83) : CGFloat(49))
 
-//屏幕适配（以iPhone 6为基础）
+// 屏幕适配（以iPhone 6为基础）
 func FitWidth(value: Float) -> Float {
     return (value / 750.0 * Float(ScreenWidth))
 }
@@ -28,7 +29,7 @@ func FitFont(size: Float) -> Float {
     return size * Float(ScreenWidth) / 750.0
 }
 
-//颜色定义
+// 颜色定义
 func XQColor(r: Float, g: Float, b: Float) -> UIColor {
     return UIColor(red: CGFloat(r / 255.0), green: CGFloat(g / 255.0), blue: CGFloat(b / 255.0), alpha: 1.0)
 }
@@ -36,3 +37,13 @@ func XQColor(r: Float, g: Float, b: Float) -> UIColor {
 func ColorRGB(value: Float) -> UIColor {
     return UIColor(red: CGFloat(value / 255.0), green: CGFloat(value / 255.0), blue: CGFloat(value / 255.0), alpha: 1.0)
 }
+
+// 网络配置
+let baseURL = "http://192.168.31.116:8080"
+let headers: HTTPHeaders = [
+    "Authorization": "Bearer aPD9AmZRf97np6glJ5PBBg5oMPCj8B/HGAFVOnI1l28=",
+    "Accept": "application/json"
+]
+
+let libraryURL = "http://agentdockingopac.featurelib.libsou.com/showhome/search/showSearch?schoolId=19345"
+

@@ -10,71 +10,80 @@ import UIKit
 import FSPagerView
 import SDWebImage
 import Toast_Swift
+import Alamofire
+import SwiftyJSON
 
 class MainVC: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!    
-    var bannerImages: [URL] = []
-    var countdowns: [CountdownModel] = []
-    var campusFuncs: [CampusFuncModel] = []
-//    var adModels: [ADModel] = []
+    // UI
+    @IBOutlet weak var tableView: UITableView!
+    var pagerView: FSPagerView?
+    var headlineView: HeadlineView?
     
+    // UI配置
     let sectionCount = 3
     let bannerCell = "bannerCell"
     let dateCell = "dateCell"
     let campusCell = "campusCell"
     
+    // 网络数据
+    var adBanners: [ADBanner] = []
+    var notifications: [Notification] = []
+    var news: [String] {
+        get {
+            var titles: [String] = []
+            for notifi in notifications {
+                titles.append(notifi.title)
+            }
+            return titles
+        }
+    }
+    
+    var countdowns: [CountdownModel] = []
+    var campusFuncs: [CampusFuncModel] = []
+        
     // 日期默认
     var week: String = "星期三"
     var date: String = "2018-10-22"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        initUI()
         initData()
+        /*
+        //监听tabBar的frame
+        tabBarController?.tabBar.addObserver(self, forKeyPath: "frame", options: [.old, .new], context: nil)
+         */
     }
     
-    private func initData() {
-        // banner
-        for index in 0...4 {
-            if let url = URL(string: "https://picsum.photos/375/200/?image=\(100+index)") {
-                bannerImages.append(url)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    /*
+    //释放观察者
+    deinit {
+        tabBarController?.tabBar.removeObserver(self, forKeyPath: "frame")
+    }
+    
+    //处理高度变化
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if let tabBar = object as? UITabBar, keyPath == "frame" {
+            if let oldFrame = change?[.oldKey] as? CGRect, let newFrame = change?[.newKey] as? CGRect {
+                if oldFrame.size != newFrame.size {
+                    if oldFrame.height > newFrame.height {
+                        tabBar.frame = oldFrame
+                    } else {
+                        tabBar.frame = newFrame
+                    }
+                }
             }
         }
-        
-        // 日期
-        date = getFormatDate(format: "YYYY-MM-dd")
-        week = getFormatDate(format: "EEEE")
-        
-        // countdown
-        let countdown1 = CountdownModel(date: "2018-12-15", event: "CET-4", day: 49)
-        let countdown2 = CountdownModel(date: "2018-12-25", event: "圣诞节", day: 59)
-        let countdown3 = CountdownModel(date: "2019-01-01", event: "元旦节", day: 65)
-        let countdown4 = CountdownModel(date: "2019-02-05", event: "春节", day: 101)
-        countdowns = [countdown1, countdown2, countdown3, countdown4]
-        
-        // 校园服务
-        let campusFuncModel = CampusFuncModel(icon: UIImage.init(named: "lesson"), name: "课程表")
-        let campusFuncModel2 = CampusFuncModel(icon: UIImage.init(named: "grade"), name: "成绩查询")
-        let campusFuncModel3 = CampusFuncModel(icon: UIImage.init(named: "classRoom"), name: "空教室")
-        let campusFuncModel4 = CampusFuncModel(icon: UIImage.init(named: "library"), name: "图书馆")
-        let campusFuncModel5 = CampusFuncModel(icon: UIImage.init(named: "education"), name: "考试安排")
-        let campusFuncModel6 = CampusFuncModel(icon: UIImage.init(named: "speech"), name: "学术讲座")
-        let campusFuncModel7 = CampusFuncModel(icon: UIImage.init(named: "cup"), name: "竞赛信息")
-        let campusFuncModel8 = CampusFuncModel(icon: UIImage.init(named: "LostAndFound"), name: "失物招领")
-        let campusFuncModel9 = CampusFuncModel(icon: UIImage.init(named: "calendar"), name: "校历")
-        let campusFuncModel10 = CampusFuncModel(icon: UIImage.init(named: "eduArrange"), name: "教务通知")
-        let campusFuncModel11 = CampusFuncModel(icon: UIImage.init(named: "community"), name: "社团")
-        let campusFuncModel12 = CampusFuncModel(icon: UIImage.init(named: "directory"), name: "通讯录")
-        campusFuncs = [campusFuncModel, campusFuncModel2, campusFuncModel3, campusFuncModel4, campusFuncModel5, campusFuncModel6, campusFuncModel7, campusFuncModel8, campusFuncModel9, campusFuncModel10, campusFuncModel11, campusFuncModel12]
-        
     }
-    
-    private func getFormatDate(format: String) -> String {
-        let now = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: now)
+    */
+    private func initUI() {
+        setupTableView()
     }
     
     private func setupTableView() {
@@ -89,17 +98,94 @@ class MainVC: UIViewController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
+        
+        // 下拉刷新
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            // 重新获取
+            self.getADBanner()
+            self.getNotifications()
+            
+            self.tableView.mj_header.endRefreshing()
+            self.view.makeToast("刷新成功", position: .top)
+        })
     }
-
+    
+    private func initData() {
+        // 首页轮播图
+        getADBanner()
+        getNotifications()
+        
+        // 日期
+        date = getFormatDate(format: "YYYY-MM-dd")
+        week = getFormatDate(format: "EEEE")
+        
+        // countdown
+        let countdown1 = CountdownModel(date: "2018-12-15", event: "CET-4", day: 33)
+        let countdown2 = CountdownModel(date: "2018-12-25", event: "圣诞节", day: 43)
+        let countdown3 = CountdownModel(date: "2019-01-01", event: "元旦节", day: 49)
+        let countdown4 = CountdownModel(date: "2019-02-05", event: "春节", day: 85)
+        countdowns = [countdown1, countdown2, countdown3, countdown4]
+        
+        // 校园服务
+        let campusFuncModel = CampusFuncModel(icon: UIImage(named: "lesson"), name: "课程表")
+        let campusFuncModel2 = CampusFuncModel(icon: UIImage(named: "grade"), name: "成绩查询")
+        let campusFuncModel3 = CampusFuncModel(icon: UIImage(named: "classRoom"), name: "空教室")
+        let campusFuncModel4 = CampusFuncModel(icon: UIImage(named: "library"), name: "图书馆")
+        let campusFuncModel5 = CampusFuncModel(icon: UIImage(named: "education"), name: "考试安排")
+        let campusFuncModel6 = CampusFuncModel(icon: UIImage(named: "speech"), name: "学术讲座")
+        let campusFuncModel7 = CampusFuncModel(icon: UIImage(named: "cup"), name: "竞赛信息")
+        let campusFuncModel8 = CampusFuncModel(icon: UIImage(named: "LostAndFound"), name: "失物招领")
+        let campusFuncModel9 = CampusFuncModel(icon: UIImage(named: "calendar"), name: "校历")
+        let campusFuncModel10 = CampusFuncModel(icon: UIImage(named: "eduArrange"), name: "教务通知")
+        let campusFuncModel11 = CampusFuncModel(icon: UIImage(named: "community"), name: "社团")
+        let campusFuncModel12 = CampusFuncModel(icon: UIImage(named: "directory"), name: "通讯录")
+        campusFuncs = [campusFuncModel, campusFuncModel2, campusFuncModel3, campusFuncModel4, campusFuncModel5, campusFuncModel6, campusFuncModel7, campusFuncModel8, campusFuncModel9, campusFuncModel10, campusFuncModel11, campusFuncModel12]
+        
+    }
+    
+    private func getADBanner() {
+        Alamofire.request(baseURL + "/api/v1/adbanner/all/main", headers: headers).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.adBanners.removeAll()
+                // json是数组
+                for (_,subJson):(String, JSON) in json {
+                    self.adBanners.append(ADBanner(jsonData: subJson))
+                }
+                self.pagerView?.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func getNotifications() {
+        Alamofire.request(baseURL + "/api/v1/notification/all/main", headers: headers).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.notifications.removeAll()
+                for (_,subJson):(String, JSON) in json {
+                    self.notifications.append(Notification(jsonData: subJson))
+                }
+                self.headlineView?.setNews(self.news)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func getFormatDate(format: String) -> String {
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: now)
+    }
 }
 
 // MARK: UITableViewDelegate
 extension MainVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 { return }
-        view.makeToast("you Select:\(indexPath.row)")
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
@@ -169,23 +255,22 @@ extension MainVC: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: bannerCell, for: indexPath)
             if cell.contentView.subviews.count == 0 {
                 // Banner视图
-                let pagerView = FSPagerView(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth, height: 250))
-                pagerView.automaticSlidingInterval = 3.0
-                pagerView.isInfinite = true
+                pagerView = FSPagerView(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth, height: 250))
+                pagerView?.automaticSlidingInterval = 3.0
+                pagerView?.isInfinite = true
                 // 显示的样式下，需要调整itemSize才能显示完全
-                pagerView.transformer = FSPagerViewTransformer(type: .overlap)
-                pagerView.itemSize = CGSize(width: ScreenWidth - 40, height: 200)
-                pagerView.dataSource = self
-                pagerView.delegate = self
-                pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "BannerCell")
-                cell.contentView.addSubview(pagerView)
+//                pagerView?.transformer = FSPagerViewTransformer(type: .overlap)
+//                pagerView?.itemSize = CGSize(width: ScreenWidth - 40, height: 200)
+                pagerView?.dataSource = self
+                pagerView?.delegate = self
+                pagerView?.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "BannerCell")
+                cell.contentView.addSubview(pagerView!)
                 
                 // 通知栏
-                let headlineView = Bundle.main.loadNibNamed("HeadlineView", owner: nil, options: nil)?[0] as! HeadlineView
-                headlineView.frame = CGRect.init(x: 0, y: 250, width: ScreenWidth, height: 50)
-                headlineView.delegate = self
-                headlineView.setNews(["庆祝学校建校40周年", "显示的样式下，需要调整itemSize才能显示完全", "大学说V1.0更新说明"])
-                cell.contentView.addSubview(headlineView)
+                headlineView = Bundle.main.loadNibNamed("HeadlineView", owner: nil, options: nil)?[0] as? HeadlineView                
+                headlineView?.frame = CGRect.init(x: 0, y: 250, width: ScreenWidth, height: 50)
+                headlineView?.delegate = self
+                cell.contentView.addSubview(headlineView!)
             }
             cell.selectionStyle = .none
             return cell
@@ -243,7 +328,8 @@ extension MainVC: UITableViewDataSource {
 // Banner的Delegate
 extension MainVC: FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        view.makeToast("你选中了：\(index)")
+        let adBanner = adBanners[index]
+        view.makeToast("你选中的ID：\(adBanner.id ?? 0)")
     }
 }
 
@@ -251,26 +337,66 @@ extension MainVC: FSPagerViewDelegate {
 // Banner的DetaSource
 extension MainVC: FSPagerViewDataSource {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return bannerImages.count
+        return adBanners.count
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "BannerCell", at: index)
-        cell.imageView?.sd_setImage(with: bannerImages[index], completed: nil)
-        cell.textLabel?.text = String(index)
+        let adBanner = adBanners[index]
+        cell.imageView?.sd_setImage(with: URL(string: baseURL + adBanner.imageURL), completed: nil)
+        cell.textLabel?.text = adBanner.title
         return cell
     }
 }
 
-// MARK: UICollectionViewDelegate
-// CampusServers
+// MARK: CampusServers-Delegate
 extension MainVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        view.makeToast("you select: \(indexPath.row)")
+        let campusFunc = campusFuncs[indexPath.row]
+        switch campusFunc.name {
+        case "课程表":
+            let lessonTimeTable = LessonTimeTable()
+            navigationController?.pushViewController(lessonTimeTable, animated: true)
+        case "图书馆":
+            let libraryWebVC = LibraryWebVC()
+            navigationController?.pushViewController(libraryWebVC, animated: true)
+        case "竞赛信息":
+            let raceVC = RaceVC()
+            navigationController?.pushViewController(raceVC, animated: true)
+        case "教务通知":
+            let acdemicVC = AcdemicVC()
+            navigationController?.pushViewController(acdemicVC, animated: true)
+        case "成绩查询":
+            let lessonGradeVC = LessonGradeVC()
+            navigationController?.pushViewController(lessonGradeVC, animated: true)
+        case "考试安排":
+            let examinationVC = ExaminationVC()
+            navigationController?.pushViewController(examinationVC, animated: true)
+        case "失物招领":
+            let lostAndFoundVC = LostAndFoundVC()
+            navigationController?.pushViewController(lostAndFoundVC, animated: true)
+        case "社团":
+            let clubVC = ClubVC()
+            navigationController?.pushViewController(clubVC, animated: true)
+        case "空教室":
+            let emptyClassRoomVC = EmptyClassRoomVC()
+            navigationController?.pushViewController(emptyClassRoomVC, animated: true)
+        case "学术讲座":
+            let speechVC = SpeechVC()
+            navigationController?.pushViewController(speechVC, animated: true)
+        case "校历":
+            let schoolCalendarVC = SchoolCalendarVC()
+            navigationController?.pushViewController(schoolCalendarVC, animated: true)
+        case "通讯录":
+            let addressListVC = AddressListVC()
+            navigationController?.pushViewController(addressListVC, animated: true)
+        default:
+            view.makeToast("you select: \(campusFunc.name!)")
+        }
     }
 }
 
-// MARK: UICollectionViewDataSource
+// MARK: CampusServers-DataSource
 extension MainVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return campusFuncs.count
@@ -286,7 +412,8 @@ extension MainVC: UICollectionViewDataSource {
 // MARK: HeadlineViewDelegate
 extension MainVC: HeadlineViewDelegate {
     func headlineView(_ headlineView: HeadlineView, didSelectItemAt index: Int) {
-        view.makeToast("news: \(index)")
+        let notifi = notifications[index]
+        view.makeToast("NotifiID: \(notifi.id ?? 0)")
     }
 }
 

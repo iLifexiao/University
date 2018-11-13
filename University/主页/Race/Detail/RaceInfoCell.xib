@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="KGk-i7-Jjw" customClass="RaceInfoCell" customModule="University" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="159.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detailBG" translatesAutoresizingMaskIntoConstraints="NO" id="sQJ-v5-Dwe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="159.5"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wechat" translatesAutoresizingMaskIntoConstraints="NO" id="TDW-ha-rN5">
+                        <rect key="frame" x="130" y="10" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="5mg-XP-Ixe"/>
+                            <constraint firstAttribute="height" constant="60" id="sPq-4X-Vj1"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018年全国大学生计算机技能应用大赛" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mo-xY-5yv">
+                        <rect key="frame" x="0.0" y="78" width="320" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IT应用开发" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHC-xa-tBh">
+                        <rect key="frame" x="122.5" y="109.5" width="75" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018年11月15日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTI-1I-7Le">
+                        <rect key="frame" x="108.5" y="132.5" width="103" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="sQJ-v5-Dwe" secondAttribute="trailing" id="5uk-3F-RwT"/>
+                    <constraint firstAttribute="bottom" secondItem="sQJ-v5-Dwe" secondAttribute="bottom" id="7s9-fX-H4u"/>
+                    <constraint firstItem="TDW-ha-rN5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="978-0z-zDd"/>
+                    <constraint firstItem="GTI-1I-7Le" firstAttribute="top" secondItem="AHC-xa-tBh" secondAttribute="bottom" constant="5" id="9zs-7r-3Mt"/>
+                    <constraint firstItem="sQJ-v5-Dwe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="B3L-WG-G9c"/>
+                    <constraint firstItem="sQJ-v5-Dwe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="E1m-Hg-ZwS"/>
+                    <constraint firstItem="GTI-1I-7Le" firstAttribute="centerX" secondItem="TDW-ha-rN5" secondAttribute="centerX" id="EOF-hF-nAb"/>
+                    <constraint firstItem="AHC-xa-tBh" firstAttribute="centerX" secondItem="TDW-ha-rN5" secondAttribute="centerX" id="KJf-Qd-Mgu"/>
+                    <constraint firstItem="8Mo-xY-5yv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NkF-mP-xgX"/>
+                    <constraint firstAttribute="trailing" secondItem="8Mo-xY-5yv" secondAttribute="trailing" id="P6e-4O-n3X"/>
+                    <constraint firstItem="8Mo-xY-5yv" firstAttribute="top" secondItem="TDW-ha-rN5" secondAttribute="bottom" constant="8" id="XIO-Dr-OIE"/>
+                    <constraint firstAttribute="bottom" secondItem="GTI-1I-7Le" secondAttribute="bottom" constant="10" id="hJZ-9F-ty5"/>
+                    <constraint firstItem="TDW-ha-rN5" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="trM-Vy-JOb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="iconImageView" destination="TDW-ha-rN5" id="JVi-QF-COb"/>
+                <outlet property="nameLabel" destination="8Mo-xY-5yv" id="H5F-0s-uPL"/>
+                <outlet property="timeLabel" destination="GTI-1I-7Le" id="9cn-wH-rgf"/>
+                <outlet property="typeLabel" destination="AHC-xa-tBh" id="CqS-4B-fPM"/>
+            </connections>
+            <point key="canvasLocation" x="76" y="48.575712143928037"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="detailBG" width="600" height="375"/>
+        <image name="wechat" width="200" height="200"/>
+    </resources>
+</document>
