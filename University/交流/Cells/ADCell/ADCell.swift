@@ -14,17 +14,22 @@ class ADCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var typeButton: UIButton!
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var likeLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func setupData(_ model: ADModel) {
-        iconImageView.image = model.icon
-        titleLabel.text = model.title
-        contentLabel.text = model.content
-        typeButton.setTitle(model.type, for: .normal)
+    func setupModel(_ resource: Resource) {
+        iconImageView.sd_setImage(with: URL(string: baseURL + resource.imageURL), completed: nil)
+        titleLabel.text = resource.name
+        contentLabel.text = resource.introduce
+        typeButton.setTitle(resource.type, for: .normal)
+        commentLabel.text = String(resource.commentCount ?? 0) + "评论"
+        likeLabel.text = String(resource.likeCount ?? 0) + "喜欢"
     }
     
     func setTypeColor(_ color: UIColor) {
@@ -36,6 +41,8 @@ class ADCell: UITableViewCell {
         titleLabel.text = nil
         contentLabel.text = nil
         typeButton.setTitle("工具", for: .normal)
+        commentLabel.text = nil
+        likeLabel.text = nil
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -18,6 +18,11 @@ class LearnVC: UIViewController {
         initUI()        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     private func initUI() {
         // 创建DNSPageStyle，设置样式
         let style = DNSPageStyle()

@@ -43,6 +43,11 @@ class LifeVC: UIViewController {
         setupTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     private func initData() {
         // Banner、ad
         getADBanner()
@@ -120,8 +125,38 @@ class LifeVC: UIViewController {
 
 extension LifeVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 { return }
-        view.makeToast("section: \(indexPath.section), row: \(indexPath.row)")
+        switch indexPath.section {
+        case 1:
+            switch indexPath.row {
+            case 0:
+                let idleGoodVC = IdleGoodVC()
+                navigationController?.pushViewController(idleGoodVC, animated: true)
+            case 1:
+                let utilityBillVC = UtilityBillVC()
+                navigationController?.pushViewController(utilityBillVC, animated: true)
+            case 2:
+                let shootAndPrintVC = ShootAndPrintVC()
+                navigationController?.pushViewController(shootAndPrintVC, animated: true)
+            case 3:
+                let propertyManagerVC = PropertyManagerVC()
+                navigationController?.pushViewController(propertyManagerVC, animated: true)
+            default:
+                print("生活服务-选择了错误的行")
+            }
+        case 2:
+            switch indexPath.row {
+            case 0:
+                let schoolStoreVC = SchoolStoreVC()
+                navigationController?.pushViewController(schoolStoreVC, animated: true)
+            case 1:
+                let partTimeJobVC = PartTimeJobVC()
+                navigationController?.pushViewController(partTimeJobVC, animated: true)
+            default:
+                print("校园周边-选择了错误的行")
+            }
+        default:
+            print("selctSectionOne")
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

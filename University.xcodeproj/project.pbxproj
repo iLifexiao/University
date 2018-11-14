@@ -25,7 +25,6 @@
 		8B0EF3242182FCE9000EA64E /* ExperienceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0EF3222182FCE9000EA64E /* ExperienceVC.xib */; };
 		8B0EF32721832BB3000EA64E /* CampusNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0EF32521832BB3000EA64E /* CampusNewsCell.swift */; };
 		8B0EF32821832BB3000EA64E /* CampusNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0EF32621832BB3000EA64E /* CampusNewsCell.xib */; };
-		8B0EF32A218330D6000EA64E /* CampusNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0EF329218330D6000EA64E /* CampusNewsModel.swift */; };
 		8B0EF33921833FF7000EA64E /* ReadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0EF33721833FF7000EA64E /* ReadingCell.swift */; };
 		8B0EF33A21833FF7000EA64E /* ReadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0EF33821833FF7000EA64E /* ReadingCell.xib */; };
 		8B0EF33C21834665000EA64E /* ReadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0EF33B21834665000EA64E /* ReadingModel.swift */; };
@@ -33,7 +32,6 @@
 		8B0EF341218350F0000EA64E /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0EF33F218350F0000EA64E /* QuestionCell.xib */; };
 		8B24EE3F2181E1010044514C /* EssayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B24EE3D2181E1010044514C /* EssayCell.swift */; };
 		8B24EE402181E1010044514C /* EssayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B24EE3E2181E1010044514C /* EssayCell.xib */; };
-		8B24EE422181E11F0044514C /* EssayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B24EE412181E11F0044514C /* EssayModel.swift */; };
 		8B3002FA218B35CE00D53D34 /* CountdownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3002F5218B35CE00D53D34 /* CountdownCell.swift */; };
 		8B3002FB218B35CE00D53D34 /* CountdownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3002F6218B35CE00D53D34 /* CountdownCell.xib */; };
 		8B3002FC218B35CE00D53D34 /* CountdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3002F7218B35CE00D53D34 /* CountdownModel.swift */; };
@@ -119,6 +117,30 @@
 		8B64B57F219B05A0005C2E07 /* SpeechCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B64B57D219B05A0005C2E07 /* SpeechCell.xib */; };
 		8B64B582219B22BA005C2E07 /* AddressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B580219B22BA005C2E07 /* AddressListCell.swift */; };
 		8B64B583219B22BA005C2E07 /* AddressListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B64B581219B22BA005C2E07 /* AddressListCell.xib */; };
+		8B7C7597219BD8D700FCCD75 /* ExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C7595219BD8D700FCCD75 /* ExperienceCell.swift */; };
+		8B7C7598219BD8D700FCCD75 /* ExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C7596219BD8D700FCCD75 /* ExperienceCell.xib */; };
+		8B7C759C219C007B00FCCD75 /* IdleGoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C759A219C007B00FCCD75 /* IdleGoodVC.swift */; };
+		8B7C759D219C007B00FCCD75 /* IdleGoodVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C759B219C007B00FCCD75 /* IdleGoodVC.xib */; };
+		8B7C75A1219C00CE00FCCD75 /* UtilityBillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C759F219C00CE00FCCD75 /* UtilityBillVC.swift */; };
+		8B7C75A2219C00CE00FCCD75 /* UtilityBillVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75A0219C00CE00FCCD75 /* UtilityBillVC.xib */; };
+		8B7C75A6219C011300FCCD75 /* ShootAndPrintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75A4219C011300FCCD75 /* ShootAndPrintVC.swift */; };
+		8B7C75A7219C011300FCCD75 /* ShootAndPrintVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75A5219C011300FCCD75 /* ShootAndPrintVC.xib */; };
+		8B7C75AB219C015800FCCD75 /* PropertyManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75A9219C015800FCCD75 /* PropertyManagerVC.swift */; };
+		8B7C75AC219C015800FCCD75 /* PropertyManagerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75AA219C015800FCCD75 /* PropertyManagerVC.xib */; };
+		8B7C75B0219C017F00FCCD75 /* SchoolStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75AE219C017F00FCCD75 /* SchoolStoreVC.swift */; };
+		8B7C75B1219C017F00FCCD75 /* SchoolStoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75AF219C017F00FCCD75 /* SchoolStoreVC.xib */; };
+		8B7C75B6219C01B700FCCD75 /* PartTimeJobVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75B4219C01B700FCCD75 /* PartTimeJobVC.swift */; };
+		8B7C75B7219C01B700FCCD75 /* PartTimeJobVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75B5219C01B700FCCD75 /* PartTimeJobVC.xib */; };
+		8B7C75BB219C0AD300FCCD75 /* IdleGoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75B9219C0AD300FCCD75 /* IdleGoodCell.swift */; };
+		8B7C75BC219C0AD300FCCD75 /* IdleGoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75BA219C0AD300FCCD75 /* IdleGoodCell.xib */; };
+		8B7C75BF219C2A5500FCCD75 /* DetailUtilityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75BD219C2A5500FCCD75 /* DetailUtilityVC.swift */; };
+		8B7C75C0219C2A5500FCCD75 /* DetailUtilityVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75BE219C2A5500FCCD75 /* DetailUtilityVC.xib */; };
+		8B7C75C3219C4DFD00FCCD75 /* ShootPrintCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75C1219C4DFD00FCCD75 /* ShootPrintCell.swift */; };
+		8B7C75C4219C4DFD00FCCD75 /* ShootPrintCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75C2219C4DFD00FCCD75 /* ShootPrintCell.xib */; };
+		8B7C75C7219C741100FCCD75 /* SchoolStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75C5219C741100FCCD75 /* SchoolStoreCell.swift */; };
+		8B7C75C8219C741100FCCD75 /* SchoolStoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75C6219C741100FCCD75 /* SchoolStoreCell.xib */; };
+		8B7C75CB219C840700FCCD75 /* PartTimeJobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75C9219C840700FCCD75 /* PartTimeJobCell.swift */; };
+		8B7C75CC219C840700FCCD75 /* PartTimeJobCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75CA219C840700FCCD75 /* PartTimeJobCell.xib */; };
 		8BAEA34C217EF88F00FC2CBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA34B217EF88F00FC2CBB /* AppDelegate.swift */; };
 		8BAEA34E217EF88F00FC2CBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA34D217EF88F00FC2CBB /* ViewController.swift */; };
 		8BAEA353217EF89000FC2CBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BAEA352217EF89000FC2CBB /* Assets.xcassets */; };
@@ -132,7 +154,6 @@
 		8BAEA3B0217EFB4000FC2CBB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA3AF217EFB4000FC2CBB /* MainVC.swift */; };
 		8BAEA3E4217F077700FC2CBB /* ADCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA3E2217F077700FC2CBB /* ADCell.swift */; };
 		8BAEA3E5217F077700FC2CBB /* ADCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BAEA3E3217F077700FC2CBB /* ADCell.xib */; };
-		8BAEA3E7217F0B4800FC2CBB /* ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA3E6217F0B4800FC2CBB /* ADModel.swift */; };
 		8BAEA3EA217F12F700FC2CBB /* SizeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA3E9217F12F700FC2CBB /* SizeHeader.swift */; };
 		8BAEA3EC217F24F500FC2CBB /* DateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA3EB217F24F500FC2CBB /* DateHeaderView.swift */; };
 		8BAEA3EE217F253700FC2CBB /* DateHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BAEA3ED217F253700FC2CBB /* DateHeaderView.xib */; };
@@ -149,7 +170,6 @@
 		8BAEA4192181632B00FC2CBB /* LifeFuncModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA4182181632B00FC2CBB /* LifeFuncModel.swift */; };
 		8BAEA43D2181A7FB00FC2CBB /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA43C2181A7FB00FC2CBB /* UserView.swift */; };
 		8BAEA43F2181A80D00FC2CBB /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BAEA43E2181A80D00FC2CBB /* UserView.xib */; };
-		8BDD2E9121835D6E00E01B4D /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD2E9021835D6E00E01B4D /* QuestionModel.swift */; };
 		8BDD2EC8218487A800E01B4D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD2EC7218487A800E01B4D /* Login.storyboard */; };
 		E3B847BED6AB5EB84BF2B9B2 /* Pods_UniversityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE10B5202AAC32A3941E7F5 /* Pods_UniversityTests.framework */; };
 /* End PBXBuildFile section */
@@ -195,7 +215,6 @@
 		8B0EF3222182FCE9000EA64E /* ExperienceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceVC.xib; sourceTree = "<group>"; };
 		8B0EF32521832BB3000EA64E /* CampusNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusNewsCell.swift; sourceTree = "<group>"; };
 		8B0EF32621832BB3000EA64E /* CampusNewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CampusNewsCell.xib; sourceTree = "<group>"; };
-		8B0EF329218330D6000EA64E /* CampusNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusNewsModel.swift; sourceTree = "<group>"; };
 		8B0EF33721833FF7000EA64E /* ReadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingCell.swift; sourceTree = "<group>"; };
 		8B0EF33821833FF7000EA64E /* ReadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadingCell.xib; sourceTree = "<group>"; };
 		8B0EF33B21834665000EA64E /* ReadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingModel.swift; sourceTree = "<group>"; };
@@ -203,7 +222,6 @@
 		8B0EF33F218350F0000EA64E /* QuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
 		8B24EE3D2181E1010044514C /* EssayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayCell.swift; sourceTree = "<group>"; };
 		8B24EE3E2181E1010044514C /* EssayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EssayCell.xib; sourceTree = "<group>"; };
-		8B24EE412181E11F0044514C /* EssayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayModel.swift; sourceTree = "<group>"; };
 		8B3002F5218B35CE00D53D34 /* CountdownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownCell.swift; sourceTree = "<group>"; };
 		8B3002F6218B35CE00D53D34 /* CountdownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownCell.xib; sourceTree = "<group>"; };
 		8B3002F7218B35CE00D53D34 /* CountdownModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownModel.swift; sourceTree = "<group>"; };
@@ -289,6 +307,30 @@
 		8B64B57D219B05A0005C2E07 /* SpeechCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeechCell.xib; sourceTree = "<group>"; };
 		8B64B580219B22BA005C2E07 /* AddressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListCell.swift; sourceTree = "<group>"; };
 		8B64B581219B22BA005C2E07 /* AddressListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressListCell.xib; sourceTree = "<group>"; };
+		8B7C7595219BD8D700FCCD75 /* ExperienceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceCell.swift; sourceTree = "<group>"; };
+		8B7C7596219BD8D700FCCD75 /* ExperienceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceCell.xib; sourceTree = "<group>"; };
+		8B7C759A219C007B00FCCD75 /* IdleGoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleGoodVC.swift; sourceTree = "<group>"; };
+		8B7C759B219C007B00FCCD75 /* IdleGoodVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdleGoodVC.xib; sourceTree = "<group>"; };
+		8B7C759F219C00CE00FCCD75 /* UtilityBillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillVC.swift; sourceTree = "<group>"; };
+		8B7C75A0219C00CE00FCCD75 /* UtilityBillVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UtilityBillVC.xib; sourceTree = "<group>"; };
+		8B7C75A4219C011300FCCD75 /* ShootAndPrintVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootAndPrintVC.swift; sourceTree = "<group>"; };
+		8B7C75A5219C011300FCCD75 /* ShootAndPrintVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShootAndPrintVC.xib; sourceTree = "<group>"; };
+		8B7C75A9219C015800FCCD75 /* PropertyManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyManagerVC.swift; sourceTree = "<group>"; };
+		8B7C75AA219C015800FCCD75 /* PropertyManagerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropertyManagerVC.xib; sourceTree = "<group>"; };
+		8B7C75AE219C017F00FCCD75 /* SchoolStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolStoreVC.swift; sourceTree = "<group>"; };
+		8B7C75AF219C017F00FCCD75 /* SchoolStoreVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchoolStoreVC.xib; sourceTree = "<group>"; };
+		8B7C75B4219C01B700FCCD75 /* PartTimeJobVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeJobVC.swift; sourceTree = "<group>"; };
+		8B7C75B5219C01B700FCCD75 /* PartTimeJobVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PartTimeJobVC.xib; sourceTree = "<group>"; };
+		8B7C75B9219C0AD300FCCD75 /* IdleGoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleGoodCell.swift; sourceTree = "<group>"; };
+		8B7C75BA219C0AD300FCCD75 /* IdleGoodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdleGoodCell.xib; sourceTree = "<group>"; };
+		8B7C75BD219C2A5500FCCD75 /* DetailUtilityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUtilityVC.swift; sourceTree = "<group>"; };
+		8B7C75BE219C2A5500FCCD75 /* DetailUtilityVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailUtilityVC.xib; sourceTree = "<group>"; };
+		8B7C75C1219C4DFD00FCCD75 /* ShootPrintCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootPrintCell.swift; sourceTree = "<group>"; };
+		8B7C75C2219C4DFD00FCCD75 /* ShootPrintCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShootPrintCell.xib; sourceTree = "<group>"; };
+		8B7C75C5219C741100FCCD75 /* SchoolStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolStoreCell.swift; sourceTree = "<group>"; };
+		8B7C75C6219C741100FCCD75 /* SchoolStoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchoolStoreCell.xib; sourceTree = "<group>"; };
+		8B7C75C9219C840700FCCD75 /* PartTimeJobCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTimeJobCell.swift; sourceTree = "<group>"; };
+		8B7C75CA219C840700FCCD75 /* PartTimeJobCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PartTimeJobCell.xib; sourceTree = "<group>"; };
 		8BAEA348217EF88F00FC2CBB /* University.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = University.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BAEA34B217EF88F00FC2CBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BAEA34D217EF88F00FC2CBB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -308,7 +350,6 @@
 		8BAEA3AF217EFB4000FC2CBB /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		8BAEA3E2217F077700FC2CBB /* ADCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADCell.swift; sourceTree = "<group>"; };
 		8BAEA3E3217F077700FC2CBB /* ADCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ADCell.xib; sourceTree = "<group>"; };
-		8BAEA3E6217F0B4800FC2CBB /* ADModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADModel.swift; sourceTree = "<group>"; };
 		8BAEA3E9217F12F700FC2CBB /* SizeHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeHeader.swift; sourceTree = "<group>"; };
 		8BAEA3EB217F24F500FC2CBB /* DateHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeaderView.swift; sourceTree = "<group>"; };
 		8BAEA3ED217F253700FC2CBB /* DateHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateHeaderView.xib; sourceTree = "<group>"; };
@@ -325,7 +366,6 @@
 		8BAEA4182181632B00FC2CBB /* LifeFuncModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeFuncModel.swift; sourceTree = "<group>"; };
 		8BAEA43C2181A7FB00FC2CBB /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		8BAEA43E2181A80D00FC2CBB /* UserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
-		8BDD2E9021835D6E00E01B4D /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		8BDD2EC3218453C600E01B4D /* University-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "University-Bridging-Header.h"; sourceTree = "<group>"; };
 		8BDD2EC7218487A800E01B4D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9501AE27AA40D52E090DB849 /* Pods_University.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_University.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -452,7 +492,6 @@
 			children = (
 				8B24EE3D2181E1010044514C /* EssayCell.swift */,
 				8B24EE3E2181E1010044514C /* EssayCell.xib */,
-				8B24EE412181E11F0044514C /* EssayModel.swift */,
 			);
 			path = Essays;
 			sourceTree = "<group>";
@@ -462,7 +501,6 @@
 			children = (
 				8B0EF32521832BB3000EA64E /* CampusNewsCell.swift */,
 				8B0EF32621832BB3000EA64E /* CampusNewsCell.xib */,
-				8B0EF329218330D6000EA64E /* CampusNewsModel.swift */,
 			);
 			path = CampusNews;
 			sourceTree = "<group>";
@@ -515,11 +553,12 @@
 		8B24EE432181E1310044514C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				8BDD2E932183F56800E01B4D /* ADCell */,
 				8B0EF3322183397D000EA64E /* Essays */,
 				8B0EF3332183398E000EA64E /* CampusNews */,
 				8B0EF33D21834814000EA64E /* ReadingBook */,
 				8BDD2E9221835E0F00E01B4D /* Questions */,
+				8B7C7599219BEF1B00FCCD75 /* Experience */,
+				8BDD2E932183F56800E01B4D /* ADCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -770,6 +809,79 @@
 			path = AddressList;
 			sourceTree = "<group>";
 		};
+		8B7C7599219BEF1B00FCCD75 /* Experience */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C7595219BD8D700FCCD75 /* ExperienceCell.swift */,
+				8B7C7596219BD8D700FCCD75 /* ExperienceCell.xib */,
+			);
+			path = Experience;
+			sourceTree = "<group>";
+		};
+		8B7C759E219C008700FCCD75 /* IdleGood */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C759A219C007B00FCCD75 /* IdleGoodVC.swift */,
+				8B7C759B219C007B00FCCD75 /* IdleGoodVC.xib */,
+				8B7C75B9219C0AD300FCCD75 /* IdleGoodCell.swift */,
+				8B7C75BA219C0AD300FCCD75 /* IdleGoodCell.xib */,
+			);
+			path = IdleGood;
+			sourceTree = "<group>";
+		};
+		8B7C75A3219C00DC00FCCD75 /* UtilityBill */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C759F219C00CE00FCCD75 /* UtilityBillVC.swift */,
+				8B7C75A0219C00CE00FCCD75 /* UtilityBillVC.xib */,
+				8B7C75BD219C2A5500FCCD75 /* DetailUtilityVC.swift */,
+				8B7C75BE219C2A5500FCCD75 /* DetailUtilityVC.xib */,
+			);
+			path = UtilityBill;
+			sourceTree = "<group>";
+		};
+		8B7C75A8219C011E00FCCD75 /* ShootAndPrint */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C75A4219C011300FCCD75 /* ShootAndPrintVC.swift */,
+				8B7C75A5219C011300FCCD75 /* ShootAndPrintVC.xib */,
+				8B7C75C1219C4DFD00FCCD75 /* ShootPrintCell.swift */,
+				8B7C75C2219C4DFD00FCCD75 /* ShootPrintCell.xib */,
+			);
+			path = ShootAndPrint;
+			sourceTree = "<group>";
+		};
+		8B7C75AD219C015F00FCCD75 /* PropertyManager */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C75A9219C015800FCCD75 /* PropertyManagerVC.swift */,
+				8B7C75AA219C015800FCCD75 /* PropertyManagerVC.xib */,
+			);
+			path = PropertyManager;
+			sourceTree = "<group>";
+		};
+		8B7C75B2219C018600FCCD75 /* SchoolStore */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C75AE219C017F00FCCD75 /* SchoolStoreVC.swift */,
+				8B7C75AF219C017F00FCCD75 /* SchoolStoreVC.xib */,
+				8B7C75C5219C741100FCCD75 /* SchoolStoreCell.swift */,
+				8B7C75C6219C741100FCCD75 /* SchoolStoreCell.xib */,
+			);
+			path = SchoolStore;
+			sourceTree = "<group>";
+		};
+		8B7C75B8219C01BF00FCCD75 /* PartTimeJob */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C75B4219C01B700FCCD75 /* PartTimeJobVC.swift */,
+				8B7C75B5219C01B700FCCD75 /* PartTimeJobVC.xib */,
+				8B7C75C9219C840700FCCD75 /* PartTimeJobCell.swift */,
+				8B7C75CA219C840700FCCD75 /* PartTimeJobCell.xib */,
+			);
+			path = PartTimeJob;
+			sourceTree = "<group>";
+		};
 		8BAEA33F217EF88F00FC2CBB = {
 			isa = PBXGroup;
 			children = (
@@ -880,6 +992,12 @@
 			children = (
 				8BAEA4182181632B00FC2CBB /* LifeFuncModel.swift */,
 				8BAEA3AA217EFB2E00FC2CBB /* LifeVC.swift */,
+				8B7C759E219C008700FCCD75 /* IdleGood */,
+				8B7C75A3219C00DC00FCCD75 /* UtilityBill */,
+				8B7C75A8219C011E00FCCD75 /* ShootAndPrint */,
+				8B7C75AD219C015F00FCCD75 /* PropertyManager */,
+				8B7C75B2219C018600FCCD75 /* SchoolStore */,
+				8B7C75B8219C01BF00FCCD75 /* PartTimeJob */,
 			);
 			path = "生活";
 			sourceTree = "<group>";
@@ -936,7 +1054,6 @@
 			children = (
 				8B0EF33E218350F0000EA64E /* QuestionCell.swift */,
 				8B0EF33F218350F0000EA64E /* QuestionCell.xib */,
-				8BDD2E9021835D6E00E01B4D /* QuestionModel.swift */,
 			);
 			path = Questions;
 			sourceTree = "<group>";
@@ -946,7 +1063,6 @@
 			children = (
 				8BAEA3E2217F077700FC2CBB /* ADCell.swift */,
 				8BAEA3E3217F077700FC2CBB /* ADCell.xib */,
-				8BAEA3E6217F0B4800FC2CBB /* ADModel.swift */,
 			);
 			path = ADCell;
 			sourceTree = "<group>";
@@ -1075,13 +1191,19 @@
 			files = (
 				8B64B55E219ABE9A005C2E07 /* LostAndFoundCell.xib in Resources */,
 				8BAEA3FE217F62CE00FC2CBB /* CampusFuncCell.xib in Resources */,
+				8B7C75C0219C2A5500FCCD75 /* DetailUtilityVC.xib in Resources */,
 				8B64B57F219B05A0005C2E07 /* SpeechCell.xib in Resources */,
 				8B64B535219A5ED4005C2E07 /* RaceInfoCell.xib in Resources */,
 				8B64B559219AB3C4005C2E07 /* LostAndFoundVC.xib in Resources */,
+				8B7C75B7219C01B700FCCD75 /* PartTimeJobVC.xib in Resources */,
+				8B7C75A2219C00CE00FCCD75 /* UtilityBillVC.xib in Resources */,
+				8B7C75A7219C011300FCCD75 /* ShootAndPrintVC.xib in Resources */,
 				8B64B543219A7003005C2E07 /* DetailInfoVC.xib in Resources */,
+				8B7C75C8219C741100FCCD75 /* SchoolStoreCell.xib in Resources */,
 				8B64B5242199CC8E005C2E07 /* RaceVC.xib in Resources */,
 				8B0EF3172182F21E000EA64E /* ReadingVC.xib in Resources */,
 				8B64B562219AE77F005C2E07 /* ClubVC.xib in Resources */,
+				8B7C75C4219C4DFD00FCCD75 /* ShootPrintCell.xib in Resources */,
 				8BAEA3E5217F077700FC2CBB /* ADCell.xib in Resources */,
 				8B3002FB218B35CE00D53D34 /* CountdownCell.xib in Resources */,
 				8BAEA40E2180AEFA00FC2CBB /* NewsCell.xib in Resources */,
@@ -1090,6 +1212,7 @@
 				8B0EF30B2182F197000EA64E /* RecommandVC.xib in Resources */,
 				8B0EF31F2182F344000EA64E /* ResourcesVC.xib in Resources */,
 				8BDD2EC8218487A800E01B4D /* Login.storyboard in Resources */,
+				8B7C75CC219C840700FCCD75 /* PartTimeJobCell.xib in Resources */,
 				8B64B567219AE995005C2E07 /* EmptyClassRoomVC.xib in Resources */,
 				8B64B555219A9D6B005C2E07 /* ExaminationCell.xib in Resources */,
 				8B0EF33A21833FF7000EA64E /* ReadingCell.xib in Resources */,
@@ -1099,16 +1222,20 @@
 				8B0EF31B2182F324000EA64E /* QuestionVC.xib in Resources */,
 				8B64B53E219A6B54005C2E07 /* AcdemicVC.xib in Resources */,
 				8B64B52D2199D6CA005C2E07 /* RaceTableViewCell.xib in Resources */,
+				8B7C75B1219C017F00FCCD75 /* SchoolStoreVC.xib in Resources */,
 				8B64B576219AEAD1005C2E07 /* AddressListVC.xib in Resources */,
 				8B64B5312199DCF2005C2E07 /* DetailRaceVC.xib in Resources */,
 				8B0EF32821832BB3000EA64E /* CampusNewsCell.xib in Resources */,
 				8B0EF341218350F0000EA64E /* QuestionCell.xib in Resources */,
 				8B0EF3132182F204000EA64E /* CampusVC.xib in Resources */,
+				8B7C75AC219C015800FCCD75 /* PropertyManagerVC.xib in Resources */,
 				8BAEA3F3217F2C8700FC2CBB /* TipsHeaderView.xib in Resources */,
 				8B64B583219B22BA005C2E07 /* AddressListCell.xib in Resources */,
 				8B3002FE218B35CE00D53D34 /* CountdownView.xib in Resources */,
 				8BAEA3EE217F253700FC2CBB /* DateHeaderView.xib in Resources */,
 				8B24EE402181E1010044514C /* EssayCell.xib in Resources */,
+				8B7C7598219BD8D700FCCD75 /* ExperienceCell.xib in Resources */,
+				8B7C75BC219C0AD300FCCD75 /* IdleGoodCell.xib in Resources */,
 				8B0EF3242182FCE9000EA64E /* ExperienceVC.xib in Resources */,
 				8BAEA356217EF89000FC2CBB /* LaunchScreen.storyboard in Resources */,
 				8B64B56C219AE9F3005C2E07 /* SpeechVC.xib in Resources */,
@@ -1119,6 +1246,7 @@
 				8B64B4972199C076005C2E07 /* LessonTimeTable.xib in Resources */,
 				8BAEA393217EFAFE00FC2CBB /* Main.storyboard in Resources */,
 				8B64B539219A5EF9005C2E07 /* RaceDetailCell.xib in Resources */,
+				8B7C759D219C007B00FCCD75 /* IdleGoodVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1259,6 +1387,7 @@
 				8B64B48521987C37005C2E07 /* UserInfo.swift in Sources */,
 				8B64B554219A9D6B005C2E07 /* ExaminationCell.swift in Sources */,
 				8BAEA43D2181A7FB00FC2CBB /* UserView.swift in Sources */,
+				8B7C75B6219C01B700FCCD75 /* PartTimeJobVC.swift in Sources */,
 				8B64B57E219B05A0005C2E07 /* SpeechCell.swift in Sources */,
 				8BAEA3FD217F62CE00FC2CBB /* CampusFuncCell.swift in Sources */,
 				8B0EF31E2182F344000EA64E /* ResourcesVC.swift in Sources */,
@@ -1266,6 +1395,7 @@
 				8BAEA3B0217EFB4000FC2CBB /* MainVC.swift in Sources */,
 				8B0EF30E2182F1E8000EA64E /* FocusVC.swift in Sources */,
 				8B64B46921987C37005C2E07 /* LessonSchedule.swift in Sources */,
+				8B7C75A6219C011300FCCD75 /* ShootAndPrintVC.swift in Sources */,
 				8B0EF31A2182F324000EA64E /* QuestionVC.swift in Sources */,
 				8BAEA3AE217EFB2E00FC2CBB /* UserVC.swift in Sources */,
 				8B64B46621987C37005C2E07 /* Examination.swift in Sources */,
@@ -1275,17 +1405,19 @@
 				8B64B53D219A6B54005C2E07 /* AcdemicVC.swift in Sources */,
 				8B64B566219AE995005C2E07 /* EmptyClassRoomVC.swift in Sources */,
 				8B64B534219A5ED4005C2E07 /* RaceInfoCell.swift in Sources */,
+				8B7C7597219BD8D700FCCD75 /* ExperienceCell.swift in Sources */,
 				8BAEA401217F707600FC2CBB /* CampusFuncModel.swift in Sources */,
 				8B64B46E21987C37005C2E07 /* Book.swift in Sources */,
 				8B0EF32721832BB3000EA64E /* CampusNewsCell.swift in Sources */,
 				8B64B47F21987C37005C2E07 /* Collection.swift in Sources */,
 				8B64B561219AE77F005C2E07 /* ClubVC.swift in Sources */,
 				8B64B47321987C37005C2E07 /* Question.swift in Sources */,
-				8B24EE422181E11F0044514C /* EssayModel.swift in Sources */,
+				8B7C75A1219C00CE00FCCD75 /* UtilityBillVC.swift in Sources */,
 				8B64B546219A7DF8005C2E07 /* LessonGradeVC.swift in Sources */,
 				8B3002FA218B35CE00D53D34 /* CountdownCell.swift in Sources */,
 				8BAEA417218162D700FC2CBB /* MyServerModel.swift in Sources */,
 				8B64B48221987C37005C2E07 /* Message.swift in Sources */,
+				8B7C75CB219C840700FCCD75 /* PartTimeJobCell.swift in Sources */,
 				8B64B47721987C37005C2E07 /* PropertyManager.swift in Sources */,
 				8B64B542219A7003005C2E07 /* DetailInfoVC.swift in Sources */,
 				8B64B47821987C37005C2E07 /* SchoolStore.swift in Sources */,
@@ -1301,10 +1433,13 @@
 				8B64B538219A5EF9005C2E07 /* RaceDetailCell.swift in Sources */,
 				8B64B47A21987C37005C2E07 /* UtilityBill.swift in Sources */,
 				8BAEA3E4217F077700FC2CBB /* ADCell.swift in Sources */,
+				8B7C75BB219C0AD300FCCD75 /* IdleGoodCell.swift in Sources */,
+				8B7C75C3219C4DFD00FCCD75 /* ShootPrintCell.swift in Sources */,
 				8B64B55D219ABE9A005C2E07 /* LostAndFoundCell.swift in Sources */,
 				8B64B47921987C37005C2E07 /* ShootAndPrint.swift in Sources */,
 				8B64B46321987C37005C2E07 /* Academic.swift in Sources */,
 				8B0EF340218350F0000EA64E /* QuestionCell.swift in Sources */,
+				8B7C75BF219C2A5500FCCD75 /* DetailUtilityVC.swift in Sources */,
 				8B64B49421999DFF005C2E07 /* UIColor+Extension.swift in Sources */,
 				8B0EF33921833FF7000EA64E /* ReadingCell.swift in Sources */,
 				8BAEA34E217EF88F00FC2CBB /* ViewController.swift in Sources */,
@@ -1316,16 +1451,15 @@
 				8B64B558219AB3C4005C2E07 /* LostAndFoundVC.swift in Sources */,
 				8B64B46421987C37005C2E07 /* AddressList.swift in Sources */,
 				8B64B47121987C37005C2E07 /* Essay.swift in Sources */,
-				8B0EF32A218330D6000EA64E /* CampusNewsModel.swift in Sources */,
 				8B64B57A219AFB58005C2E07 /* ClubCell.swift in Sources */,
 				8B64B47221987C37005C2E07 /* Experience.swift in Sources */,
 				8B64B490219987D7005C2E07 /* LessonTimeTable.swift in Sources */,
 				8B64B47421987C37005C2E07 /* Resource.swift in Sources */,
 				8BAEA34C217EF88F00FC2CBB /* AppDelegate.swift in Sources */,
-				8BAEA3E7217F0B4800FC2CBB /* ADModel.swift in Sources */,
+				8B7C75C7219C741100FCCD75 /* SchoolStoreCell.swift in Sources */,
 				8B3002FD218B35CE00D53D34 /* CountdownView.swift in Sources */,
 				8B64B46721987C37005C2E07 /* Lesson.swift in Sources */,
-				8BDD2E9121835D6E00E01B4D /* QuestionModel.swift in Sources */,
+				8B7C75AB219C015800FCCD75 /* PropertyManagerVC.swift in Sources */,
 				8B64B5302199DCF2005C2E07 /* DetailRaceVC.swift in Sources */,
 				8B64B48021987C37005C2E07 /* Focus.swift in Sources */,
 				8B64B46F21987C37005C2E07 /* CampusNews.swift in Sources */,
@@ -1338,11 +1472,13 @@
 				8B64B46D21987C37005C2E07 /* Answer.swift in Sources */,
 				8B64B5232199CC8E005C2E07 /* RaceVC.swift in Sources */,
 				8B0EF3232182FCE9000EA64E /* ExperienceVC.swift in Sources */,
+				8B7C759C219C007B00FCCD75 /* IdleGoodVC.swift in Sources */,
 				8B64B46B21987C37005C2E07 /* Race.swift in Sources */,
 				8B64B48721991C65005C2E07 /* UtilityMethod.swift in Sources */,
 				8B64B48421987C37005C2E07 /* User.swift in Sources */,
 				8BAEA3AC217EFB2E00FC2CBB /* LearnVC.swift in Sources */,
 				8B64B51F2199C809005C2E07 /* LibraryWebVC.swift in Sources */,
+				8B7C75B0219C017F00FCCD75 /* SchoolStoreVC.swift in Sources */,
 				8B64B52C2199D6CA005C2E07 /* RaceTableViewCell.swift in Sources */,
 				8B64B48321987C37005C2E07 /* Student.swift in Sources */,
 				8B64B48121987C37005C2E07 /* Honor.swift in Sources */,

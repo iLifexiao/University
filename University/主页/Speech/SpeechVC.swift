@@ -49,26 +49,26 @@ class SpeechVC: UIViewController {
         }
         
         // 下拉刷新
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+        tableView.mj_header = MJRefreshNormalHeader { [weak self] in
             // 重新获取
-            self.getSpeech()
+            self?.getSpeech()
             
-            self.tableView.mj_header.endRefreshing()
-            self.view.makeToast("刷新成功", position: .top)
-        })
+            self?.tableView.mj_header.endRefreshing()
+            self?.view.makeToast("刷新成功", position: .top)
+        }
     }
     
     private func getSpeech() {        
-        Alamofire.request(baseURL + "/api/v1/speech/all", headers: headers).responseJSON { response in
+        Alamofire.request(baseURL + "/api/v1/speech/all", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.speechs.removeAll()
+                self?.speechs.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self.speechs.append(Speech(jsonData: subJson))
+                    self?.speechs.append(Speech(jsonData: subJson))
                 }
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }

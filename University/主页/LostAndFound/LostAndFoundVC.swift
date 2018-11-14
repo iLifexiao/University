@@ -40,27 +40,27 @@ class LostAndFoundVC: UIViewController {
         collectionView.register(UINib.init(nibName: "LostAndFoundCell", bundle: nil), forCellWithReuseIdentifier: "LostAndFoundCell")
         
         // 下拉刷新
-        collectionView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+        collectionView.mj_header = MJRefreshNormalHeader { [weak self] in
             // 重新获取
-            self.getLostAndFound()
+            self?.getLostAndFound()
             
-            self.collectionView.mj_header.endRefreshing()
-            self.view.makeToast("刷新成功", position: .top)
-        })
+            self?.collectionView.mj_header.endRefreshing()
+            self?.view.makeToast("刷新成功", position: .top)
+        }
     }
 
     
     private func getLostAndFound() {
-        Alamofire.request(baseURL + "/api/v1/lostandfound/all", headers: headers).responseJSON { response in
+        Alamofire.request(baseURL + "/api/v1/lostandfound/all", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.losts.removeAll()
+                self?.losts.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self.losts.append(LostAndFound(jsonData: subJson))
+                    self?.losts.append(LostAndFound(jsonData: subJson))
                 }
-                self.collectionView.reloadData()                
+                self?.collectionView.reloadData()                
             case .failure(let error):
                 print(error)
             }

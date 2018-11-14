@@ -51,26 +51,26 @@ class AcdemicVC: UIViewController {
         }
         
         // 下拉刷新
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+        tableView.mj_header = MJRefreshNormalHeader{ [weak self] in
             // 重新获取
-            self.getAcademic()
+            self?.getAcademic()
             
-            self.tableView.mj_header.endRefreshing()
-            self.view.makeToast("刷新成功", position: .top)
-        })
+            self?.tableView.mj_header.endRefreshing()
+            self?.view.makeToast("刷新成功", position: .top)
+        }
     }
     
     private func getAcademic() {
-        Alamofire.request(baseURL + "/api/v1/academic/all", headers: headers).responseJSON { response in
+        Alamofire.request(baseURL + "/api/v1/academic/all", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.academics.removeAll()
+                self?.academics.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self.academics.append(Academic(jsonData: subJson))
+                    self?.academics.append(Academic(jsonData: subJson))
                 }
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }

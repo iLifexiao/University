@@ -49,26 +49,26 @@ class AddressListVC: UIViewController {
         }
         
         // 下拉刷新
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+        tableView.mj_header = MJRefreshNormalHeader { [weak self] in
             // 重新获取
-            self.getAddressList()
+            self?.getAddressList()
             
-            self.tableView.mj_header.endRefreshing()
-            self.view.makeToast("刷新成功", position: .top)
-        })
+            self?.tableView.mj_header.endRefreshing()
+            self?.view.makeToast("刷新成功", position: .top)
+        }
     }
     
     private func getAddressList() {
-        Alamofire.request(baseURL + "/api/v1/addresslist/all", headers: headers).responseJSON { response in
+        Alamofire.request(baseURL + "/api/v1/addresslist/all", headers: headers).responseJSON { [weak self]  response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.addressList.removeAll()
+                self?.addressList.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self.addressList.append(AddressList(jsonData: subJson))
+                    self?.addressList.append(AddressList(jsonData: subJson))
                 }
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }

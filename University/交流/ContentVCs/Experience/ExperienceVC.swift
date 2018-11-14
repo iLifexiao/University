@@ -7,22 +7,72 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import Toast_Swift
 
 class ExperienceVC: UIViewController {
 
     private let experienceDefaultCell = "experienceDefault"
     @IBOutlet weak var tableView: UITableView!
+    
+    private var experiences: [Experience] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        initUI()
+        initData()
+    }
+    
+    private func initUI() {
         setupTableView()
     }
     
+    private func initData() {
+        getExperiences()
+    }
+    
     private func setupTableView() {
+        tableView.register(UINib.init(nibName: "ExperienceCell", bundle: nil), forCellReuseIdentifier: "ExperienceCell")
         
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
+        // 下拉刷新
+        tableView.mj_header = MJRefreshNormalHeader { [weak self] in
+            self?.getExperiences()
+            
+            self?.tableView.mj_header.endRefreshing()
+            self?.view.makeToast("刷新成功", position: .top)
+        }
+    }
+    
+    private func getExperiences() {
+        Alamofire.request(baseURL + "/api/v1/experience/all", headers: headers).responseJSON { [weak self] response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self?.experiences.removeAll()
+                // json是数组
+                for (_, subJson):(String, JSON) in json {
+                    self?.experiences.append(Experience(jsonData: subJson))
+                }
+                self?.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
 extension ExperienceVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 155
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
@@ -35,7 +85,7 @@ extension ExperienceVC: UITableViewDelegate {
 
 extension ExperienceVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return experiences.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,15 +93,9 @@ extension ExperienceVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: experienceDefaultCell)
-        
-        if cell == nil {
-            cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: experienceDefaultCell)
-        }
-        cell?.imageView?.image = UIImage.init(named: "userHead")
-        cell?.textLabel?.text = "iPhone XR 否值得购买？"
-        cell?.detailTextLabel?.text = "上一张官网截图，谁说是720P的都来给我瞪大眼睛看清楚是不是720P？ 加一段： 至于有人说我就是给XR洗地黑"
-        cell?.selectionStyle = .none
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExperienceCell", for: indexPath) as! ExperienceCell
+        cell.setupModel(experiences[indexPath.section])
+        cell.selectionStyle = .none
+        return cell
     }
 }

@@ -8,12 +8,20 @@
 
 import UIKit
 
+@objc protocol QuestionCellDelegate {
+    func showMoreInfoAboutQuestion(_ id: String?)
+}
+
 class QuestionCell: UITableViewCell {
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerCountLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var postTimeLabel: UILabel!
     
     private var id: String?
+    weak var delegate: QuestionCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,13 +34,26 @@ class QuestionCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupData(_ model: QuestionModel) {
-        id = model.id
-        questionLabel.text = model.question
-        answerCountLabel.text = String(model.answerCount) + " 条回答"
+    func setupModel(_ question: Question) {
+        id = String(question.id ?? 0)
+        questionLabel.text = question.title
+        answerCountLabel.text = String(question.answerCount ?? 0) + " 条回答"
+        typeLabel.text = question.type
+        fromLabel.text = question.from
+        postTimeLabel.text = unixTime2StringDate(question.createdAt ?? 0, format: "yyyy-MM-dd")
+    }
+    
+    override func prepareForReuse() {
+        questionLabel.text = nil
+        answerCountLabel.text = nil
+        typeLabel.text = nil
+        fromLabel.text = nil
+        postTimeLabel.text = nil
     }
     
     @IBAction func moreAboutQuestion(_ sender: UIButton) {
-        
+        if let delegate = delegate {
+            delegate.showMoreInfoAboutQuestion(id)
+        }
     }
 }

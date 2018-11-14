@@ -51,26 +51,27 @@ class RaceVC: UIViewController {
         }
         
         // 下拉刷新
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
-            // 重新获取
-            self.getRace()
+        // 导致
+        tableView.mj_header = MJRefreshNormalHeader{ [weak self] in
             
-            self.tableView.mj_header.endRefreshing()
-            self.view.makeToast("刷新成功", position: .top)
-        })
+            // 重新获取
+            self?.getRace()
+            self?.tableView.mj_header.endRefreshing()
+            self?.view.makeToast("刷新成功", position: .top)
+        }
     }
     
     private func getRace() {
-        Alamofire.request(baseURL + "/api/v1/race/all", headers: headers).responseJSON { response in
+        Alamofire.request(baseURL + "/api/v1/race/all", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.races.removeAll()
+                self?.races.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self.races.append(Race(jsonData: subJson))
+                    self?.races.append(Race(jsonData: subJson))
                 }
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }

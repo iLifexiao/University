@@ -37,8 +37,8 @@ struct Question {
         self.userID = jsonData["userID"].intValue
         
         self.title = jsonData["title"].stringValue
-        self.type = jsonData["content"].stringValue
-        self.from = jsonData["time"].stringValue
+        self.type = jsonData["type"].stringValue
+        self.from = jsonData["from"].stringValue
         self.answerCount = jsonData["answerCount"].intValue
         
         self.status = jsonData["status"].intValue

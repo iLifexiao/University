@@ -48,26 +48,26 @@ class ExaminationVC: UIViewController {
         }
         
         // 下拉刷新
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             // 重新获取
-            self.getExamination()
+            self?.getExamination()
             
-            self.tableView.mj_header.endRefreshing()
-            self.view.makeToast("刷新成功", position: .top)
+            self?.tableView.mj_header.endRefreshing()
+            self?.view.makeToast("刷新成功", position: .top)
         })
     }
     
     private func getExamination() {        
-        Alamofire.request(baseURL + "/api/v1/examination/all", headers: headers).responseJSON { response in
+        Alamofire.request(baseURL + "/api/v1/examination/all", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.examinations.removeAll()
+                self?.examinations.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self.examinations.append(Examination(jsonData: subJson))
+                    self?.examinations.append(Examination(jsonData: subJson))
                 }
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }

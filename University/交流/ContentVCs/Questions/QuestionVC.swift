@@ -7,27 +7,63 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import Toast_Swift
 
 class QuestionVC: UIViewController {
     
-    private var questions: [QuestionModel] = []
     @IBOutlet weak var tableView: UITableView!
+    
+    private var questions: [Question] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        initUI()
         initData()
+    }
+    
+    private func initUI() {
+        setupTableView()
+    }
+    
+    private func initData() {
+        getQuestions()
     }
     
     private func setupTableView() {
         tableView.register(UINib.init(nibName: "QuestionCell", bundle: nil), forCellReuseIdentifier: "QuestionCell")
+            
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
+        // 下拉刷新
+        tableView.mj_header = MJRefreshNormalHeader { [weak self] in
+            self?.getQuestions()
+            
+            self?.tableView.mj_header.endRefreshing()
+            self?.view.makeToast("刷新成功", position: .top)
+        }
     }
-    
-    private func initData() {
-        let question1 = QuestionModel(id: "1", question: "和猫睡一个被窝，有什么风险？", answerCount: 12)
-        let question2 = QuestionModel(id: "2", question: "如何看待 Google 为应对欧盟的反垄断裁决，将在欧洲对 Android 进行收费？", answerCount: 234)
-        let question3 = QuestionModel(id: "3", question: "你身边有哪些让你笑到窒息的事？", answerCount: 664)
-        questions = [question1, question2, question3]
+        
+    private func getQuestions() {
+        Alamofire.request(baseURL + "/api/v1/question/all", headers: headers).responseJSON { [weak self] response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self?.questions.removeAll()
+                // json是数组
+                for (_, subJson):(String, JSON) in json {
+                    self?.questions.append(Question(jsonData: subJson))
+                }
+                self?.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
@@ -57,9 +93,14 @@ extension QuestionVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! QuestionCell
-        cell.setupData(questions[indexPath.section])
+        cell.setupModel(questions[indexPath.section])
         cell.selectionStyle = .none
         return cell
     }
 }
 
+extension QuestionVC: QuestionCellDelegate {
+    func showMoreInfoAboutQuestion(_ id: String?) {
+        view.makeToast(id ?? "0")
+    }
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShootPrintCell" rowHeight="129" id="KGk-i7-Jjw" customClass="ShootPrintCell" customModule="University" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kaa-Ei-pDV">
+                        <rect key="frame" x="10" y="10" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="5A7-oN-PwS"/>
+                            <constraint firstAttribute="width" constant="80" id="YHi-be-yB0"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="橘子摄影工作室" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbT-m8-rBT">
+                        <rect key="frame" x="100" y="10" width="143" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提供高档，个性，唯美，实惠的摄影服务" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfN-H0-DyY">
+                        <rect key="frame" x="100" y="44" width="194" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="7Ir-Ur-hbL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="HbT-m8-rBT" firstAttribute="leading" secondItem="kaa-Ei-pDV" secondAttribute="trailing" constant="10" id="0nH-TQ-ZUo"/>
+                    <constraint firstItem="kaa-Ei-pDV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="S5i-cu-wiE"/>
+                    <constraint firstItem="bfN-H0-DyY" firstAttribute="leading" secondItem="HbT-m8-rBT" secondAttribute="leading" id="SmH-kQ-hbx"/>
+                    <constraint firstItem="HbT-m8-rBT" firstAttribute="top" secondItem="kaa-Ei-pDV" secondAttribute="top" id="ZId-8g-dsm"/>
+                    <constraint firstItem="bfN-H0-DyY" firstAttribute="top" secondItem="HbT-m8-rBT" secondAttribute="bottom" constant="10" id="b1a-UK-76s"/>
+                    <constraint firstItem="kaa-Ei-pDV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="qSe-8Z-7lh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="bfN-H0-DyY" secondAttribute="trailing" constant="10" id="u9p-rV-QTB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="iconImageView" destination="kaa-Ei-pDV" id="GiE-Zs-HMO"/>
+                <outlet property="introduceLabel" destination="bfN-H0-DyY" id="PEN-hZ-YUb"/>
+                <outlet property="nameLabel" destination="HbT-m8-rBT" id="4xI-FW-RxE"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="139.880059970015"/>
+        </tableViewCell>
+    </objects>
+</document>

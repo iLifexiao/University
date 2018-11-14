@@ -13,6 +13,7 @@ class CampusNewsCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var originalLabel: UILabel!
     @IBOutlet weak var readCountLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var newsImageView: UIImageView!
     
@@ -29,13 +30,14 @@ class CampusNewsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupData(_ model: CampusNewsModel) {
-        self.id = model.id
-        titleLabel.text = model.title
-        originalLabel.text = model.original
-        readCountLabel.text = String(model.readCount) + " 阅读"
-        dateLabel.text = model.postDate
-        newsImageView.image = model.newsImage
+    func setupModel(_ campusNews: CampusNews) {
+        self.id = String(campusNews.id ?? 0)
+        titleLabel.text = campusNews.title
+        originalLabel.text = campusNews.from
+        readCountLabel.text = String(campusNews.readCount ?? 0) + " 阅读"
+        typeLabel.text = campusNews.type
+        dateLabel.text = unixTime2StringDate(campusNews.createdAt ?? 0, format: "yyyy-MM-dd")
+        newsImageView.sd_setImage(with: URL(string: baseURL + campusNews.imageURL), completed: nil)
     }
     
 }

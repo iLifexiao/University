@@ -48,26 +48,26 @@ class ClubVC: UIViewController {
         }
         
         // 下拉刷新
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+        tableView.mj_header = MJRefreshNormalHeader { [weak self] in
             // 重新获取
-            self.getClub()
+            self?.getClub()
             
-            self.tableView.mj_header.endRefreshing()
-            self.view.makeToast("刷新成功", position: .top)
-        })
+            self?.tableView.mj_header.endRefreshing()
+            self?.view.makeToast("刷新成功", position: .top)
+        }
     }
     
     private func getClub() {
-        Alamofire.request(baseURL + "/api/v1/club/all", headers: headers).responseJSON { response in
+        Alamofire.request(baseURL + "/api/v1/club/all", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.clubs.removeAll()
+                self?.clubs.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self.clubs.append(Club(jsonData: subJson))
+                    self?.clubs.append(Club(jsonData: subJson))
                 }
-                self.tableView.reloadData()                
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }

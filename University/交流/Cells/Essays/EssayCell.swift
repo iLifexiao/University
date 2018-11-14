@@ -41,19 +41,18 @@ class EssayCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupData(_ model: EssayModel) {
-        essayID = model.essayID
+    func setupModel(_ essay: Essay) {
+        essayID = String(essay.id ?? 0)
         
-        userHeadImageView.image = model.userHeadImage
-        userNameLabel.text = model.userName
-        essayPostTimeLabel.text = model.postTime
-        essayTypeButton.setTitle(model.type, for: .normal)
-        essayTitleLabel.text = model.title
-        essayContentLabel.text = model.content
-        essaySeeCountLabel.text = String(model.readCount)
-        essayLikeCountLabel.text = String(model.likeCount)
-        essayCommitCountLabel.text = String(model.commitCount)
-        
+        userHeadImageView.image = UIImage(named: "userHead")
+        userNameLabel.text = "雨后"
+        essayPostTimeLabel.text = unixTime2StringDate(essay.createdAt ?? 0)
+        essayTypeButton.setTitle(essay.type, for: .normal)
+        essayTitleLabel.text = essay.title
+        essayContentLabel.text = essay.content
+        essaySeeCountLabel.text = String(essay.readCount ?? 0)
+        essayLikeCountLabel.text = String(essay.likeCount ?? 0)
+        essayCommitCountLabel.text = String(essay.commentCount ?? 0)
     }
     
     // show more info about essay
@@ -69,7 +68,5 @@ class EssayCell: UITableViewCell {
         if let delegate = self.delegate {
             delegate.showSameTypeEssay(sender.currentTitle)
         }
-    }
-    
-    
+    }        
 }
