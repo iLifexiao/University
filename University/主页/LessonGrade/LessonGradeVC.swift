@@ -59,18 +59,22 @@ class LessonGradeVC: UIViewController {
     }
     
     private func getLessonGrade() {
-        Alamofire.request(baseURL + "/api/v1/user/1/student/grade", headers: headers).responseJSON { [weak self] response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                self?.lessonGrades.removeAll()
-                // json是数组
-                for (_, subJson):(String, JSON) in json {
-                    self?.lessonGrades.append(LessonGrade(jsonData: subJson))
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/student/grade", headers: headers).responseJSON { [weak self] response in
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    self.lessonGrades.removeAll()
+                    // json是数组
+                    for (_, subJson):(String, JSON) in json {
+                        self.lessonGrades.append(LessonGrade(jsonData: subJson))
+                    }
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
                 }
-                self?.tableView.reloadData()
-            case .failure(let error):
-                print(error)
             }
         }
     }

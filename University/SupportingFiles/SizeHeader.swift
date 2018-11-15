@@ -47,3 +47,14 @@ let headers: HTTPHeaders = [
 
 let libraryURL = "http://agentdockingopac.featurelib.libsou.com/showhome/search/showSearch?schoolId=19345"
 
+// 本地数据配置
+let autoLoginKey = "autoLoginKey"
+let userIDKey = "userIDKey"
+let studentIDKey = "studentIDKey"
+let accountKey = "accountKey"
+let passwordKey = "passwordKey"
+let firstUsedKey = "firstUsedKey"
+
+// 全局变量
+//var usrID = 0
+//var studentID = 0

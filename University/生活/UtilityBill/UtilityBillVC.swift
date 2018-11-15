@@ -49,24 +49,29 @@ class UtilityBillVC: UIViewController {
     private func getUtilityBill() {
         // 对于带参数的请求方式，采用参数，不能直接写在URL中
         // 同时注意参数的位置
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/utilitybill/search", parameters: param, headers: headers).responseJSON { [weak self] response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                self?.bills.removeAll()
-                for (_, subJson):(String, JSON) in json {
-                    self?.bills.append(UtilityBill(jsonData: subJson))
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    self.bills.removeAll()
+                    for (_, subJson):(String, JSON) in json {
+                        self.bills.append(UtilityBill(jsonData: subJson))
+                    }
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.finshed = 1
+                case .failure(let error):
+                    print(error)
                 }
-                self?.finshed = 1
-            case .failure(let error):
-                print(error)
             }
         }
     }
     
     @IBAction func searchUtilityBill(_ sender: UIButton) {
-        let site = siteTextField.text
-        let time = timeTextField.text
+        // 剔除输入中的空格
+        let site = siteTextField.text?.trimmingCharacters(in: .whitespaces)
+        let time = timeTextField.text?.trimmingCharacters(in: .whitespaces)
         
         guard site != "" else {
             view.makeToast("宿舍不能为空", position: .top)
@@ -81,6 +86,12 @@ class UtilityBillVC: UIViewController {
         // 生成参数
         param = ["term": site!, "year": time!]
         getUtilityBill()
+    }
+    
+    
+    @IBAction func exitKeyBoard(_ sender: UITapGestureRecognizer) {
+        siteTextField.resignFirstResponder()
+        timeTextField.resignFirstResponder()
     }
     
 }

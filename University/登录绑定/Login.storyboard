@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n3D-3p-aK0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--LoginVC-->
         <scene sceneID="6gX-dU-2pQ">
             <objects>
-                <viewController id="n3D-3p-aK0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="n3D-3p-aK0" customClass="LoginVC" customModule="University" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nqi-7K-g27">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weT-Zf-yLg">
                                 <rect key="frame" x="62.5" y="344" width="250" height="40"/>
@@ -44,6 +44,9 @@
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="userLogin:" destination="n3D-3p-aK0" eventType="touchUpInside" id="HE7-nE-IY2"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="8oc-bw-Zjo">
                                 <rect key="frame" x="147.5" y="60" width="80" height="80"/>
@@ -66,7 +69,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5O-X9-f0B">
                                 <rect key="frame" x="281.5" y="304" width="31" height="30"/>
@@ -81,7 +84,10 @@
                                     <constraint firstAttribute="height" constant="20" id="Kbq-jk-8Sq"/>
                                     <constraint firstAttribute="width" constant="20" id="qB1-Yf-Wem"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="check"/>
+                                <state key="normal" title="Button" image="checkTrue"/>
+                                <connections>
+                                    <action selector="autoLoginCheck:" destination="n3D-3p-aK0" eventType="touchUpInside" id="dsY-LJ-ggB"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自动登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xw8-wM-G88">
                                 <rect key="frame" x="92.5" y="395" width="62" height="18"/>
@@ -98,6 +104,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="EuP-W4-KSk" firstAttribute="leading" secondItem="weT-Zf-yLg" secondAttribute="leading" id="6Sd-yo-Bhu"/>
                             <constraint firstItem="V5O-X9-f0B" firstAttribute="trailing" secondItem="Udq-8q-6gX" secondAttribute="trailing" id="7hN-n0-X1Y"/>
@@ -119,21 +126,34 @@
                             <constraint firstItem="8oc-bw-Zjo" firstAttribute="centerX" secondItem="Nqi-7K-g27" secondAttribute="centerX" id="zO5-DO-0L7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p0U-Tb-snf"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ufN-vi-WAO" appends="YES" id="Ts3-ha-P48"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="accountTextField" destination="MFN-ro-hCn" id="iGi-dj-sYx"/>
+                        <outlet property="checkButton" destination="EuP-W4-KSk" id="ZKs-SD-KfO"/>
+                        <outlet property="pwdTextField" destination="Udq-8q-6gX" id="VoK-pv-OAP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jys-Al-S1o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ufN-vi-WAO">
+                    <connections>
+                        <action selector="exitKeyboard:" destination="n3D-3p-aK0" id="3xq-5I-AQt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1276" y="-304.4977511244378"/>
         </scene>
-        <!--View Controller-->
+        <!--Forget PwdVC-->
         <scene sceneID="WRx-I8-QEZ">
             <objects>
-                <viewController id="LJF-By-ZBN" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgetPwdVC" id="LJF-By-ZBN" customClass="ForgetPwdVC" customModule="University" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yrq-Kf-x03">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="帐号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GY9-Wv-ylf">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="帐号/手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GY9-Wv-ylf">
                                 <rect key="frame" x="62.5" y="204" width="250" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Rdi-yK-6Op"/>
@@ -141,7 +161,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="VJc-Wc-KFl">
                                 <rect key="frame" x="147.5" y="60" width="80" height="80"/>
@@ -164,7 +184,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="确认密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3Ft-HW-cvM">
                                 <rect key="frame" x="62.5" y="314" width="250" height="35"/>
@@ -174,9 +194,9 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="验证码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bun-tz-Jog">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="修改码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bun-tz-Jog">
                                 <rect key="frame" x="62.5" y="369" width="250" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="Bjn-Fs-Rwd"/>
@@ -194,7 +214,7 @@
                                     <constraint firstAttribute="width" constant="250" id="n43-Gx-KjJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="找回密码">
+                                <state key="normal" title="修改密码">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -202,13 +222,20 @@
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="changePwd:" destination="LJF-By-ZBN" eventType="touchUpInside" id="yT3-dr-jik"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pF-IT-Uq1">
                                 <rect key="frame" x="62.5" y="414" width="62" height="30"/>
                                 <state key="normal" title="返回登录"/>
+                                <connections>
+                                    <segue destination="F7C-RD-Y1P" kind="unwind" identifier="unwindSegueForget" unwindAction="unwindSegueForgetPwdVC:" id="QSO-iD-jX7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="3Ft-HW-cvM" firstAttribute="top" secondItem="3yQ-bB-UXT" secondAttribute="bottom" constant="20" id="6zN-ou-YLt"/>
                             <constraint firstItem="MtR-I8-oVb" firstAttribute="centerX" secondItem="Yrq-Kf-x03" secondAttribute="centerX" id="7gO-PH-Ayp"/>
@@ -228,21 +255,36 @@
                             <constraint firstItem="3Ft-HW-cvM" firstAttribute="centerX" secondItem="Yrq-Kf-x03" secondAttribute="centerX" id="zPe-lJ-tuE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9ex-YS-jpD"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="p0A-dQ-DmN" appends="YES" id="gqM-6K-lgp"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="accountTextField" destination="GY9-Wv-ylf" id="Cn7-oh-T5d"/>
+                        <outlet property="checkNewPwdTextField" destination="3Ft-HW-cvM" id="52t-ub-9sa"/>
+                        <outlet property="codeTextField" destination="bun-tz-Jog" id="EPl-Pe-3NN"/>
+                        <outlet property="newPwdTextField" destination="3yQ-bB-UXT" id="acp-op-6OW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfK-d5-A1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="F7C-RD-Y1P" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="p0A-dQ-DmN">
+                    <connections>
+                        <action selector="exitKeyboard:" destination="LJF-By-ZBN" id="tRN-s6-agC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-498" y="16"/>
         </scene>
-        <!--View Controller-->
+        <!--RegisterVC-->
         <scene sceneID="cLg-FA-o3u">
             <objects>
-                <viewController id="csN-tY-0jb" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterVC" id="csN-tY-0jb" customClass="RegisterVC" customModule="University" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MuC-1y-GEB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="学号/手机号/邮箱" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NQn-Tz-NHB">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="帐号/手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NQn-Tz-NHB">
                                 <rect key="frame" x="62.5" y="204" width="250" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="cWk-8E-C7g"/>
@@ -250,9 +292,9 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="昵称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NS8-YB-eFx">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NS8-YB-eFx">
                                 <rect key="frame" x="62.5" y="259" width="250" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="MiM-Hl-CCn"/>
@@ -260,9 +302,9 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yf6-0y-TBK">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="确认密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yf6-0y-TBK">
                                 <rect key="frame" x="62.5" y="314" width="250" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="jZB-Yu-8QQ"/>
@@ -270,9 +312,9 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="确认密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="laQ-M4-xGi">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="注册码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="laQ-M4-xGi">
                                 <rect key="frame" x="62.5" y="369" width="250" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="LCc-MB-siW"/>
@@ -311,13 +353,20 @@
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="registerAccount:" destination="csN-tY-0jb" eventType="touchUpInside" id="Xva-oA-xIx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mv5-UG-OiV">
                                 <rect key="frame" x="62.5" y="414" width="62" height="30"/>
                                 <state key="normal" title="返回登录"/>
+                                <connections>
+                                    <segue destination="6Pq-Bv-xg5" kind="unwind" identifier="unwindSegueRegister" unwindAction="unwindSegueRegisterVC:" id="s1L-rQ-J4Q"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="NQn-Tz-NHB" firstAttribute="centerX" secondItem="MuC-1y-GEB" secondAttribute="centerX" id="0ap-AU-r92"/>
                             <constraint firstItem="NS8-YB-eFx" firstAttribute="centerX" secondItem="MuC-1y-GEB" secondAttribute="centerX" id="5eH-8N-CwS"/>
@@ -337,15 +386,30 @@
                             <constraint firstItem="WQg-c1-EsD" firstAttribute="centerX" secondItem="MuC-1y-GEB" secondAttribute="centerX" id="zcL-Qb-JcE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V7e-11-RJZ"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="RMA-Xs-wDt" appends="YES" id="vUT-He-jS5"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="accountTextField" destination="NQn-Tz-NHB" id="xsw-Yt-1eu"/>
+                        <outlet property="checkPwdTextField" destination="Yf6-0y-TBK" id="ieh-YK-HkQ"/>
+                        <outlet property="codeTextField" destination="laQ-M4-xGi" id="BD6-jN-MpZ"/>
+                        <outlet property="pwdTextField" destination="NS8-YB-eFx" id="z2M-JB-Bnd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQc-rh-kCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6Pq-Bv-xg5" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="RMA-Xs-wDt">
+                    <connections>
+                        <action selector="exitKeyboard:" destination="csN-tY-0jb" id="Z6N-N9-Vn6"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-498" y="-647"/>
         </scene>
     </scenes>
     <resources>
-        <image name="check" width="67" height="67"/>
+        <image name="checkTrue" width="67" height="67"/>
         <image name="logo" width="80" height="80"/>
     </resources>
 </document>

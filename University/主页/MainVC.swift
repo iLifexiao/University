@@ -39,6 +39,7 @@ class MainVC: UIViewController {
         }
     }
     
+    // 倒数日、校园服务
     var countdowns: [CountdownModel] = []
     var campusFuncs: [CampusFuncModel] = []
         
@@ -46,71 +47,30 @@ class MainVC: UIViewController {
     var week: String = "星期三"
     var date: String = "2018-10-22"
     
+    // MARK: 程序入口
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
         initData()
-        /*
-        //监听tabBar的frame
-        tabBarController?.tabBar.addObserver(self, forKeyPath: "frame", options: [.old, .new], context: nil)
-         */
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
     }
-    
-    /*
-    //释放观察者
-    deinit {
-        tabBarController?.tabBar.removeObserver(self, forKeyPath: "frame")
-    }
-    
-    //处理高度变化
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if let tabBar = object as? UITabBar, keyPath == "frame" {
-            if let oldFrame = change?[.oldKey] as? CGRect, let newFrame = change?[.newKey] as? CGRect {
-                if oldFrame.size != newFrame.size {
-                    if oldFrame.height > newFrame.height {
-                        tabBar.frame = oldFrame
-                    } else {
-                        tabBar.frame = newFrame
-                    }
-                }
-            }
-        }
-    }
-    */
+
     private func initUI() {
         setupTableView()
     }
     
-    private func setupTableView() {
-        // 每一个复用的Cell都需要注册，发现通过代码创建的cell有复用问题
-        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: bannerCell)
-        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: dateCell)
-        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: campusCell)
-        
-        // 适配不同系统下的偏移问题
-        if #available(iOS 11.0, *) {
-            tableView.contentInsetAdjustmentBehavior = .never
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
-        }
-        
-        // 下拉刷新
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
-            // 重新获取
-            self.getADBanner()
-            self.getNotifications()
-            
-            self.tableView.mj_header.endRefreshing()
-            self.view.makeToast("刷新成功", position: .top)
-        })
-    }
-    
     private func initData() {
+        // 软件初次使用配置
+        firstUseSoft()
+        
+        // 载入用户ID信息、学籍绑定信息（下列API会在不存在的时候自动返回0）
+        GlobalData.sharedInstance.userID = UserDefaults.standard.integer(forKey: userIDKey)
+        GlobalData.sharedInstance.studentID = UserDefaults.standard.integer(forKey: studentIDKey)
+        
         // 首页轮播图
         getADBanner()
         getNotifications()
@@ -140,20 +100,57 @@ class MainVC: UIViewController {
         let campusFuncModel11 = CampusFuncModel(icon: UIImage(named: "community"), name: "社团")
         let campusFuncModel12 = CampusFuncModel(icon: UIImage(named: "directory"), name: "通讯录")
         campusFuncs = [campusFuncModel, campusFuncModel2, campusFuncModel3, campusFuncModel4, campusFuncModel5, campusFuncModel6, campusFuncModel7, campusFuncModel8, campusFuncModel9, campusFuncModel10, campusFuncModel11, campusFuncModel12]
+    }
+    
+    // MARK: 入口调用方法
+    private func setupTableView() {
+        // 每一个复用的Cell都需要注册，发现通过代码创建的cell有复用问题
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: bannerCell)
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: dateCell)
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: campusCell)
         
+        // 适配不同系统下的偏移问题
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
+        // 下拉刷新
+        tableView.mj_header = MJRefreshNormalHeader { [weak self] in
+            // 重新获取
+            self?.getADBanner()
+            self?.getNotifications()
+            
+            self?.tableView.mj_header.endRefreshing()
+            self?.view.makeToast("刷新成功", position: .top)
+        }
+    }
+    
+    private func firstUseSoft() {
+        // 返回false表示第一次使用软件
+        let isFirst = UserDefaults.standard.bool(forKey: firstUsedKey)
+        // 第一次使用配置
+        if !isFirst {
+            UserDefaults.standard.set(true, forKey: firstUsedKey) // 非第一次使用
+            UserDefaults.standard.set(0, forKey: userIDKey) //用户ID
+            UserDefaults.standard.set(0, forKey: studentIDKey) //学生ID
+            UserDefaults.standard.set(nil, forKey: accountKey) // 用户帐号
+            UserDefaults.standard.set(true, forKey: autoLoginKey) //自动登录
+        }
     }
     
     private func getADBanner() {
-        Alamofire.request(baseURL + "/api/v1/adbanner/all/main", headers: headers).responseJSON { response in
+        Alamofire.request(baseURL + "/api/v1/adbanner/all/main", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.adBanners.removeAll()
+                self?.adBanners.removeAll()
                 // json是数组
                 for (_,subJson):(String, JSON) in json {
-                    self.adBanners.append(ADBanner(jsonData: subJson))
+                    self?.adBanners.append(ADBanner(jsonData: subJson))
                 }
-                self.pagerView?.reloadData()
+                self?.pagerView?.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -161,15 +158,15 @@ class MainVC: UIViewController {
     }
     
     private func getNotifications() {
-        Alamofire.request(baseURL + "/api/v1/notification/all/main", headers: headers).responseJSON { response in
+        Alamofire.request(baseURL + "/api/v1/notification/all/main", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.notifications.removeAll()
+                self?.notifications.removeAll()
                 for (_,subJson):(String, JSON) in json {
-                    self.notifications.append(Notification(jsonData: subJson))
+                    self?.notifications.append(Notification(jsonData: subJson))
                 }
-                self.headlineView?.setNews(self.news)
+                self?.headlineView?.setNews(self?.news ?? [])
             case .failure(let error):
                 print(error)
             }
@@ -184,7 +181,7 @@ class MainVC: UIViewController {
     }
 }
 
-// MARK: UITableViewDelegate
+// MARK: 主页-方法代理
 extension MainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
@@ -237,7 +234,7 @@ extension MainVC: UITableViewDelegate {
     }
 }
 
-// MARK: UITableViewDataSource
+// MARK: 主页-数据源代理
 extension MainVC: UITableViewDataSource {
     
     // 将主页分为四个区域（banner、日期、校园、推荐）
@@ -324,8 +321,7 @@ extension MainVC: UITableViewDataSource {
     }
 }
 
-// MARK: FSPagerViewDelegate
-// Banner的Delegate
+// MARK: 滚动栏-方法代理
 extension MainVC: FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         let adBanner = adBanners[index]
@@ -333,8 +329,7 @@ extension MainVC: FSPagerViewDelegate {
     }
 }
 
-// MARK: FSPagerViewDataSource
-// Banner的DetaSource
+// MARK: 滚动栏-数据源代理
 extension MainVC: FSPagerViewDataSource {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
         return adBanners.count
@@ -349,9 +344,22 @@ extension MainVC: FSPagerViewDataSource {
     }
 }
 
-// MARK: CampusServers-Delegate
+// MARK: 校园服务-方法代理
 extension MainVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if GlobalData.sharedInstance.userID == 0 {
+            let loginSB = UIStoryboard(name: "Login", bundle: nil)
+            let loginVC = loginSB.instantiateViewController(withIdentifier: "LoginVC")
+            navigationController?.pushViewController(loginVC, animated: true)
+            return
+        }
+        
+        if GlobalData.sharedInstance.studentID == 0 {
+            let bandStudentVC = BandingStudentVC()
+            navigationController?.pushViewController(bandStudentVC, animated: true)
+            return
+        }
+        
         let campusFunc = campusFuncs[indexPath.row]
         switch campusFunc.name {
         case "课程表":
@@ -396,7 +404,7 @@ extension MainVC: UICollectionViewDelegate {
     }
 }
 
-// MARK: CampusServers-DataSource
+// MARK: 校园服务-数据源代理
 extension MainVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return campusFuncs.count
@@ -409,7 +417,7 @@ extension MainVC: UICollectionViewDataSource {
     }
 }
 
-// MARK: HeadlineViewDelegate
+// MARK: 滚动通知-方法代理
 extension MainVC: HeadlineViewDelegate {
     func headlineView(_ headlineView: HeadlineView, didSelectItemAt index: Int) {
         let notifi = notifications[index]
@@ -417,7 +425,7 @@ extension MainVC: HeadlineViewDelegate {
     }
 }
 
-// MARK: ContdownViewDelegate
+// MARK: 倒数日-方法代理
 extension MainVC: CountdownViewDelegate {
     func countdownView(_ countdownView: CountdownView, didSelectItemAt index: Int) {
         let countdown = countdowns[index]

@@ -25,8 +25,7 @@ class CampusVC: UIViewController {
     private func initUI() {
         setupTableView()
     }
-    
-    
+        
     private func initData() {
         getCampusNews()
     }

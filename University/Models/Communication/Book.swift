@@ -44,7 +44,7 @@ struct Book {
         self.id = jsonData["id"].intValue
         self.userID = jsonData["userID"].intValue
         
-        self.name = jsonData["title"].stringValue
+        self.name = jsonData["name"].stringValue
         self.imageURL = jsonData["imageURL"].stringValue
         self.introduce = jsonData["introduce"].stringValue
         self.type = jsonData["type"].stringValue

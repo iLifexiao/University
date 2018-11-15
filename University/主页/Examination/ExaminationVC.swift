@@ -57,19 +57,23 @@ class ExaminationVC: UIViewController {
         })
     }
     
-    private func getExamination() {        
+    private func getExamination() {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/examination/all", headers: headers).responseJSON { [weak self] response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                self?.examinations.removeAll()
-                // json是数组
-                for (_, subJson):(String, JSON) in json {
-                    self?.examinations.append(Examination(jsonData: subJson))
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    self.examinations.removeAll()
+                    // json是数组
+                    for (_, subJson):(String, JSON) in json {
+                        self.examinations.append(Examination(jsonData: subJson))
+                    }
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
                 }
-                self?.tableView.reloadData()
-            case .failure(let error):
-                print(error)
             }
         }
     }

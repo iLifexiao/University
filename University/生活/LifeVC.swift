@@ -77,27 +77,27 @@ class LifeVC: UIViewController {
         }
         
         // 下拉刷新
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+        tableView.mj_header = MJRefreshNormalHeader { [weak self] in
             // 重新获取
-            self.getADBanner()
-            self.getNotifications()
+            self?.getADBanner()
+            self?.getNotifications()
             
-            self.tableView.mj_header.endRefreshing()
-            self.view.makeToast("刷新成功", position: .top)
-        })
+            self?.tableView.mj_header.endRefreshing()
+            self?.view.makeToast("刷新成功", position: .top)
+        }
     }
     
     private func getADBanner() {
-        Alamofire.request(baseURL + "/api/v1/adbanner/all/life", headers: headers).responseJSON { response in
+        Alamofire.request(baseURL + "/api/v1/adbanner/all/life", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.adBanners.removeAll()
+                self?.adBanners.removeAll()
                 // json是数组
                 for (_,subJson):(String, JSON) in json {
-                    self.adBanners.append(ADBanner(jsonData: subJson))
+                    self?.adBanners.append(ADBanner(jsonData: subJson))
                 }
-                self.pagerView?.reloadData()
+                self?.pagerView?.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -105,16 +105,16 @@ class LifeVC: UIViewController {
     }
     
     private func getNotifications() {
-        Alamofire.request(baseURL + "/api/v1/notification/all/life", headers: headers).responseJSON { response in
+        Alamofire.request(baseURL + "/api/v1/notification/all/life", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
                 // json是数组
-                self.notifications.removeAll()
+                self?.notifications.removeAll()
                 for (_,subJson):(String, JSON) in json {
-                    self.notifications.append(Notification(jsonData: subJson))
+                    self?.notifications.append(Notification(jsonData: subJson))
                 }
-                self.headlineView?.setNews(self.news)
+                self?.headlineView?.setNews(self?.news ?? [])
             case .failure(let error):
                 print(error)
             }

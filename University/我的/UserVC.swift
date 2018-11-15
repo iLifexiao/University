@@ -62,14 +62,44 @@ class UserVC: UIViewController {
     
     @IBAction func userSettingPress(_ sender: UIBarButtonItem) {
         view.makeToast("设置")
+        UserDefaults.standard.set(0, forKey: userIDKey)
+        UserDefaults.standard.set(0, forKey: studentIDKey)
+        GlobalData.sharedInstance.userID = 0
+        GlobalData.sharedInstance.studentID = 0
     }
     
 }
 
 extension UserVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 { return }
-        view.makeToast("section: \(indexPath.section), row: \(indexPath.row)")
+        switch indexPath.section {
+        case 1:
+            switch indexPath.row {
+            case 0:
+                print("userID:\(UserDefaults.standard.integer(forKey: userIDKey))")
+                print("studentID:\(UserDefaults.standard.integer(forKey: studentIDKey))")
+            case 1:
+                print("1")
+            case 2:
+                print("2")
+            default:
+                print("不是这里哦")
+            }
+        case 2:
+            switch indexPath.row {
+            case 0:
+                print("1")
+            case 1:
+                print("1")
+            case 2:
+                print("2")
+            default:
+                print("不是这里哦")
+            }
+        default:
+            print("不是这里哦")
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

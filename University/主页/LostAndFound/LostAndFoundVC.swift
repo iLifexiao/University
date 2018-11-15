@@ -51,18 +51,22 @@ class LostAndFoundVC: UIViewController {
 
     
     private func getLostAndFound() {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/lostandfound/all", headers: headers).responseJSON { [weak self] response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                self?.losts.removeAll()
-                // json是数组
-                for (_, subJson):(String, JSON) in json {
-                    self?.losts.append(LostAndFound(jsonData: subJson))
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    self.losts.removeAll()
+                    // json是数组
+                    for (_, subJson):(String, JSON) in json {
+                        self.losts.append(LostAndFound(jsonData: subJson))
+                    }
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.collectionView.reloadData()
+                case .failure(let error):
+                    print(error)
                 }
-                self?.collectionView.reloadData()                
-            case .failure(let error):
-                print(error)
             }
         }
     }

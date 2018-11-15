@@ -51,18 +51,22 @@ class IdleGoodVC: UIViewController {
     }
         
     private func getIdleGoods() {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/idlegood/all", headers: headers).responseJSON { [weak self] response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                self?.idleGoods.removeAll()
-                // json是数组
-                for (_, subJson):(String, JSON) in json {
-                    self?.idleGoods.append(IdleGood(jsonData: subJson))
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    self.idleGoods.removeAll()
+                    // json是数组
+                    for (_, subJson):(String, JSON) in json {
+                        self.idleGoods.append(IdleGood(jsonData: subJson))
+                    }
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.collectionView.reloadData()
+                case .failure(let error):
+                    print(error)
                 }
-                self?.collectionView.reloadData()
-            case .failure(let error):
-                print(error)
             }
         }
     }

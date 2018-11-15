@@ -57,18 +57,22 @@ class PartTimeJobVC: UIViewController {
     }
     
     private func getPartTimeJobs() {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/parttimejob/all", headers: headers).responseJSON { [weak self] response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                self?.jobs.removeAll()
-                // json是数组
-                for (_, subJson):(String, JSON) in json {
-                    self?.jobs.append(PartTimeJob(jsonData: subJson))
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    self.jobs.removeAll()
+                    // json是数组
+                    for (_, subJson):(String, JSON) in json {
+                        self.jobs.append(PartTimeJob(jsonData: subJson))
+                    }
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
                 }
-                self?.tableView.reloadData()
-            case .failure(let error):
-                print(error)
             }
         }
     }

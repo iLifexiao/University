@@ -65,17 +65,21 @@ class LessonTimeTable: UIViewController {
     }
     
     private func getLessons() {
-        Alamofire.request(baseURL + "/api/v1/user/1/student/lesson", headers: headers).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                self.lessons.removeAll()
-                for (_,subJson):(String, JSON) in json {
-                    self.lessons.append(Lesson(jsonData: subJson))
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/student/lesson", headers: headers).responseJSON { [weak self] response in
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    self.lessons.removeAll()
+                    for (_,subJson):(String, JSON) in json {
+                        self.lessons.append(Lesson(jsonData: subJson))
+                    }
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.lessonGetDone = 1
+                case .failure(let error):
+                    print(error)
                 }
-                self.lessonGetDone = 1
-            case .failure(let error):
-                print(error)
             }
         }
     }

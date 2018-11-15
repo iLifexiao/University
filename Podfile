@@ -16,6 +16,8 @@ target 'University' do
   pod 'NewPopMenu', '~> 2.0'
   pod 'MJRefresh'
   pod "CurriculaTable"
+  pod 'MBProgressHUD', '~> 1.1.0'
+  
 
   target 'UniversityTests' do
     inherit! :search_paths

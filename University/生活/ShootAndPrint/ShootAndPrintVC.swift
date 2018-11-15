@@ -57,18 +57,22 @@ class ShootAndPrintVC: UIViewController {
     }
     
     private func getShootAndPrint() {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/shootandprint/all", headers: headers).responseJSON { [weak self] response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                self?.shops.removeAll()
-                // json是数组
-                for (_, subJson):(String, JSON) in json {
-                    self?.shops.append(ShootAndPrint(jsonData: subJson))
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    self.shops.removeAll()
+                    // json是数组
+                    for (_, subJson):(String, JSON) in json {
+                        self.shops.append(ShootAndPrint(jsonData: subJson))
+                    }
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
                 }
-                self?.tableView.reloadData()
-            case .failure(let error):
-                print(error)
             }
         }
     }
