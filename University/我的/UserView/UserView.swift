@@ -34,12 +34,12 @@ class UserView: UIView {
         userBGImageView.image = bgImage
     }
     
-    func setUserHead(_ head: UIImage?) {
-        userHeadImageView.image = head
+    func setUserHead(_ head: String) {        
+        userHeadImageView.sd_setImage(with: URL(string: baseURL + head), completed: nil)
     }
     
     func setUserName(_ name: String) {
-        
+        userNameLabel.text = name
     }
     
     func setMessageCount(_ count: Int?) {

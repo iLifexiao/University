@@ -125,6 +125,20 @@ class LifeVC: UIViewController {
 
 extension LifeVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if GlobalData.sharedInstance.userID == 0 {
+            let loginSB = UIStoryboard(name: "Login", bundle: nil)
+            let loginVC = loginSB.instantiateViewController(withIdentifier: "LoginVC")
+            navigationController?.pushViewController(loginVC, animated: true)
+            return
+        }
+        
+        if GlobalData.sharedInstance.studentID == 0 {
+            let bandStudentVC = BandingStudentVC()
+            navigationController?.pushViewController(bandStudentVC, animated: true)
+            return
+        }
+        
         switch indexPath.section {
         case 1:
             switch indexPath.row {

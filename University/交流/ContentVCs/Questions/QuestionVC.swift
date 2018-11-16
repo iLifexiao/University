@@ -48,7 +48,7 @@ class QuestionVC: UIViewController {
             self?.view.makeToast("刷新成功", position: .top)
         }
     }
-        
+    
     private func getQuestions() {
         Alamofire.request(baseURL + "/api/v1/question/all", headers: headers).responseJSON { [weak self] response in
             switch response.result {
@@ -94,6 +94,7 @@ extension QuestionVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! QuestionCell
         cell.setupModel(questions[indexPath.section])
+        cell.delegate = self
         cell.selectionStyle = .none
         return cell
     }

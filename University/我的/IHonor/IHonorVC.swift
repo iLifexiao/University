@@ -1,8 +1,8 @@
 //
-//  LessonGradeVC.swift
+//  IHonorVC.swift
 //  University
 //
-//  Created by 肖权 on 2018/11/13.
+//  Created by 肖权 on 2018/11/16.
 //  Copyright © 2018 肖权. All rights reserved.
 //
 
@@ -11,12 +11,10 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 
-class LessonGradeVC: UIViewController {
+class IHonorVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    let lessonCell = "lessonCell"
-    
-    var lessonGrades: [LessonGrade] = []
+    private var honors: [Honor] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,17 +28,17 @@ class LessonGradeVC: UIViewController {
     }
     
     private func initData() {
-        getLessonGrade()
+        getHonors()
     }
     
     private func initUI() {
-        title = "成绩单"
+        title = "我的荣誉"
         setupTableView()
     }
     
     private func setupTableView() {
         // 每一个复用的Cell都需要注册，发现通过代码创建的cell有复用问题
-        tableView.register(UINib(nibName: "LessonGradeCell", bundle: nil), forCellReuseIdentifier: lessonCell)
+        tableView.register(UINib(nibName: "HonorCell", bundle: nil), forCellReuseIdentifier: "HonorCell")
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -51,31 +49,27 @@ class LessonGradeVC: UIViewController {
         // 空视图代理
         tableView.emptyDataSetDelegate = self
         tableView.emptyDataSetSource = self
-        
-        // 清空-空Cell
         tableView.tableFooterView = UIView()
         
-        // 下拉刷新
         tableView.mj_header = MJRefreshNormalHeader{ [weak self] in
-            // 重新获取
-            self?.getLessonGrade()
+            self?.getHonors()
             
             self?.tableView.mj_header.endRefreshing()
             self?.view.makeToast("刷新成功", position: .top)
         }
     }
     
-    private func getLessonGrade() {
+    private func getHonors() {
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/student/grade", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/honors", headers: headers).responseJSON { [weak self] response in
             if let self = self {
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    self.lessonGrades.removeAll()
+                    self.honors.removeAll()
                     // json是数组
                     for (_, subJson):(String, JSON) in json {
-                        self.lessonGrades.append(LessonGrade(jsonData: subJson))
+                        self.honors.append(Honor(jsonData: subJson))
                     }
                     MBProgressHUD.hide(for: self.view, animated: true)
                     self.tableView.reloadData()
@@ -87,18 +81,9 @@ class LessonGradeVC: UIViewController {
     }
 }
 
-extension LessonGradeVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
-        let academic = academics[indexPath.section]
-        let detailInfoVC = DetailInfoVC()
-        detailInfoVC.academic = academic
-        navigationController?.pushViewController(detailInfoVC, animated: true)
-        */
-    }
-    
+extension IHonorVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70.0
+        return 60.0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -106,38 +91,33 @@ extension LessonGradeVC: UITableViewDelegate {
     }
 }
 
-extension LessonGradeVC: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return lessonGrades.count
-    }
-    
+extension IHonorVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return honors.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: lessonCell, for: indexPath) as! LessonGradeCell
-        let lessonGrade = lessonGrades[indexPath.section]
-        cell.setupModel(lessonGrade)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HonorCell", for: indexPath) as! HonorCell
+        cell.setupModel(honors[indexPath.section])
         cell.selectionStyle = .none
         return cell
     }
 }
 
 // MARK: 空视图-代理
-extension LessonGradeVC: DZNEmptyDataSetDelegate {
+extension IHonorVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        view.makeToast("联系管理员，或重新试试看~")
+        self.view.makeToast("去新增一个荣誉吧~")
     }
 }
 
-extension LessonGradeVC: DZNEmptyDataSetSource {
+extension IHonorVC: DZNEmptyDataSetSource {
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: "emptyGrade")
+        return UIImage(named: "emptyContent")
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView?) -> NSAttributedString? {
-        let text = "啊咧，成绩消失了~"
+        let text = "啊咧，我的荣誉记录呢~"
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineBreakMode = .byWordWrapping

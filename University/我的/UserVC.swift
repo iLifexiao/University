@@ -29,6 +29,11 @@ class UserVC: UIViewController {
         setupTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     private func initData() {
         // 用户相关
         messageCount = 3
@@ -72,27 +77,44 @@ class UserVC: UIViewController {
 
 extension UserVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if GlobalData.sharedInstance.userID == 0 {
+            let loginSB = UIStoryboard(name: "Login", bundle: nil)
+            let loginVC = loginSB.instantiateViewController(withIdentifier: "LoginVC")
+            navigationController?.pushViewController(loginVC, animated: true)
+            return
+        }
+        
+        if GlobalData.sharedInstance.studentID == 0 {
+            let bandStudentVC = BandingStudentVC()
+            navigationController?.pushViewController(bandStudentVC, animated: true)
+            return
+        }
         switch indexPath.section {
         case 1:
             switch indexPath.row {
             case 0:
-                print("userID:\(UserDefaults.standard.integer(forKey: userIDKey))")
-                print("studentID:\(UserDefaults.standard.integer(forKey: studentIDKey))")
+                let iFriendVC = IFriendsVC()
+                navigationController?.pushViewController(iFriendVC, animated: true)
             case 1:
-                print("1")
+                let iExperienceVC = IExperienceVC()
+                navigationController?.pushViewController(iExperienceVC, animated: true)
             case 2:
-                print("2")
+                let iQANDAnswerVC = IQANDAnswerVC()
+                navigationController?.pushViewController(iQANDAnswerVC, animated: true)
             default:
                 print("不是这里哦")
             }
         case 2:
             switch indexPath.row {
             case 0:
-                print("1")
+                let iStudentVC = IStudentVC()
+                navigationController?.pushViewController(iStudentVC, animated: true)
             case 1:
-                print("1")
+                let iLessonGradeVC = ILessonGradeVC()
+                navigationController?.pushViewController(iLessonGradeVC, animated: true)
             case 2:
-                print("2")
+                let iHonorVC = IHonorVC()
+                navigationController?.pushViewController(iHonorVC, animated: true)
             default:
                 print("不是这里哦")
             }
@@ -149,6 +171,8 @@ extension UserVC: UITableViewDataSource {
                 let userView = Bundle.main.loadNibNamed("UserView", owner: nil, options: nil)?[0] as! UserView
                 userView.frame = CGRect(x: 0, y: 0, width: ScreenWidth, height: 300)
                 userView.delegate = self
+                userView.setUserName(GlobalData.sharedInstance.userName)
+                userView.setUserHead(GlobalData.sharedInstance.userHeadImage)
                 userView.setMessageCount(messageCount)
                 userView.setEssayCount(essayCount)
                 userView.setFansCount(fansCount)
@@ -183,15 +207,33 @@ extension UserVC: UITableViewDataSource {
 
 extension UserVC: UserViewDelegate {
     func userViewFuncClick(_ funcName: String) {
+        if GlobalData.sharedInstance.userID == 0 {
+            let loginSB = UIStoryboard(name: "Login", bundle: nil)
+            let loginVC = loginSB.instantiateViewController(withIdentifier: "LoginVC")
+            navigationController?.pushViewController(loginVC, animated: true)
+            return
+        }
+        
+        if GlobalData.sharedInstance.studentID == 0 {
+            let bandStudentVC = BandingStudentVC()
+            navigationController?.pushViewController(bandStudentVC, animated: true)
+            return
+        }
+        
+        
         switch funcName {
         case "私信":
-            view.makeToast(funcName)
+            let iMessageVC = IMessageVC()
+            navigationController?.pushViewController(iMessageVC, animated: true)
         case "文章":
-            view.makeToast(funcName)
+            let iEssayVC = IEssayVC()
+            navigationController?.pushViewController(iEssayVC, animated: true)
         case "粉丝":
-            view.makeToast(funcName)
+            let iFansVC = IFansVC()
+            navigationController?.pushViewController(iFansVC, animated: true)
         case "收藏":
-            view.makeToast(funcName)
+            let iCollectionVC = ICollectionVC()
+            navigationController?.pushViewController(iCollectionVC, animated: true)
         default:
             print("Error of FuncName")
         }

@@ -347,6 +347,7 @@ extension MainVC: FSPagerViewDataSource {
 // MARK: 校园服务-方法代理
 extension MainVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 检测用户是否登录 & 是否绑定学籍帐号
         if GlobalData.sharedInstance.userID == 0 {
             let loginSB = UIStoryboard(name: "Login", bundle: nil)
             let loginVC = loginSB.instantiateViewController(withIdentifier: "LoginVC")

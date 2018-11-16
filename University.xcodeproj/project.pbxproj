@@ -146,8 +146,33 @@
 		8B7C75D6219D51FA00FCCD75 /* BandingStudentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75D4219D51FA00FCCD75 /* BandingStudentVC.swift */; };
 		8B7C75D7219D51FA00FCCD75 /* BandingStudentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75D5219D51FA00FCCD75 /* BandingStudentVC.xib */; };
 		8B7C75DF219DB09500FCCD75 /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75DE219DB09500FCCD75 /* GlobalData.swift */; };
+		8B7C75E2219E5CC300FCCD75 /* IMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75E0219E5CC300FCCD75 /* IMessageVC.swift */; };
+		8B7C75E3219E5CC300FCCD75 /* IMessageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75E1219E5CC300FCCD75 /* IMessageVC.xib */; };
+		8B7C75E7219E5D9900FCCD75 /* IEssayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75E5219E5D9900FCCD75 /* IEssayVC.swift */; };
+		8B7C75E8219E5D9900FCCD75 /* IEssayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75E6219E5D9900FCCD75 /* IEssayVC.xib */; };
+		8B7C75EC219E5EE800FCCD75 /* IFansVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75EA219E5EE800FCCD75 /* IFansVC.swift */; };
+		8B7C75ED219E5EE800FCCD75 /* IFansVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75EB219E5EE800FCCD75 /* IFansVC.xib */; };
+		8B7C75F1219E5F2800FCCD75 /* ICollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75EF219E5F2800FCCD75 /* ICollectionVC.swift */; };
+		8B7C75F2219E5F2800FCCD75 /* ICollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75F0219E5F2800FCCD75 /* ICollectionVC.xib */; };
+		8B7C75F6219E619900FCCD75 /* IFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75F4219E619900FCCD75 /* IFriendsVC.swift */; };
+		8B7C75F7219E619900FCCD75 /* IFriendsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75F5219E619900FCCD75 /* IFriendsVC.xib */; };
+		8B7C75FB219E622100FCCD75 /* IExperienceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75F9219E622100FCCD75 /* IExperienceVC.swift */; };
+		8B7C75FC219E622100FCCD75 /* IExperienceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75FA219E622100FCCD75 /* IExperienceVC.xib */; };
+		8B7C7600219E628600FCCD75 /* IQANDAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C75FE219E628600FCCD75 /* IQANDAnswerVC.swift */; };
+		8B7C7601219E628600FCCD75 /* IQANDAnswerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C75FF219E628600FCCD75 /* IQANDAnswerVC.xib */; };
+		8B7C7605219E631100FCCD75 /* IStudentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C7603219E631100FCCD75 /* IStudentVC.swift */; };
+		8B7C7606219E631100FCCD75 /* IStudentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C7604219E631100FCCD75 /* IStudentVC.xib */; };
+		8B7C760A219E635000FCCD75 /* ILessonGradeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C7608219E635000FCCD75 /* ILessonGradeVC.swift */; };
+		8B7C760B219E635000FCCD75 /* ILessonGradeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C7609219E635000FCCD75 /* ILessonGradeVC.xib */; };
+		8B7C760F219E639300FCCD75 /* IHonorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C760D219E639300FCCD75 /* IHonorVC.swift */; };
+		8B7C7610219E639300FCCD75 /* IHonorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C760E219E639300FCCD75 /* IHonorVC.xib */; };
+		8B7C7614219E7E8700FCCD75 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C7612219E7E8700FCCD75 /* MessageCell.swift */; };
+		8B7C7615219E7E8700FCCD75 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C7613219E7E8700FCCD75 /* MessageCell.xib */; };
+		8B7C7618219EA28600FCCD75 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C7616219EA28600FCCD75 /* FriendCell.swift */; };
+		8B7C7619219EA28600FCCD75 /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C7617219EA28600FCCD75 /* FriendCell.xib */; };
+		8B7C761C219EE2A100FCCD75 /* HonorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C761A219EE2A100FCCD75 /* HonorCell.swift */; };
+		8B7C761D219EE2A100FCCD75 /* HonorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C761B219EE2A100FCCD75 /* HonorCell.xib */; };
 		8BAEA34C217EF88F00FC2CBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA34B217EF88F00FC2CBB /* AppDelegate.swift */; };
-		8BAEA34E217EF88F00FC2CBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA34D217EF88F00FC2CBB /* ViewController.swift */; };
 		8BAEA353217EF89000FC2CBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BAEA352217EF89000FC2CBB /* Assets.xcassets */; };
 		8BAEA356217EF89000FC2CBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BAEA354217EF89000FC2CBB /* LaunchScreen.storyboard */; };
 		8BAEA361217EF89000FC2CBB /* UniversityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA360217EF89000FC2CBB /* UniversityTests.swift */; };
@@ -341,9 +366,34 @@
 		8B7C75D4219D51FA00FCCD75 /* BandingStudentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandingStudentVC.swift; sourceTree = "<group>"; };
 		8B7C75D5219D51FA00FCCD75 /* BandingStudentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BandingStudentVC.xib; sourceTree = "<group>"; };
 		8B7C75DE219DB09500FCCD75 /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
+		8B7C75E0219E5CC300FCCD75 /* IMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMessageVC.swift; sourceTree = "<group>"; };
+		8B7C75E1219E5CC300FCCD75 /* IMessageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IMessageVC.xib; sourceTree = "<group>"; };
+		8B7C75E5219E5D9900FCCD75 /* IEssayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IEssayVC.swift; sourceTree = "<group>"; };
+		8B7C75E6219E5D9900FCCD75 /* IEssayVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IEssayVC.xib; sourceTree = "<group>"; };
+		8B7C75EA219E5EE800FCCD75 /* IFansVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IFansVC.swift; sourceTree = "<group>"; };
+		8B7C75EB219E5EE800FCCD75 /* IFansVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IFansVC.xib; sourceTree = "<group>"; };
+		8B7C75EF219E5F2800FCCD75 /* ICollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICollectionVC.swift; sourceTree = "<group>"; };
+		8B7C75F0219E5F2800FCCD75 /* ICollectionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ICollectionVC.xib; sourceTree = "<group>"; };
+		8B7C75F4219E619900FCCD75 /* IFriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IFriendsVC.swift; sourceTree = "<group>"; };
+		8B7C75F5219E619900FCCD75 /* IFriendsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IFriendsVC.xib; sourceTree = "<group>"; };
+		8B7C75F9219E622100FCCD75 /* IExperienceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IExperienceVC.swift; sourceTree = "<group>"; };
+		8B7C75FA219E622100FCCD75 /* IExperienceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IExperienceVC.xib; sourceTree = "<group>"; };
+		8B7C75FE219E628600FCCD75 /* IQANDAnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQANDAnswerVC.swift; sourceTree = "<group>"; };
+		8B7C75FF219E628600FCCD75 /* IQANDAnswerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IQANDAnswerVC.xib; sourceTree = "<group>"; };
+		8B7C7603219E631100FCCD75 /* IStudentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IStudentVC.swift; sourceTree = "<group>"; };
+		8B7C7604219E631100FCCD75 /* IStudentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IStudentVC.xib; sourceTree = "<group>"; };
+		8B7C7608219E635000FCCD75 /* ILessonGradeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ILessonGradeVC.swift; sourceTree = "<group>"; };
+		8B7C7609219E635000FCCD75 /* ILessonGradeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ILessonGradeVC.xib; sourceTree = "<group>"; };
+		8B7C760D219E639300FCCD75 /* IHonorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHonorVC.swift; sourceTree = "<group>"; };
+		8B7C760E219E639300FCCD75 /* IHonorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IHonorVC.xib; sourceTree = "<group>"; };
+		8B7C7612219E7E8700FCCD75 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		8B7C7613219E7E8700FCCD75 /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		8B7C7616219EA28600FCCD75 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		8B7C7617219EA28600FCCD75 /* FriendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
+		8B7C761A219EE2A100FCCD75 /* HonorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonorCell.swift; sourceTree = "<group>"; };
+		8B7C761B219EE2A100FCCD75 /* HonorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HonorCell.xib; sourceTree = "<group>"; };
 		8BAEA348217EF88F00FC2CBB /* University.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = University.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BAEA34B217EF88F00FC2CBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8BAEA34D217EF88F00FC2CBB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8BAEA352217EF89000FC2CBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BAEA355217EF89000FC2CBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BAEA357217EF89000FC2CBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -904,6 +954,102 @@
 			path = "登录绑定";
 			sourceTree = "<group>";
 		};
+		8B7C75E4219E5D2600FCCD75 /* IMessage */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C75E0219E5CC300FCCD75 /* IMessageVC.swift */,
+				8B7C75E1219E5CC300FCCD75 /* IMessageVC.xib */,
+				8B7C7612219E7E8700FCCD75 /* MessageCell.swift */,
+				8B7C7613219E7E8700FCCD75 /* MessageCell.xib */,
+			);
+			path = IMessage;
+			sourceTree = "<group>";
+		};
+		8B7C75E9219E5EA800FCCD75 /* IEssay */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C75E5219E5D9900FCCD75 /* IEssayVC.swift */,
+				8B7C75E6219E5D9900FCCD75 /* IEssayVC.xib */,
+			);
+			path = IEssay;
+			sourceTree = "<group>";
+		};
+		8B7C75EE219E5F0200FCCD75 /* IFans */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C75EA219E5EE800FCCD75 /* IFansVC.swift */,
+				8B7C75EB219E5EE800FCCD75 /* IFansVC.xib */,
+				8B7C7616219EA28600FCCD75 /* FriendCell.swift */,
+				8B7C7617219EA28600FCCD75 /* FriendCell.xib */,
+			);
+			path = IFans;
+			sourceTree = "<group>";
+		};
+		8B7C75F3219E606800FCCD75 /* ICollection */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C75EF219E5F2800FCCD75 /* ICollectionVC.swift */,
+				8B7C75F0219E5F2800FCCD75 /* ICollectionVC.xib */,
+			);
+			path = ICollection;
+			sourceTree = "<group>";
+		};
+		8B7C75F8219E61CF00FCCD75 /* IFriends */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C75F4219E619900FCCD75 /* IFriendsVC.swift */,
+				8B7C75F5219E619900FCCD75 /* IFriendsVC.xib */,
+			);
+			path = IFriends;
+			sourceTree = "<group>";
+		};
+		8B7C75FD219E623700FCCD75 /* IExperiences */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C75F9219E622100FCCD75 /* IExperienceVC.swift */,
+				8B7C75FA219E622100FCCD75 /* IExperienceVC.xib */,
+			);
+			path = IExperiences;
+			sourceTree = "<group>";
+		};
+		8B7C7602219E629900FCCD75 /* IQANDAnswer */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C75FE219E628600FCCD75 /* IQANDAnswerVC.swift */,
+				8B7C75FF219E628600FCCD75 /* IQANDAnswerVC.xib */,
+			);
+			path = IQANDAnswer;
+			sourceTree = "<group>";
+		};
+		8B7C7607219E632500FCCD75 /* IStudent */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C7603219E631100FCCD75 /* IStudentVC.swift */,
+				8B7C7604219E631100FCCD75 /* IStudentVC.xib */,
+			);
+			path = IStudent;
+			sourceTree = "<group>";
+		};
+		8B7C760C219E636800FCCD75 /* ILessonGrade */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C7608219E635000FCCD75 /* ILessonGradeVC.swift */,
+				8B7C7609219E635000FCCD75 /* ILessonGradeVC.xib */,
+			);
+			path = ILessonGrade;
+			sourceTree = "<group>";
+		};
+		8B7C7611219E63B600FCCD75 /* IHonor */ = {
+			isa = PBXGroup;
+			children = (
+				8B7C760D219E639300FCCD75 /* IHonorVC.swift */,
+				8B7C760E219E639300FCCD75 /* IHonorVC.xib */,
+				8B7C761A219EE2A100FCCD75 /* HonorCell.swift */,
+				8B7C761B219EE2A100FCCD75 /* HonorCell.xib */,
+			);
+			path = IHonor;
+			sourceTree = "<group>";
+		};
 		8BAEA33F217EF88F00FC2CBB = {
 			isa = PBXGroup;
 			children = (
@@ -969,11 +1115,10 @@
 			isa = PBXGroup;
 			children = (
 				8BAEA34B217EF88F00FC2CBB /* AppDelegate.swift */,
-				8BAEA34D217EF88F00FC2CBB /* ViewController.swift */,
 				8BAEA3E9217F12F700FC2CBB /* SizeHeader.swift */,
 				8B64B48621991C65005C2E07 /* UtilityMethod.swift */,
-				8BAEA354217EF89000FC2CBB /* LaunchScreen.storyboard */,
 				8B7C75DE219DB09500FCCD75 /* GlobalData.swift */,
+				8BAEA354217EF89000FC2CBB /* LaunchScreen.storyboard */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -1028,9 +1173,19 @@
 		8BAEA3E1217EFE2D00FC2CBB /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
-				8BAEA3AB217EFB2E00FC2CBB /* UserVC.swift */,
 				8B24EE372181C1A80044514C /* Model */,
 				8B24EE382181C1B10044514C /* UserView */,
+				8BAEA3AB217EFB2E00FC2CBB /* UserVC.swift */,
+				8B7C75E4219E5D2600FCCD75 /* IMessage */,
+				8B7C75E9219E5EA800FCCD75 /* IEssay */,
+				8B7C75EE219E5F0200FCCD75 /* IFans */,
+				8B7C75F3219E606800FCCD75 /* ICollection */,
+				8B7C75F8219E61CF00FCCD75 /* IFriends */,
+				8B7C75FD219E623700FCCD75 /* IExperiences */,
+				8B7C7602219E629900FCCD75 /* IQANDAnswer */,
+				8B7C7607219E632500FCCD75 /* IStudent */,
+				8B7C760C219E636800FCCD75 /* ILessonGrade */,
+				8B7C7611219E63B600FCCD75 /* IHonor */,
 			);
 			path = "我的";
 			sourceTree = "<group>";
@@ -1214,22 +1369,30 @@
 			files = (
 				8B64B55E219ABE9A005C2E07 /* LostAndFoundCell.xib in Resources */,
 				8BAEA3FE217F62CE00FC2CBB /* CampusFuncCell.xib in Resources */,
+				8B7C7606219E631100FCCD75 /* IStudentVC.xib in Resources */,
 				8B7C75C0219C2A5500FCCD75 /* DetailUtilityVC.xib in Resources */,
 				8B64B57F219B05A0005C2E07 /* SpeechCell.xib in Resources */,
+				8B7C7615219E7E8700FCCD75 /* MessageCell.xib in Resources */,
+				8B7C75E8219E5D9900FCCD75 /* IEssayVC.xib in Resources */,
 				8B64B535219A5ED4005C2E07 /* RaceInfoCell.xib in Resources */,
 				8B64B559219AB3C4005C2E07 /* LostAndFoundVC.xib in Resources */,
 				8B7C75B7219C01B700FCCD75 /* PartTimeJobVC.xib in Resources */,
 				8B7C75A2219C00CE00FCCD75 /* UtilityBillVC.xib in Resources */,
 				8B7C75A7219C011300FCCD75 /* ShootAndPrintVC.xib in Resources */,
 				8B64B543219A7003005C2E07 /* DetailInfoVC.xib in Resources */,
+				8B7C75ED219E5EE800FCCD75 /* IFansVC.xib in Resources */,
 				8B7C75C8219C741100FCCD75 /* SchoolStoreCell.xib in Resources */,
+				8B7C7610219E639300FCCD75 /* IHonorVC.xib in Resources */,
 				8B64B5242199CC8E005C2E07 /* RaceVC.xib in Resources */,
 				8B0EF3172182F21E000EA64E /* ReadingVC.xib in Resources */,
+				8B7C760B219E635000FCCD75 /* ILessonGradeVC.xib in Resources */,
 				8B64B562219AE77F005C2E07 /* ClubVC.xib in Resources */,
 				8B7C75C4219C4DFD00FCCD75 /* ShootPrintCell.xib in Resources */,
 				8BAEA3E5217F077700FC2CBB /* ADCell.xib in Resources */,
 				8B3002FB218B35CE00D53D34 /* CountdownCell.xib in Resources */,
 				8BAEA40E2180AEFA00FC2CBB /* NewsCell.xib in Resources */,
+				8B7C75E3219E5CC300FCCD75 /* IMessageVC.xib in Resources */,
+				8B7C7619219EA28600FCCD75 /* FriendCell.xib in Resources */,
 				8B64B550219A988A005C2E07 /* ExaminationVC.xib in Resources */,
 				8B0EF30F2182F1E8000EA64E /* FocusVC.xib in Resources */,
 				8B0EF30B2182F197000EA64E /* RecommandVC.xib in Resources */,
@@ -1242,6 +1405,7 @@
 				8B64B57B219AFB58005C2E07 /* ClubCell.xib in Resources */,
 				8B64B54C219A910D005C2E07 /* LessonGradeCell.xib in Resources */,
 				8BAEA409218091B300FC2CBB /* HeadlineView.xib in Resources */,
+				8B7C75F2219E5F2800FCCD75 /* ICollectionVC.xib in Resources */,
 				8B0EF31B2182F324000EA64E /* QuestionVC.xib in Resources */,
 				8B64B53E219A6B54005C2E07 /* AcdemicVC.xib in Resources */,
 				8B64B52D2199D6CA005C2E07 /* RaceTableViewCell.xib in Resources */,
@@ -1252,8 +1416,10 @@
 				8B0EF341218350F0000EA64E /* QuestionCell.xib in Resources */,
 				8B0EF3132182F204000EA64E /* CampusVC.xib in Resources */,
 				8B7C75AC219C015800FCCD75 /* PropertyManagerVC.xib in Resources */,
+				8B7C75F7219E619900FCCD75 /* IFriendsVC.xib in Resources */,
 				8BAEA3F3217F2C8700FC2CBB /* TipsHeaderView.xib in Resources */,
 				8B64B583219B22BA005C2E07 /* AddressListCell.xib in Resources */,
+				8B7C761D219EE2A100FCCD75 /* HonorCell.xib in Resources */,
 				8B3002FE218B35CE00D53D34 /* CountdownView.xib in Resources */,
 				8BAEA3EE217F253700FC2CBB /* DateHeaderView.xib in Resources */,
 				8B24EE402181E1010044514C /* EssayCell.xib in Resources */,
@@ -1262,8 +1428,10 @@
 				8B0EF3242182FCE9000EA64E /* ExperienceVC.xib in Resources */,
 				8BAEA356217EF89000FC2CBB /* LaunchScreen.storyboard in Resources */,
 				8B64B56C219AE9F3005C2E07 /* SpeechVC.xib in Resources */,
+				8B7C75FC219E622100FCCD75 /* IExperienceVC.xib in Resources */,
 				8B7C75D7219D51FA00FCCD75 /* BandingStudentVC.xib in Resources */,
 				8BAEA43F2181A80D00FC2CBB /* UserView.xib in Resources */,
+				8B7C7601219E628600FCCD75 /* IQANDAnswerVC.xib in Resources */,
 				8B64B571219AEA6F005C2E07 /* SchoolCalendarVC.xib in Resources */,
 				8B64B547219A7DF8005C2E07 /* LessonGradeVC.xib in Resources */,
 				8BAEA353217EF89000FC2CBB /* Assets.xcassets in Resources */,
@@ -1325,6 +1493,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CurriculaTable/CurriculaTable.framework",
 				"${BUILT_PRODUCTS_DIR}/DNSPageView/DNSPageView.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
@@ -1341,6 +1510,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurriculaTable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DNSPageView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
@@ -1413,6 +1583,7 @@
 				8B64B48521987C37005C2E07 /* UserInfo.swift in Sources */,
 				8B64B554219A9D6B005C2E07 /* ExaminationCell.swift in Sources */,
 				8BAEA43D2181A7FB00FC2CBB /* UserView.swift in Sources */,
+				8B7C75E7219E5D9900FCCD75 /* IEssayVC.swift in Sources */,
 				8B7C75B6219C01B700FCCD75 /* PartTimeJobVC.swift in Sources */,
 				8B64B57E219B05A0005C2E07 /* SpeechCell.swift in Sources */,
 				8BAEA3FD217F62CE00FC2CBB /* CampusFuncCell.swift in Sources */,
@@ -1432,14 +1603,17 @@
 				8B64B566219AE995005C2E07 /* EmptyClassRoomVC.swift in Sources */,
 				8B64B534219A5ED4005C2E07 /* RaceInfoCell.swift in Sources */,
 				8B7C75D1219D17CB00FCCD75 /* RegisterVC.swift in Sources */,
+				8B7C7605219E631100FCCD75 /* IStudentVC.swift in Sources */,
 				8B7C7597219BD8D700FCCD75 /* ExperienceCell.swift in Sources */,
 				8BAEA401217F707600FC2CBB /* CampusFuncModel.swift in Sources */,
+				8B7C761C219EE2A100FCCD75 /* HonorCell.swift in Sources */,
 				8B64B46E21987C37005C2E07 /* Book.swift in Sources */,
 				8B0EF32721832BB3000EA64E /* CampusNewsCell.swift in Sources */,
 				8B64B47F21987C37005C2E07 /* Collection.swift in Sources */,
 				8B64B561219AE77F005C2E07 /* ClubVC.swift in Sources */,
 				8B64B47321987C37005C2E07 /* Question.swift in Sources */,
 				8B7C75A1219C00CE00FCCD75 /* UtilityBillVC.swift in Sources */,
+				8B7C75EC219E5EE800FCCD75 /* IFansVC.swift in Sources */,
 				8B64B546219A7DF8005C2E07 /* LessonGradeVC.swift in Sources */,
 				8B3002FA218B35CE00D53D34 /* CountdownCell.swift in Sources */,
 				8BAEA417218162D700FC2CBB /* MyServerModel.swift in Sources */,
@@ -1453,12 +1627,14 @@
 				8B64B47621987C37005C2E07 /* PartTimeJob.swift in Sources */,
 				8B64B54F219A988A005C2E07 /* ExaminationVC.swift in Sources */,
 				8B64B582219B22BA005C2E07 /* AddressListCell.swift in Sources */,
+				8B7C760F219E639300FCCD75 /* IHonorVC.swift in Sources */,
 				8B64B575219AEAD1005C2E07 /* AddressListVC.swift in Sources */,
 				8B64B54B219A910D005C2E07 /* LessonGradeCell.swift in Sources */,
 				8B0EF3122182F204000EA64E /* CampusVC.swift in Sources */,
 				8B64B47521987C37005C2E07 /* IdleGood.swift in Sources */,
 				8BAEA40D2180AEFA00FC2CBB /* NewsCell.swift in Sources */,
 				8B7C75CF219D175D00FCCD75 /* LoginVC.swift in Sources */,
+				8B7C75F1219E5F2800FCCD75 /* ICollectionVC.swift in Sources */,
 				8B64B538219A5EF9005C2E07 /* RaceDetailCell.swift in Sources */,
 				8B64B47A21987C37005C2E07 /* UtilityBill.swift in Sources */,
 				8BAEA3E4217F077700FC2CBB /* ADCell.swift in Sources */,
@@ -1470,19 +1646,23 @@
 				8B0EF340218350F0000EA64E /* QuestionCell.swift in Sources */,
 				8B7C75BF219C2A5500FCCD75 /* DetailUtilityVC.swift in Sources */,
 				8B64B49421999DFF005C2E07 /* UIColor+Extension.swift in Sources */,
+				8B7C75E2219E5CC300FCCD75 /* IMessageVC.swift in Sources */,
 				8B0EF33921833FF7000EA64E /* ReadingCell.swift in Sources */,
-				8BAEA34E217EF88F00FC2CBB /* ViewController.swift in Sources */,
 				8BAEA4072180919600FC2CBB /* HeadlineView.swift in Sources */,
 				8BAEA3F1217F2C7500FC2CBB /* TipsHeaderView.swift in Sources */,
 				8BAEA3EC217F24F500FC2CBB /* DateHeaderView.swift in Sources */,
 				8B24EE3F2181E1010044514C /* EssayCell.swift in Sources */,
+				8B7C760A219E635000FCCD75 /* ILessonGradeVC.swift in Sources */,
+				8B7C7618219EA28600FCCD75 /* FriendCell.swift in Sources */,
 				8B64B558219AB3C4005C2E07 /* LostAndFoundVC.swift in Sources */,
 				8B64B46421987C37005C2E07 /* AddressList.swift in Sources */,
 				8B64B47121987C37005C2E07 /* Essay.swift in Sources */,
 				8B64B57A219AFB58005C2E07 /* ClubCell.swift in Sources */,
+				8B7C75FB219E622100FCCD75 /* IExperienceVC.swift in Sources */,
 				8B7C75DF219DB09500FCCD75 /* GlobalData.swift in Sources */,
 				8B64B47221987C37005C2E07 /* Experience.swift in Sources */,
 				8B64B490219987D7005C2E07 /* LessonTimeTable.swift in Sources */,
+				8B7C75F6219E619900FCCD75 /* IFriendsVC.swift in Sources */,
 				8B64B47421987C37005C2E07 /* Resource.swift in Sources */,
 				8BAEA34C217EF88F00FC2CBB /* AppDelegate.swift in Sources */,
 				8B7C75C7219C741100FCCD75 /* SchoolStoreCell.swift in Sources */,
@@ -1501,7 +1681,9 @@
 				8B64B47021987C37005C2E07 /* Comment.swift in Sources */,
 				8B64B46D21987C37005C2E07 /* Answer.swift in Sources */,
 				8B64B5232199CC8E005C2E07 /* RaceVC.swift in Sources */,
+				8B7C7600219E628600FCCD75 /* IQANDAnswerVC.swift in Sources */,
 				8B0EF3232182FCE9000EA64E /* ExperienceVC.swift in Sources */,
+				8B7C7614219E7E8700FCCD75 /* MessageCell.swift in Sources */,
 				8B7C759C219C007B00FCCD75 /* IdleGoodVC.swift in Sources */,
 				8B64B46B21987C37005C2E07 /* Race.swift in Sources */,
 				8B64B48721991C65005C2E07 /* UtilityMethod.swift in Sources */,

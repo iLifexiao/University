@@ -1,8 +1,8 @@
 //
-//  LessonGradeVC.swift
+//  IEssayVC.swift
 //  University
 //
-//  Created by 肖权 on 2018/11/13.
+//  Created by 肖权 on 2018/11/16.
 //  Copyright © 2018 肖权. All rights reserved.
 //
 
@@ -11,17 +11,15 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 
-class LessonGradeVC: UIViewController {
+class IEssayVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    let lessonCell = "lessonCell"
-    
-    var lessonGrades: [LessonGrade] = []
+    private var essays: [Essay] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initUI()
         initData()
+        initUI()        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,17 +28,16 @@ class LessonGradeVC: UIViewController {
     }
     
     private func initData() {
-        getLessonGrade()
+        getEssays()
     }
     
     private func initUI() {
-        title = "成绩单"
+        title = "我的文章"
         setupTableView()
     }
     
     private func setupTableView() {
-        // 每一个复用的Cell都需要注册，发现通过代码创建的cell有复用问题
-        tableView.register(UINib(nibName: "LessonGradeCell", bundle: nil), forCellReuseIdentifier: lessonCell)
+        tableView.register(UINib(nibName: "EssayCell", bundle: nil), forCellReuseIdentifier: "EssayCell")
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -56,59 +53,59 @@ class LessonGradeVC: UIViewController {
         tableView.tableFooterView = UIView()
         
         // 下拉刷新
-        tableView.mj_header = MJRefreshNormalHeader{ [weak self] in
-            // 重新获取
-            self?.getLessonGrade()
+        tableView.mj_header = MJRefreshNormalHeader { [weak self] in
+            self?.getEssays()
             
             self?.tableView.mj_header.endRefreshing()
             self?.view.makeToast("刷新成功", position: .top)
         }
     }
     
-    private func getLessonGrade() {
-        MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/student/grade", headers: headers).responseJSON { [weak self] response in
-            if let self = self {
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    self.lessonGrades.removeAll()
-                    // json是数组
-                    for (_, subJson):(String, JSON) in json {
-                        self.lessonGrades.append(LessonGrade(jsonData: subJson))
-                    }
-                    MBProgressHUD.hide(for: self.view, animated: true)
-                    self.tableView.reloadData()
-                case .failure(let error):
-                    print(error)
+    private func getEssays() {
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/essays", headers: headers).responseJSON { [weak self]  response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self?.essays.removeAll()
+                // json是数组
+                for (_, subJson):(String, JSON) in json {
+                    self?.essays.append(Essay(jsonData: subJson))
                 }
+                self?.tableView.reloadData()
+            case .failure(let error):
+                print(error)
             }
+        }
+    }
+    
+}
+
+
+extension IEssayVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let essay = essays[indexPath.section]
+        let essayTitle = essay.title
+        view.makeToast(essayTitle)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 1
+        default:
+            return 20
         }
     }
 }
 
-extension LessonGradeVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
-        let academic = academics[indexPath.section]
-        let detailInfoVC = DetailInfoVC()
-        detailInfoVC.academic = academic
-        navigationController?.pushViewController(detailInfoVC, animated: true)
-        */
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70.0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10
-    }
-}
-
-extension LessonGradeVC: UITableViewDataSource {
+extension IEssayVC: UITableViewDataSource {
+    // 每个section一篇文章
     func numberOfSections(in tableView: UITableView) -> Int {
-        return lessonGrades.count
+        return essays.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,28 +113,40 @@ extension LessonGradeVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: lessonCell, for: indexPath) as! LessonGradeCell
-        let lessonGrade = lessonGrades[indexPath.section]
-        cell.setupModel(lessonGrade)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EssayCell", for: indexPath) as! EssayCell
+        cell.setupModel(essays[indexPath.section])
+        cell.delegate = self
+        
         cell.selectionStyle = .none
         return cell
     }
 }
 
-// MARK: 空视图-代理
-extension LessonGradeVC: DZNEmptyDataSetDelegate {
-    func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        view.makeToast("联系管理员，或重新试试看~")
+// MARK: 文章-MORE-点击代理
+extension IEssayVC: EssayCellDelegate {
+    func showMoreInfoAboutEssay(_ id: String?) {
+        view.makeToast(id)
+    }
+    
+    func showSameTypeEssay(_ type: String?) {
+        view.makeToast(type)
     }
 }
 
-extension LessonGradeVC: DZNEmptyDataSetSource {
+// MARK: 空视图-代理
+extension IEssayVC: DZNEmptyDataSetDelegate {
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
+        self.view.makeToast("去 交流区 写一篇文章试试吧~")
+    }
+}
+
+extension IEssayVC: DZNEmptyDataSetSource {
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: "emptyGrade")
+        return UIImage(named: "emptyEssay")
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView?) -> NSAttributedString? {
-        let text = "啊咧，成绩消失了~"
+        let text = "啊咧，还没有文章~"
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineBreakMode = .byWordWrapping

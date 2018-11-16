@@ -17,7 +17,7 @@ target 'University' do
   pod 'MJRefresh'
   pod "CurriculaTable"
   pod 'MBProgressHUD', '~> 1.1.0'
-  
+  pod 'DZNEmptyDataSet'  
 
   target 'UniversityTests' do
     inherit! :search_paths

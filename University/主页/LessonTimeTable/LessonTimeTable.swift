@@ -21,6 +21,10 @@ class LessonTimeTable: UIViewController {
     // 获取lesson完成后，设置课程表，起到通知的效果
     var lessonGetDone: Int {
         set {
+            if lessons.count == 0 {
+                view.makeToast("未查询到课程表", position: .center)
+                return
+            }
             for lesson in lessons {
                 let period = dayStringMap(lesson.timeInDay)
                 let item = CurriculaTableItem(name: lesson.name, place: lesson.site, weekday: weekStringMap(lesson.timeInWeek), startPeriod: period.0, endPeriod: period.1, textColor: UIColor.white, bgColor: UIColor.randomColor, identifier: String(lesson.id!), tapHandler: handler)

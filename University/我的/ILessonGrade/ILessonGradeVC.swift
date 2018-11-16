@@ -1,8 +1,8 @@
 //
-//  LessonGradeVC.swift
+//  ILessonGradeVC.swift
 //  University
 //
-//  Created by 肖权 on 2018/11/13.
+//  Created by 肖权 on 2018/11/16.
 //  Copyright © 2018 肖权. All rights reserved.
 //
 
@@ -11,12 +11,15 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 
-class LessonGradeVC: UIViewController {
-
+class ILessonGradeVC: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     let lessonCell = "lessonCell"
+    let infoCell = "infoCell"
     
     var lessonGrades: [LessonGrade] = []
+    var lessonInfo = ["通过", "失败", "获得学分", "平均绩点"]
+    var lessonInfoValue: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +80,7 @@ class LessonGradeVC: UIViewController {
                     for (_, subJson):(String, JSON) in json {
                         self.lessonGrades.append(LessonGrade(jsonData: subJson))
                     }
+                    self.getGradeInfo(self.lessonGrades)
                     MBProgressHUD.hide(for: self.view, animated: true)
                     self.tableView.reloadData()
                 case .failure(let error):
@@ -85,53 +89,131 @@ class LessonGradeVC: UIViewController {
             }
         }
     }
+    
+    private func getGradeInfo(_ lessonGrades: [LessonGrade]) {
+        var passCount = 0
+        var failCount = 0
+        var allCredit: Float = 0.0
+        var getPoint: Float = 0.0
+        
+        lessonInfoValue.removeAll()
+        
+        for grade in lessonGrades {
+            allCredit += grade.credit
+            getPoint += grade.credit * grade.gradePoint
+            if grade.grade >= 60 {
+                passCount += 1
+            } else {
+                failCount += 1
+            }
+        }
+        // 平均绩点(学分 * 课程绩点 / 总学分)
+        
+        lessonInfoValue = [
+            String(passCount),
+            String(failCount),
+            String(format: "%.2f", allCredit),
+            String(format: "%.2f", getPoint / allCredit)
+        ]
+    }
 }
 
-extension LessonGradeVC: UITableViewDelegate {
+extension ILessonGradeVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
-        let academic = academics[indexPath.section]
-        let detailInfoVC = DetailInfoVC()
-        detailInfoVC.academic = academic
-        navigationController?.pushViewController(detailInfoVC, animated: true)
-        */
+        switch indexPath.section {
+        case 0:
+            let lessonGrade = lessonGrades[indexPath.row]
+            let toast = String(format: "课程绩点:%.2f", lessonGrade.gradePoint)
+            view.makeToast(toast, position: .center)
+        default:
+            print("Not Here")
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70.0
+        switch indexPath.section {
+        case 0:
+            return 70.0
+        default:
+            return 44
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10
     }
+    
+    // HeadView
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            return nil
+        case 1:
+            let tipsHeaderView = Bundle.main.loadNibNamed("TipsHeaderView", owner: nil, options: nil)?[0] as! TipsHeaderView
+            tipsHeaderView.setTips(title: "成绩统计")
+            return tipsHeaderView
+        default:
+            return nil
+        }
+    }
+    
+    // HeadView-height
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 0
+        default:
+            return 50
+        }
+    }
 }
 
-extension LessonGradeVC: UITableViewDataSource {
+extension ILessonGradeVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return lessonGrades.count
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case 0:
+            return lessonGrades.count
+        default:
+            return lessonInfoValue.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: lessonCell, for: indexPath) as! LessonGradeCell
-        let lessonGrade = lessonGrades[indexPath.section]
-        cell.setupModel(lessonGrade)
-        cell.selectionStyle = .none
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: lessonCell, for: indexPath) as! LessonGradeCell
+            let lessonGrade = lessonGrades[indexPath.row]
+            cell.setupModel(lessonGrade)
+            cell.selectionStyle = .none
+            return cell
+        default:
+            var cell = tableView.dequeueReusableCell(withIdentifier: infoCell)
+            if cell == nil {
+                cell = UITableViewCell(style: .value1, reuseIdentifier: infoCell)
+            }
+            cell?.textLabel?.text = lessonInfo[indexPath.row]
+            cell?.detailTextLabel?.text = lessonInfoValue[indexPath.row]
+            cell?.selectionStyle = .none
+            return cell!
+        }
+
     }
 }
 
 // MARK: 空视图-代理
-extension LessonGradeVC: DZNEmptyDataSetDelegate {
+extension ILessonGradeVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        view.makeToast("联系管理员，或重新试试看~")
+        self.view.makeToast("联系管理员，或重新试试看~", position: .top)
     }
 }
 
-extension LessonGradeVC: DZNEmptyDataSetSource {
+extension ILessonGradeVC: DZNEmptyDataSetSource {
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "emptyGrade")
     }

@@ -92,6 +92,8 @@ class LoginVC: UIViewController {
                         // 记录登录用户的ID(更新全局变量)
                         UserDefaults.standard.set(json["data"]["userID"].intValue, forKey: userIDKey)
                         GlobalData.sharedInstance.userID = json["data"]["userID"].intValue
+                        GlobalData.sharedInstance.userName = json["data"]["nickname"].stringValue
+                        GlobalData.sharedInstance.userHeadImage = json["data"]["profilephoto"].stringValue
                         
                         self.navigationController?.popViewController(animated: true)
                     } else {
