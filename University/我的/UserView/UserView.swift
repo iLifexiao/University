@@ -34,11 +34,17 @@ class UserView: UIView {
         userBGImageView.image = bgImage
     }
     
-    func setUserHead(_ head: String) {        
+    func setUserHead(_ head: String?) {
+        guard let head = head else {
+            return
+        }
         userHeadImageView.sd_setImage(with: URL(string: baseURL + head), completed: nil)
     }
     
-    func setUserName(_ name: String) {
+    func setUserName(_ name: String?) {
+        guard let name = name else {
+            return
+        }
         userNameLabel.text = name
     }
     
@@ -81,6 +87,7 @@ class UserView: UIView {
             delegate.userViewFuncClick(funcName)
         }
     }
+    
     
     
 }

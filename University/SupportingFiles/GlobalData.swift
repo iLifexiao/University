@@ -13,8 +13,8 @@ final class GlobalData {
     
     var userID: Int = 0
     var studentID: Int = 0
-    var userName: String = "请登录"
+    var userName: String = "用户未登录"
     var userHeadImage: String = ""
-        
+    
     private init() {}
 }

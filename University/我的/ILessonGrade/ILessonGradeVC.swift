@@ -91,6 +91,9 @@ class ILessonGradeVC: UIViewController {
     }
     
     private func getGradeInfo(_ lessonGrades: [LessonGrade]) {
+        guard lessonGrades.count != 0 else {
+            return
+        }
         var passCount = 0
         var failCount = 0
         var allCredit: Float = 0.0

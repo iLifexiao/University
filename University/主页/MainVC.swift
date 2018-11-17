@@ -12,6 +12,7 @@ import SDWebImage
 import Toast_Swift
 import Alamofire
 import SwiftyJSON
+import SwiftDate
 
 class MainVC: UIViewController {
     
@@ -42,6 +43,28 @@ class MainVC: UIViewController {
     // 倒数日、校园服务
     var countdowns: [CountdownModel] = []
     var campusFuncs: [CampusFuncModel] = []
+    
+    private let dateEvent: [(String, String)] = [
+        ("元旦节", "01-01"),
+        ("情人节", "02-14"),
+        ("妇女节", "03-08"),
+        ("植树节", "03-12"),
+        ("消权日", "03-15"),
+        ("植树节", "03-12"),
+        ("愚人节", "04-01"),
+        ("劳动节", "05-01"),
+        ("青年节", "05-04"),
+        ("儿童节", "06-01"),
+        ("建党节", "07-01"),
+        ("建军节", "08-01"),
+        ("中元节", "08-15"),
+        ("教师节", "09-10"),
+        ("国庆节", "10-01"),
+        ("CET", "12-15"),
+        ("考研", "12-22"),
+        ("平安夜", "12-24"),
+        ("圣诞节", "12-25")
+    ]
         
     // 日期默认
     var week: String = "星期三"
@@ -71,20 +94,25 @@ class MainVC: UIViewController {
         GlobalData.sharedInstance.userID = UserDefaults.standard.integer(forKey: userIDKey)
         GlobalData.sharedInstance.studentID = UserDefaults.standard.integer(forKey: studentIDKey)
         
+        GlobalData.sharedInstance.userName = UserDefaults.standard.string(forKey: userNameKey) ?? "用户未登录"
+        GlobalData.sharedInstance.userHeadImage = UserDefaults.standard.string(forKey: userHeadKey) ?? "/image/defalut.png"
+        
         // 首页轮播图
         getADBanner()
         getNotifications()
         
         // 日期
-        date = getFormatDate(format: "YYYY-MM-dd")
-        week = getFormatDate(format: "EEEE")
+        
+        date = Date().toFormat("YYYY-MM-dd")
+        week = Date().toFormat("EEEE")
         
         // countdown
-        let countdown1 = CountdownModel(date: "2018-12-15", event: "CET-4", day: 33)
-        let countdown2 = CountdownModel(date: "2018-12-25", event: "圣诞节", day: 43)
-        let countdown3 = CountdownModel(date: "2019-01-01", event: "元旦节", day: 49)
-        let countdown4 = CountdownModel(date: "2019-02-05", event: "春节", day: 85)
-        countdowns = [countdown1, countdown2, countdown3, countdown4]
+        getCountDown(count: 4)
+//        let countdown1 = CountdownModel(date: "2018-12-15", event: "CET-4", day: 33)
+//        let countdown2 = CountdownModel(date: "2018-12-25", event: "圣诞节", day: 43)
+//        let countdown3 = CountdownModel(date: "2019-01-01", event: "元旦节", day: 49)
+//        let countdown4 = CountdownModel(date: "2019-02-05", event: "春节", day: 85)
+//        countdowns = [countdown1, countdown2, countdown3, countdown4]
         
         // 校园服务
         let campusFuncModel = CampusFuncModel(icon: UIImage(named: "lesson"), name: "课程表")
@@ -137,6 +165,10 @@ class MainVC: UIViewController {
             UserDefaults.standard.set(0, forKey: studentIDKey) //学生ID
             UserDefaults.standard.set(nil, forKey: accountKey) // 用户帐号
             UserDefaults.standard.set(true, forKey: autoLoginKey) //自动登录
+            
+            // 默认用户信息
+            UserDefaults.standard.set("用户未登录", forKey: userNameKey)
+            UserDefaults.standard.set("/image/defalut.png", forKey: userHeadKey)
         }
     }
     
@@ -173,11 +205,71 @@ class MainVC: UIViewController {
         }
     }
     
-    private func getFormatDate(format: String) -> String {
-        let now = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: now)
+    // 获取倒数日
+    private func getCountDown(count: Int) {
+        
+        // (事件, 2018-12-02)
+        var events: [(String, String)] = []
+        
+        // 日期成分
+        let todayDate = Date().toFormat("YYYY-MM-dd")
+        let today = Date() // 比较的日期
+        let year = today.year
+        let month = today.month
+        let day = today.day
+        
+        // 日期格式
+        var monthStr = String(month)
+        var dayStr = String(day)
+        
+        // 更改格式
+        if month < 10 {
+            monthStr = "0" + String(month)
+        }
+        
+        if day < 10 {
+            dayStr = "0" + String(day)
+        }
+        
+        let currentMMdd = monthStr + "-" + dayStr
+        // 记录当前日期在事件列表里的位置（小于它的均为明年，反之为今年）
+        var currentMMddIndex = 0
+        for event in dateEvent {
+            if event.1 < currentMMdd {
+                currentMMddIndex += 1
+            }
+        }
+        
+        // 添加显示的事件
+        let dateEventCount = dateEvent.count // 日期事件的个数
+        for index in currentMMddIndex..<(count + currentMMddIndex) {
+            // 超过范围的为下一年
+            if index > dateEventCount - 1 {
+                let event = dateEvent[index % dateEventCount]
+                events.append((event.0, String(year + 1) + "-" + event.1))
+            } else {
+                let event = dateEvent[index]
+                events.append((event.0, String(year) + "-" + event.1))
+            }
+        }
+        
+        // 计算日期距离
+        // let days = dateA.getInterval(toDate: dateB, component: .day)
+        var eventDistancesDay: [Int] = []
+        for event in events {
+            let dateOfEvent = event.1
+            // 需要转换为 DateInRegion 才能计算
+            let today = DateInRegion(todayDate)!
+            let anotherDay = DateInRegion(dateOfEvent)!
+            let days = today.getInterval(toDate: anotherDay, component: .day)
+            eventDistancesDay.append(Int(days))
+        }
+        
+        // 组合
+        for index in 0..<count {
+            let countdown = CountdownModel(date: events[index].1, event: events[index].0, day: eventDistancesDay[index])
+            countdowns.append(countdown)
+        }
     }
 }
 

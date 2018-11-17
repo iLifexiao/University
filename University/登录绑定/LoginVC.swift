@@ -87,13 +87,21 @@ class LoginVC: UIViewController {
                     let json = JSON(value)
                     // 登录成功
                     if json["status"].intValue == 0 {
+                        let userInfo = UserInfo(jsonData: json["data"])
                         // 并获取学生ID
-                        self.loginSucceed = json["data"]["userID"].intValue
-                        // 记录登录用户的ID(更新全局变量)
-                        UserDefaults.standard.set(json["data"]["userID"].intValue, forKey: userIDKey)
-                        GlobalData.sharedInstance.userID = json["data"]["userID"].intValue
-                        GlobalData.sharedInstance.userName = json["data"]["nickname"].stringValue
-                        GlobalData.sharedInstance.userHeadImage = json["data"]["profilephoto"].stringValue
+                        self.loginSucceed = userInfo.userID
+                        // 记录登录用户的ID、姓名、头像(更新全局变量)
+                        UserDefaults.standard.set(userInfo.userID, forKey: userIDKey)
+                        UserDefaults.standard.set(userInfo.nickname, forKey: userNameKey)
+                        UserDefaults.standard.set(userInfo.profilephoto, forKey: userHeadKey)
+                        
+                        GlobalData.sharedInstance.userID = userInfo.userID
+                        GlobalData.sharedInstance.userName = userInfo.nickname
+                        GlobalData.sharedInstance.userHeadImage = userInfo.profilephoto
+                        
+                        // 发送更新UserView的通知(并j携带数据)
+                        let info = ["userName": userInfo.nickname, "headImage": userInfo.profilephoto]
+                        NotificationCenter.default.post(name: NSNotification.Name(updateUserViewNotification), object: nil, userInfo: info)
                         
                         self.navigationController?.popViewController(animated: true)
                     } else {

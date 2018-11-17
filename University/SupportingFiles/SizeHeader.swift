@@ -55,6 +55,9 @@ let accountKey = "accountKey"
 let passwordKey = "passwordKey"
 let firstUsedKey = "firstUsedKey"
 
-// 全局变量
-//var usrID = 0
-//var studentID = 0
+// 头像
+let userNameKey = "userNameKey"
+let userHeadKey = "userHeadKey"
+
+// 通知
+let updateUserViewNotification = "updateUserViewNotification"
