@@ -33,6 +33,7 @@ class LostAndFoundVC: UIViewController {
     
     private func initUI() {
         title = "失物招领"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "send"), style: .plain, target: self, action: #selector(goPostThing))
         setupCollectionView()
     }
     
@@ -69,6 +70,11 @@ class LostAndFoundVC: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc private func goPostThing() {
+        let postLostAndFoundVC = PostLostAndFoundVC()
+        navigationController?.pushViewController(postLostAndFoundVC, animated: true)
     }
 
 }

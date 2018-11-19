@@ -34,6 +34,7 @@ class IQANDAnswerVC: UIViewController {
     
     private func initUI() {
         title = "我的问答"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(addQuestion))
         setupTableView()
     }
     
@@ -83,6 +84,10 @@ class IQANDAnswerVC: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc func addQuestion() {
+        
     }
 }
 

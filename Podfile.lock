@@ -3,11 +3,16 @@ PODS:
   - CurriculaTable (0.3.0)
   - DNSPageView (1.1.1)
   - DZNEmptyDataSet (1.8.1)
+  - Eureka (4.3.0)
   - FSPagerView (0.8.1)
+  - ImageRow (3.1.0):
+    - Eureka (~> 4.0)
   - IQKeyboardManagerSwift (6.2.0)
+  - MarkdownView (1.5.0)
   - MBProgressHUD (1.1.0)
   - MJRefresh (3.1.15.7)
   - NewPopMenu (2.1.1)
+  - SCLAlertView (0.8)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -20,11 +25,15 @@ DEPENDENCIES:
   - CurriculaTable
   - DNSPageView
   - DZNEmptyDataSet
+  - Eureka
   - FSPagerView
+  - ImageRow (~> 3.1.0)
   - IQKeyboardManagerSwift
+  - MarkdownView
   - MBProgressHUD (~> 1.1.0)
   - MJRefresh
   - NewPopMenu (~> 2.0)
+  - SCLAlertView
   - SDWebImage (~> 4.0)
   - SwiftDate (~> 5.0)
   - SwiftyJSON (~> 4.0)
@@ -36,11 +45,15 @@ SPEC REPOS:
     - CurriculaTable
     - DNSPageView
     - DZNEmptyDataSet
+    - Eureka
     - FSPagerView
+    - ImageRow
     - IQKeyboardManagerSwift
+    - MarkdownView
     - MBProgressHUD
     - MJRefresh
     - NewPopMenu
+    - SCLAlertView
     - SDWebImage
     - SwiftDate
     - SwiftyJSON
@@ -51,16 +64,20 @@ SPEC CHECKSUMS:
   CurriculaTable: 4451ba81157f4c474cbf28f4b3d62a2dbcd06e1c
   DNSPageView: c8598a6d38ee4191191e326cbd5198b641245aaf
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Eureka: 6d711cb30ca333b4bc893110285a722ae3840114
   FSPagerView: 4e865526acc0b0e3077e2abb29b8d10a9f395476
+  ImageRow: 1ea483078bfa3d880a7fc76fdfcddfd5f29a9e6b
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
+  MarkdownView: 5bbee438c823db1cd189002d44c84fa909b3a896
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   NewPopMenu: 60d67846a401964dcaa51bffb792f04f6fe2fc76
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SwiftDate: fcdaa7ca22a903faf6d7ed231239a88d174dcae3
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
 
-PODFILE CHECKSUM: 02b82991a37749d69f4f75e7691204b2a47e69a3
+PODFILE CHECKSUM: deef6f753b06ce748599f150dcc3aed6c86e7a10
 
 COCOAPODS: 1.6.0.beta.1

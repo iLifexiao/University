@@ -19,6 +19,10 @@ target 'University' do
   pod 'MBProgressHUD', '~> 1.1.0'
   pod 'DZNEmptyDataSet'  
   pod 'SwiftDate', '~> 5.0'
+  pod 'SCLAlertView'
+  pod "MarkdownView"
+  pod 'Eureka'
+  pod 'ImageRow', '~> 3.1.0'
 
   target 'UniversityTests' do
     inherit! :search_paths

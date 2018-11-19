@@ -33,6 +33,7 @@ class IMessageVC: UIViewController {
     
     private func initUI() {
         title = "我的信箱"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow_down"), style: .plain, target: self, action: #selector(showMore))
         setupTableView()
     }
     
@@ -82,6 +83,10 @@ class IMessageVC: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc private func showMore() {
+        
     }
 }
 

@@ -76,7 +76,9 @@ class UserVC: UIViewController {
         let culture1 = MyServerModel(icon: UIImage.init(named: "friends"), title: "我的好友")
         let culture2 = MyServerModel(icon: UIImage.init(named: "idea"), title: "我的经验")
         let culture3 = MyServerModel(icon: UIImage.init(named: "answer"), title: "我的问答")
-        weCulture = [culture1, culture2, culture3]
+        let culture4 = MyServerModel(icon: UIImage.init(named: "myBook"), title: "我的书籍")
+        let culture5 = MyServerModel(icon: UIImage.init(named: "myResources"), title: "我的资源")
+        weCulture = [culture1, culture2, culture3, culture4, culture5]
         
         // 学籍信息
         let schoolFunc1 = MyServerModel(icon: UIImage.init(named: "studentCard"), title: "我的学籍")
@@ -213,6 +215,12 @@ extension UserVC: UITableViewDelegate {
             case 2:
                 let iQANDAnswerVC = IQANDAnswerVC()
                 navigationController?.pushViewController(iQANDAnswerVC, animated: true)
+            case 3:
+                let iBookVC = IBookVC()
+                navigationController?.pushViewController(iBookVC, animated: true)
+            case 4:
+                let iResourcesVC = IResourcesVC()
+                navigationController?.pushViewController(iResourcesVC, animated: true)
             default:
                 print("不是这里哦")
             }

@@ -13,6 +13,7 @@ import Toast_Swift
 import Alamofire
 import SwiftyJSON
 import SwiftDate
+import SCLAlertView
 
 class MainVC: UIViewController {
     
@@ -47,6 +48,7 @@ class MainVC: UIViewController {
     private let dateEvent: [(String, String)] = [
         ("元旦节", "01-01"),
         ("情人节", "02-14"),
+        ("寒假节", "02-19"),
         ("妇女节", "03-08"),
         ("植树节", "03-12"),
         ("消权日", "03-15"),
@@ -107,12 +109,7 @@ class MainVC: UIViewController {
         week = Date().toFormat("EEEE")
         
         // countdown
-        getCountDown(count: 4)
-//        let countdown1 = CountdownModel(date: "2018-12-15", event: "CET-4", day: 33)
-//        let countdown2 = CountdownModel(date: "2018-12-25", event: "圣诞节", day: 43)
-//        let countdown3 = CountdownModel(date: "2019-01-01", event: "元旦节", day: 49)
-//        let countdown4 = CountdownModel(date: "2019-02-05", event: "春节", day: 85)
-//        countdowns = [countdown1, countdown2, countdown3, countdown4]
+        getCountDown(count: 6)
         
         // 校园服务
         let campusFuncModel = CampusFuncModel(icon: UIImage(named: "lesson"), name: "课程表")
@@ -416,8 +413,11 @@ extension MainVC: UITableViewDataSource {
 // MARK: 滚动栏-方法代理
 extension MainVC: FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        let adBanner = adBanners[index]
-        view.makeToast("你选中的ID：\(adBanner.id ?? 0)")
+        let adBanner = adBanners[index]        
+        // 跳转到对应的WEB页面
+        let webVC = WebVC()
+        webVC.url = adBanner.link
+        navigationController?.pushViewController(webVC, animated: true)
     }
 }
 
@@ -514,7 +514,7 @@ extension MainVC: UICollectionViewDataSource {
 extension MainVC: HeadlineViewDelegate {
     func headlineView(_ headlineView: HeadlineView, didSelectItemAt index: Int) {
         let notifi = notifications[index]
-        view.makeToast("NotifiID: \(notifi.id ?? 0)")
+        SCLAlertView().showInfo("通知详细", subTitle: notifi.content)
     }
 }
 

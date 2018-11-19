@@ -71,7 +71,25 @@ class LearnVC: UIViewController {
 extension LearnVC: PopMenuViewControllerDelegate {
     
     func popMenuDidSelectItem(_ popMenuViewController: PopMenuViewController, at index: Int) {
-        view.makeToast("Show \(index)")
+        switch index {
+        case 0:
+            let postEssayVC = PostEssayVC()
+            navigationController?.pushViewController(postEssayVC, animated: true)
+        case 1:
+            let postQuestionVC = PostQuestionVC()
+            navigationController?.pushViewController(postQuestionVC, animated: true)
+        case 2:
+            let postBookVC = PostBookVC()
+            navigationController?.pushViewController(postBookVC, animated: true)
+        case 3:
+            let postExpVC = PostExpVC()
+            navigationController?.pushViewController(postExpVC, animated: true)
+        case 4:
+            let postResourceVC = PostResourceVC()
+            navigationController?.pushViewController(postResourceVC, animated: true)
+        default:
+            print("错误选项")
+        }
     }
     
 }

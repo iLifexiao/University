@@ -29,6 +29,7 @@ class IExperienceVC: UIViewController {
     
     private func initUI() {
         title = "我的经验"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(addExp))
         setupTableView()
     }
     
@@ -76,6 +77,10 @@ class IExperienceVC: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    @objc func addExp() {
+        
     }
 }
 

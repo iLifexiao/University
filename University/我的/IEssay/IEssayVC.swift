@@ -33,6 +33,7 @@ class IEssayVC: UIViewController {
     
     private func initUI() {
         title = "我的文章"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(addEssay))
         setupTableView()
     }
     
@@ -76,6 +77,10 @@ class IEssayVC: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    @objc func addEssay() {
+        
     }
     
 }

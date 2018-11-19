@@ -11,6 +11,7 @@ import FSPagerView
 import Toast_Swift
 import Alamofire
 import SwiftyJSON
+import SCLAlertView
 
 class LifeVC: UIViewController {
     
@@ -294,7 +295,11 @@ extension LifeVC: UITableViewDataSource {
 // MARK: FSPagerViewDelegate
 extension LifeVC: FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        view.makeToast("你选中了：\(index)")
+        let adBanner = adBanners[index]
+        let webVC = WebVC()
+        webVC.url = adBanner.link
+        navigationController?.pushViewController(webVC, animated: true)
+
     }
 }
 
@@ -317,6 +322,6 @@ extension LifeVC: FSPagerViewDataSource {
 extension LifeVC: HeadlineViewDelegate {
     func headlineView(_ headlineView: HeadlineView, didSelectItemAt index: Int) {
         let notifi = notifications[index]
-        view.makeToast("NotifiID: \(notifi.id ?? 0)")
+        SCLAlertView().showSuccess("活动详细", subTitle: notifi.content)
     }
 }

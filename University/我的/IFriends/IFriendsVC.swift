@@ -33,6 +33,7 @@ class IFriendsVC: UIViewController {
     
     private func initUI() {
         title = "我的好友"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(addFriend))
         setupTableView()
     }
     
@@ -82,6 +83,10 @@ class IFriendsVC: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc func addFriend() {
+        
     }
 }
 

@@ -83,12 +83,10 @@ class ClubVC: UIViewController {
 
 extension ClubVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
-        let race = races[indexPath.section]
-        let detailRaceVC = DetailRaceVC()
-        detailRaceVC.raceInfo = race
-        navigationController?.pushViewController(detailRaceVC, animated: true)
-         */
+        let club = clubs[indexPath.section]
+        let clubDetailVC = ClubDetailVC()
+        clubDetailVC.club = club
+        navigationController?.pushViewController(clubDetailVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

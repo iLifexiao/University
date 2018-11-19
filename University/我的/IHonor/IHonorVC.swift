@@ -33,6 +33,7 @@ class IHonorVC: UIViewController {
     
     private func initUI() {
         title = "我的荣誉"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(addHonor))
         setupTableView()
     }
     
@@ -78,6 +79,10 @@ class IHonorVC: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc func addHonor() {
+        
     }
 }
 

@@ -80,10 +80,6 @@
 		8B64B52D2199D6CA005C2E07 /* RaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B64B52B2199D6CA005C2E07 /* RaceTableViewCell.xib */; };
 		8B64B5302199DCF2005C2E07 /* DetailRaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B52E2199DCF2005C2E07 /* DetailRaceVC.swift */; };
 		8B64B5312199DCF2005C2E07 /* DetailRaceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B64B52F2199DCF2005C2E07 /* DetailRaceVC.xib */; };
-		8B64B534219A5ED4005C2E07 /* RaceInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B532219A5ED4005C2E07 /* RaceInfoCell.swift */; };
-		8B64B535219A5ED4005C2E07 /* RaceInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B64B533219A5ED4005C2E07 /* RaceInfoCell.xib */; };
-		8B64B538219A5EF9005C2E07 /* RaceDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B536219A5EF9005C2E07 /* RaceDetailCell.swift */; };
-		8B64B539219A5EF9005C2E07 /* RaceDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B64B537219A5EF9005C2E07 /* RaceDetailCell.xib */; };
 		8B64B53D219A6B54005C2E07 /* AcdemicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B53B219A6B54005C2E07 /* AcdemicVC.swift */; };
 		8B64B53E219A6B54005C2E07 /* AcdemicVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B64B53C219A6B54005C2E07 /* AcdemicVC.xib */; };
 		8B64B542219A7003005C2E07 /* DetailInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B540219A7003005C2E07 /* DetailInfoVC.swift */; };
@@ -116,6 +112,26 @@
 		8B64B57F219B05A0005C2E07 /* SpeechCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B64B57D219B05A0005C2E07 /* SpeechCell.xib */; };
 		8B64B582219B22BA005C2E07 /* AddressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B580219B22BA005C2E07 /* AddressListCell.swift */; };
 		8B64B583219B22BA005C2E07 /* AddressListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B64B581219B22BA005C2E07 /* AddressListCell.xib */; };
+		8B796C2121A2DF600096BC32 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B796C2321A2DF600096BC32 /* Localization.strings */; };
+		8B7A950021A24262009CEB32 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A94FE21A24262009CEB32 /* WebVC.swift */; };
+		8B7A950421A27577009CEB32 /* PostLostAndFoundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A950221A27577009CEB32 /* PostLostAndFoundVC.swift */; };
+		8B7A950521A27577009CEB32 /* PostLostAndFoundVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A950321A27577009CEB32 /* PostLostAndFoundVC.xib */; };
+		8B7A950921A275EB009CEB32 /* ClubDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A950721A275EB009CEB32 /* ClubDetailVC.swift */; };
+		8B7A950A21A275EB009CEB32 /* ClubDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A950821A275EB009CEB32 /* ClubDetailVC.xib */; };
+		8B7A950E21A2771A009CEB32 /* PostEssayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A950C21A2771A009CEB32 /* PostEssayVC.swift */; };
+		8B7A950F21A2771A009CEB32 /* PostEssayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A950D21A2771A009CEB32 /* PostEssayVC.xib */; };
+		8B7A951321A2778A009CEB32 /* PostQuestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A951121A2778A009CEB32 /* PostQuestionVC.swift */; };
+		8B7A951421A2778A009CEB32 /* PostQuestionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A951221A2778A009CEB32 /* PostQuestionVC.xib */; };
+		8B7A951821A277CB009CEB32 /* PostBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A951621A277CB009CEB32 /* PostBookVC.swift */; };
+		8B7A951921A277CB009CEB32 /* PostBookVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A951721A277CB009CEB32 /* PostBookVC.xib */; };
+		8B7A951D21A27802009CEB32 /* PostExpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A951B21A27802009CEB32 /* PostExpVC.swift */; };
+		8B7A951E21A27802009CEB32 /* PostExpVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A951C21A27802009CEB32 /* PostExpVC.xib */; };
+		8B7A952221A27836009CEB32 /* PostResourceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A952021A27836009CEB32 /* PostResourceVC.swift */; };
+		8B7A952321A27836009CEB32 /* PostResourceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A952121A27836009CEB32 /* PostResourceVC.xib */; };
+		8B7A952821A28D77009CEB32 /* IBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A952621A28D77009CEB32 /* IBookVC.swift */; };
+		8B7A952921A28D77009CEB32 /* IBookVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A952721A28D77009CEB32 /* IBookVC.xib */; };
+		8B7A952D21A28DA2009CEB32 /* IResourcesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A952B21A28DA2009CEB32 /* IResourcesVC.swift */; };
+		8B7A952E21A28DA2009CEB32 /* IResourcesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A952C21A28DA2009CEB32 /* IResourcesVC.xib */; };
 		8B7C7597219BD8D700FCCD75 /* ExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C7595219BD8D700FCCD75 /* ExperienceCell.swift */; };
 		8B7C7598219BD8D700FCCD75 /* ExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C7596219BD8D700FCCD75 /* ExperienceCell.xib */; };
 		8B7C759C219C007B00FCCD75 /* IdleGoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C759A219C007B00FCCD75 /* IdleGoodVC.swift */; };
@@ -300,10 +316,6 @@
 		8B64B52B2199D6CA005C2E07 /* RaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RaceTableViewCell.xib; sourceTree = "<group>"; };
 		8B64B52E2199DCF2005C2E07 /* DetailRaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRaceVC.swift; sourceTree = "<group>"; };
 		8B64B52F2199DCF2005C2E07 /* DetailRaceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailRaceVC.xib; sourceTree = "<group>"; };
-		8B64B532219A5ED4005C2E07 /* RaceInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceInfoCell.swift; sourceTree = "<group>"; };
-		8B64B533219A5ED4005C2E07 /* RaceInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RaceInfoCell.xib; sourceTree = "<group>"; };
-		8B64B536219A5EF9005C2E07 /* RaceDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailCell.swift; sourceTree = "<group>"; };
-		8B64B537219A5EF9005C2E07 /* RaceDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RaceDetailCell.xib; sourceTree = "<group>"; };
 		8B64B53B219A6B54005C2E07 /* AcdemicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcdemicVC.swift; sourceTree = "<group>"; };
 		8B64B53C219A6B54005C2E07 /* AcdemicVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AcdemicVC.xib; sourceTree = "<group>"; };
 		8B64B540219A7003005C2E07 /* DetailInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoVC.swift; sourceTree = "<group>"; };
@@ -336,6 +348,27 @@
 		8B64B57D219B05A0005C2E07 /* SpeechCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeechCell.xib; sourceTree = "<group>"; };
 		8B64B580219B22BA005C2E07 /* AddressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListCell.swift; sourceTree = "<group>"; };
 		8B64B581219B22BA005C2E07 /* AddressListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressListCell.xib; sourceTree = "<group>"; };
+		8B796C2221A2DF600096BC32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
+		8B796C2421A2E0880096BC32 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localization.strings"; sourceTree = "<group>"; };
+		8B7A94FE21A24262009CEB32 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
+		8B7A950221A27577009CEB32 /* PostLostAndFoundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLostAndFoundVC.swift; sourceTree = "<group>"; };
+		8B7A950321A27577009CEB32 /* PostLostAndFoundVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostLostAndFoundVC.xib; sourceTree = "<group>"; };
+		8B7A950721A275EB009CEB32 /* ClubDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubDetailVC.swift; sourceTree = "<group>"; };
+		8B7A950821A275EB009CEB32 /* ClubDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClubDetailVC.xib; sourceTree = "<group>"; };
+		8B7A950C21A2771A009CEB32 /* PostEssayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEssayVC.swift; sourceTree = "<group>"; };
+		8B7A950D21A2771A009CEB32 /* PostEssayVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEssayVC.xib; sourceTree = "<group>"; };
+		8B7A951121A2778A009CEB32 /* PostQuestionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQuestionVC.swift; sourceTree = "<group>"; };
+		8B7A951221A2778A009CEB32 /* PostQuestionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostQuestionVC.xib; sourceTree = "<group>"; };
+		8B7A951621A277CB009CEB32 /* PostBookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBookVC.swift; sourceTree = "<group>"; };
+		8B7A951721A277CB009CEB32 /* PostBookVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostBookVC.xib; sourceTree = "<group>"; };
+		8B7A951B21A27802009CEB32 /* PostExpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExpVC.swift; sourceTree = "<group>"; };
+		8B7A951C21A27802009CEB32 /* PostExpVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostExpVC.xib; sourceTree = "<group>"; };
+		8B7A952021A27836009CEB32 /* PostResourceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResourceVC.swift; sourceTree = "<group>"; };
+		8B7A952121A27836009CEB32 /* PostResourceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostResourceVC.xib; sourceTree = "<group>"; };
+		8B7A952621A28D77009CEB32 /* IBookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBookVC.swift; sourceTree = "<group>"; };
+		8B7A952721A28D77009CEB32 /* IBookVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IBookVC.xib; sourceTree = "<group>"; };
+		8B7A952B21A28DA2009CEB32 /* IResourcesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IResourcesVC.swift; sourceTree = "<group>"; };
+		8B7A952C21A28DA2009CEB32 /* IResourcesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IResourcesVC.xib; sourceTree = "<group>"; };
 		8B7C7595219BD8D700FCCD75 /* ExperienceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceCell.swift; sourceTree = "<group>"; };
 		8B7C7596219BD8D700FCCD75 /* ExperienceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceCell.xib; sourceTree = "<group>"; };
 		8B7C759A219C007B00FCCD75 /* IdleGoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleGoodVC.swift; sourceTree = "<group>"; };
@@ -487,6 +520,7 @@
 		8B0EF32B21833909000EA64E /* Recommand */ = {
 			isa = PBXGroup;
 			children = (
+				8B7A951021A27720009CEB32 /* Post */,
 				8B0EF3082182F197000EA64E /* RecommandVC.swift */,
 				8B0EF3092182F197000EA64E /* RecommandVC.xib */,
 			);
@@ -514,6 +548,7 @@
 		8B0EF32E2183393E000EA64E /* Reading */ = {
 			isa = PBXGroup;
 			children = (
+				8B7A951A21A277CF009CEB32 /* Post */,
 				8B0EF3142182F21E000EA64E /* ReadingVC.swift */,
 				8B0EF3152182F21E000EA64E /* ReadingVC.xib */,
 			);
@@ -523,6 +558,7 @@
 		8B0EF32F21833948000EA64E /* Questions */ = {
 			isa = PBXGroup;
 			children = (
+				8B7A951521A27793009CEB32 /* Post */,
 				8B0EF3182182F323000EA64E /* QuestionVC.swift */,
 				8B0EF3192182F323000EA64E /* QuestionVC.xib */,
 			);
@@ -532,6 +568,7 @@
 		8B0EF3302183395C000EA64E /* Experience */ = {
 			isa = PBXGroup;
 			children = (
+				8B7A951F21A27813009CEB32 /* Post */,
 				8B0EF3212182FCE9000EA64E /* ExperienceVC.swift */,
 				8B0EF3222182FCE9000EA64E /* ExperienceVC.xib */,
 			);
@@ -541,6 +578,7 @@
 		8B0EF33121833968000EA64E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8B7A952421A2783A009CEB32 /* Post */,
 				8B0EF31C2182F344000EA64E /* ResourcesVC.swift */,
 				8B0EF31D2182F344000EA64E /* ResourcesVC.xib */,
 			);
@@ -765,10 +803,6 @@
 			children = (
 				8B64B52E2199DCF2005C2E07 /* DetailRaceVC.swift */,
 				8B64B52F2199DCF2005C2E07 /* DetailRaceVC.xib */,
-				8B64B532219A5ED4005C2E07 /* RaceInfoCell.swift */,
-				8B64B533219A5ED4005C2E07 /* RaceInfoCell.xib */,
-				8B64B536219A5EF9005C2E07 /* RaceDetailCell.swift */,
-				8B64B537219A5EF9005C2E07 /* RaceDetailCell.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -809,6 +843,7 @@
 		8B64B55A219ABE71005C2E07 /* LostAndFound */ = {
 			isa = PBXGroup;
 			children = (
+				8B7A950621A2757F009CEB32 /* post */,
 				8B64B556219AB3C4005C2E07 /* LostAndFoundVC.swift */,
 				8B64B557219AB3C4005C2E07 /* LostAndFoundVC.xib */,
 				8B64B55B219ABE9A005C2E07 /* LostAndFoundCell.swift */,
@@ -820,6 +855,7 @@
 		8B64B563219AE939005C2E07 /* Club */ = {
 			isa = PBXGroup;
 			children = (
+				8B7A950B21A275F0009CEB32 /* Detail */,
 				8B64B55F219AE77F005C2E07 /* ClubVC.swift */,
 				8B64B560219AE77F005C2E07 /* ClubVC.xib */,
 				8B64B578219AFB58005C2E07 /* ClubCell.swift */,
@@ -866,6 +902,95 @@
 				8B64B581219B22BA005C2E07 /* AddressListCell.xib */,
 			);
 			path = AddressList;
+			sourceTree = "<group>";
+		};
+		8B7A94FD21A24223009CEB32 /* H5 */ = {
+			isa = PBXGroup;
+			children = (
+				8B7A94FE21A24262009CEB32 /* WebVC.swift */,
+			);
+			path = H5;
+			sourceTree = "<group>";
+		};
+		8B7A950621A2757F009CEB32 /* post */ = {
+			isa = PBXGroup;
+			children = (
+				8B7A950221A27577009CEB32 /* PostLostAndFoundVC.swift */,
+				8B7A950321A27577009CEB32 /* PostLostAndFoundVC.xib */,
+			);
+			path = post;
+			sourceTree = "<group>";
+		};
+		8B7A950B21A275F0009CEB32 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8B7A950721A275EB009CEB32 /* ClubDetailVC.swift */,
+				8B7A950821A275EB009CEB32 /* ClubDetailVC.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		8B7A951021A27720009CEB32 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				8B7A950C21A2771A009CEB32 /* PostEssayVC.swift */,
+				8B7A950D21A2771A009CEB32 /* PostEssayVC.xib */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		8B7A951521A27793009CEB32 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				8B7A951121A2778A009CEB32 /* PostQuestionVC.swift */,
+				8B7A951221A2778A009CEB32 /* PostQuestionVC.xib */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		8B7A951A21A277CF009CEB32 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				8B7A951621A277CB009CEB32 /* PostBookVC.swift */,
+				8B7A951721A277CB009CEB32 /* PostBookVC.xib */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		8B7A951F21A27813009CEB32 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				8B7A951B21A27802009CEB32 /* PostExpVC.swift */,
+				8B7A951C21A27802009CEB32 /* PostExpVC.xib */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		8B7A952421A2783A009CEB32 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				8B7A952021A27836009CEB32 /* PostResourceVC.swift */,
+				8B7A952121A27836009CEB32 /* PostResourceVC.xib */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		8B7A952A21A28D7E009CEB32 /* IBook */ = {
+			isa = PBXGroup;
+			children = (
+				8B7A952621A28D77009CEB32 /* IBookVC.swift */,
+				8B7A952721A28D77009CEB32 /* IBookVC.xib */,
+			);
+			path = IBook;
+			sourceTree = "<group>";
+		};
+		8B7A952F21A28DA6009CEB32 /* IResources */ = {
+			isa = PBXGroup;
+			children = (
+				8B7A952B21A28DA2009CEB32 /* IResourcesVC.swift */,
+				8B7A952C21A28DA2009CEB32 /* IResourcesVC.xib */,
+			);
+			path = IResources;
 			sourceTree = "<group>";
 		};
 		8B7C7599219BEF1B00FCCD75 /* Experience */ = {
@@ -1082,13 +1207,14 @@
 				8BAEA3E0217EFE2600FC2CBB /* 生活 */,
 				8BAEA3E1217EFE2D00FC2CBB /* 我的 */,
 				8B64B43321987C37005C2E07 /* Models */,
+				8B7A94FD21A24223009CEB32 /* H5 */,
 				8B3002F1218B33A700D53D34 /* reuseViews */,
-				8BAEA3F4217F57D000FC2CBB /* thirdKit */,
 				8B64B49521999E28005C2E07 /* Extension */,
 				8BAEA379217EFA9F00FC2CBB /* SupportingFiles */,
 				8BAEA352217EF89000FC2CBB /* Assets.xcassets */,
 				8BAEA357217EF89000FC2CBB /* Info.plist */,
 				8BDD2EC3218453C600E01B4D /* University-Bridging-Header.h */,
+				8B796C2321A2DF600096BC32 /* Localization.strings */,
 			);
 			path = University;
 			sourceTree = "<group>";
@@ -1182,6 +1308,8 @@
 				8B7C75F3219E606800FCCD75 /* ICollection */,
 				8B7C75F8219E61CF00FCCD75 /* IFriends */,
 				8B7C75FD219E623700FCCD75 /* IExperiences */,
+				8B7A952A21A28D7E009CEB32 /* IBook */,
+				8B7A952F21A28DA6009CEB32 /* IResources */,
 				8B7C7602219E629900FCCD75 /* IQANDAnswer */,
 				8B7C7607219E632500FCCD75 /* IStudent */,
 				8B7C760C219E636800FCCD75 /* ILessonGrade */,
@@ -1197,13 +1325,6 @@
 				8B0EF33521833B9E000EA64E /* TipsHeaderView */,
 			);
 			path = Headers;
-			sourceTree = "<group>";
-		};
-		8BAEA3F4217F57D000FC2CBB /* thirdKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = thirdKit;
 			sourceTree = "<group>";
 		};
 		8BAEA3FF217F62D700FC2CBB /* CampusServers */ = {
@@ -1349,6 +1470,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 8BAEA33F217EF88F00FC2CBB;
 			productRefGroup = 8BAEA349217EF88F00FC2CBB /* Products */;
@@ -1372,12 +1494,13 @@
 				8B7C7606219E631100FCCD75 /* IStudentVC.xib in Resources */,
 				8B7C75C0219C2A5500FCCD75 /* DetailUtilityVC.xib in Resources */,
 				8B64B57F219B05A0005C2E07 /* SpeechCell.xib in Resources */,
+				8B7A952E21A28DA2009CEB32 /* IResourcesVC.xib in Resources */,
 				8B7C7615219E7E8700FCCD75 /* MessageCell.xib in Resources */,
 				8B7C75E8219E5D9900FCCD75 /* IEssayVC.xib in Resources */,
-				8B64B535219A5ED4005C2E07 /* RaceInfoCell.xib in Resources */,
 				8B64B559219AB3C4005C2E07 /* LostAndFoundVC.xib in Resources */,
 				8B7C75B7219C01B700FCCD75 /* PartTimeJobVC.xib in Resources */,
 				8B7C75A2219C00CE00FCCD75 /* UtilityBillVC.xib in Resources */,
+				8B7A952321A27836009CEB32 /* PostResourceVC.xib in Resources */,
 				8B7C75A7219C011300FCCD75 /* ShootAndPrintVC.xib in Resources */,
 				8B64B543219A7003005C2E07 /* DetailInfoVC.xib in Resources */,
 				8B7C75ED219E5EE800FCCD75 /* IFansVC.xib in Resources */,
@@ -1385,6 +1508,7 @@
 				8B7C7610219E639300FCCD75 /* IHonorVC.xib in Resources */,
 				8B64B5242199CC8E005C2E07 /* RaceVC.xib in Resources */,
 				8B0EF3172182F21E000EA64E /* ReadingVC.xib in Resources */,
+				8B7A950521A27577009CEB32 /* PostLostAndFoundVC.xib in Resources */,
 				8B7C760B219E635000FCCD75 /* ILessonGradeVC.xib in Resources */,
 				8B64B562219AE77F005C2E07 /* ClubVC.xib in Resources */,
 				8B7C75C4219C4DFD00FCCD75 /* ShootPrintCell.xib in Resources */,
@@ -1401,6 +1525,8 @@
 				8B7C75CC219C840700FCCD75 /* PartTimeJobCell.xib in Resources */,
 				8B64B567219AE995005C2E07 /* EmptyClassRoomVC.xib in Resources */,
 				8B64B555219A9D6B005C2E07 /* ExaminationCell.xib in Resources */,
+				8B7A951921A277CB009CEB32 /* PostBookVC.xib in Resources */,
+				8B796C2121A2DF600096BC32 /* Localization.strings in Resources */,
 				8B0EF33A21833FF7000EA64E /* ReadingCell.xib in Resources */,
 				8B64B57B219AFB58005C2E07 /* ClubCell.xib in Resources */,
 				8B64B54C219A910D005C2E07 /* LessonGradeCell.xib in Resources */,
@@ -1413,6 +1539,7 @@
 				8B64B576219AEAD1005C2E07 /* AddressListVC.xib in Resources */,
 				8B64B5312199DCF2005C2E07 /* DetailRaceVC.xib in Resources */,
 				8B0EF32821832BB3000EA64E /* CampusNewsCell.xib in Resources */,
+				8B7A951421A2778A009CEB32 /* PostQuestionVC.xib in Resources */,
 				8B0EF341218350F0000EA64E /* QuestionCell.xib in Resources */,
 				8B0EF3132182F204000EA64E /* CampusVC.xib in Resources */,
 				8B7C75AC219C015800FCCD75 /* PropertyManagerVC.xib in Resources */,
@@ -1420,6 +1547,7 @@
 				8BAEA3F3217F2C8700FC2CBB /* TipsHeaderView.xib in Resources */,
 				8B64B583219B22BA005C2E07 /* AddressListCell.xib in Resources */,
 				8B7C761D219EE2A100FCCD75 /* HonorCell.xib in Resources */,
+				8B7A952921A28D77009CEB32 /* IBookVC.xib in Resources */,
 				8B3002FE218B35CE00D53D34 /* CountdownView.xib in Resources */,
 				8BAEA3EE217F253700FC2CBB /* DateHeaderView.xib in Resources */,
 				8B24EE402181E1010044514C /* EssayCell.xib in Resources */,
@@ -1428,16 +1556,18 @@
 				8B0EF3242182FCE9000EA64E /* ExperienceVC.xib in Resources */,
 				8BAEA356217EF89000FC2CBB /* LaunchScreen.storyboard in Resources */,
 				8B64B56C219AE9F3005C2E07 /* SpeechVC.xib in Resources */,
+				8B7A951E21A27802009CEB32 /* PostExpVC.xib in Resources */,
+				8B7A950F21A2771A009CEB32 /* PostEssayVC.xib in Resources */,
 				8B7C75FC219E622100FCCD75 /* IExperienceVC.xib in Resources */,
 				8B7C75D7219D51FA00FCCD75 /* BandingStudentVC.xib in Resources */,
 				8BAEA43F2181A80D00FC2CBB /* UserView.xib in Resources */,
+				8B7A950A21A275EB009CEB32 /* ClubDetailVC.xib in Resources */,
 				8B7C7601219E628600FCCD75 /* IQANDAnswerVC.xib in Resources */,
 				8B64B571219AEA6F005C2E07 /* SchoolCalendarVC.xib in Resources */,
 				8B64B547219A7DF8005C2E07 /* LessonGradeVC.xib in Resources */,
 				8BAEA353217EF89000FC2CBB /* Assets.xcassets in Resources */,
 				8B64B4972199C076005C2E07 /* LessonTimeTable.xib in Resources */,
 				8BAEA393217EFAFE00FC2CBB /* Main.storyboard in Resources */,
-				8B64B539219A5EF9005C2E07 /* RaceDetailCell.xib in Resources */,
 				8B7C759D219C007B00FCCD75 /* IdleGoodVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1494,11 +1624,15 @@
 				"${BUILT_PRODUCTS_DIR}/CurriculaTable/CurriculaTable.framework",
 				"${BUILT_PRODUCTS_DIR}/DNSPageView/DNSPageView.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageRow/ImageRow.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/MarkdownView/MarkdownView.framework",
 				"${BUILT_PRODUCTS_DIR}/NewPopMenu/PopMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -1512,11 +1646,15 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurriculaTable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DNSPageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageRow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -1586,11 +1724,15 @@
 				8B64B554219A9D6B005C2E07 /* ExaminationCell.swift in Sources */,
 				8BAEA43D2181A7FB00FC2CBB /* UserView.swift in Sources */,
 				8B7C75E7219E5D9900FCCD75 /* IEssayVC.swift in Sources */,
+				8B7A950921A275EB009CEB32 /* ClubDetailVC.swift in Sources */,
 				8B7C75B6219C01B700FCCD75 /* PartTimeJobVC.swift in Sources */,
+				8B7A952D21A28DA2009CEB32 /* IResourcesVC.swift in Sources */,
 				8B64B57E219B05A0005C2E07 /* SpeechCell.swift in Sources */,
 				8BAEA3FD217F62CE00FC2CBB /* CampusFuncCell.swift in Sources */,
+				8B7A951D21A27802009CEB32 /* PostExpVC.swift in Sources */,
 				8B0EF31E2182F344000EA64E /* ResourcesVC.swift in Sources */,
 				8B0EF3162182F21E000EA64E /* ReadingVC.swift in Sources */,
+				8B7A951821A277CB009CEB32 /* PostBookVC.swift in Sources */,
 				8BAEA3B0217EFB4000FC2CBB /* MainVC.swift in Sources */,
 				8B0EF30E2182F1E8000EA64E /* FocusVC.swift in Sources */,
 				8B64B46921987C37005C2E07 /* LessonSchedule.swift in Sources */,
@@ -1603,17 +1745,18 @@
 				8B64B46221987C37005C2E07 /* Notification.swift in Sources */,
 				8B64B53D219A6B54005C2E07 /* AcdemicVC.swift in Sources */,
 				8B64B566219AE995005C2E07 /* EmptyClassRoomVC.swift in Sources */,
-				8B64B534219A5ED4005C2E07 /* RaceInfoCell.swift in Sources */,
 				8B7C75D1219D17CB00FCCD75 /* RegisterVC.swift in Sources */,
 				8B7C7605219E631100FCCD75 /* IStudentVC.swift in Sources */,
 				8B7C7597219BD8D700FCCD75 /* ExperienceCell.swift in Sources */,
 				8BAEA401217F707600FC2CBB /* CampusFuncModel.swift in Sources */,
+				8B7A952821A28D77009CEB32 /* IBookVC.swift in Sources */,
 				8B7C761C219EE2A100FCCD75 /* HonorCell.swift in Sources */,
 				8B64B46E21987C37005C2E07 /* Book.swift in Sources */,
 				8B0EF32721832BB3000EA64E /* CampusNewsCell.swift in Sources */,
 				8B64B47F21987C37005C2E07 /* Collection.swift in Sources */,
 				8B64B561219AE77F005C2E07 /* ClubVC.swift in Sources */,
 				8B64B47321987C37005C2E07 /* Question.swift in Sources */,
+				8B7A950021A24262009CEB32 /* WebVC.swift in Sources */,
 				8B7C75A1219C00CE00FCCD75 /* UtilityBillVC.swift in Sources */,
 				8B7C75EC219E5EE800FCCD75 /* IFansVC.swift in Sources */,
 				8B64B546219A7DF8005C2E07 /* LessonGradeVC.swift in Sources */,
@@ -1628,6 +1771,7 @@
 				8B64B46521987C37005C2E07 /* Club.swift in Sources */,
 				8B64B47621987C37005C2E07 /* PartTimeJob.swift in Sources */,
 				8B64B54F219A988A005C2E07 /* ExaminationVC.swift in Sources */,
+				8B7A950421A27577009CEB32 /* PostLostAndFoundVC.swift in Sources */,
 				8B64B582219B22BA005C2E07 /* AddressListCell.swift in Sources */,
 				8B7C760F219E639300FCCD75 /* IHonorVC.swift in Sources */,
 				8B64B575219AEAD1005C2E07 /* AddressListVC.swift in Sources */,
@@ -1637,7 +1781,6 @@
 				8BAEA40D2180AEFA00FC2CBB /* NewsCell.swift in Sources */,
 				8B7C75CF219D175D00FCCD75 /* LoginVC.swift in Sources */,
 				8B7C75F1219E5F2800FCCD75 /* ICollectionVC.swift in Sources */,
-				8B64B538219A5EF9005C2E07 /* RaceDetailCell.swift in Sources */,
 				8B64B47A21987C37005C2E07 /* UtilityBill.swift in Sources */,
 				8BAEA3E4217F077700FC2CBB /* ADCell.swift in Sources */,
 				8B7C75BB219C0AD300FCCD75 /* IdleGoodCell.swift in Sources */,
@@ -1651,6 +1794,7 @@
 				8B7C75E2219E5CC300FCCD75 /* IMessageVC.swift in Sources */,
 				8B0EF33921833FF7000EA64E /* ReadingCell.swift in Sources */,
 				8BAEA4072180919600FC2CBB /* HeadlineView.swift in Sources */,
+				8B7A950E21A2771A009CEB32 /* PostEssayVC.swift in Sources */,
 				8BAEA3F1217F2C7500FC2CBB /* TipsHeaderView.swift in Sources */,
 				8BAEA3EC217F24F500FC2CBB /* DateHeaderView.swift in Sources */,
 				8B24EE3F2181E1010044514C /* EssayCell.swift in Sources */,
@@ -1691,10 +1835,12 @@
 				8B64B48721991C65005C2E07 /* UtilityMethod.swift in Sources */,
 				8B64B48421987C37005C2E07 /* User.swift in Sources */,
 				8BAEA3AC217EFB2E00FC2CBB /* LearnVC.swift in Sources */,
+				8B7A951321A2778A009CEB32 /* PostQuestionVC.swift in Sources */,
 				8B64B51F2199C809005C2E07 /* LibraryWebVC.swift in Sources */,
 				8B7C75B0219C017F00FCCD75 /* SchoolStoreVC.swift in Sources */,
 				8B64B52C2199D6CA005C2E07 /* RaceTableViewCell.swift in Sources */,
 				8B64B48321987C37005C2E07 /* Student.swift in Sources */,
+				8B7A952221A27836009CEB32 /* PostResourceVC.swift in Sources */,
 				8B64B48121987C37005C2E07 /* Honor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1731,6 +1877,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8B796C2321A2DF600096BC32 /* Localization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B796C2221A2DF600096BC32 /* en */,
+				8B796C2421A2E0880096BC32 /* zh-Hans */,
+			);
+			name = Localization.strings;
+			sourceTree = "<group>";
+		};
 		8BAEA354217EF89000FC2CBB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1746,6 +1901,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1807,6 +1963,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
