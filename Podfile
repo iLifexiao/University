@@ -23,6 +23,7 @@ target 'University' do
   pod "MarkdownView"
   pod 'Eureka'
   pod 'ImageRow', '~> 3.1.0'
+  pod 'Charts'
 
   target 'UniversityTests' do
     inherit! :search_paths

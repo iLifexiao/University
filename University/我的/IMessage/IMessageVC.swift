@@ -10,11 +10,13 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Toast_Swift
+import PopMenu
 
 class IMessageVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private var messages: [Message] = []
+    private var recMessages: [Message] = []
+    private var sendMessages: [Message] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,7 @@ class IMessageVC: UIViewController {
     
     private func initUI() {
         title = "我的信箱"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow_down"), style: .plain, target: self, action: #selector(showMore))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "send"), style: .plain, target: self, action: #selector(sendMessage))
         setupTableView()
     }
     
@@ -71,22 +73,29 @@ class IMessageVC: UIViewController {
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    self.messages.removeAll()
+                    self.recMessages.removeAll()
+                    self.sendMessages.removeAll()
                     // json是数组
                     for (_, subJson):(String, JSON) in json {
-                        self.messages.append(Message(jsonData: subJson))
+                        let msg = Message(jsonData: subJson)
+                        if msg.userID == msg.toUserID {
+                            self.recMessages.append(msg)
+                        } else {
+                            self.sendMessages.append(msg)
+                        }
                     }
-                    MBProgressHUD.hide(for: self.view, animated: true)
                     self.tableView.reloadData()
                 case .failure(let error):
                     print(error)
                 }
+                MBProgressHUD.hide(for: self.view, animated: true)
             }
         }
     }
     
-    @objc private func showMore() {
-        
+    @objc private func sendMessage() {
+        let sendMsgVC = SendMsgVC()
+        navigationController?.pushViewController(sendMsgVC, animated: true)
     }
 }
 
@@ -95,18 +104,104 @@ extension IMessageVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            return nil
+        case 1:
+            let tipsHeaderView = Bundle.main.loadNibNamed("TipsHeaderView", owner: nil, options: nil)?[0] as! TipsHeaderView
+            tipsHeaderView.setTips(title: "已发信息")
+            return tipsHeaderView
+        default:
+            return nil
+        }
+    }
+    
+    // HeadView-height
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 0
+        default:
+            return 50
+        }
+    }
 }
 
-extension IMessageVC: UITableViewDataSource {    
+extension IMessageVC: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        switch section {
+        case 0:
+            return recMessages.count
+        default:
+            return sendMessages.count
+        }        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
-        cell.setupModel(messages[indexPath.row])
+        
+        switch indexPath.section {
+        case 0:
+            cell.setupModel(recMessages[indexPath.row])
+        default:
+            cell.setupModel(sendMessages[indexPath.row])
+        }
+        
         cell.selectionStyle = .none
         return cell
+    }
+    
+    // 侧滑删除功能
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        var msgID = 0
+        switch indexPath.section {
+        case 0:
+            let msg = recMessages[indexPath.row]
+            msgID = msg.id!
+        default:
+            let msg = sendMessages[indexPath.row]
+            msgID = msg.id!
+        }
+        // 执行删除操作
+        // 删除操作的API最好要返回相应信息
+        Alamofire.request(baseURL + "/api/v1/message/\(msgID)", method: .delete, headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                // 需要保证网络删除成功后，再删除本地
+                if indexPath.section == 0 {
+                    self.recMessages.remove(at: indexPath.row)
+                } else {
+                    self.sendMessages.remove(at: indexPath.row)
+                }
+                self.view.makeToast(json["message"].stringValue, position: .top)
+                self.tableView.reloadData()
+            case .failure(let error):
+                self.view.makeToast("删除失败，稍后再试", position: .top)
+                print(error)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
     }
 }
 
@@ -114,7 +209,7 @@ extension IMessageVC: UITableViewDataSource {
 // MARK: 空视图-代理
 extension IMessageVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        self.view.makeToast("找个好友聊天吧~")
+        self.view.makeToast("找个好友聊天吧~", position: .top)
     }
 }
 

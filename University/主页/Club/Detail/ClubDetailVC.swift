@@ -46,16 +46,12 @@ class ClubDetailVC: UIViewController {
     }
     
     private func initUI() {
-        guard let club = club else {
-            title = "加载失败了"
-            return
-        }
         title = "社团详情"
         setupTableView()
         
-        iconImageView.sd_setImage(with: URL(string: baseURL + club.imageURL), completed: nil)
-        nameLabel.text = club.name
-        introduceLabel.text = club.introduce
+        iconImageView.sd_setImage(with: URL(string: baseURL + club!.imageURL), completed: nil)
+        nameLabel.text = club!.name
+        introduceLabel.text = club!.introduce
     }
     
     private func setupTableView() {

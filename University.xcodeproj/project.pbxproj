@@ -36,6 +36,24 @@
 		8B3002FC218B35CE00D53D34 /* CountdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3002F7218B35CE00D53D34 /* CountdownModel.swift */; };
 		8B3002FD218B35CE00D53D34 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3002F8218B35CE00D53D34 /* CountdownView.swift */; };
 		8B3002FE218B35CE00D53D34 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3002F9218B35CE00D53D34 /* CountdownView.xib */; };
+		8B53CB7921A3CF83002CE03C /* PostHonorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB7821A3CF83002CE03C /* PostHonorVC.swift */; };
+		8B53CB7D21A3DA84002CE03C /* AnalyseGradeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB7B21A3DA84002CE03C /* AnalyseGradeVC.swift */; };
+		8B53CB7E21A3DA84002CE03C /* AnalyseGradeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CB7C21A3DA84002CE03C /* AnalyseGradeVC.xib */; };
+		8B53CB8A21A3E71C002CE03C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB8221A3E71A002CE03C /* BalloonMarker.swift */; };
+		8B53CB8B21A3E71C002CE03C /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB8321A3E71A002CE03C /* RadarMarkerView.swift */; };
+		8B53CB8C21A3E71C002CE03C /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB8421A3E71A002CE03C /* XYMarkerView.swift */; };
+		8B53CB8D21A3E71C002CE03C /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB8621A3E71C002CE03C /* DateValueFormatter.swift */; };
+		8B53CB8E21A3E71C002CE03C /* DayAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB8721A3E71C002CE03C /* DayAxisValueFormatter.swift */; };
+		8B53CB8F21A3E71C002CE03C /* IntAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB8821A3E71C002CE03C /* IntAxisValueFormatter.swift */; };
+		8B53CB9021A3E71C002CE03C /* LargeValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB8921A3E71C002CE03C /* LargeValueFormatter.swift */; };
+		8B53CB9321A3F46B002CE03C /* SendMsgVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB9221A3F46B002CE03C /* SendMsgVC.swift */; };
+		8B53CB9621A44513002CE03C /* PostIdleGoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB9521A44513002CE03C /* PostIdleGoodVC.swift */; };
+		8B53CB9A21A44714002CE03C /* DetailShootPrintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB9821A44714002CE03C /* DetailShootPrintVC.swift */; };
+		8B53CB9B21A44714002CE03C /* DetailShootPrintVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CB9921A44714002CE03C /* DetailShootPrintVC.xib */; };
+		8B53CB9F21A450E4002CE03C /* DetailSchoolStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB9D21A450E4002CE03C /* DetailSchoolStoreVC.swift */; };
+		8B53CBA021A450E4002CE03C /* DetailSchoolStoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CB9E21A450E4002CE03C /* DetailSchoolStoreVC.xib */; };
+		8B53CBA421A45CF2002CE03C /* DetailPTJVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CBA221A45CF2002CE03C /* DetailPTJVC.swift */; };
+		8B53CBA521A45CF2002CE03C /* DetailPTJVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CBA321A45CF2002CE03C /* DetailPTJVC.xib */; };
 		8B64B46121987C37005C2E07 /* ADBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B43621987C37005C2E07 /* ADBanner.swift */; };
 		8B64B46221987C37005C2E07 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B43721987C37005C2E07 /* Notification.swift */; };
 		8B64B46321987C37005C2E07 /* Academic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B43921987C37005C2E07 /* Academic.swift */; };
@@ -272,6 +290,24 @@
 		8B3002F7218B35CE00D53D34 /* CountdownModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownModel.swift; sourceTree = "<group>"; };
 		8B3002F8218B35CE00D53D34 /* CountdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		8B3002F9218B35CE00D53D34 /* CountdownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
+		8B53CB7821A3CF83002CE03C /* PostHonorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHonorVC.swift; sourceTree = "<group>"; };
+		8B53CB7B21A3DA84002CE03C /* AnalyseGradeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyseGradeVC.swift; sourceTree = "<group>"; };
+		8B53CB7C21A3DA84002CE03C /* AnalyseGradeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalyseGradeVC.xib; sourceTree = "<group>"; };
+		8B53CB8221A3E71A002CE03C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		8B53CB8321A3E71A002CE03C /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
+		8B53CB8421A3E71A002CE03C /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
+		8B53CB8621A3E71C002CE03C /* DateValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
+		8B53CB8721A3E71C002CE03C /* DayAxisValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayAxisValueFormatter.swift; sourceTree = "<group>"; };
+		8B53CB8821A3E71C002CE03C /* IntAxisValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntAxisValueFormatter.swift; sourceTree = "<group>"; };
+		8B53CB8921A3E71C002CE03C /* LargeValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeValueFormatter.swift; sourceTree = "<group>"; };
+		8B53CB9221A3F46B002CE03C /* SendMsgVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMsgVC.swift; sourceTree = "<group>"; };
+		8B53CB9521A44513002CE03C /* PostIdleGoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostIdleGoodVC.swift; sourceTree = "<group>"; };
+		8B53CB9821A44714002CE03C /* DetailShootPrintVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailShootPrintVC.swift; sourceTree = "<group>"; };
+		8B53CB9921A44714002CE03C /* DetailShootPrintVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailShootPrintVC.xib; sourceTree = "<group>"; };
+		8B53CB9D21A450E4002CE03C /* DetailSchoolStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSchoolStoreVC.swift; sourceTree = "<group>"; };
+		8B53CB9E21A450E4002CE03C /* DetailSchoolStoreVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailSchoolStoreVC.xib; sourceTree = "<group>"; };
+		8B53CBA221A45CF2002CE03C /* DetailPTJVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPTJVC.swift; sourceTree = "<group>"; };
+		8B53CBA321A45CF2002CE03C /* DetailPTJVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPTJVC.xib; sourceTree = "<group>"; };
 		8B64B43621987C37005C2E07 /* ADBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADBanner.swift; sourceTree = "<group>"; };
 		8B64B43721987C37005C2E07 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		8B64B43921987C37005C2E07 /* Academic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Academic.swift; sourceTree = "<group>"; };
@@ -681,6 +717,96 @@
 			path = CountdownView;
 			sourceTree = "<group>";
 		};
+		8B53CB7A21A3CF8A002CE03C /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CB7821A3CF83002CE03C /* PostHonorVC.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		8B53CB7F21A3DA8A002CE03C /* AnalyseGrade */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CB7B21A3DA84002CE03C /* AnalyseGradeVC.swift */,
+				8B53CB7C21A3DA84002CE03C /* AnalyseGradeVC.xib */,
+			);
+			path = AnalyseGrade;
+			sourceTree = "<group>";
+		};
+		8B53CB8121A3E71A002CE03C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CB8221A3E71A002CE03C /* BalloonMarker.swift */,
+				8B53CB8321A3E71A002CE03C /* RadarMarkerView.swift */,
+				8B53CB8421A3E71A002CE03C /* XYMarkerView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8B53CB8521A3E71C002CE03C /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CB8621A3E71C002CE03C /* DateValueFormatter.swift */,
+				8B53CB8721A3E71C002CE03C /* DayAxisValueFormatter.swift */,
+				8B53CB8821A3E71C002CE03C /* IntAxisValueFormatter.swift */,
+				8B53CB8921A3E71C002CE03C /* LargeValueFormatter.swift */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		8B53CB9121A3E724002CE03C /* ThirtKitPart */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CB8121A3E71A002CE03C /* Components */,
+				8B53CB8521A3E71C002CE03C /* Formatters */,
+			);
+			path = ThirtKitPart;
+			sourceTree = "<group>";
+		};
+		8B53CB9421A3F471002CE03C /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CB9221A3F46B002CE03C /* SendMsgVC.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		8B53CB9721A4451A002CE03C /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CB9521A44513002CE03C /* PostIdleGoodVC.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		8B53CB9C21A44743002CE03C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CB9821A44714002CE03C /* DetailShootPrintVC.swift */,
+				8B53CB9921A44714002CE03C /* DetailShootPrintVC.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		8B53CBA121A450F3002CE03C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CB9D21A450E4002CE03C /* DetailSchoolStoreVC.swift */,
+				8B53CB9E21A450E4002CE03C /* DetailSchoolStoreVC.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		8B53CBA621A45CFB002CE03C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CBA221A45CF2002CE03C /* DetailPTJVC.swift */,
+				8B53CBA321A45CF2002CE03C /* DetailPTJVC.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		8B64B43321987C37005C2E07 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1005,6 +1131,7 @@
 		8B7C759E219C008700FCCD75 /* IdleGood */ = {
 			isa = PBXGroup;
 			children = (
+				8B53CB9721A4451A002CE03C /* Post */,
 				8B7C759A219C007B00FCCD75 /* IdleGoodVC.swift */,
 				8B7C759B219C007B00FCCD75 /* IdleGoodVC.xib */,
 				8B7C75B9219C0AD300FCCD75 /* IdleGoodCell.swift */,
@@ -1027,6 +1154,7 @@
 		8B7C75A8219C011E00FCCD75 /* ShootAndPrint */ = {
 			isa = PBXGroup;
 			children = (
+				8B53CB9C21A44743002CE03C /* Detail */,
 				8B7C75A4219C011300FCCD75 /* ShootAndPrintVC.swift */,
 				8B7C75A5219C011300FCCD75 /* ShootAndPrintVC.xib */,
 				8B7C75C1219C4DFD00FCCD75 /* ShootPrintCell.swift */,
@@ -1047,6 +1175,7 @@
 		8B7C75B2219C018600FCCD75 /* SchoolStore */ = {
 			isa = PBXGroup;
 			children = (
+				8B53CBA121A450F3002CE03C /* Detail */,
 				8B7C75AE219C017F00FCCD75 /* SchoolStoreVC.swift */,
 				8B7C75AF219C017F00FCCD75 /* SchoolStoreVC.xib */,
 				8B7C75C5219C741100FCCD75 /* SchoolStoreCell.swift */,
@@ -1058,6 +1187,7 @@
 		8B7C75B8219C01BF00FCCD75 /* PartTimeJob */ = {
 			isa = PBXGroup;
 			children = (
+				8B53CBA621A45CFB002CE03C /* Detail */,
 				8B7C75B4219C01B700FCCD75 /* PartTimeJobVC.swift */,
 				8B7C75B5219C01B700FCCD75 /* PartTimeJobVC.xib */,
 				8B7C75C9219C840700FCCD75 /* PartTimeJobCell.swift */,
@@ -1082,6 +1212,7 @@
 		8B7C75E4219E5D2600FCCD75 /* IMessage */ = {
 			isa = PBXGroup;
 			children = (
+				8B53CB9421A3F471002CE03C /* Post */,
 				8B7C75E0219E5CC300FCCD75 /* IMessageVC.swift */,
 				8B7C75E1219E5CC300FCCD75 /* IMessageVC.xib */,
 				8B7C7612219E7E8700FCCD75 /* MessageCell.swift */,
@@ -1158,6 +1289,7 @@
 		8B7C760C219E636800FCCD75 /* ILessonGrade */ = {
 			isa = PBXGroup;
 			children = (
+				8B53CB7F21A3DA8A002CE03C /* AnalyseGrade */,
 				8B7C7608219E635000FCCD75 /* ILessonGradeVC.swift */,
 				8B7C7609219E635000FCCD75 /* ILessonGradeVC.xib */,
 			);
@@ -1167,6 +1299,7 @@
 		8B7C7611219E63B600FCCD75 /* IHonor */ = {
 			isa = PBXGroup;
 			children = (
+				8B53CB7A21A3CF8A002CE03C /* Post */,
 				8B7C760D219E639300FCCD75 /* IHonorVC.swift */,
 				8B7C760E219E639300FCCD75 /* IHonorVC.xib */,
 				8B7C761A219EE2A100FCCD75 /* HonorCell.swift */,
@@ -1210,6 +1343,7 @@
 				8B7A94FD21A24223009CEB32 /* H5 */,
 				8B3002F1218B33A700D53D34 /* reuseViews */,
 				8B64B49521999E28005C2E07 /* Extension */,
+				8B53CB9121A3E724002CE03C /* ThirtKitPart */,
 				8BAEA379217EFA9F00FC2CBB /* SupportingFiles */,
 				8BAEA352217EF89000FC2CBB /* Assets.xcassets */,
 				8BAEA357217EF89000FC2CBB /* Info.plist */,
@@ -1505,6 +1639,7 @@
 				8B64B543219A7003005C2E07 /* DetailInfoVC.xib in Resources */,
 				8B7C75ED219E5EE800FCCD75 /* IFansVC.xib in Resources */,
 				8B7C75C8219C741100FCCD75 /* SchoolStoreCell.xib in Resources */,
+				8B53CB7E21A3DA84002CE03C /* AnalyseGradeVC.xib in Resources */,
 				8B7C7610219E639300FCCD75 /* IHonorVC.xib in Resources */,
 				8B64B5242199CC8E005C2E07 /* RaceVC.xib in Resources */,
 				8B0EF3172182F21E000EA64E /* ReadingVC.xib in Resources */,
@@ -1525,6 +1660,7 @@
 				8B7C75CC219C840700FCCD75 /* PartTimeJobCell.xib in Resources */,
 				8B64B567219AE995005C2E07 /* EmptyClassRoomVC.xib in Resources */,
 				8B64B555219A9D6B005C2E07 /* ExaminationCell.xib in Resources */,
+				8B53CB9B21A44714002CE03C /* DetailShootPrintVC.xib in Resources */,
 				8B7A951921A277CB009CEB32 /* PostBookVC.xib in Resources */,
 				8B796C2121A2DF600096BC32 /* Localization.strings in Resources */,
 				8B0EF33A21833FF7000EA64E /* ReadingCell.xib in Resources */,
@@ -1549,6 +1685,7 @@
 				8B7C761D219EE2A100FCCD75 /* HonorCell.xib in Resources */,
 				8B7A952921A28D77009CEB32 /* IBookVC.xib in Resources */,
 				8B3002FE218B35CE00D53D34 /* CountdownView.xib in Resources */,
+				8B53CBA521A45CF2002CE03C /* DetailPTJVC.xib in Resources */,
 				8BAEA3EE217F253700FC2CBB /* DateHeaderView.xib in Resources */,
 				8B24EE402181E1010044514C /* EssayCell.xib in Resources */,
 				8B7C7598219BD8D700FCCD75 /* ExperienceCell.xib in Resources */,
@@ -1566,6 +1703,7 @@
 				8B64B571219AEA6F005C2E07 /* SchoolCalendarVC.xib in Resources */,
 				8B64B547219A7DF8005C2E07 /* LessonGradeVC.xib in Resources */,
 				8BAEA353217EF89000FC2CBB /* Assets.xcassets in Resources */,
+				8B53CBA021A450E4002CE03C /* DetailSchoolStoreVC.xib in Resources */,
 				8B64B4972199C076005C2E07 /* LessonTimeTable.xib in Resources */,
 				8BAEA393217EFAFE00FC2CBB /* Main.storyboard in Resources */,
 				8B7C759D219C007B00FCCD75 /* IdleGoodVC.xib in Resources */,
@@ -1621,6 +1759,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-University/Pods-University-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CurriculaTable/CurriculaTable.framework",
 				"${BUILT_PRODUCTS_DIR}/DNSPageView/DNSPageView.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
@@ -1643,6 +1782,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurriculaTable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DNSPageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
@@ -1730,10 +1870,13 @@
 				8B64B57E219B05A0005C2E07 /* SpeechCell.swift in Sources */,
 				8BAEA3FD217F62CE00FC2CBB /* CampusFuncCell.swift in Sources */,
 				8B7A951D21A27802009CEB32 /* PostExpVC.swift in Sources */,
+				8B53CB8D21A3E71C002CE03C /* DateValueFormatter.swift in Sources */,
 				8B0EF31E2182F344000EA64E /* ResourcesVC.swift in Sources */,
 				8B0EF3162182F21E000EA64E /* ReadingVC.swift in Sources */,
 				8B7A951821A277CB009CEB32 /* PostBookVC.swift in Sources */,
 				8BAEA3B0217EFB4000FC2CBB /* MainVC.swift in Sources */,
+				8B53CB8F21A3E71C002CE03C /* IntAxisValueFormatter.swift in Sources */,
+				8B53CB9321A3F46B002CE03C /* SendMsgVC.swift in Sources */,
 				8B0EF30E2182F1E8000EA64E /* FocusVC.swift in Sources */,
 				8B64B46921987C37005C2E07 /* LessonSchedule.swift in Sources */,
 				8B7C75A6219C011300FCCD75 /* ShootAndPrintVC.swift in Sources */,
@@ -1752,6 +1895,7 @@
 				8B7A952821A28D77009CEB32 /* IBookVC.swift in Sources */,
 				8B7C761C219EE2A100FCCD75 /* HonorCell.swift in Sources */,
 				8B64B46E21987C37005C2E07 /* Book.swift in Sources */,
+				8B53CB8A21A3E71C002CE03C /* BalloonMarker.swift in Sources */,
 				8B0EF32721832BB3000EA64E /* CampusNewsCell.swift in Sources */,
 				8B64B47F21987C37005C2E07 /* Collection.swift in Sources */,
 				8B64B561219AE77F005C2E07 /* ClubVC.swift in Sources */,
@@ -1770,13 +1914,17 @@
 				8B64B47821987C37005C2E07 /* SchoolStore.swift in Sources */,
 				8B64B46521987C37005C2E07 /* Club.swift in Sources */,
 				8B64B47621987C37005C2E07 /* PartTimeJob.swift in Sources */,
+				8B53CB8B21A3E71C002CE03C /* RadarMarkerView.swift in Sources */,
 				8B64B54F219A988A005C2E07 /* ExaminationVC.swift in Sources */,
 				8B7A950421A27577009CEB32 /* PostLostAndFoundVC.swift in Sources */,
+				8B53CB7D21A3DA84002CE03C /* AnalyseGradeVC.swift in Sources */,
+				8B53CB9021A3E71C002CE03C /* LargeValueFormatter.swift in Sources */,
 				8B64B582219B22BA005C2E07 /* AddressListCell.swift in Sources */,
 				8B7C760F219E639300FCCD75 /* IHonorVC.swift in Sources */,
 				8B64B575219AEAD1005C2E07 /* AddressListVC.swift in Sources */,
 				8B64B54B219A910D005C2E07 /* LessonGradeCell.swift in Sources */,
 				8B0EF3122182F204000EA64E /* CampusVC.swift in Sources */,
+				8B53CB8E21A3E71C002CE03C /* DayAxisValueFormatter.swift in Sources */,
 				8B64B47521987C37005C2E07 /* IdleGood.swift in Sources */,
 				8BAEA40D2180AEFA00FC2CBB /* NewsCell.swift in Sources */,
 				8B7C75CF219D175D00FCCD75 /* LoginVC.swift in Sources */,
@@ -1789,6 +1937,7 @@
 				8B64B47921987C37005C2E07 /* ShootAndPrint.swift in Sources */,
 				8B64B46321987C37005C2E07 /* Academic.swift in Sources */,
 				8B0EF340218350F0000EA64E /* QuestionCell.swift in Sources */,
+				8B53CB9A21A44714002CE03C /* DetailShootPrintVC.swift in Sources */,
 				8B7C75BF219C2A5500FCCD75 /* DetailUtilityVC.swift in Sources */,
 				8B64B49421999DFF005C2E07 /* UIColor+Extension.swift in Sources */,
 				8B7C75E2219E5CC300FCCD75 /* IMessageVC.swift in Sources */,
@@ -1799,6 +1948,7 @@
 				8BAEA3EC217F24F500FC2CBB /* DateHeaderView.swift in Sources */,
 				8B24EE3F2181E1010044514C /* EssayCell.swift in Sources */,
 				8B7C760A219E635000FCCD75 /* ILessonGradeVC.swift in Sources */,
+				8B53CB9621A44513002CE03C /* PostIdleGoodVC.swift in Sources */,
 				8B7C7618219EA28600FCCD75 /* FriendCell.swift in Sources */,
 				8B64B558219AB3C4005C2E07 /* LostAndFoundVC.swift in Sources */,
 				8B64B46421987C37005C2E07 /* AddressList.swift in Sources */,
@@ -1821,6 +1971,7 @@
 				8B64B46F21987C37005C2E07 /* CampusNews.swift in Sources */,
 				8B0EF30A2182F197000EA64E /* RecommandVC.swift in Sources */,
 				8B64B570219AEA6F005C2E07 /* SchoolCalendarVC.swift in Sources */,
+				8B53CB9F21A450E4002CE03C /* DetailSchoolStoreVC.swift in Sources */,
 				8B64B56B219AE9F3005C2E07 /* SpeechVC.swift in Sources */,
 				8B64B46A21987C37005C2E07 /* LostAndFound.swift in Sources */,
 				8BAEA3EA217F12F700FC2CBB /* SizeHeader.swift in Sources */,
@@ -1828,6 +1979,7 @@
 				8B64B46D21987C37005C2E07 /* Answer.swift in Sources */,
 				8B64B5232199CC8E005C2E07 /* RaceVC.swift in Sources */,
 				8B7C7600219E628600FCCD75 /* IQANDAnswerVC.swift in Sources */,
+				8B53CB8C21A3E71C002CE03C /* XYMarkerView.swift in Sources */,
 				8B0EF3232182FCE9000EA64E /* ExperienceVC.swift in Sources */,
 				8B7C7614219E7E8700FCCD75 /* MessageCell.swift in Sources */,
 				8B7C759C219C007B00FCCD75 /* IdleGoodVC.swift in Sources */,
@@ -1838,9 +1990,11 @@
 				8B7A951321A2778A009CEB32 /* PostQuestionVC.swift in Sources */,
 				8B64B51F2199C809005C2E07 /* LibraryWebVC.swift in Sources */,
 				8B7C75B0219C017F00FCCD75 /* SchoolStoreVC.swift in Sources */,
+				8B53CB7921A3CF83002CE03C /* PostHonorVC.swift in Sources */,
 				8B64B52C2199D6CA005C2E07 /* RaceTableViewCell.swift in Sources */,
 				8B64B48321987C37005C2E07 /* Student.swift in Sources */,
 				8B7A952221A27836009CEB32 /* PostResourceVC.swift in Sources */,
+				8B53CBA421A45CF2002CE03C /* DetailPTJVC.swift in Sources */,
 				8B64B48121987C37005C2E07 /* Honor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

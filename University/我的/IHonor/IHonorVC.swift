@@ -82,17 +82,14 @@ class IHonorVC: UIViewController {
     }
     
     @objc func addHonor() {
-        
+        let postHonorVC = PostHonorVC()
+        navigationController?.pushViewController(postHonorVC, animated: true)
     }
 }
 
 extension IHonorVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10
     }
 }
 
@@ -103,7 +100,7 @@ extension IHonorVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HonorCell", for: indexPath) as! HonorCell
-        cell.setupModel(honors[indexPath.section])
+        cell.setupModel(honors[indexPath.row])
         cell.selectionStyle = .none
         return cell
     }
@@ -112,7 +109,7 @@ extension IHonorVC: UITableViewDataSource {
 // MARK: 空视图-代理
 extension IHonorVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        self.view.makeToast("去新增一个荣誉吧~")
+        self.view.makeToast("点击右上角的加号,去新增一个荣誉吧~", position: .top)
     }
 }
 

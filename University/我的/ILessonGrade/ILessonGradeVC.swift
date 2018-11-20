@@ -38,6 +38,7 @@ class ILessonGradeVC: UIViewController {
     
     private func initUI() {
         title = "成绩单"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "analyse"), style: .plain, target: self, action: #selector(analyseGrade))
         setupTableView()
     }
     
@@ -118,6 +119,11 @@ class ILessonGradeVC: UIViewController {
             String(format: "%.2f", allCredit),
             String(format: "%.2f", getPoint / allCredit)
         ]
+    }
+    
+    @objc func analyseGrade() {
+        let analyseGradeVC = AnalyseGradeVC()
+        navigationController?.pushViewController(analyseGradeVC, animated: true)
     }
 }
 

@@ -87,7 +87,8 @@ class IQANDAnswerVC: UIViewController {
     }
     
     @objc func addQuestion() {
-        
+        let postQuestionVC = PostQuestionVC()
+        navigationController?.pushViewController(postQuestionVC, animated: true)
     }
 }
 
@@ -128,7 +129,7 @@ extension IQANDAnswerVC: QuestionCellDelegate {
 // MARK: 空视图-代理
 extension IQANDAnswerVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        self.view.makeToast("嘿，去交流区问问题吧~")
+        self.view.makeToast("点击右上角的加号,问问题吧~", position: .top)
     }
 }
 

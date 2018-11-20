@@ -80,7 +80,8 @@ class IExperienceVC: UIViewController {
     }
     
     @objc func addExp() {
-        
+        let postExpVC = PostExpVC()
+        navigationController?.pushViewController(postExpVC, animated: true)
     }
 }
 
@@ -120,7 +121,7 @@ extension IExperienceVC: UITableViewDataSource {
 // MARK: 空视图-代理
 extension IExperienceVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        self.view.makeToast("嘿，去交流区写写看吧~")
+        self.view.makeToast("点击右上角的加号写写看吧~")
     }
 }
 

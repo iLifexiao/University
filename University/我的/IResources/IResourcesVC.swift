@@ -78,7 +78,8 @@ class IResourcesVC: UIViewController {
     }
     
     @objc func addResource() {
-        
+        let postResourceVC = PostResourceVC()
+        navigationController?.pushViewController(postResourceVC, animated: true)
     }
 }
 
@@ -117,7 +118,7 @@ extension IResourcesVC: UITableViewDataSource {
 // MARK: 空视图-代理
 extension IResourcesVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        self.view.makeToast("嘿，去交流区推荐一个吧~")
+        self.view.makeToast("点击右上角的加号,推荐一个吧~", position: .top)
     }
 }
 

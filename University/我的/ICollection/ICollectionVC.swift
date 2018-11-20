@@ -117,7 +117,7 @@ extension ICollectionVC: UITableViewDataSource {
 // MARK: 空视图-代理
 extension ICollectionVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        view.makeToast("嘿，去交流区看看吧~")
+        view.makeToast("嘿，去交流区看看吧~", position: .top)
     }
 }
 

@@ -114,7 +114,7 @@ extension IFriendsVC: UITableViewDataSource {
 // MARK: 空视图-代理
 extension IFriendsVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        self.view.makeToast("去添加好友看看吧~")
+        self.view.makeToast("点击右上角的加号，去添加好友看看吧~", position: .top)
     }
 }
 

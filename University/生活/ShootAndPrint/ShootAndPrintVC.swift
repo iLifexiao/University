@@ -81,12 +81,19 @@ class ShootAndPrintVC: UIViewController {
 
 
 extension ShootAndPrintVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sapServer = shops[indexPath.section]
+        let detailVC = DetailShootPrintVC()
+        detailVC.sapServer = sapServer
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20
+        return 10
     }
 }
 

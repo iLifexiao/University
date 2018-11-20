@@ -80,7 +80,8 @@ class IEssayVC: UIViewController {
     }
     
     @objc func addEssay() {
-        
+        let postEssayVC = PostEssayVC()
+        navigationController?.pushViewController(postEssayVC, animated: true)
     }
     
 }
@@ -141,7 +142,7 @@ extension IEssayVC: EssayCellDelegate {
 // MARK: 空视图-代理
 extension IEssayVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        self.view.makeToast("去 交流区 写一篇文章试试吧~")
+        self.view.makeToast("点击右上角的加号,写一篇文章试试吧~", position: .top)
     }
 }
 

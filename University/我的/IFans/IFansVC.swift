@@ -108,7 +108,7 @@ extension IFansVC: UITableViewDataSource {
 // MARK: 空视图-代理
 extension IFansVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        self.view.makeToast("尝试多多发发动态吧~")
+        self.view.makeToast("尝试多多发发动态吧~", position: .top)
     }
 }
 

@@ -94,6 +94,7 @@ class PostEssayVC: FormViewController {
             print("验证成功")
             doPost()
         } else {
+            self.view.makeToast("文章格式错误，请检查红色标记", position: .top)
             print("验证失败")
         }
     }

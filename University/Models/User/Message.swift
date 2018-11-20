@@ -33,9 +33,9 @@ struct Message {
     init(jsonData: JSON) {
         self.id = jsonData["id"].intValue
         self.userID = jsonData["userID"].intValue
-        self.friendID = jsonData["id"].intValue
-        self.fromUserID = jsonData["id"].intValue
-        self.toUserID = jsonData["id"].intValue
+        self.friendID = jsonData["friendID"].intValue
+        self.fromUserID = jsonData["fromUserID"].intValue
+        self.toUserID = jsonData["toUserID"].intValue
        
         self.content = jsonData["content"].stringValue
         self.type = jsonData["type"].stringValue

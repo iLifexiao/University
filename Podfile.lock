@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.7.3)
+  - Charts (3.2.1):
+    - Charts/Core (= 3.2.1)
+  - Charts/Core (3.2.1)
   - CurriculaTable (0.3.0)
   - DNSPageView (1.1.1)
   - DZNEmptyDataSet (1.8.1)
@@ -22,6 +25,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - Charts
   - CurriculaTable
   - DNSPageView
   - DZNEmptyDataSet
@@ -42,6 +46,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Charts
     - CurriculaTable
     - DNSPageView
     - DZNEmptyDataSet
@@ -61,6 +66,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
   CurriculaTable: 4451ba81157f4c474cbf28f4b3d62a2dbcd06e1c
   DNSPageView: c8598a6d38ee4191191e326cbd5198b641245aaf
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
@@ -78,6 +84,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
 
-PODFILE CHECKSUM: deef6f753b06ce748599f150dcc3aed6c86e7a10
+PODFILE CHECKSUM: 6f0806f80e2e3552c0d9cf098bc6fa0ec171fb80
 
 COCOAPODS: 1.6.0.beta.1

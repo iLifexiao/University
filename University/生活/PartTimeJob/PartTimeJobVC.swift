@@ -81,6 +81,13 @@ class PartTimeJobVC: UIViewController {
 
 
 extension PartTimeJobVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let job = jobs[indexPath.section]
+        let detailVC = DetailPTJVC()
+        detailVC.job = job
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }

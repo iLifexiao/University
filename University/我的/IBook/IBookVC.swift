@@ -77,7 +77,8 @@ class IBookVC: UIViewController {
     }
     
     @objc func addBook() {
-        
+        let postBookVC = PostBookVC()
+        navigationController?.pushViewController(postBookVC, animated: true)
     }
 }
 
@@ -116,7 +117,7 @@ extension IBookVC: UITableViewDataSource {
 // MARK: 空视图-代理
 extension IBookVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        self.view.makeToast("嘿，去推荐你喜欢的书吧~")
+        self.view.makeToast("点击右上角的加号,去推荐你喜欢的书吧~", position: .top)
     }
 }
 

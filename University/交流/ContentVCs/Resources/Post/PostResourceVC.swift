@@ -60,7 +60,7 @@ class PostResourceVC: FormViewController {
                 $0.title = "类型"
                 $0.placeholder = "工具、音乐、编程..."
                 $0.add(rule: RuleRequired(msg: "类型不能为空"))
-                $0.add(rule: RuleMaxLength(maxLength: 2, msg: "类型需小于4字"))
+                $0.add(rule: RuleMaxLength(maxLength: 4, msg: "类型需小于4字"))
                 $0.tag = "type"
                 }.cellUpdate { [weak self] cell, row in
                     if !row.isValid {
@@ -100,6 +100,7 @@ class PostResourceVC: FormViewController {
             print("验证成功")
             doPost()
         } else {
+            self.view.makeToast("资源格式错误，请检查红色标记", position: .top)
             print("验证失败")
         }
     }

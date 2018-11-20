@@ -130,6 +130,7 @@ class PostBookVC: FormViewController {
         if errors.count == 0 {
             print("验证成功")
         } else {
+            self.view.makeToast("书籍格式错误，请检查红色标记", position: .top)
             print("验证失败")
         }
     }

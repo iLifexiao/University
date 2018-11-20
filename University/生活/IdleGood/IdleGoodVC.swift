@@ -34,6 +34,7 @@ class IdleGoodVC: UIViewController {
     
     private func initUI() {
         title = "校园闲鱼"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "send"), style: .plain, target: self, action: #selector(goPostThing))
         setupCollectionView()
     }
     
@@ -71,6 +72,10 @@ class IdleGoodVC: UIViewController {
         }
     }
     
+    @objc func goPostThing() {
+        let postIdleGoodVC = PostIdleGoodVC()
+        navigationController?.pushViewController(postIdleGoodVC, animated: true)
+    }    
 }
 
 extension IdleGoodVC: UICollectionViewDelegate {

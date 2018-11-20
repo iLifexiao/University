@@ -100,13 +100,11 @@ extension IStudentVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: sutdentInfoCell)
-        if cell == nil {
-            cell = UITableViewCell(style: .value1, reuseIdentifier: sutdentInfoCell)
-        }
-        cell?.textLabel?.text = stuInfo[indexPath.row]
-        cell?.detailTextLabel?.text = stuInfoValue[indexPath.row]
-        return cell!
+        // 更新cell创建的写法，充分利用Swift的特性
+        let cell = tableView.dequeueReusableCell(withIdentifier: sutdentInfoCell) ?? UITableViewCell(style: .value1, reuseIdentifier: sutdentInfoCell)
+        cell.textLabel?.text = stuInfo[indexPath.row]
+        cell.detailTextLabel?.text = stuInfoValue[indexPath.row]
+        return cell
     }
 }
 
