@@ -53,7 +53,7 @@ class LostAndFoundVC: UIViewController {
     
     private func getLostAndFound() {
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/lostandfound/all", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/lostandfound/sort", headers: headers).responseJSON { [weak self] response in
             if let self = self {
                 switch response.result {
                 case .success(let value):

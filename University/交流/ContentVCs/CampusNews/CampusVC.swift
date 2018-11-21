@@ -49,7 +49,7 @@ class CampusVC: UIViewController {
     }
     
     private func getCampusNews() {
-        Alamofire.request(baseURL + "/api/v1/campusnews/all", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/campusnews/sort", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)

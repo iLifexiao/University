@@ -50,7 +50,7 @@ class ReadingVC: UIViewController {
     }
     
     private func getBooks() {
-        Alamofire.request(baseURL + "/api/v1/book/all", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/book/sort", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)

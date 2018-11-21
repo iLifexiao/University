@@ -93,6 +93,14 @@ extension IFansVC: UITableViewDelegate {
 }
 
 extension IFansVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let userInfo = fans[indexPath.row]
+        // 对于私有属性/方法，标记private
+        let detailUserVC = DetailUserVC()
+        detailUserVC.userInfo = userInfo
+        navigationController?.pushViewController(detailUserVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fans.count
     }

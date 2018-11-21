@@ -204,6 +204,10 @@ extension UserVC: UITableViewDelegate {
             return
         }
         switch indexPath.section {
+        case 0:
+            let detailVC = DetailUserVC()
+            detailVC.userID = GlobalData.sharedInstance.userID
+            navigationController?.pushViewController(detailVC, animated: true)
         case 1:
             switch indexPath.row {
             case 0:

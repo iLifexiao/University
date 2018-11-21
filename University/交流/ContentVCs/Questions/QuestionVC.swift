@@ -50,7 +50,7 @@ class QuestionVC: UIViewController {
     }
     
     private func getQuestions() {
-        Alamofire.request(baseURL + "/api/v1/question/all", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/question/sort", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)

@@ -59,7 +59,7 @@ class SchoolStoreVC: UIViewController {
     
     private func getSchoolStores() {
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/schoolstore/all", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/schoolstore/sort", headers: headers).responseJSON { [weak self] response in
             if let self = self {
                 switch response.result {
                 case .success(let value):

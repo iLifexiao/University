@@ -58,7 +58,7 @@ class PartTimeJobVC: UIViewController {
     
     private func getPartTimeJobs() {
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/parttimejob/all", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/parttimejob/sort", headers: headers).responseJSON { [weak self] response in
             if let self = self {
                 switch response.result {
                 case .success(let value):

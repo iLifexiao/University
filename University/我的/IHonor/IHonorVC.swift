@@ -104,6 +104,44 @@ extension IHonorVC: UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
+    
+    // 侧滑删除功能
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // 获取ID
+        let honor = honors[indexPath.row]
+        let honorID = honor.id ?? 0
+        
+        // 执行逻辑删除操作
+        Alamofire.request(baseURL + "/api/v1/honor/\(honorID)/logicdel", method: .patch, headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                if json["status"].intValue == 0 {
+                    self.honors.remove(at: indexPath.row)
+                    self.tableView.reloadData()
+                }
+                self.view.makeToast(json["message"].stringValue, position: .top)
+            case .failure(let error):
+                self.view.makeToast("删除失败，稍后再试", position: .top)
+                print(error)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
+    }
 }
 
 // MARK: 空视图-代理

@@ -54,6 +54,14 @@
 		8B53CBA021A450E4002CE03C /* DetailSchoolStoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CB9E21A450E4002CE03C /* DetailSchoolStoreVC.xib */; };
 		8B53CBA421A45CF2002CE03C /* DetailPTJVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CBA221A45CF2002CE03C /* DetailPTJVC.swift */; };
 		8B53CBA521A45CF2002CE03C /* DetailPTJVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CBA321A45CF2002CE03C /* DetailPTJVC.xib */; };
+		8B53CBA821A4DF67002CE03C /* AddFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CBA721A4DF67002CE03C /* AddFriendVC.swift */; };
+		8B53CBAC21A4F634002CE03C /* DetailUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CBAA21A4F634002CE03C /* DetailUserVC.swift */; };
+		8B53CBAD21A4F634002CE03C /* DetailUserVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CBAB21A4F634002CE03C /* DetailUserVC.xib */; };
+		8B53CBB021A51451002CE03C /* EditUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CBAF21A51451002CE03C /* EditUserVC.swift */; };
+		8B53CBB321A52401002CE03C /* SendToUserMsgVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CBB221A52400002CE03C /* SendToUserMsgVC.swift */; };
+		8B53CBB621A543CC002CE03C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CBB521A543CC002CE03C /* UIImage+Extension.swift */; };
+		8B53CBB921A57536002CE03C /* DetailEssayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CBB721A57536002CE03C /* DetailEssayVC.swift */; };
+		8B53CBBA21A57536002CE03C /* DetailEssayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CBB821A57536002CE03C /* DetailEssayVC.xib */; };
 		8B64B46121987C37005C2E07 /* ADBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B43621987C37005C2E07 /* ADBanner.swift */; };
 		8B64B46221987C37005C2E07 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B43721987C37005C2E07 /* Notification.swift */; };
 		8B64B46321987C37005C2E07 /* Academic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B43921987C37005C2E07 /* Academic.swift */; };
@@ -234,6 +242,10 @@
 		8BAEA4192181632B00FC2CBB /* LifeFuncModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA4182181632B00FC2CBB /* LifeFuncModel.swift */; };
 		8BAEA43D2181A7FB00FC2CBB /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEA43C2181A7FB00FC2CBB /* UserView.swift */; };
 		8BAEA43F2181A80D00FC2CBB /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BAEA43E2181A80D00FC2CBB /* UserView.xib */; };
+		8BC1484C21A5840C00CDD76B /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1484A21A5840C00CDD76B /* CommentVC.swift */; };
+		8BC1484D21A5840C00CDD76B /* CommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1484B21A5840C00CDD76B /* CommentVC.xib */; };
+		8BC1485121A5849700CDD76B /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1484F21A5849700CDD76B /* CommentCell.swift */; };
+		8BC1485221A5849700CDD76B /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1485021A5849700CDD76B /* CommentCell.xib */; };
 		8BDD2EC8218487A800E01B4D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD2EC7218487A800E01B4D /* Login.storyboard */; };
 		E3B847BED6AB5EB84BF2B9B2 /* Pods_UniversityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE10B5202AAC32A3941E7F5 /* Pods_UniversityTests.framework */; };
 /* End PBXBuildFile section */
@@ -308,6 +320,14 @@
 		8B53CB9E21A450E4002CE03C /* DetailSchoolStoreVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailSchoolStoreVC.xib; sourceTree = "<group>"; };
 		8B53CBA221A45CF2002CE03C /* DetailPTJVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPTJVC.swift; sourceTree = "<group>"; };
 		8B53CBA321A45CF2002CE03C /* DetailPTJVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPTJVC.xib; sourceTree = "<group>"; };
+		8B53CBA721A4DF67002CE03C /* AddFriendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendVC.swift; sourceTree = "<group>"; };
+		8B53CBAA21A4F634002CE03C /* DetailUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserVC.swift; sourceTree = "<group>"; };
+		8B53CBAB21A4F634002CE03C /* DetailUserVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailUserVC.xib; sourceTree = "<group>"; };
+		8B53CBAF21A51451002CE03C /* EditUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserVC.swift; sourceTree = "<group>"; };
+		8B53CBB221A52400002CE03C /* SendToUserMsgVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendToUserMsgVC.swift; sourceTree = "<group>"; };
+		8B53CBB521A543CC002CE03C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		8B53CBB721A57536002CE03C /* DetailEssayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEssayVC.swift; sourceTree = "<group>"; };
+		8B53CBB821A57536002CE03C /* DetailEssayVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailEssayVC.xib; sourceTree = "<group>"; };
 		8B64B43621987C37005C2E07 /* ADBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADBanner.swift; sourceTree = "<group>"; };
 		8B64B43721987C37005C2E07 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		8B64B43921987C37005C2E07 /* Academic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Academic.swift; sourceTree = "<group>"; };
@@ -495,6 +515,10 @@
 		8BAEA4182181632B00FC2CBB /* LifeFuncModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeFuncModel.swift; sourceTree = "<group>"; };
 		8BAEA43C2181A7FB00FC2CBB /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		8BAEA43E2181A80D00FC2CBB /* UserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
+		8BC1484A21A5840C00CDD76B /* CommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
+		8BC1484B21A5840C00CDD76B /* CommentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentVC.xib; sourceTree = "<group>"; };
+		8BC1484F21A5849700CDD76B /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		8BC1485021A5849700CDD76B /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		8BDD2EC3218453C600E01B4D /* University-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "University-Bridging-Header.h"; sourceTree = "<group>"; };
 		8BDD2EC7218487A800E01B4D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9501AE27AA40D52E090DB849 /* Pods_University.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_University.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -556,6 +580,8 @@
 		8B0EF32B21833909000EA64E /* Recommand */ = {
 			isa = PBXGroup;
 			children = (
+				8BC1484E21A5841200CDD76B /* Comment */,
+				8B53CBBB21A57801002CE03C /* Detail */,
 				8B7A951021A27720009CEB32 /* Post */,
 				8B0EF3082182F197000EA64E /* RecommandVC.swift */,
 				8B0EF3092182F197000EA64E /* RecommandVC.xib */,
@@ -677,6 +703,8 @@
 		8B24EE382181C1B10044514C /* UserView */ = {
 			isa = PBXGroup;
 			children = (
+				8B53CBAE21A4F7EE002CE03C /* Detail */,
+				8B53CBB121A514D1002CE03C /* Edit */,
 				8BAEA43C2181A7FB00FC2CBB /* UserView.swift */,
 				8BAEA43E2181A80D00FC2CBB /* UserView.xib */,
 			);
@@ -767,6 +795,7 @@
 		8B53CB9421A3F471002CE03C /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				8B53CBB221A52400002CE03C /* SendToUserMsgVC.swift */,
 				8B53CB9221A3F46B002CE03C /* SendMsgVC.swift */,
 			);
 			path = Post;
@@ -803,6 +832,40 @@
 			children = (
 				8B53CBA221A45CF2002CE03C /* DetailPTJVC.swift */,
 				8B53CBA321A45CF2002CE03C /* DetailPTJVC.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		8B53CBA921A4DF72002CE03C /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CBA721A4DF67002CE03C /* AddFriendVC.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		8B53CBAE21A4F7EE002CE03C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CBAA21A4F634002CE03C /* DetailUserVC.swift */,
+				8B53CBAB21A4F634002CE03C /* DetailUserVC.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		8B53CBB121A514D1002CE03C /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CBAF21A51451002CE03C /* EditUserVC.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		8B53CBBB21A57801002CE03C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8B53CBB721A57536002CE03C /* DetailEssayVC.swift */,
+				8B53CBB821A57536002CE03C /* DetailEssayVC.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -900,6 +963,7 @@
 			isa = PBXGroup;
 			children = (
 				8B64B49321999DFF005C2E07 /* UIColor+Extension.swift */,
+				8B53CBB521A543CC002CE03C /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1253,6 +1317,7 @@
 		8B7C75F8219E61CF00FCCD75 /* IFriends */ = {
 			isa = PBXGroup;
 			children = (
+				8B53CBA921A4DF72002CE03C /* Post */,
 				8B7C75F4219E619900FCCD75 /* IFriendsVC.swift */,
 				8B7C75F5219E619900FCCD75 /* IFriendsVC.xib */,
 			);
@@ -1482,6 +1547,17 @@
 			path = HeadlineView;
 			sourceTree = "<group>";
 		};
+		8BC1484E21A5841200CDD76B /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				8BC1484A21A5840C00CDD76B /* CommentVC.swift */,
+				8BC1484B21A5840C00CDD76B /* CommentVC.xib */,
+				8BC1484F21A5849700CDD76B /* CommentCell.swift */,
+				8BC1485021A5849700CDD76B /* CommentCell.xib */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
 		8BDD2E9221835E0F00E01B4D /* Questions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1642,6 +1718,7 @@
 				8B53CB7E21A3DA84002CE03C /* AnalyseGradeVC.xib in Resources */,
 				8B7C7610219E639300FCCD75 /* IHonorVC.xib in Resources */,
 				8B64B5242199CC8E005C2E07 /* RaceVC.xib in Resources */,
+				8BC1485221A5849700CDD76B /* CommentCell.xib in Resources */,
 				8B0EF3172182F21E000EA64E /* ReadingVC.xib in Resources */,
 				8B7A950521A27577009CEB32 /* PostLostAndFoundVC.xib in Resources */,
 				8B7C760B219E635000FCCD75 /* ILessonGradeVC.xib in Resources */,
@@ -1660,6 +1737,7 @@
 				8B7C75CC219C840700FCCD75 /* PartTimeJobCell.xib in Resources */,
 				8B64B567219AE995005C2E07 /* EmptyClassRoomVC.xib in Resources */,
 				8B64B555219A9D6B005C2E07 /* ExaminationCell.xib in Resources */,
+				8B53CBBA21A57536002CE03C /* DetailEssayVC.xib in Resources */,
 				8B53CB9B21A44714002CE03C /* DetailShootPrintVC.xib in Resources */,
 				8B7A951921A277CB009CEB32 /* PostBookVC.xib in Resources */,
 				8B796C2121A2DF600096BC32 /* Localization.strings in Resources */,
@@ -1678,6 +1756,7 @@
 				8B7A951421A2778A009CEB32 /* PostQuestionVC.xib in Resources */,
 				8B0EF341218350F0000EA64E /* QuestionCell.xib in Resources */,
 				8B0EF3132182F204000EA64E /* CampusVC.xib in Resources */,
+				8B53CBAD21A4F634002CE03C /* DetailUserVC.xib in Resources */,
 				8B7C75AC219C015800FCCD75 /* PropertyManagerVC.xib in Resources */,
 				8B7C75F7219E619900FCCD75 /* IFriendsVC.xib in Resources */,
 				8BAEA3F3217F2C8700FC2CBB /* TipsHeaderView.xib in Resources */,
@@ -1697,6 +1776,7 @@
 				8B7A950F21A2771A009CEB32 /* PostEssayVC.xib in Resources */,
 				8B7C75FC219E622100FCCD75 /* IExperienceVC.xib in Resources */,
 				8B7C75D7219D51FA00FCCD75 /* BandingStudentVC.xib in Resources */,
+				8BC1484D21A5840C00CDD76B /* CommentVC.xib in Resources */,
 				8BAEA43F2181A80D00FC2CBB /* UserView.xib in Resources */,
 				8B7A950A21A275EB009CEB32 /* ClubDetailVC.xib in Resources */,
 				8B7C7601219E628600FCCD75 /* IQANDAnswerVC.xib in Resources */,
@@ -1878,6 +1958,7 @@
 				8B53CB8F21A3E71C002CE03C /* IntAxisValueFormatter.swift in Sources */,
 				8B53CB9321A3F46B002CE03C /* SendMsgVC.swift in Sources */,
 				8B0EF30E2182F1E8000EA64E /* FocusVC.swift in Sources */,
+				8B53CBB621A543CC002CE03C /* UIImage+Extension.swift in Sources */,
 				8B64B46921987C37005C2E07 /* LessonSchedule.swift in Sources */,
 				8B7C75A6219C011300FCCD75 /* ShootAndPrintVC.swift in Sources */,
 				8B0EF31A2182F324000EA64E /* QuestionVC.swift in Sources */,
@@ -1889,6 +1970,7 @@
 				8B64B53D219A6B54005C2E07 /* AcdemicVC.swift in Sources */,
 				8B64B566219AE995005C2E07 /* EmptyClassRoomVC.swift in Sources */,
 				8B7C75D1219D17CB00FCCD75 /* RegisterVC.swift in Sources */,
+				8B53CBB021A51451002CE03C /* EditUserVC.swift in Sources */,
 				8B7C7605219E631100FCCD75 /* IStudentVC.swift in Sources */,
 				8B7C7597219BD8D700FCCD75 /* ExperienceCell.swift in Sources */,
 				8BAEA401217F707600FC2CBB /* CampusFuncModel.swift in Sources */,
@@ -1910,6 +1992,7 @@
 				8B7C75CB219C840700FCCD75 /* PartTimeJobCell.swift in Sources */,
 				8B64B47721987C37005C2E07 /* PropertyManager.swift in Sources */,
 				8B64B542219A7003005C2E07 /* DetailInfoVC.swift in Sources */,
+				8B53CBA821A4DF67002CE03C /* AddFriendVC.swift in Sources */,
 				8B7C75D3219D17F000FCCD75 /* ForgetPwdVC.swift in Sources */,
 				8B64B47821987C37005C2E07 /* SchoolStore.swift in Sources */,
 				8B64B46521987C37005C2E07 /* Club.swift in Sources */,
@@ -1954,9 +2037,11 @@
 				8B64B46421987C37005C2E07 /* AddressList.swift in Sources */,
 				8B64B47121987C37005C2E07 /* Essay.swift in Sources */,
 				8B64B57A219AFB58005C2E07 /* ClubCell.swift in Sources */,
+				8B53CBB321A52401002CE03C /* SendToUserMsgVC.swift in Sources */,
 				8B7C75FB219E622100FCCD75 /* IExperienceVC.swift in Sources */,
 				8B7C75DF219DB09500FCCD75 /* GlobalData.swift in Sources */,
 				8B64B47221987C37005C2E07 /* Experience.swift in Sources */,
+				8B53CBB921A57536002CE03C /* DetailEssayVC.swift in Sources */,
 				8B64B490219987D7005C2E07 /* LessonTimeTable.swift in Sources */,
 				8B7C75F6219E619900FCCD75 /* IFriendsVC.swift in Sources */,
 				8B64B47421987C37005C2E07 /* Resource.swift in Sources */,
@@ -1970,6 +2055,7 @@
 				8B64B48021987C37005C2E07 /* Focus.swift in Sources */,
 				8B64B46F21987C37005C2E07 /* CampusNews.swift in Sources */,
 				8B0EF30A2182F197000EA64E /* RecommandVC.swift in Sources */,
+				8BC1485121A5849700CDD76B /* CommentCell.swift in Sources */,
 				8B64B570219AEA6F005C2E07 /* SchoolCalendarVC.swift in Sources */,
 				8B53CB9F21A450E4002CE03C /* DetailSchoolStoreVC.swift in Sources */,
 				8B64B56B219AE9F3005C2E07 /* SpeechVC.swift in Sources */,
@@ -1979,6 +2065,7 @@
 				8B64B46D21987C37005C2E07 /* Answer.swift in Sources */,
 				8B64B5232199CC8E005C2E07 /* RaceVC.swift in Sources */,
 				8B7C7600219E628600FCCD75 /* IQANDAnswerVC.swift in Sources */,
+				8B53CBAC21A4F634002CE03C /* DetailUserVC.swift in Sources */,
 				8B53CB8C21A3E71C002CE03C /* XYMarkerView.swift in Sources */,
 				8B0EF3232182FCE9000EA64E /* ExperienceVC.swift in Sources */,
 				8B7C7614219E7E8700FCCD75 /* MessageCell.swift in Sources */,
@@ -1988,6 +2075,7 @@
 				8B64B48421987C37005C2E07 /* User.swift in Sources */,
 				8BAEA3AC217EFB2E00FC2CBB /* LearnVC.swift in Sources */,
 				8B7A951321A2778A009CEB32 /* PostQuestionVC.swift in Sources */,
+				8BC1484C21A5840C00CDD76B /* CommentVC.swift in Sources */,
 				8B64B51F2199C809005C2E07 /* LibraryWebVC.swift in Sources */,
 				8B7C75B0219C017F00FCCD75 /* SchoolStoreVC.swift in Sources */,
 				8B53CB7921A3CF83002CE03C /* PostHonorVC.swift in Sources */,

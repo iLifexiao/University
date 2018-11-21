@@ -60,7 +60,7 @@ class SpeechVC: UIViewController {
     
     private func getSpeech() {
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/speech/all", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/speech/sort", headers: headers).responseJSON { [weak self] response in
             if let self = self {
                 switch response.result {
                 case .success(let value):

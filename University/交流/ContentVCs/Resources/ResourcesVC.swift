@@ -50,7 +50,7 @@ class ResourcesVC: UIViewController {
     }
     
     private func getResources() {
-        Alamofire.request(baseURL + "/api/v1/resource/all", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/resource/sort", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)

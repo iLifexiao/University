@@ -49,7 +49,7 @@ class FocusVC: UIViewController {
     }
     
     private func getEssays() {
-        Alamofire.request(baseURL + "/api/v1/essay/all", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/essay/sort", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -71,8 +71,9 @@ class FocusVC: UIViewController {
 extension FocusVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let essay = focusEssays[indexPath.section]
-        let essayTitle = essay.title
-        view.makeToast(essayTitle)
+        let detailEssayVC = DetailEssayVC()
+        detailEssayVC.essay = essay
+        navigationController?.pushViewController(detailEssayVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -86,7 +86,8 @@ class IFriendsVC: UIViewController {
     }
     
     @objc func addFriend() {
-        
+        let addFriendVC = AddFriendVC()
+        navigationController?.pushViewController(addFriendVC, animated: true)
     }
 }
 
@@ -98,6 +99,13 @@ extension IFriendsVC: UITableViewDelegate {
 }
 
 extension IFriendsVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let userInfo = friends[indexPath.row]
+        let detailUserVC = DetailUserVC()
+        detailUserVC.userInfo = userInfo
+        navigationController?.pushViewController(detailUserVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
     }
@@ -107,6 +115,48 @@ extension IFriendsVC: UITableViewDataSource {
         cell.setupModel(friends[indexPath.row])
         cell.selectionStyle = .none
         return cell
+    }
+    
+    // 侧滑取消关注
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // 通过帐号ID来删除关注信息
+        let user = friends[indexPath.row]
+        let focusUserID = user.userID
+        let parameters: Parameters = [
+            "userID": GlobalData.sharedInstance.userID,
+            "focusUserID": focusUserID
+        ]
+        
+        Alamofire.request(baseURL + "/api/v1/focus/delete", method: .post, parameters: parameters, headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                // 需要保证网络删除成功后，再删除本地
+                if json["status"].intValue == 0 {
+                    self.friends.remove(at: indexPath.row)
+                    self.tableView.reloadData()
+                }
+                self.view.makeToast(json["message"].stringValue, position: .top)
+            case .failure(let error):
+                self.view.makeToast("取关失败，稍后再试", position: .top)
+                print(error)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "取关"
     }
 }
 

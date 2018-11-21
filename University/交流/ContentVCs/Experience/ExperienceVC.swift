@@ -51,7 +51,7 @@ class ExperienceVC: UIViewController {
     }
     
     private func getExperiences() {
-        Alamofire.request(baseURL + "/api/v1/experience/all", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/experience/sort", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)

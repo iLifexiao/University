@@ -26,7 +26,6 @@ class SendMsgVC: FormViewController {
         tabBarController?.tabBar.isHidden = true
     }
     
-    
     private func initData() {
         
     }
@@ -41,7 +40,7 @@ class SendMsgVC: FormViewController {
         form +++ Section("私信的基本信息")
             <<< TextRow() { row in
                 row.title = "收信人帐号"
-                row.placeholder = "收信人帐号"
+                row.placeholder = "收信人帐号"                
                 row.add(rule: RuleRequired(msg: "帐号不能为空"))
                 row.tag = "account"
                 }.cellUpdate { [weak self] cell, row in

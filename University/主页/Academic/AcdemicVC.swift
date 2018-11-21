@@ -62,7 +62,7 @@ class AcdemicVC: UIViewController {
     
     private func getAcademic() {
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/academic/all", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/academic/sort", headers: headers).responseJSON { [weak self] response in
             if let self = self {
                 switch response.result {
                 case .success(let value):
