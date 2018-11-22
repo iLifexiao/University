@@ -50,16 +50,21 @@ class ReadingVC: UIViewController {
     }
     
     private func getBooks() {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/book/sort", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self?.books.removeAll()
+                self.books.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self?.books.append(Book(jsonData: subJson))
+                    self.books.append(Book(jsonData: subJson))
                 }
-                self?.tableView.reloadData()
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -68,6 +73,14 @@ class ReadingVC: UIViewController {
 }
 
 extension ReadingVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let book = books[indexPath.section]
+        let detailBookVC = DetailBookVC()
+        detailBookVC.book = book
+        detailBookVC.id = book.id ?? 0
+        present(detailBookVC, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }

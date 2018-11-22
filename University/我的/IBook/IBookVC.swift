@@ -83,6 +83,14 @@ class IBookVC: UIViewController {
 }
 
 extension IBookVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let book = books[indexPath.section]
+        let detailBookVC = DetailBookVC()
+        detailBookVC.book = book
+        detailBookVC.id = book.id ?? 0
+        navigationController?.pushViewController(detailBookVC, animated: true)        
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }

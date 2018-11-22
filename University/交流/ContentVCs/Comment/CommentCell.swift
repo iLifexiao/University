@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol CommentCellDelegate {
-    func commentLike(likeButton: UIButton, commentLabel: UILabel, commitID: String)
+    func commentLike(likeButton: UIButton, likeLabel: UILabel, commentID: String)
 }
 
 class CommentCell: UITableViewCell {
@@ -53,7 +53,7 @@ class CommentCell: UITableViewCell {
     
     @IBAction func likeBtnPress(_ sender: UIButton) {
         if let delegate = delegate {
-            delegate.commentLike(likeButton: sender, commentLabel: commentLabel, commitID: commentID ?? "0")
+            delegate.commentLike(likeButton: sender, likeLabel: likeLabel, commentID: commentID ?? "0")
         }
     }
     

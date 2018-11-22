@@ -49,16 +49,21 @@ class FocusVC: UIViewController {
     }
     
     private func getEssays() {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/essay/sort", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self?.focusEssays.removeAll()
+                self.focusEssays.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self?.focusEssays.append(Essay(jsonData: subJson))
+                    self.focusEssays.append(Essay(jsonData: subJson))
                 }
-                self?.tableView.reloadData()
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -73,7 +78,9 @@ extension FocusVC: UITableViewDelegate {
         let essay = focusEssays[indexPath.section]
         let detailEssayVC = DetailEssayVC()
         detailEssayVC.essay = essay
-        navigationController?.pushViewController(detailEssayVC, animated: true)
+        detailEssayVC.type = .essay
+        detailEssayVC.id = essay.id ?? 0
+        self.present(detailEssayVC, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -85,7 +92,7 @@ extension FocusVC: UITableViewDelegate {
         case 0:
             return 1
         default:
-            return 20
+            return 10
         }
     }
 }

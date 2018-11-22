@@ -86,6 +86,15 @@ class IExperienceVC: UIViewController {
 }
 
 extension IExperienceVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let experience = experiences[indexPath.section]
+        let detailEssayVC = DetailEssayVC()
+        detailEssayVC.experience = experience
+        detailEssayVC.type = .experience
+        detailEssayVC.id = experience.id ?? 0
+        self.present(detailEssayVC, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 155
     }

@@ -36,6 +36,9 @@
 		8B3002FC218B35CE00D53D34 /* CountdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3002F7218B35CE00D53D34 /* CountdownModel.swift */; };
 		8B3002FD218B35CE00D53D34 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3002F8218B35CE00D53D34 /* CountdownView.swift */; };
 		8B3002FE218B35CE00D53D34 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3002F9218B35CE00D53D34 /* CountdownView.xib */; };
+		8B36CA8721A6D4FA001B62DB /* DetailBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CA8521A6D4FA001B62DB /* DetailBookVC.swift */; };
+		8B36CA8B21A6DA06001B62DB /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CA8A21A6DA06001B62DB /* CommentView.swift */; };
+		8B36CA8D21A6DA2C001B62DB /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B36CA8C21A6DA2C001B62DB /* CommentView.xib */; };
 		8B53CB7921A3CF83002CE03C /* PostHonorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB7821A3CF83002CE03C /* PostHonorVC.swift */; };
 		8B53CB7D21A3DA84002CE03C /* AnalyseGradeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB7B21A3DA84002CE03C /* AnalyseGradeVC.swift */; };
 		8B53CB7E21A3DA84002CE03C /* AnalyseGradeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CB7C21A3DA84002CE03C /* AnalyseGradeVC.xib */; };
@@ -61,7 +64,6 @@
 		8B53CBB321A52401002CE03C /* SendToUserMsgVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CBB221A52400002CE03C /* SendToUserMsgVC.swift */; };
 		8B53CBB621A543CC002CE03C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CBB521A543CC002CE03C /* UIImage+Extension.swift */; };
 		8B53CBB921A57536002CE03C /* DetailEssayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CBB721A57536002CE03C /* DetailEssayVC.swift */; };
-		8B53CBBA21A57536002CE03C /* DetailEssayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CBB821A57536002CE03C /* DetailEssayVC.xib */; };
 		8B64B46121987C37005C2E07 /* ADBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B43621987C37005C2E07 /* ADBanner.swift */; };
 		8B64B46221987C37005C2E07 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B43721987C37005C2E07 /* Notification.swift */; };
 		8B64B46321987C37005C2E07 /* Academic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B43921987C37005C2E07 /* Academic.swift */; };
@@ -246,6 +248,8 @@
 		8BC1484D21A5840C00CDD76B /* CommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1484B21A5840C00CDD76B /* CommentVC.xib */; };
 		8BC1485121A5849700CDD76B /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1484F21A5849700CDD76B /* CommentCell.swift */; };
 		8BC1485221A5849700CDD76B /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1485021A5849700CDD76B /* CommentCell.xib */; };
+		8BC1485621A6531D00CDD76B /* PostCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1485521A6531D00CDD76B /* PostCommentVC.swift */; };
+		8BC1485921A6542600CDD76B /* PostCommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1485821A6542600CDD76B /* PostCommentVC.xib */; };
 		8BDD2EC8218487A800E01B4D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD2EC7218487A800E01B4D /* Login.storyboard */; };
 		E3B847BED6AB5EB84BF2B9B2 /* Pods_UniversityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE10B5202AAC32A3941E7F5 /* Pods_UniversityTests.framework */; };
 /* End PBXBuildFile section */
@@ -302,6 +306,9 @@
 		8B3002F7218B35CE00D53D34 /* CountdownModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownModel.swift; sourceTree = "<group>"; };
 		8B3002F8218B35CE00D53D34 /* CountdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		8B3002F9218B35CE00D53D34 /* CountdownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
+		8B36CA8521A6D4FA001B62DB /* DetailBookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookVC.swift; sourceTree = "<group>"; };
+		8B36CA8A21A6DA06001B62DB /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		8B36CA8C21A6DA2C001B62DB /* CommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentView.xib; sourceTree = "<group>"; };
 		8B53CB7821A3CF83002CE03C /* PostHonorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHonorVC.swift; sourceTree = "<group>"; };
 		8B53CB7B21A3DA84002CE03C /* AnalyseGradeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyseGradeVC.swift; sourceTree = "<group>"; };
 		8B53CB7C21A3DA84002CE03C /* AnalyseGradeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalyseGradeVC.xib; sourceTree = "<group>"; };
@@ -327,7 +334,6 @@
 		8B53CBB221A52400002CE03C /* SendToUserMsgVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendToUserMsgVC.swift; sourceTree = "<group>"; };
 		8B53CBB521A543CC002CE03C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		8B53CBB721A57536002CE03C /* DetailEssayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEssayVC.swift; sourceTree = "<group>"; };
-		8B53CBB821A57536002CE03C /* DetailEssayVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailEssayVC.xib; sourceTree = "<group>"; };
 		8B64B43621987C37005C2E07 /* ADBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADBanner.swift; sourceTree = "<group>"; };
 		8B64B43721987C37005C2E07 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		8B64B43921987C37005C2E07 /* Academic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Academic.swift; sourceTree = "<group>"; };
@@ -519,6 +525,8 @@
 		8BC1484B21A5840C00CDD76B /* CommentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentVC.xib; sourceTree = "<group>"; };
 		8BC1484F21A5849700CDD76B /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		8BC1485021A5849700CDD76B /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		8BC1485521A6531D00CDD76B /* PostCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentVC.swift; sourceTree = "<group>"; };
+		8BC1485821A6542600CDD76B /* PostCommentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCommentVC.xib; sourceTree = "<group>"; };
 		8BDD2EC3218453C600E01B4D /* University-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "University-Bridging-Header.h"; sourceTree = "<group>"; };
 		8BDD2EC7218487A800E01B4D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9501AE27AA40D52E090DB849 /* Pods_University.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_University.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -566,6 +574,8 @@
 		8B0EF3202182F37E000EA64E /* ContentVCs */ = {
 			isa = PBXGroup;
 			children = (
+				8BC1484E21A5841200CDD76B /* Comment */,
+				8B53CBBB21A57801002CE03C /* Detail */,
 				8B0EF32B21833909000EA64E /* Recommand */,
 				8B0EF32C2183391F000EA64E /* Focus */,
 				8B0EF32D2183392D000EA64E /* CampusNews */,
@@ -580,8 +590,6 @@
 		8B0EF32B21833909000EA64E /* Recommand */ = {
 			isa = PBXGroup;
 			children = (
-				8BC1484E21A5841200CDD76B /* Comment */,
-				8B53CBBB21A57801002CE03C /* Detail */,
 				8B7A951021A27720009CEB32 /* Post */,
 				8B0EF3082182F197000EA64E /* RecommandVC.swift */,
 				8B0EF3092182F197000EA64E /* RecommandVC.xib */,
@@ -610,6 +618,7 @@
 		8B0EF32E2183393E000EA64E /* Reading */ = {
 			isa = PBXGroup;
 			children = (
+				8B36CA8921A6D509001B62DB /* Detail */,
 				8B7A951A21A277CF009CEB32 /* Post */,
 				8B0EF3142182F21E000EA64E /* ReadingVC.swift */,
 				8B0EF3152182F21E000EA64E /* ReadingVC.xib */,
@@ -724,13 +733,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		8B3002F1218B33A700D53D34 /* reuseViews */ = {
+		8B3002F1218B33A700D53D34 /* ReuseViews */ = {
 			isa = PBXGroup;
 			children = (
 				8B3002F4218B35CE00D53D34 /* CountdownView */,
 				8BAEA40A218091C700FC2CBB /* HeadlineView */,
+				8B36CA9021A6F3D9001B62DB /* CommentView */,
 			);
-			path = reuseViews;
+			path = ReuseViews;
 			sourceTree = "<group>";
 		};
 		8B3002F4218B35CE00D53D34 /* CountdownView */ = {
@@ -743,6 +753,23 @@
 				8B3002F9218B35CE00D53D34 /* CountdownView.xib */,
 			);
 			path = CountdownView;
+			sourceTree = "<group>";
+		};
+		8B36CA8921A6D509001B62DB /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8B36CA8521A6D4FA001B62DB /* DetailBookVC.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		8B36CA9021A6F3D9001B62DB /* CommentView */ = {
+			isa = PBXGroup;
+			children = (
+				8B36CA8A21A6DA06001B62DB /* CommentView.swift */,
+				8B36CA8C21A6DA2C001B62DB /* CommentView.xib */,
+			);
+			path = CommentView;
 			sourceTree = "<group>";
 		};
 		8B53CB7A21A3CF8A002CE03C /* Post */ = {
@@ -865,7 +892,6 @@
 			isa = PBXGroup;
 			children = (
 				8B53CBB721A57536002CE03C /* DetailEssayVC.swift */,
-				8B53CBB821A57536002CE03C /* DetailEssayVC.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1406,7 +1432,7 @@
 				8BAEA3E1217EFE2D00FC2CBB /* 我的 */,
 				8B64B43321987C37005C2E07 /* Models */,
 				8B7A94FD21A24223009CEB32 /* H5 */,
-				8B3002F1218B33A700D53D34 /* reuseViews */,
+				8B3002F1218B33A700D53D34 /* ReuseViews */,
 				8B64B49521999E28005C2E07 /* Extension */,
 				8B53CB9121A3E724002CE03C /* ThirtKitPart */,
 				8BAEA379217EFA9F00FC2CBB /* SupportingFiles */,
@@ -1550,12 +1576,22 @@
 		8BC1484E21A5841200CDD76B /* Comment */ = {
 			isa = PBXGroup;
 			children = (
+				8BC1485721A6533700CDD76B /* Post */,
 				8BC1484A21A5840C00CDD76B /* CommentVC.swift */,
 				8BC1484B21A5840C00CDD76B /* CommentVC.xib */,
 				8BC1484F21A5849700CDD76B /* CommentCell.swift */,
 				8BC1485021A5849700CDD76B /* CommentCell.xib */,
 			);
 			path = Comment;
+			sourceTree = "<group>";
+		};
+		8BC1485721A6533700CDD76B /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				8BC1485521A6531D00CDD76B /* PostCommentVC.swift */,
+				8BC1485821A6542600CDD76B /* PostCommentVC.xib */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		8BDD2E9221835E0F00E01B4D /* Questions */ = {
@@ -1724,6 +1760,7 @@
 				8B7C760B219E635000FCCD75 /* ILessonGradeVC.xib in Resources */,
 				8B64B562219AE77F005C2E07 /* ClubVC.xib in Resources */,
 				8B7C75C4219C4DFD00FCCD75 /* ShootPrintCell.xib in Resources */,
+				8BC1485921A6542600CDD76B /* PostCommentVC.xib in Resources */,
 				8BAEA3E5217F077700FC2CBB /* ADCell.xib in Resources */,
 				8B3002FB218B35CE00D53D34 /* CountdownCell.xib in Resources */,
 				8BAEA40E2180AEFA00FC2CBB /* NewsCell.xib in Resources */,
@@ -1737,7 +1774,6 @@
 				8B7C75CC219C840700FCCD75 /* PartTimeJobCell.xib in Resources */,
 				8B64B567219AE995005C2E07 /* EmptyClassRoomVC.xib in Resources */,
 				8B64B555219A9D6B005C2E07 /* ExaminationCell.xib in Resources */,
-				8B53CBBA21A57536002CE03C /* DetailEssayVC.xib in Resources */,
 				8B53CB9B21A44714002CE03C /* DetailShootPrintVC.xib in Resources */,
 				8B7A951921A277CB009CEB32 /* PostBookVC.xib in Resources */,
 				8B796C2121A2DF600096BC32 /* Localization.strings in Resources */,
@@ -1756,6 +1792,7 @@
 				8B7A951421A2778A009CEB32 /* PostQuestionVC.xib in Resources */,
 				8B0EF341218350F0000EA64E /* QuestionCell.xib in Resources */,
 				8B0EF3132182F204000EA64E /* CampusVC.xib in Resources */,
+				8B36CA8D21A6DA2C001B62DB /* CommentView.xib in Resources */,
 				8B53CBAD21A4F634002CE03C /* DetailUserVC.xib in Resources */,
 				8B7C75AC219C015800FCCD75 /* PropertyManagerVC.xib in Resources */,
 				8B7C75F7219E619900FCCD75 /* IFriendsVC.xib in Resources */,
@@ -2017,11 +2054,13 @@
 				8B7C75BB219C0AD300FCCD75 /* IdleGoodCell.swift in Sources */,
 				8B7C75C3219C4DFD00FCCD75 /* ShootPrintCell.swift in Sources */,
 				8B64B55D219ABE9A005C2E07 /* LostAndFoundCell.swift in Sources */,
+				8BC1485621A6531D00CDD76B /* PostCommentVC.swift in Sources */,
 				8B64B47921987C37005C2E07 /* ShootAndPrint.swift in Sources */,
 				8B64B46321987C37005C2E07 /* Academic.swift in Sources */,
 				8B0EF340218350F0000EA64E /* QuestionCell.swift in Sources */,
 				8B53CB9A21A44714002CE03C /* DetailShootPrintVC.swift in Sources */,
 				8B7C75BF219C2A5500FCCD75 /* DetailUtilityVC.swift in Sources */,
+				8B36CA8B21A6DA06001B62DB /* CommentView.swift in Sources */,
 				8B64B49421999DFF005C2E07 /* UIColor+Extension.swift in Sources */,
 				8B7C75E2219E5CC300FCCD75 /* IMessageVC.swift in Sources */,
 				8B0EF33921833FF7000EA64E /* ReadingCell.swift in Sources */,
@@ -2061,6 +2100,7 @@
 				8B64B56B219AE9F3005C2E07 /* SpeechVC.swift in Sources */,
 				8B64B46A21987C37005C2E07 /* LostAndFound.swift in Sources */,
 				8BAEA3EA217F12F700FC2CBB /* SizeHeader.swift in Sources */,
+				8B36CA8721A6D4FA001B62DB /* DetailBookVC.swift in Sources */,
 				8B64B47021987C37005C2E07 /* Comment.swift in Sources */,
 				8B64B46D21987C37005C2E07 /* Answer.swift in Sources */,
 				8B64B5232199CC8E005C2E07 /* RaceVC.swift in Sources */,

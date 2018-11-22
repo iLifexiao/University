@@ -50,16 +50,21 @@ class ResourcesVC: UIViewController {
     }
     
     private func getResources() {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/resource/sort", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self?.resources.removeAll()
+                self.resources.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self?.resources.append(Resource(jsonData: subJson))
+                    self.resources.append(Resource(jsonData: subJson))
                 }
-                self?.tableView.reloadData()
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }

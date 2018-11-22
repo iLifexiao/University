@@ -50,16 +50,21 @@ class RecommandVC: UIViewController {
     }
     
     private func getEssays() {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/essay/sort", headers: headers).responseJSON { [weak self]  response in
+            guard let self = self else {
+                return
+            }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self?.essays.removeAll()
+                self.essays.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self?.essays.append(Essay(jsonData: subJson))
+                    self.essays.append(Essay(jsonData: subJson))
                 }
-                self?.tableView.reloadData()
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -74,8 +79,9 @@ extension RecommandVC: UITableViewDelegate {
         let essay = essays[indexPath.section]
         let detailEssayVC = DetailEssayVC()
         detailEssayVC.essay = essay
+        detailEssayVC.type = .essay
+        detailEssayVC.id = essay.id ?? 0
         self.present(detailEssayVC, animated: true, completion: nil)
-//        navigationController?.pushViewController(detailEssayVC, animated: true)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -87,7 +93,7 @@ extension RecommandVC: UITableViewDelegate {
         case 0:
             return 1
         default:
-            return 20
+            return 10
         }
     }
  }

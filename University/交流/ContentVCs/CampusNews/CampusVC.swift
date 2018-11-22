@@ -49,16 +49,21 @@ class CampusVC: UIViewController {
     }
     
     private func getCampusNews() {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/campusnews/sort", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self?.campusNews.removeAll()
+                self.campusNews.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self?.campusNews.append(CampusNews(jsonData: subJson))
+                    self.campusNews.append(CampusNews(jsonData: subJson))
                 }
-                self?.tableView.reloadData()
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -67,6 +72,15 @@ class CampusVC: UIViewController {
 }
 
 extension CampusVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let news = campusNews[indexPath.section]
+        let detailEssayVC = DetailEssayVC()
+        detailEssayVC.compusNews = news
+        detailEssayVC.type = .campusNews
+        detailEssayVC.id = news.id ?? 0
+        self.present(detailEssayVC, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }

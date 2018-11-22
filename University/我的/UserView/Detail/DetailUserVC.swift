@@ -17,6 +17,7 @@ class DetailUserVC: UIViewController {
     @IBOutlet weak var headImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backBtn: UIButton!
     
     private let userInfoCell = "userInfoCell"
     
@@ -44,6 +45,8 @@ class DetailUserVC: UIViewController {
             guard let userInfo = userInfo else {
                 return
             }
+            // 设置ID，从书籍处跳转进来的页面（如果是自己，需要展示个人中心）
+            userID = userInfo.id ?? 0
             userInfosValue = [
                 userInfo.introduce ?? "无",
                 userInfo.sex ?? "保密",
@@ -58,6 +61,10 @@ class DetailUserVC: UIViewController {
     }
     
     private func initUI() {
+        // 仅仅在present时候展示
+        if self.presentingViewController == nil {
+            backBtn.isHidden = true
+        }
         if userID != 0 {
             title = "个人中心"
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "edit"), style: .plain, target: self, action: #selector(goEditUserInfo))
@@ -88,8 +95,7 @@ class DetailUserVC: UIViewController {
     }
     
     private func getUserInfos() {
-        MBProgressHUD().show(animated: true)
-//        MBProgressHUD.showAdded(to: self.view, animated: true)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         Alamofire.request(baseURL + "/api/v1/user/\(userID)/userinfo", headers: headers).responseJSON { [weak self] response in
             guard let self = self else {
                 return
@@ -110,13 +116,13 @@ class DetailUserVC: UIViewController {
                     userInfo.phone  ?? "无",
                     userInfo.email ?? "无"
                 ]
+                MBProgressHUD.hide(for: self.view, animated: true)
                 self.tableView.reloadData()
                 self.headImageView.sd_setImage(with: URL(string: baseURL + userInfo.profilephoto), completed: nil)
                 self.nameLabel.text = userInfo.nickname
             case .failure(let error):
                 print(error)
             }
-            MBProgressHUD().hide(animated: true)
         }
     }
     
@@ -167,6 +173,11 @@ class DetailUserVC: UIViewController {
             }
         }
     }
+    
+    @IBAction func goBack(_ sender: UIButton) {        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension DetailUserVC: PopMenuViewControllerDelegate {

@@ -17,6 +17,7 @@ class ExperienceVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var experiences: [Experience] = []
+    private let cellID = "ExperienceCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class ExperienceVC: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.register(UINib.init(nibName: "ExperienceCell", bundle: nil), forCellReuseIdentifier: "ExperienceCell")
+        tableView.register(UINib.init(nibName: cellID, bundle: nil), forCellReuseIdentifier: cellID)
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -51,16 +52,21 @@ class ExperienceVC: UIViewController {
     }
     
     private func getExperiences() {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/experience/sort", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self?.experiences.removeAll()
+                self.experiences.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self?.experiences.append(Experience(jsonData: subJson))
+                    self.experiences.append(Experience(jsonData: subJson))
                 }
-                self?.tableView.reloadData()
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -69,6 +75,15 @@ class ExperienceVC: UIViewController {
 }
 
 extension ExperienceVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let experience = experiences[indexPath.section]
+        let detailEssayVC = DetailEssayVC()
+        detailEssayVC.experience = experience
+        detailEssayVC.type = .experience
+        detailEssayVC.id = experience.id ?? 0
+        self.present(detailEssayVC, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 155
     }
@@ -93,7 +108,7 @@ extension ExperienceVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExperienceCell", for: indexPath) as! ExperienceCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! ExperienceCell
         cell.setupModel(experiences[indexPath.section])
         cell.selectionStyle = .none
         return cell

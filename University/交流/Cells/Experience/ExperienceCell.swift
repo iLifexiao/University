@@ -17,6 +17,7 @@ class ExperienceCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var likeLabel: UILabel!
+    @IBOutlet weak var readLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     
     
@@ -37,8 +38,9 @@ class ExperienceCell: UITableViewCell {
         timeLabel.text = unixTime2StringDate(exp.createdAt ?? 0, format: "yyyy-MM-dd")
         titleLabel.text = exp.title
         contentLabel.text = exp.content
-        commentLabel.text = String(exp.commentCount ?? 0) + "评论"
-        likeLabel.text = String(exp.likeCount ?? 0) + "喜欢"
+        readLabel.text = String(exp.readCount ?? 0) + " 阅读"
+        likeLabel.text = String(exp.likeCount ?? 0) + " 喜欢"
+        commentLabel.text = String(exp.commentCount ?? 0) + " 评论"
         typeLabel.text = exp.type
     }
     

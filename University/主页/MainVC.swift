@@ -114,7 +114,7 @@ class MainVC: UIViewController {
         // 校园服务
         let campusFuncModel = CampusFuncModel(icon: UIImage(named: "lesson"), name: "课程表")
         let campusFuncModel2 = CampusFuncModel(icon: UIImage(named: "grade"), name: "成绩查询")
-        let campusFuncModel3 = CampusFuncModel(icon: UIImage(named: "classRoom"), name: "空教室")
+//        let campusFuncModel3 = CampusFuncModel(icon: UIImage(named: "classRoom"), name: "空教室"), campusFuncModel3
         let campusFuncModel4 = CampusFuncModel(icon: UIImage(named: "library"), name: "图书馆")
         let campusFuncModel5 = CampusFuncModel(icon: UIImage(named: "education"), name: "考试安排")
         let campusFuncModel6 = CampusFuncModel(icon: UIImage(named: "speech"), name: "学术讲座")
@@ -124,7 +124,7 @@ class MainVC: UIViewController {
         let campusFuncModel10 = CampusFuncModel(icon: UIImage(named: "eduArrange"), name: "教务通知")
         let campusFuncModel11 = CampusFuncModel(icon: UIImage(named: "community"), name: "社团")
         let campusFuncModel12 = CampusFuncModel(icon: UIImage(named: "directory"), name: "通讯录")
-        campusFuncs = [campusFuncModel, campusFuncModel2, campusFuncModel3, campusFuncModel4, campusFuncModel5, campusFuncModel6, campusFuncModel7, campusFuncModel8, campusFuncModel9, campusFuncModel10, campusFuncModel11, campusFuncModel12]
+        campusFuncs = [campusFuncModel, campusFuncModel2, campusFuncModel4, campusFuncModel5, campusFuncModel6, campusFuncModel7, campusFuncModel8, campusFuncModel9, campusFuncModel10, campusFuncModel11, campusFuncModel12]
     }
     
     // MARK: 入口调用方法

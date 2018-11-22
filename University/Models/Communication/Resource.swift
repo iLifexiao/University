@@ -16,6 +16,7 @@ struct Resource {
     var introduce: String
     var type: String
     
+    var readCount: Int?
     var likeCount: Int?
     var commentCount: Int?
     
@@ -24,13 +25,14 @@ struct Resource {
     var createdAt: TimeInterval? // 创建时间
     var updatedAt: TimeInterval? // 更新时间
     
-    init(id: Int? = nil, userID: Int, imageURL: String, name: String, introduce: String, type: String,  likeCount: Int? = 0, commentCount: Int? = 0, remark: String?, status: Int? = 1) {
+    init(id: Int? = nil, userID: Int, imageURL: String, name: String, introduce: String, type: String, readCount: Int? = 0, likeCount: Int? = 0, commentCount: Int? = 0, remark: String?, status: Int? = 1) {
         self.id = id
         self.userID = userID
         self.imageURL = imageURL
         self.name = name
         self.introduce = introduce
         self.type = type
+        self.readCount = readCount
         self.likeCount = likeCount
         self.commentCount = commentCount
         self.remark = remark        
@@ -45,6 +47,7 @@ struct Resource {
         self.name = jsonData["name"].stringValue
         self.introduce = jsonData["introduce"].stringValue
         self.type = jsonData["type"].stringValue
+        self.readCount = jsonData["readCount"].intValue
         self.likeCount = jsonData["likeCount"].intValue
         self.commentCount = jsonData["commentCount"].intValue
         self.remark = jsonData["remark"].stringValue

@@ -16,6 +16,8 @@ class ADCell: UITableViewCell {
     @IBOutlet weak var typeButton: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var likeLabel: UILabel!
+    @IBOutlet weak var readLabel: UILabel!
+    
     
     
     override func awakeFromNib() {
@@ -28,8 +30,10 @@ class ADCell: UITableViewCell {
         titleLabel.text = resource.name
         contentLabel.text = resource.introduce
         typeButton.setTitle(resource.type, for: .normal)
-        commentLabel.text = String(resource.commentCount ?? 0) + "评论"
-        likeLabel.text = String(resource.likeCount ?? 0) + "喜欢"
+        // 排序：阅读、喜欢、评论
+        readLabel.text = String(resource.readCount ?? 0) + " 阅读"
+        likeLabel.text = String(resource.likeCount ?? 0) + " 喜欢"
+        commentLabel.text = String(resource.commentCount ?? 0) + " 评论"
     }
     
     func setTypeColor(_ color: UIColor) {
@@ -41,8 +45,9 @@ class ADCell: UITableViewCell {
         titleLabel.text = nil
         contentLabel.text = nil
         typeButton.setTitle("工具", for: .normal)
-        commentLabel.text = nil
+        readLabel.text = nil
         likeLabel.text = nil
+        commentLabel.text = nil
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

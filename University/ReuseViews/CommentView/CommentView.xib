@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CommentView" customModule="University" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfG-3S-xQh">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="j3t-m6-CJU"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcY-fX-Pwd">
+                    <rect key="frame" x="15" y="12.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="Fey-Db-G3k"/>
+                        <constraint firstAttribute="height" constant="25" id="IvC-OY-8JU"/>
+                    </constraints>
+                    <state key="normal" image="back"/>
+                    <connections>
+                        <action selector="backBtnPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="bsg-Jk-kZF"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="894-xc-0dO">
+                    <rect key="frame" x="349" y="14.5" width="11" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjZ-7g-niS">
+                    <rect key="frame" x="314" y="12.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="CyA-Zt-gvd"/>
+                        <constraint firstAttribute="width" constant="25" id="Pnd-qi-oLb"/>
+                    </constraints>
+                    <state key="normal" image="comment"/>
+                    <connections>
+                        <action selector="showCommentBtnPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="rRj-FZ-YqK"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCo-VW-zlz">
+                    <rect key="frame" x="293" y="14.5" width="11" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWL-ac-XBa">
+                    <rect key="frame" x="258" y="12.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="OLJ-ra-vU1"/>
+                        <constraint firstAttribute="width" constant="25" id="dlJ-ar-Twz"/>
+                    </constraints>
+                    <state key="normal" image="like_before"/>
+                    <connections>
+                        <action selector="likeBtnPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="xJX-Kx-uQH"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRg-e2-wGk">
+                    <rect key="frame" x="237" y="14.5" width="11" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAv-zf-cq6">
+                    <rect key="frame" x="202" y="12.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="TkV-nZ-ThM"/>
+                        <constraint firstAttribute="height" constant="25" id="isI-Cg-fhU"/>
+                    </constraints>
+                    <state key="normal" image="see"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TlN-wa-ovM">
+                    <rect key="frame" x="50" y="10" width="142" height="30"/>
+                    <color key="backgroundColor" red="0.12633734939999999" green="0.58970814940000005" blue="0.65465843680000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="点击评论">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="goCommentBtnPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="GpV-pq-wE0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="gCo-VW-zlz" firstAttribute="leading" secondItem="SWL-ac-XBa" secondAttribute="trailing" constant="10" id="1eC-i8-zhi"/>
+                <constraint firstItem="SjZ-7g-niS" firstAttribute="centerY" secondItem="894-xc-0dO" secondAttribute="centerY" id="2L8-Zn-UpJ"/>
+                <constraint firstItem="TlN-wa-ovM" firstAttribute="leading" secondItem="mcY-fX-Pwd" secondAttribute="trailing" constant="10" id="2Z9-KK-Irv"/>
+                <constraint firstItem="YAv-zf-cq6" firstAttribute="centerY" secondItem="cRg-e2-wGk" secondAttribute="centerY" id="5jO-yY-nqt"/>
+                <constraint firstItem="cRg-e2-wGk" firstAttribute="leading" secondItem="YAv-zf-cq6" secondAttribute="trailing" constant="10" id="Gg6-F9-0hF"/>
+                <constraint firstItem="894-xc-0dO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JTb-hl-7rZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WfG-3S-xQh" secondAttribute="trailing" id="LmZ-9O-zqJ"/>
+                <constraint firstItem="894-xc-0dO" firstAttribute="leading" secondItem="SjZ-7g-niS" secondAttribute="trailing" constant="10" id="Mr6-JS-rDv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="894-xc-0dO" secondAttribute="trailing" constant="15" id="NSp-qr-DtV"/>
+                <constraint firstItem="gCo-VW-zlz" firstAttribute="leading" secondItem="SWL-ac-XBa" secondAttribute="trailing" constant="10" id="Odi-jn-Kxi"/>
+                <constraint firstItem="TlN-wa-ovM" firstAttribute="centerY" secondItem="mcY-fX-Pwd" secondAttribute="centerY" id="Pm4-An-snr"/>
+                <constraint firstItem="SWL-ac-XBa" firstAttribute="centerY" secondItem="gCo-VW-zlz" secondAttribute="centerY" id="TXu-qs-uLf"/>
+                <constraint firstItem="894-xc-0dO" firstAttribute="leading" secondItem="SjZ-7g-niS" secondAttribute="trailing" constant="10" id="Wob-IU-oOC"/>
+                <constraint firstItem="cRg-e2-wGk" firstAttribute="leading" secondItem="YAv-zf-cq6" secondAttribute="trailing" constant="10" id="erg-LK-Cd5"/>
+                <constraint firstItem="YAv-zf-cq6" firstAttribute="leading" secondItem="TlN-wa-ovM" secondAttribute="trailing" constant="10" id="hic-Zg-sAV"/>
+                <constraint firstItem="mcY-fX-Pwd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="j1j-DE-LHC"/>
+                <constraint firstItem="gCo-VW-zlz" firstAttribute="centerY" secondItem="SjZ-7g-niS" secondAttribute="centerY" id="jBB-Kq-Fzw"/>
+                <constraint firstItem="WfG-3S-xQh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="o7b-eS-ynv"/>
+                <constraint firstItem="mcY-fX-Pwd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="rUc-eY-x7z"/>
+                <constraint firstItem="SjZ-7g-niS" firstAttribute="leading" secondItem="gCo-VW-zlz" secondAttribute="trailing" constant="10" id="u60-DO-6s7"/>
+                <constraint firstItem="cRg-e2-wGk" firstAttribute="centerY" secondItem="SWL-ac-XBa" secondAttribute="centerY" id="uDZ-wv-hjp"/>
+                <constraint firstItem="WfG-3S-xQh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yOk-9O-YHa"/>
+                <constraint firstItem="SWL-ac-XBa" firstAttribute="leading" secondItem="cRg-e2-wGk" secondAttribute="trailing" constant="10" id="zbu-QI-axp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="commentCountLabel" destination="894-xc-0dO" id="SYd-NL-Xrh"/>
+                <outlet property="likeCountLabel" destination="gCo-VW-zlz" id="kmf-1e-WrI"/>
+                <outlet property="readCountLabel" destination="cRg-e2-wGk" id="Lej-Jz-Nrt"/>
+            </connections>
+            <point key="canvasLocation" x="188" y="-121.4392803598201"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back" width="40" height="40"/>
+        <image name="comment" width="40" height="40"/>
+        <image name="like_before" width="40" height="40"/>
+        <image name="see" width="40" height="40"/>
+    </resources>
+</document>

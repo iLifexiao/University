@@ -28,7 +28,7 @@ class MessageCell: UITableViewCell {
         headImageView.image = UIImage(named: "userHead")
         userNameLabel.text = "雨后"
         contentLabel.text = message.content
-        timeLabel.text = unixTime2StringDate(message.createdAt ?? 0, format: "yyyy-MM-dd")
+        timeLabel.text = unixTime2StringDate(message.createdAt ?? 0)
     }
     
 }

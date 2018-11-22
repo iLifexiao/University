@@ -29,15 +29,31 @@
                         <outlet property="delegate" destination="-1" id="vK1-8R-xiB"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84o-Mk-4dg">
+                    <rect key="frame" x="20" y="622" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="3ed-Nf-Qtq"/>
+                        <constraint firstAttribute="width" constant="25" id="8LF-LN-HWY"/>
+                    </constraints>
+                    <state key="normal" image="back"/>
+                    <connections>
+                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="dHQ-ZT-WNZ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zs1-Ii-Y5a" secondAttribute="trailing" id="EwW-Sp-q8k"/>
                 <constraint firstItem="Zs1-Ii-Y5a" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ISI-Oz-dTH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="84o-Mk-4dg" secondAttribute="bottom" constant="20" id="Yjh-Zh-FyS"/>
+                <constraint firstItem="84o-Mk-4dg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="p5t-1u-cPg"/>
                 <constraint firstItem="Zs1-Ii-Y5a" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="u4U-HA-5Qe"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Zs1-Ii-Y5a" secondAttribute="bottom" id="vF9-rI-qxB"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <image name="back" width="40" height="40"/>
+    </resources>
 </document>

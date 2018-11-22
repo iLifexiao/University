@@ -92,6 +92,8 @@ extension IEssayVC: UITableViewDelegate {
         let essay = essays[indexPath.section]
         let detailEssayVC = DetailEssayVC()
         detailEssayVC.essay = essay
+        detailEssayVC.type = .essay
+        detailEssayVC.id = essay.id ?? 0
         navigationController?.pushViewController(detailEssayVC, animated: true)
     }
     

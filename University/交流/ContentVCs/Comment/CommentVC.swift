@@ -20,6 +20,9 @@ class CommentVC: UIViewController {
     var commentID: Int = 0
     var comments: [Comment] = []
     
+    // 在评论过多的时候，复用，这时需要重新设置状态
+    var clickStatus: [Bool] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initData()
@@ -28,7 +31,9 @@ class CommentVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = true
+        if presentingViewController == nil {
+            tabBarController?.tabBar.isHidden = true
+        }
     }
     
     private func initData() {
@@ -63,21 +68,35 @@ class CommentVC: UIViewController {
     }
     
     private func getComments(_ type: String, commentID: Int) {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/comment/type?term=\(type)&id=\(commentID)", headers: headers).responseJSON { [weak self]  response in
+            guard let self = self else {
+                return
+            }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self?.comments.removeAll()
+                self.comments.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self?.comments.append(Comment(jsonData: subJson))
+                    self.comments.append(Comment(jsonData: subJson))
                 }
-                self?.tableView.reloadData()
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
         }
     }
+    
+    @IBAction func goBack(_ sender: UIButton) {
+        if presentingViewController == nil {
+            navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
 }
 
 extension CommentVC: UITableViewDelegate {
@@ -107,18 +126,29 @@ extension CommentVC: UITableViewDataSource {
 
 // 直接通过更新数据源来完成，如何保证点击的按钮颜色不被改变「用数组保存状态」
 extension CommentVC: CommentCellDelegate {
-    func commentLike(likeButton: UIButton, commentLabel: UILabel, commitID: String) {
+    func commentLike(likeButton: UIButton, likeLabel: UILabel, commentID: String) {
         // 更新评论的点赞数量(考虑：数据源、复用)
         if likeButton.isSelected {
             likeButton.isSelected = false
+            
+            // 先展示UI，后请求网络
             likeButton.setImage(UIImage(named: "thumup_before"), for: .normal)
-//            Alamofire.request(baseURL + "/api/v1/comment/\(commentID)/unlike", method: .patch, headers: headers)
+            var likeCount = Int(likeLabel.text ?? "0") ?? 0
+            likeCount -= 1
+            likeLabel.text = String(likeCount)
+            
+            Alamofire.request(baseURL + "/api/v1/comment/\(commentID)/unlike", method: .patch, headers: headers)
         } else {
             likeButton.isSelected = true
+            
             likeButton.setImage(UIImage(named: "thumup_after"), for: .normal)
-//            Alamofire.request(baseURL + "/api/v1/comment/\(commentID)/like", method: .patch, headers: headers)
+            var likeCount = Int(likeLabel.text ?? "0") ?? 0
+            likeCount += 1
+            likeLabel.text = String(likeCount)
+            
+            Alamofire.request(baseURL + "/api/v1/comment/\(commentID)/like", method: .patch, headers: headers)
         }
-    }       
+    }
 }
 
 // MARK: 空视图-代理

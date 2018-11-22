@@ -50,16 +50,21 @@ class QuestionVC: UIViewController {
     }
     
     private func getQuestions() {
+        MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/question/sort", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self?.questions.removeAll()
+                self.questions.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self?.questions.append(Question(jsonData: subJson))
+                    self.questions.append(Question(jsonData: subJson))
                 }
-                self?.tableView.reloadData()
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }

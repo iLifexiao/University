@@ -14,6 +14,7 @@ struct Answer {
     
     var content: String
     
+    var readCount: Int?
     var commentCount: Int?
     var likeCount: Int?
     
@@ -23,11 +24,12 @@ struct Answer {
     var updatedAt: TimeInterval? // 更新时间
     
     
-    init(id: Int? = nil, userID: Int, questionID: Int, content: String, commentCount: Int? = 0, likeCount: Int? = 0, status: Int? = 1) {
+    init(id: Int? = nil, userID: Int, questionID: Int, content: String, readCount: Int? = 0, commentCount: Int? = 0, likeCount: Int? = 0, status: Int? = 1) {
         self.id = id
         self.userID = userID
         self.questionID = questionID
         self.content = content
+        self.readCount = readCount
         self.commentCount = commentCount
         self.likeCount = likeCount
         self.status = status
@@ -39,6 +41,7 @@ struct Answer {
         self.questionID = jsonData["questionID"].intValue
         
         self.content = jsonData["content"].stringValue
+        self.readCount = jsonData["readCount"].intValue
         self.commentCount = jsonData["commentCount"].intValue
         self.likeCount = jsonData["likeCount"].intValue
         

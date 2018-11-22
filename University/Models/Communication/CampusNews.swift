@@ -16,6 +16,7 @@ struct CampusNews {
     var from: String // 来源：校内、网络等等
     var type: String // 科技、教育、社会等等
     
+    var likeCount: Int?
     var commentCount: Int?
     var readCount: Int?
 
@@ -24,15 +25,16 @@ struct CampusNews {
     var updatedAt: TimeInterval? // 更新时间
     
     
-    init(id: Int? = nil, imageURL: String, title: String, content: String, from: String, type: String, commentCount: Int? = 0, readCount: Int? = 0, status: Int? = 1) {
+    init(id: Int? = nil, imageURL: String, title: String, content: String, from: String, type: String, likeCount: Int? = 0, commentCount: Int? = 0, readCount: Int? = 0, status: Int? = 1) {
         self.id = id
         self.imageURL = imageURL
         self.title = title
         self.content = content
         self.from = from
         self.type = type
-        self.commentCount = commentCount
         self.readCount = readCount
+        self.likeCount = likeCount
+        self.commentCount = commentCount        
         self.status = status
     }
     
@@ -44,8 +46,9 @@ struct CampusNews {
         self.content = jsonData["content"].stringValue
         self.from = jsonData["from"].stringValue
         self.type = jsonData["type"].stringValue
-        self.commentCount = jsonData["commentCount"].intValue        
         self.readCount = jsonData["readCount"].intValue
+        self.likeCount = jsonData["likeCount"].intValue
+        self.commentCount = jsonData["commentCount"].intValue
         
         self.status = jsonData["status"].intValue
         self.createdAt = jsonData["createdAt"].doubleValue

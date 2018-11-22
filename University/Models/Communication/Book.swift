@@ -20,13 +20,14 @@ struct Book {
     
     var readedCount: Int?
     var likeCount: Int?
+    var commentCount: Int?
     
     var status: Int? // 状态[0, 1] = [禁止, 正常]
     var createdAt: TimeInterval? // 创建时间
     var updatedAt: TimeInterval? // 更新时间
     
     
-    init(id: Int? = nil, userID: Int, name: String, imageURL: String, introduce: String, type: String, author: String, bookPages: Int, readedCount: Int? = 0, likeCount: Int? = 0, status: Int? = 1) {
+    init(id: Int? = nil, userID: Int, name: String, imageURL: String, introduce: String, type: String, author: String, bookPages: Int, readedCount: Int? = 0, likeCount: Int? = 0, commentCount: Int? = 0, status: Int? = 1) {
         self.id = id
         self.userID = userID
         self.name = name
@@ -37,6 +38,7 @@ struct Book {
         self.bookPages = bookPages
         self.readedCount = readedCount
         self.likeCount = likeCount
+        self.commentCount = commentCount
         self.status = status
     }
     
@@ -52,6 +54,7 @@ struct Book {
         self.bookPages = jsonData["bookPages"].intValue
         self.readedCount = jsonData["readedCount"].intValue
         self.likeCount = jsonData["likeCount"].intValue
+        self.commentCount = jsonData["commentCount"].intValue
         
         self.status = jsonData["status"].intValue
         self.createdAt = jsonData["createdAt"].doubleValue
