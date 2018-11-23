@@ -63,7 +63,7 @@ class IExperienceVC: UIViewController {
     }
     
     private func getExperiences() {
-        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/experience", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/experiences", headers: headers).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -92,7 +92,7 @@ extension IExperienceVC: UITableViewDelegate {
         detailEssayVC.experience = experience
         detailEssayVC.type = .experience
         detailEssayVC.id = experience.id ?? 0
-        self.present(detailEssayVC, animated: true, completion: nil)
+        navigationController?.pushViewController(detailEssayVC, animated: true)        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -17,7 +17,7 @@ class DetailUserVC: UIViewController {
     @IBOutlet weak var headImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
     
     private let userInfoCell = "userInfoCell"
     
@@ -46,7 +46,7 @@ class DetailUserVC: UIViewController {
                 return
             }
             // 设置ID，从书籍处跳转进来的页面（如果是自己，需要展示个人中心）
-            userID = userInfo.id ?? 0
+            userID = userInfo.userID
             userInfosValue = [
                 userInfo.introduce ?? "无",
                 userInfo.sex ?? "保密",
@@ -61,11 +61,13 @@ class DetailUserVC: UIViewController {
     }
     
     private func initUI() {
-        // 仅仅在present时候展示
-        if self.presentingViewController == nil {
-            backBtn.isHidden = true
+        // 仅仅在present时候展示(这里无效？？)
+        // 更换为判断是否有导航栏
+        if navigationController != nil {
+            moreButton.isHidden = true
         }
-        if userID != 0 {
+                
+        if userID == GlobalData.sharedInstance.userID {
             title = "个人中心"
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "edit"), style: .plain, target: self, action: #selector(goEditUserInfo))
         } else {
@@ -174,8 +176,25 @@ class DetailUserVC: UIViewController {
         }
     }
     
-    @IBAction func goBack(_ sender: UIButton) {        
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func moreFunc(_ sender: UIButton) {
+        // 表示进入自己的详情，功能调整为返回
+        if userID == GlobalData.sharedInstance.userID {
+            dismiss(animated: true, completion: nil)
+            return
+        }
+        
+        // 他人
+        let manager = PopMenuManager.default
+        manager.popMenuDelegate = self
+        
+        manager.actions = [
+            PopMenuDefaultAction(title: "关注", image: UIImage(named: "focus")),
+            PopMenuDefaultAction(title: "私信", image: UIImage(named: "fly")),
+            PopMenuDefaultAction(title: "返回", image: UIImage(named: "back")),
+        ]
+        
+        // 显示的位置
+        manager.present(sourceView: sender)
     }
     
 }
@@ -193,6 +212,8 @@ extension DetailUserVC: PopMenuViewControllerDelegate {
             let sendToUserMsgVC = SendToUserMsgVC()
             sendToUserMsgVC.toUserID = userInfo.userID
             navigationController?.pushViewController(sendToUserMsgVC, animated: true)
+        case 2:
+            dismiss(animated: true, completion: nil)
         default:
             print("错误选项")
         }

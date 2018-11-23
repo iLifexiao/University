@@ -93,6 +93,14 @@ class IQANDAnswerVC: UIViewController {
 }
 
 extension IQANDAnswerVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let question = questions[indexPath.section]
+        let AnswerSB = UIStoryboard(name: "Answer", bundle: nil)
+        let answerVC = AnswerSB.instantiateViewController(withIdentifier: "AnswerList") as! AnswerVC
+        answerVC.questionID = question.id ?? 0
+        navigationController?.pushViewController(answerVC, animated: true)        
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
@@ -160,7 +168,13 @@ extension IQANDAnswerVC: UITableViewDataSource {
 
 extension IQANDAnswerVC: QuestionCellDelegate {
     func showMoreInfoAboutQuestion(_ id: String?) {
-        view.makeToast(id ?? "0")
+        guard let id = id else {
+            return
+        }
+        let AnswerSB = UIStoryboard(name: "Answer", bundle: nil)
+        let postAnswerVC = AnswerSB.instantiateViewController(withIdentifier: "PostAnswer") as! PostAnswerVC
+        postAnswerVC.questionID = Int(id) ?? 0
+        self.present(postAnswerVC, animated: true, completion: nil)
     }
 }
 

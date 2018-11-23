@@ -12,8 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailUserVC" customModule="University" customModuleProvider="target">
             <connections>
-                <outlet property="backBtn" destination="JVo-Ha-lq0" id="R00-b2-D2b"/>
                 <outlet property="headImageView" destination="t7S-Ju-r37" id="11C-CY-A9K"/>
+                <outlet property="moreButton" destination="JVo-Ha-lq0" id="QZf-vx-aeT"/>
                 <outlet property="nameLabel" destination="xlV-Xb-DmA" id="YJf-Be-bfz"/>
                 <outlet property="tableView" destination="T4v-Zs-qiq" id="j1p-5N-oXv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -71,14 +71,14 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVo-Ha-lq0">
-                    <rect key="frame" x="20" y="622" width="25" height="25"/>
+                    <rect key="frame" x="335" y="222.5" width="25" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="25" id="ffY-Ys-WfJ"/>
-                        <constraint firstAttribute="width" constant="25" id="r6K-Az-X1e"/>
+                        <constraint firstAttribute="width" constant="25" id="0RD-HA-s3y"/>
+                        <constraint firstAttribute="height" constant="25" id="Pkr-01-z7x"/>
                     </constraints>
-                    <state key="normal" image="back"/>
+                    <state key="normal" image="menu"/>
                     <connections>
-                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="Lpe-zd-dS0"/>
+                        <action selector="moreFunc:" destination="-1" eventType="touchUpInside" id="T5o-7I-4Qz"/>
                     </connections>
                 </button>
             </subviews>
@@ -89,17 +89,17 @@
                 <constraint firstItem="go8-Qi-ro1" firstAttribute="leading" secondItem="Cf0-LK-h17" secondAttribute="trailing" constant="8" id="5uZ-ZV-LBY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cPd-Xj-yGS" secondAttribute="trailing" id="6jc-dE-csY"/>
                 <constraint firstItem="t7S-Ju-r37" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="PUU-dT-7xZ"/>
+                <constraint firstItem="JVo-Ha-lq0" firstAttribute="centerY" secondItem="go8-Qi-ro1" secondAttribute="centerY" id="Uc9-M7-dXt"/>
                 <constraint firstItem="go8-Qi-ro1" firstAttribute="centerY" secondItem="Cf0-LK-h17" secondAttribute="centerY" id="WQy-X8-diw"/>
                 <constraint firstItem="Cf0-LK-h17" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="a6z-QO-tZc"/>
                 <constraint firstItem="t7S-Ju-r37" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="bQe-J6-DZT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="T4v-Zs-qiq" secondAttribute="bottom" id="cTT-sh-fuX"/>
                 <constraint firstItem="T4v-Zs-qiq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kuG-I0-eeE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JVo-Ha-lq0" secondAttribute="trailing" constant="15" id="lQx-n1-8k2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="T4v-Zs-qiq" secondAttribute="trailing" id="olW-5E-q09"/>
                 <constraint firstItem="xlV-Xb-DmA" firstAttribute="top" secondItem="t7S-Ju-r37" secondAttribute="bottom" constant="10" id="rMP-ui-a3n"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="JVo-Ha-lq0" secondAttribute="bottom" constant="20" id="sqi-Dp-YVc"/>
                 <constraint firstItem="Cf0-LK-h17" firstAttribute="top" secondItem="cPd-Xj-yGS" secondAttribute="bottom" constant="10" id="tAk-Vn-dYJ"/>
                 <constraint firstItem="cPd-Xj-yGS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="tYc-Xm-gCz"/>
-                <constraint firstItem="JVo-Ha-lq0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="th7-He-taa"/>
                 <constraint firstItem="T4v-Zs-qiq" firstAttribute="top" secondItem="Cf0-LK-h17" secondAttribute="bottom" id="uKD-tk-fes"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -107,7 +107,7 @@
         </view>
     </objects>
     <resources>
-        <image name="back" width="40" height="40"/>
+        <image name="menu" width="40" height="40"/>
         <image name="userBG" width="375" height="200"/>
         <image name="userHead" width="200" height="200"/>
     </resources>

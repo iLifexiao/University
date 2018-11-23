@@ -15,8 +15,7 @@ class ICollectionVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let collectionCell = "collectionCell"
-    private var collections: [Collection] = []
+    private var collections: [Essay] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +38,7 @@ class ICollectionVC: UIViewController {
     }
     
     private func setupTableView() {
-//        tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+        tableView.register(UINib(nibName: "EssayCell", bundle: nil), forCellReuseIdentifier: "EssayCell")
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -66,7 +65,7 @@ class ICollectionVC: UIViewController {
     
     private func getCollections() {
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/collections", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/collections/essay", headers: headers).responseJSON { [weak self] response in
             if let self = self {
                 switch response.result {
                 case .success(let value):
@@ -74,7 +73,7 @@ class ICollectionVC: UIViewController {
                     self.collections.removeAll()
                     // json是数组
                     for (_, subJson):(String, JSON) in json {
-                        self.collections.append(Collection(jsonData: subJson))
+                        self.collections.append(Essay(jsonData: subJson))
                     }
                     MBProgressHUD.hide(for: self.view, animated: true)
                     self.tableView.reloadData()
@@ -87,11 +86,31 @@ class ICollectionVC: UIViewController {
 }
 
 extension ICollectionVC: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let essay = collections[indexPath.section]
+        let detailEssayVC = DetailEssayVC()
+        detailEssayVC.essay = essay
+        detailEssayVC.type = .essay
+        detailEssayVC.id = essay.id ?? 0
+        navigationController?.pushViewController(detailEssayVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 1
+        default:
+            return 20
+        }
+    }
 }
 
 extension ICollectionVC: UITableViewDataSource {
-    
+    // 每个section一篇文章
     func numberOfSections(in tableView: UITableView) -> Int {
         return collections.count
     }
@@ -101,18 +120,91 @@ extension ICollectionVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: collectionCell)
-        if cell == nil {
-            cell = UITableViewCell(style: .value1, reuseIdentifier: collectionCell)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EssayCell", for: indexPath) as! EssayCell
+        cell.setupModel(collections[indexPath.section])
+        cell.delegate = self
+        
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    // 侧滑删除功能
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // 获取ID
+        let essay = collections[indexPath.section]
+        let essayID = essay.id ?? 0
+        
+        let parameters: Parameters = [
+            "userID": GlobalData.sharedInstance.userID,
+            "collectionID": essayID
+        ]
+        
+        // 执行逻辑删除操作
+        Alamofire.request(baseURL + "/api/v1/collection/del", method: .post, parameters: parameters ,headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                if json["status"].intValue == 0 {
+                    self.collections.remove(at: indexPath.section)
+                    self.tableView.reloadData()
+                }
+                self.view.makeToast(json["message"].stringValue, position: .top)
+            case .failure(let error):
+                self.view.makeToast("删除失败，稍后再试", position: .top)
+                print(error)
+            }
         }
-        let collection = collections[indexPath.section]
-        cell?.textLabel?.text = collection.type
-        cell?.detailTextLabel?.text = String(collection.collectionID)
-        cell?.selectionStyle = .none
-        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
     }
 }
 
+// MARK: 文章-MORE-点击代理
+extension ICollectionVC: EssayCellDelegate {
+    func showMoreInfoAboutEssay(_ id: String?) {
+        guard let id = id else {
+            return
+        }
+        let parameters: Parameters = [
+            "userID": GlobalData.sharedInstance.userID,
+            "collectionID": Int(id) ?? 0,
+            "type": "Essay"
+        ]
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/collection", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    // 收藏反馈
+                    self.view.makeToast(json["message"].stringValue, position: .top)
+                case .failure(let error):
+                    self.view.makeToast("收藏失败，稍后再试", position: .top)
+                    print(error)
+                }
+                MBProgressHUD.hide(for: self.view, animated: true)
+            }
+        }
+    }
+    
+    func showSameTypeEssay(_ type: String?) {
+        view.makeToast(type)
+    }
+}
 
 // MARK: 空视图-代理
 extension ICollectionVC: DZNEmptyDataSetDelegate {

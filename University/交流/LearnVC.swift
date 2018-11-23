@@ -15,7 +15,8 @@ class LearnVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initUI()        
+        initUI()
+        print("LearnVC:", self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,20 +28,21 @@ class LearnVC: UIViewController {
         // 创建DNSPageStyle，设置样式
         let style = DNSPageStyle()
         style.isTitleViewScrollEnabled = true
-        style.isTitleScaleEnabled = true                        
+        style.isTitleScaleEnabled = true
         
         // 设置标题内容
-        let titles = ["推荐", "关注", "校园", "阅读", "问答", "经验", "资源"]
+//        let titles = ["推荐", "关注", "校园", "阅读", "问答", "经验", "资源"]
+        let titles = ["推荐", "校园", "阅读", "问答", "经验", "资源"]
         
         // 创建每一页对应的controller，使用xib可直接使用，不像UIView文件
         let recomnandVC = RecommandVC()
-        let foucsVC = FocusVC()
+//        let foucsVC = FocusVC()
         let campusVC = CampusVC()
         let readingVC = ReadingVC()
         let questionVC = QuestionVC()
         let experienceVC = ExperienceVC()
         let resourcesVC = ResourcesVC()
-        let childViewControllers: [UIViewController] = [recomnandVC, foucsVC, campusVC, readingVC, questionVC, experienceVC, resourcesVC]
+        let childViewControllers: [UIViewController] = [recomnandVC, campusVC, readingVC, questionVC, experienceVC, resourcesVC]
         
         // 创建对应的DNSPageView，并设置它的frame
         // titleView和contentView会连在一起

@@ -71,7 +71,7 @@
                             <constraint firstAttribute="width" constant="26" id="8AQ-hD-2jQ"/>
                             <constraint firstAttribute="height" constant="26" id="KB8-io-eHH"/>
                         </constraints>
-                        <state key="normal" title="More" image="dot"/>
+                        <state key="normal" title="More" image="star"/>
                         <connections>
                             <action selector="aboutEssayPress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BdE-ad-j0f"/>
                         </connections>
@@ -221,9 +221,9 @@
     </objects>
     <resources>
         <image name="commit" width="67" height="67"/>
-        <image name="dot" width="67" height="67"/>
-        <image name="like" width="67" height="67"/>
-        <image name="see" width="67" height="67"/>
+        <image name="like" width="40" height="40"/>
+        <image name="see" width="40" height="40"/>
+        <image name="star" width="40" height="40"/>
         <image name="userHead" width="200" height="200"/>
     </resources>
 </document>

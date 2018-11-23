@@ -87,7 +87,7 @@ class DetailEssayVC: UIViewController {
         //TODO: 代码动态适配 safeArea / NSAutoLayout
         view.backgroundColor = .white
         markdownView.frame = CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight - TabBarHeight)
-        commentView.frame = CGRect(x: 0, y: ScreenHeight - TabBarHeight, width: ScreenWidth, height: 50)
+        commentView.frame = CGRect(x: 0, y: markdownView.frame.height, width: ScreenWidth, height: 50)
         commentView.delegate = self
         
         view.addSubview(markdownView)

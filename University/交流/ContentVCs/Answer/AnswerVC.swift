@@ -1,0 +1,167 @@
+//
+//  AnswerVC.swift
+//  University
+//
+//  Created by 肖权 on 2018/11/23.
+//  Copyright © 2018 肖权. All rights reserved.
+//
+
+import UIKit
+import Alamofire
+import SwiftyJSON
+import Toast_Swift
+
+class AnswerVC: UIViewController {
+
+    @IBOutlet weak var tableView: UITableView!
+    
+    var questionID = 0
+    
+    private var answers: [Answer] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initUI()
+        initData()
+    }
+    
+    private func initUI() {
+        setupTableView()
+    }
+    
+    private func initData() {
+        getAnswers()
+    }
+    
+    private func setupTableView() {
+        tableView.register(UINib.init(nibName: "AnswerCell", bundle: nil), forCellReuseIdentifier: "AnswerCell")
+        
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
+        tableView.emptyDataSetDelegate = self
+        tableView.emptyDataSetSource = self
+        tableView.tableFooterView = UIView()
+        
+        // 下拉刷新
+        tableView.mj_header = MJRefreshNormalHeader { [weak self] in
+            self?.getAnswers()
+            
+            self?.tableView.mj_header.endRefreshing()
+            self?.view.makeToast("刷新成功", position: .top)
+        }
+    }
+    
+    private func getAnswers() {
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/question/\(questionID)/answer", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.answers.removeAll()
+                // json是数组
+                for (_, subJson):(String, JSON) in json["data"] {
+                    self.answers.append(Answer(jsonData: subJson))
+                }
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    @IBAction func goBack(_ sender: UIButton) {
+        if presentingViewController == nil {
+            navigationController?.popViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+extension AnswerVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let answer = answers[indexPath.section]
+        let detailEssayVC = DetailEssayVC()
+        detailEssayVC.answer = answer
+        detailEssayVC.type = .answer
+        detailEssayVC.id = answer.id ?? 0
+        if presentingViewController == nil {
+            navigationController?.pushViewController(detailEssayVC, animated: true)
+        } else {
+            self.present(detailEssayVC, animated: true, completion: nil)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        // 最后一个不显示
+        if section == answers.count - 1 {
+            return 0
+        }
+        return 10
+    }
+    
+}
+
+extension AnswerVC: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return answers.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath) as! AnswerCell
+        cell.setupModel(answers[indexPath.section])
+        cell.selectionStyle = .none
+        return cell
+    }
+}
+
+// MARK: 空视图-代理
+extension AnswerVC: DZNEmptyDataSetDelegate {
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
+        self.view.makeToast("知道答案，快来抢答吧~", position: .top)
+    }
+}
+
+extension AnswerVC: DZNEmptyDataSetSource {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "emptyMessage")
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView?) -> NSAttributedString? {
+        let text = "啊咧，这个问题还没有解答~"
+        
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineBreakMode = .byWordWrapping
+        paragraph.alignment = .center
+        
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24.0), NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.paragraphStyle: paragraph]
+        
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+}
+//
+//extension UIViewController {
+//    var contents: UIViewController {
+//        if let navcon = self as? UINavigationController {
+//            return navcon.visibleViewController ?? self
+//        } else {
+//            return self
+//        }
+//    }
+//}

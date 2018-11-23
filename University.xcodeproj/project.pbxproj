@@ -39,6 +39,12 @@
 		8B36CA8721A6D4FA001B62DB /* DetailBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CA8521A6D4FA001B62DB /* DetailBookVC.swift */; };
 		8B36CA8B21A6DA06001B62DB /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CA8A21A6DA06001B62DB /* CommentView.swift */; };
 		8B36CA8D21A6DA2C001B62DB /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B36CA8C21A6DA2C001B62DB /* CommentView.xib */; };
+		8B36CA9221A79F78001B62DB /* DetailResourceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CA9121A79F78001B62DB /* DetailResourceVC.swift */; };
+		8B36CA9621A7B7A7001B62DB /* AnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CA9421A7B7A7001B62DB /* AnswerVC.swift */; };
+		8B36CA9B21A7BA4C001B62DB /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CA9921A7BA4C001B62DB /* AnswerCell.swift */; };
+		8B36CA9C21A7BA4C001B62DB /* AnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B36CA9A21A7BA4C001B62DB /* AnswerCell.xib */; };
+		8B36CA9E21A7E67C001B62DB /* PostAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CA9D21A7E67C001B62DB /* PostAnswerVC.swift */; };
+		8B36CAA321A7EE02001B62DB /* Answer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B36CAA221A7EE02001B62DB /* Answer.storyboard */; };
 		8B53CB7921A3CF83002CE03C /* PostHonorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB7821A3CF83002CE03C /* PostHonorVC.swift */; };
 		8B53CB7D21A3DA84002CE03C /* AnalyseGradeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB7B21A3DA84002CE03C /* AnalyseGradeVC.swift */; };
 		8B53CB7E21A3DA84002CE03C /* AnalyseGradeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CB7C21A3DA84002CE03C /* AnalyseGradeVC.xib */; };
@@ -309,6 +315,12 @@
 		8B36CA8521A6D4FA001B62DB /* DetailBookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookVC.swift; sourceTree = "<group>"; };
 		8B36CA8A21A6DA06001B62DB /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		8B36CA8C21A6DA2C001B62DB /* CommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentView.xib; sourceTree = "<group>"; };
+		8B36CA9121A79F78001B62DB /* DetailResourceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResourceVC.swift; sourceTree = "<group>"; };
+		8B36CA9421A7B7A7001B62DB /* AnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerVC.swift; sourceTree = "<group>"; };
+		8B36CA9921A7BA4C001B62DB /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
+		8B36CA9A21A7BA4C001B62DB /* AnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerCell.xib; sourceTree = "<group>"; };
+		8B36CA9D21A7E67C001B62DB /* PostAnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswerVC.swift; sourceTree = "<group>"; };
+		8B36CAA221A7EE02001B62DB /* Answer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Answer.storyboard; sourceTree = "<group>"; };
 		8B53CB7821A3CF83002CE03C /* PostHonorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHonorVC.swift; sourceTree = "<group>"; };
 		8B53CB7B21A3DA84002CE03C /* AnalyseGradeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyseGradeVC.swift; sourceTree = "<group>"; };
 		8B53CB7C21A3DA84002CE03C /* AnalyseGradeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalyseGradeVC.xib; sourceTree = "<group>"; };
@@ -580,6 +592,7 @@
 				8B0EF32C2183391F000EA64E /* Focus */,
 				8B0EF32D2183392D000EA64E /* CampusNews */,
 				8B0EF32E2183393E000EA64E /* Reading */,
+				8B36CA9821A7B7BA001B62DB /* Answer */,
 				8B0EF32F21833948000EA64E /* Questions */,
 				8B0EF3302183395C000EA64E /* Experience */,
 				8B0EF33121833968000EA64E /* Resources */,
@@ -649,6 +662,7 @@
 		8B0EF33121833968000EA64E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8B36CA9321A7A24B001B62DB /* Detail */,
 				8B7A952421A2783A009CEB32 /* Post */,
 				8B0EF31C2182F344000EA64E /* ResourcesVC.swift */,
 				8B0EF31D2182F344000EA64E /* ResourcesVC.xib */,
@@ -770,6 +784,32 @@
 				8B36CA8C21A6DA2C001B62DB /* CommentView.xib */,
 			);
 			path = CommentView;
+			sourceTree = "<group>";
+		};
+		8B36CA9321A7A24B001B62DB /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8B36CA9121A79F78001B62DB /* DetailResourceVC.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		8B36CA9821A7B7BA001B62DB /* Answer */ = {
+			isa = PBXGroup;
+			children = (
+				8B36CA9F21A7E68A001B62DB /* Post */,
+				8B36CA9421A7B7A7001B62DB /* AnswerVC.swift */,
+				8B36CAA221A7EE02001B62DB /* Answer.storyboard */,
+			);
+			path = Answer;
+			sourceTree = "<group>";
+		};
+		8B36CA9F21A7E68A001B62DB /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				8B36CA9D21A7E67C001B62DB /* PostAnswerVC.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		8B53CB7A21A3CF8A002CE03C /* Post */ = {
@@ -1599,6 +1639,8 @@
 			children = (
 				8B0EF33E218350F0000EA64E /* QuestionCell.swift */,
 				8B0EF33F218350F0000EA64E /* QuestionCell.xib */,
+				8B36CA9921A7BA4C001B62DB /* AnswerCell.swift */,
+				8B36CA9A21A7BA4C001B62DB /* AnswerCell.xib */,
 			);
 			path = Questions;
 			sourceTree = "<group>";
@@ -1758,6 +1800,7 @@
 				8B0EF3172182F21E000EA64E /* ReadingVC.xib in Resources */,
 				8B7A950521A27577009CEB32 /* PostLostAndFoundVC.xib in Resources */,
 				8B7C760B219E635000FCCD75 /* ILessonGradeVC.xib in Resources */,
+				8B36CA9C21A7BA4C001B62DB /* AnswerCell.xib in Resources */,
 				8B64B562219AE77F005C2E07 /* ClubVC.xib in Resources */,
 				8B7C75C4219C4DFD00FCCD75 /* ShootPrintCell.xib in Resources */,
 				8BC1485921A6542600CDD76B /* PostCommentVC.xib in Resources */,
@@ -1806,6 +1849,7 @@
 				8B24EE402181E1010044514C /* EssayCell.xib in Resources */,
 				8B7C7598219BD8D700FCCD75 /* ExperienceCell.xib in Resources */,
 				8B7C75BC219C0AD300FCCD75 /* IdleGoodCell.xib in Resources */,
+				8B36CAA321A7EE02001B62DB /* Answer.storyboard in Resources */,
 				8B0EF3242182FCE9000EA64E /* ExperienceVC.xib in Resources */,
 				8BAEA356217EF89000FC2CBB /* LaunchScreen.storyboard in Resources */,
 				8B64B56C219AE9F3005C2E07 /* SpeechVC.xib in Resources */,
@@ -1973,6 +2017,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B36CA9E21A7E67C001B62DB /* PostAnswerVC.swift in Sources */,
 				8B3002FC218B35CE00D53D34 /* CountdownModel.swift in Sources */,
 				8BAEA4192181632B00FC2CBB /* LifeFuncModel.swift in Sources */,
 				8BAEA3AD217EFB2E00FC2CBB /* LifeVC.swift in Sources */,
@@ -1998,6 +2043,7 @@
 				8B53CBB621A543CC002CE03C /* UIImage+Extension.swift in Sources */,
 				8B64B46921987C37005C2E07 /* LessonSchedule.swift in Sources */,
 				8B7C75A6219C011300FCCD75 /* ShootAndPrintVC.swift in Sources */,
+				8B36CA9B21A7BA4C001B62DB /* AnswerCell.swift in Sources */,
 				8B0EF31A2182F324000EA64E /* QuestionVC.swift in Sources */,
 				8BAEA3AE217EFB2E00FC2CBB /* UserVC.swift in Sources */,
 				8B64B46621987C37005C2E07 /* Examination.swift in Sources */,
@@ -2082,6 +2128,7 @@
 				8B64B47221987C37005C2E07 /* Experience.swift in Sources */,
 				8B53CBB921A57536002CE03C /* DetailEssayVC.swift in Sources */,
 				8B64B490219987D7005C2E07 /* LessonTimeTable.swift in Sources */,
+				8B36CA9221A79F78001B62DB /* DetailResourceVC.swift in Sources */,
 				8B7C75F6219E619900FCCD75 /* IFriendsVC.swift in Sources */,
 				8B64B47421987C37005C2E07 /* Resource.swift in Sources */,
 				8BAEA34C217EF88F00FC2CBB /* AppDelegate.swift in Sources */,
@@ -2101,6 +2148,7 @@
 				8B64B46A21987C37005C2E07 /* LostAndFound.swift in Sources */,
 				8BAEA3EA217F12F700FC2CBB /* SizeHeader.swift in Sources */,
 				8B36CA8721A6D4FA001B62DB /* DetailBookVC.swift in Sources */,
+				8B36CA9621A7B7A7001B62DB /* AnswerVC.swift in Sources */,
 				8B64B47021987C37005C2E07 /* Comment.swift in Sources */,
 				8B64B46D21987C37005C2E07 /* Answer.swift in Sources */,
 				8B64B5232199CC8E005C2E07 /* RaceVC.swift in Sources */,

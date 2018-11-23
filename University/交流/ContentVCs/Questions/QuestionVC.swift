@@ -73,6 +73,15 @@ class QuestionVC: UIViewController {
 }
 
 extension QuestionVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let question = questions[indexPath.section]
+        // 采用storyboard组织业务逻辑
+        let AnswerSB = UIStoryboard(name: "Answer", bundle: nil)
+        let answerVC = AnswerSB.instantiateViewController(withIdentifier: "AnswerList") as! AnswerVC
+        answerVC.questionID = question.id ?? 0
+        self.present(answerVC, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
@@ -107,6 +116,12 @@ extension QuestionVC: UITableViewDataSource {
 
 extension QuestionVC: QuestionCellDelegate {
     func showMoreInfoAboutQuestion(_ id: String?) {
-        view.makeToast(id ?? "0")
+        guard let id = id else {
+            return
+        }
+        let AnswerSB = UIStoryboard(name: "Answer", bundle: nil)
+        let postAnswerVC = AnswerSB.instantiateViewController(withIdentifier: "PostAnswer") as! PostAnswerVC
+        postAnswerVC.questionID = Int(id) ?? 0
+        self.present(postAnswerVC, animated: true, completion: nil)
     }
 }

@@ -63,14 +63,25 @@ class RecommandVC: UIViewController {
                 for (_, subJson):(String, JSON) in json {
                     self.essays.append(Essay(jsonData: subJson))
                 }
-                MBProgressHUD.hide(for: self.view, animated: true)
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
-
+    
+    func parentController() -> UIViewController? {
+        var next = self.next
+        while next != nil {
+            print("next:\(String(describing: next))")
+            if (next is LearnVC) {
+                return next as? UIViewController
+            }
+            next = next?.next
+        }
+        return nil
+    }
 }
 
 
@@ -120,12 +131,34 @@ extension RecommandVC: UITableViewDelegate {
 
 extension RecommandVC: EssayCellDelegate {
     func showMoreInfoAboutEssay(_ id: String?) {
-        view.makeToast(id)
+        guard let id = id else {
+            return
+        }
+        let parameters: Parameters = [
+            "userID": GlobalData.sharedInstance.userID,
+            "collectionID": Int(id) ?? 0,
+            "type": "Essay"
+        ]
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/collection", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    // 收藏反馈
+                    self.view.makeToast(json["message"].stringValue, position: .top)
+                case .failure(let error):
+                    self.view.makeToast("收藏失败，稍后再试", position: .top)
+                    print(error)
+                }
+                MBProgressHUD.hide(for: self.view, animated: true)
+            }
+        }
     }
-     
-     func showSameTypeEssay(_ type: String?) {
+    
+    
+    func showSameTypeEssay(_ type: String?) {
          view.makeToast(type)
-     }
+    }
 }
-
-

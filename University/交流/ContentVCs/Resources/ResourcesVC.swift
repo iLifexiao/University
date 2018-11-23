@@ -73,6 +73,14 @@ class ResourcesVC: UIViewController {
 }
 
 extension ResourcesVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let resource = resources[indexPath.section]
+        let detailResourceVC = DetailResourceVC()
+        detailResourceVC.resource = resource
+        detailResourceVC.id = resource.id ?? 0
+        present(detailResourceVC, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
