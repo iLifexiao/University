@@ -48,7 +48,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="96" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0C-tS-dEp">
                         <rect key="frame" x="277.5" y="24" width="22.5" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <color key="textColor" red="0.0" green="0.80392156859999997" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.0" green="0.58292413709315072" blue="0.27911210716575341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opC-sA-qyr">

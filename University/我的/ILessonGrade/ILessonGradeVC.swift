@@ -38,7 +38,7 @@ class ILessonGradeVC: UIViewController {
     
     private func initUI() {
         title = "成绩单"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "analyse"), style: .plain, target: self, action: #selector(analyseGrade))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image:#imageLiteral(resourceName: "analyse"), style: .plain, target: self, action: #selector(analyseGrade))
         setupTableView()
     }
     
@@ -122,7 +122,12 @@ class ILessonGradeVC: UIViewController {
     }
     
     @objc func analyseGrade() {
+        if lessonGrades.count == 0 {
+            view.makeToast("无可分析的成绩", position: .top)
+            return
+        }
         let analyseGradeVC = AnalyseGradeVC()
+        analyseGradeVC.lessonGrades = lessonGrades
         navigationController?.pushViewController(analyseGradeVC, animated: true)
     }
 }
@@ -160,7 +165,7 @@ extension ILessonGradeVC: UITableViewDelegate {
             return nil
         case 1:
             let tipsHeaderView = Bundle.main.loadNibNamed("TipsHeaderView", owner: nil, options: nil)?[0] as! TipsHeaderView
-            tipsHeaderView.setTips(title: "成绩统计")
+            tipsHeaderView.setTips(title: "成绩统计", icon: #imageLiteral(resourceName: "gradeIcon"))
             return tipsHeaderView
         default:
             return nil

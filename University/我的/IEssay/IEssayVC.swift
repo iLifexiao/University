@@ -171,32 +171,6 @@ extension IEssayVC: UITableViewDataSource {
 
 // MARK: 文章-MORE-点击代理
 extension IEssayVC: EssayCellDelegate {
-    func showMoreInfoAboutEssay(_ id: String?) {
-        guard let id = id else {
-            return
-        }
-        let parameters: Parameters = [
-            "userID": GlobalData.sharedInstance.userID,
-            "collectionID": Int(id) ?? 0,
-            "type": "Essay"
-        ]
-        
-        MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/collection", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
-            if let self = self {
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    // 收藏反馈
-                    self.view.makeToast(json["message"].stringValue, position: .top)
-                case .failure(let error):
-                    self.view.makeToast("收藏失败，稍后再试", position: .top)
-                    print(error)
-                }
-                MBProgressHUD.hide(for: self.view, animated: true)
-            }
-        }
-    }
     
     func showSameTypeEssay(_ type: String?) {
         view.makeToast(type)

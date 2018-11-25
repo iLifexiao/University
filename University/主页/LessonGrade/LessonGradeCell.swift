@@ -31,9 +31,9 @@ class LessonGradeCell: UITableViewCell {
         // 不及格采用红色显示
         let grade = lessonGrade.grade
         if grade < 60 {
-            gradeLabel.textColor = .red
+            gradeLabel.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
         } else {
-            gradeLabel.textColor = .green
+            gradeLabel.textColor = #colorLiteral(red: 0, green: 0.5829241371, blue: 0.2791121072, alpha: 1)
         }
         gradeLabel.text = String(grade)
     }

@@ -65,11 +65,11 @@ class ExperienceVC: UIViewController {
                 for (_, subJson):(String, JSON) in json {
                     self.experiences.append(Experience(jsonData: subJson))
                 }
-                MBProgressHUD.hide(for: self.view, animated: true)
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
 }
@@ -81,7 +81,7 @@ extension ExperienceVC: UITableViewDelegate {
         detailEssayVC.experience = experience
         detailEssayVC.type = .experience
         detailEssayVC.id = experience.id ?? 0
-        self.present(detailEssayVC, animated: true, completion: nil)
+        ViewManager.share.secondNVC?.pushViewController(detailEssayVC, animated: true)        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

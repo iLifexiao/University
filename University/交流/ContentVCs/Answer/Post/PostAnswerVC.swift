@@ -28,7 +28,7 @@ class PostAnswerVC: UIViewController {
     }
     
     private func initUI() {
-        title = "回答问题"
+        title = "我的回答"
     }
         
     private func doPost(_ content: String) {
@@ -64,13 +64,5 @@ class PostAnswerVC: UIViewController {
             return
         }
         doPost(answer)
-    }
-    
-    @IBAction func goBack(_ sender: UIButton) {
-        if presentingViewController == nil {
-            navigationController?.popViewController(animated: true)
-        } else {
-            dismiss(animated: true, completion: nil)
-        }
     }
 }

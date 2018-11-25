@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol EssayCellDelegate {
-    func showMoreInfoAboutEssay(_ id: String?)
+//    func showMoreInfoAboutEssay(_ id: String?)
     func showSameTypeEssay(_ type: String?)
 }
 
@@ -57,11 +57,11 @@ class EssayCell: UITableViewCell {
     
     // show more info about essay
     // 如何标识文章的唯一性（id）
-    @IBAction func aboutEssayPress(_ sender: UIButton) {
-        if let delegate = self.delegate {
-            delegate.showMoreInfoAboutEssay(essayID)
-        }
-    }
+//    @IBAction func aboutEssayPress(_ sender: UIButton) {
+//        if let delegate = self.delegate {
+//            delegate.showMoreInfoAboutEssay(essayID)
+//        }
+//    }
     
     // show the same type essay
     @IBAction func showSameTypeEssay(_ sender: UIButton) {

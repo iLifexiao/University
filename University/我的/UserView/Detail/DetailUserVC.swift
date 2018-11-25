@@ -17,7 +17,6 @@ class DetailUserVC: UIViewController {
     @IBOutlet weak var headImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var moreButton: UIButton!
     
     private let userInfoCell = "userInfoCell"
     
@@ -60,13 +59,7 @@ class DetailUserVC: UIViewController {
         }
     }
     
-    private func initUI() {
-        // 仅仅在present时候展示(这里无效？？)
-        // 更换为判断是否有导航栏
-        if navigationController != nil {
-            moreButton.isHidden = true
-        }
-                
+    private func initUI() {                
         if userID == GlobalData.sharedInstance.userID {
             title = "个人中心"
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "edit"), style: .plain, target: self, action: #selector(goEditUserInfo))
@@ -174,27 +167,6 @@ class DetailUserVC: UIViewController {
                 MBProgressHUD.hide(for: self.view, animated: true)
             }
         }
-    }
-    
-    @IBAction func moreFunc(_ sender: UIButton) {
-        // 表示进入自己的详情，功能调整为返回
-        if userID == GlobalData.sharedInstance.userID {
-            dismiss(animated: true, completion: nil)
-            return
-        }
-        
-        // 他人
-        let manager = PopMenuManager.default
-        manager.popMenuDelegate = self
-        
-        manager.actions = [
-            PopMenuDefaultAction(title: "关注", image: UIImage(named: "focus")),
-            PopMenuDefaultAction(title: "私信", image: UIImage(named: "fly")),
-            PopMenuDefaultAction(title: "返回", image: UIImage(named: "back")),
-        ]
-        
-        // 显示的位置
-        manager.present(sourceView: sender)
     }
     
 }

@@ -24,6 +24,7 @@ target 'University' do
   pod 'Eureka'
   pod 'ImageRow', '~> 3.1.0'
   pod 'Charts'
+  pod 'WXImageCompress', '~> 0.1.1'
 
   target 'UniversityTests' do
     inherit! :search_paths

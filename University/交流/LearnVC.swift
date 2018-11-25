@@ -17,6 +17,7 @@ class LearnVC: UIViewController {
         super.viewDidLoad()
         initUI()
         print("LearnVC:", self)
+        ViewManager.share.secondNVC = self.navigationController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +28,7 @@ class LearnVC: UIViewController {
     private func initUI() {
         // 创建DNSPageStyle，设置样式
         let style = DNSPageStyle()
+        style.isShowBottomLine = true
         style.isTitleViewScrollEnabled = true
         style.isTitleScaleEnabled = true
         
@@ -49,10 +51,6 @@ class LearnVC: UIViewController {
         let pageView = DNSPageView(frame: CGRect(x: 0, y: TopBarHeight, width: ScreenWidth, height: ScreenHeight - TopBarHeight - TabBarHeight), style: style, titles: titles, childViewControllers: childViewControllers)
         view.addSubview(pageView)
     }    
-    
-    @IBAction func searchEssayPress(_ sender: UIBarButtonItem) {
-        view.makeToast("搜索")
-    }
     
     @IBAction func learnFuns(_ sender: UIBarButtonItem) {
         let manager = PopMenuManager.default

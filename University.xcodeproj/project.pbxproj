@@ -45,6 +45,13 @@
 		8B36CA9C21A7BA4C001B62DB /* AnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B36CA9A21A7BA4C001B62DB /* AnswerCell.xib */; };
 		8B36CA9E21A7E67C001B62DB /* PostAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CA9D21A7E67C001B62DB /* PostAnswerVC.swift */; };
 		8B36CAA321A7EE02001B62DB /* Answer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B36CAA221A7EE02001B62DB /* Answer.storyboard */; };
+		8B36CAA521A8DB10001B62DB /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CAA421A8DB10001B62DB /* ViewManager.swift */; };
+		8B36CAB021AA9999001B62DB /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CAAE21AA9998001B62DB /* SettingVC.swift */; };
+		8B36CAB121AA9999001B62DB /* SettingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B36CAAF21AA9998001B62DB /* SettingVC.xib */; };
+		8B36CAB421AA9F89001B62DB /* ChangePwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CAB321AA9F89001B62DB /* ChangePwdVC.swift */; };
+		8B36CAB821AAA414001B62DB /* AboutSoftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CAB621AAA414001B62DB /* AboutSoftVC.swift */; };
+		8B36CAB921AAA414001B62DB /* AboutSoftVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B36CAB721AAA414001B62DB /* AboutSoftVC.xib */; };
+		8B36CAC021AAE618001B62DB /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CABF21AAE618001B62DB /* Holiday.swift */; };
 		8B53CB7921A3CF83002CE03C /* PostHonorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB7821A3CF83002CE03C /* PostHonorVC.swift */; };
 		8B53CB7D21A3DA84002CE03C /* AnalyseGradeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB7B21A3DA84002CE03C /* AnalyseGradeVC.swift */; };
 		8B53CB7E21A3DA84002CE03C /* AnalyseGradeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CB7C21A3DA84002CE03C /* AnalyseGradeVC.xib */; };
@@ -321,6 +328,13 @@
 		8B36CA9A21A7BA4C001B62DB /* AnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerCell.xib; sourceTree = "<group>"; };
 		8B36CA9D21A7E67C001B62DB /* PostAnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswerVC.swift; sourceTree = "<group>"; };
 		8B36CAA221A7EE02001B62DB /* Answer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Answer.storyboard; sourceTree = "<group>"; };
+		8B36CAA421A8DB10001B62DB /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
+		8B36CAAE21AA9998001B62DB /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		8B36CAAF21AA9998001B62DB /* SettingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingVC.xib; sourceTree = "<group>"; };
+		8B36CAB321AA9F89001B62DB /* ChangePwdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePwdVC.swift; sourceTree = "<group>"; };
+		8B36CAB621AAA414001B62DB /* AboutSoftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSoftVC.swift; sourceTree = "<group>"; };
+		8B36CAB721AAA414001B62DB /* AboutSoftVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutSoftVC.xib; sourceTree = "<group>"; };
+		8B36CABF21AAE618001B62DB /* Holiday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
 		8B53CB7821A3CF83002CE03C /* PostHonorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHonorVC.swift; sourceTree = "<group>"; };
 		8B53CB7B21A3DA84002CE03C /* AnalyseGradeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyseGradeVC.swift; sourceTree = "<group>"; };
 		8B53CB7C21A3DA84002CE03C /* AnalyseGradeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalyseGradeVC.xib; sourceTree = "<group>"; };
@@ -750,6 +764,7 @@
 		8B3002F1218B33A700D53D34 /* ReuseViews */ = {
 			isa = PBXGroup;
 			children = (
+				8B0EF33521833B9E000EA64E /* TipsHeaderView */,
 				8B3002F4218B35CE00D53D34 /* CountdownView */,
 				8BAEA40A218091C700FC2CBB /* HeadlineView */,
 				8B36CA9021A6F3D9001B62DB /* CommentView */,
@@ -810,6 +825,34 @@
 				8B36CA9D21A7E67C001B62DB /* PostAnswerVC.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		8B36CAB221AA99AD001B62DB /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				8B36CAAE21AA9998001B62DB /* SettingVC.swift */,
+				8B36CAAF21AA9998001B62DB /* SettingVC.xib */,
+				8B36CAB521AAA3AF001B62DB /* ChangePwd */,
+				8B36CABA21AAB787001B62DB /* AboutSoft */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		8B36CAB521AAA3AF001B62DB /* ChangePwd */ = {
+			isa = PBXGroup;
+			children = (
+				8B36CAB321AA9F89001B62DB /* ChangePwdVC.swift */,
+			);
+			path = ChangePwd;
+			sourceTree = "<group>";
+		};
+		8B36CABA21AAB787001B62DB /* AboutSoft */ = {
+			isa = PBXGroup;
+			children = (
+				8B36CAB621AAA414001B62DB /* AboutSoftVC.swift */,
+				8B36CAB721AAA414001B62DB /* AboutSoftVC.xib */,
+			);
+			path = AboutSoft;
 			sourceTree = "<group>";
 		};
 		8B53CB7A21A3CF8A002CE03C /* Post */ = {
@@ -992,6 +1035,7 @@
 		8B64B44C21987C37005C2E07 /* LifeStyle */ = {
 			isa = PBXGroup;
 			children = (
+				8B36CABF21AAE618001B62DB /* Holiday.swift */,
 				8B64B44D21987C37005C2E07 /* IdleGood.swift */,
 				8B64B44E21987C37005C2E07 /* PartTimeJob.swift */,
 				8B64B44F21987C37005C2E07 /* PropertyManager.swift */,
@@ -1046,10 +1090,10 @@
 			isa = PBXGroup;
 			children = (
 				8B64B53A219A6A14005C2E07 /* Detail */,
-				8B64B52A2199D6CA005C2E07 /* RaceTableViewCell.swift */,
-				8B64B52B2199D6CA005C2E07 /* RaceTableViewCell.xib */,
 				8B64B5212199CC8E005C2E07 /* RaceVC.swift */,
 				8B64B5222199CC8E005C2E07 /* RaceVC.xib */,
+				8B64B52A2199D6CA005C2E07 /* RaceTableViewCell.swift */,
+				8B64B52B2199D6CA005C2E07 /* RaceTableViewCell.xib */,
 			);
 			path = Race;
 			sourceTree = "<group>";
@@ -1507,6 +1551,7 @@
 			children = (
 				8BAEA34B217EF88F00FC2CBB /* AppDelegate.swift */,
 				8BAEA3E9217F12F700FC2CBB /* SizeHeader.swift */,
+				8B36CAA421A8DB10001B62DB /* ViewManager.swift */,
 				8B64B48621991C65005C2E07 /* UtilityMethod.swift */,
 				8B7C75DE219DB09500FCCD75 /* GlobalData.swift */,
 				8BAEA354217EF89000FC2CBB /* LaunchScreen.storyboard */,
@@ -1579,6 +1624,7 @@
 				8B7C7607219E632500FCCD75 /* IStudent */,
 				8B7C760C219E636800FCCD75 /* ILessonGrade */,
 				8B7C7611219E63B600FCCD75 /* IHonor */,
+				8B36CAB221AA99AD001B62DB /* Setting */,
 			);
 			path = "我的";
 			sourceTree = "<group>";
@@ -1587,7 +1633,6 @@
 			isa = PBXGroup;
 			children = (
 				8B0EF33421833B85000EA64E /* DateHeaderView */,
-				8B0EF33521833B9E000EA64E /* TipsHeaderView */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -1826,6 +1871,7 @@
 				8BAEA409218091B300FC2CBB /* HeadlineView.xib in Resources */,
 				8B7C75F2219E5F2800FCCD75 /* ICollectionVC.xib in Resources */,
 				8B0EF31B2182F324000EA64E /* QuestionVC.xib in Resources */,
+				8B36CAB121AA9999001B62DB /* SettingVC.xib in Resources */,
 				8B64B53E219A6B54005C2E07 /* AcdemicVC.xib in Resources */,
 				8B64B52D2199D6CA005C2E07 /* RaceTableViewCell.xib in Resources */,
 				8B7C75B1219C017F00FCCD75 /* SchoolStoreVC.xib in Resources */,
@@ -1845,6 +1891,7 @@
 				8B7A952921A28D77009CEB32 /* IBookVC.xib in Resources */,
 				8B3002FE218B35CE00D53D34 /* CountdownView.xib in Resources */,
 				8B53CBA521A45CF2002CE03C /* DetailPTJVC.xib in Resources */,
+				8B36CAB921AAA414001B62DB /* AboutSoftVC.xib in Resources */,
 				8BAEA3EE217F253700FC2CBB /* DateHeaderView.xib in Resources */,
 				8B24EE402181E1010044514C /* EssayCell.xib in Resources */,
 				8B7C7598219BD8D700FCCD75 /* ExperienceCell.xib in Resources */,
@@ -1937,6 +1984,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/WXImageCompress/WXImageCompress.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -1960,6 +2008,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WXImageCompress.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2082,6 +2131,7 @@
 				8B64B47621987C37005C2E07 /* PartTimeJob.swift in Sources */,
 				8B53CB8B21A3E71C002CE03C /* RadarMarkerView.swift in Sources */,
 				8B64B54F219A988A005C2E07 /* ExaminationVC.swift in Sources */,
+				8B36CAB021AA9999001B62DB /* SettingVC.swift in Sources */,
 				8B7A950421A27577009CEB32 /* PostLostAndFoundVC.swift in Sources */,
 				8B53CB7D21A3DA84002CE03C /* AnalyseGradeVC.swift in Sources */,
 				8B53CB9021A3E71C002CE03C /* LargeValueFormatter.swift in Sources */,
@@ -2096,6 +2146,7 @@
 				8B7C75CF219D175D00FCCD75 /* LoginVC.swift in Sources */,
 				8B7C75F1219E5F2800FCCD75 /* ICollectionVC.swift in Sources */,
 				8B64B47A21987C37005C2E07 /* UtilityBill.swift in Sources */,
+				8B36CAB821AAA414001B62DB /* AboutSoftVC.swift in Sources */,
 				8BAEA3E4217F077700FC2CBB /* ADCell.swift in Sources */,
 				8B7C75BB219C0AD300FCCD75 /* IdleGoodCell.swift in Sources */,
 				8B7C75C3219C4DFD00FCCD75 /* ShootPrintCell.swift in Sources */,
@@ -2134,6 +2185,7 @@
 				8BAEA34C217EF88F00FC2CBB /* AppDelegate.swift in Sources */,
 				8B7C75C7219C741100FCCD75 /* SchoolStoreCell.swift in Sources */,
 				8B3002FD218B35CE00D53D34 /* CountdownView.swift in Sources */,
+				8B36CAB421AA9F89001B62DB /* ChangePwdVC.swift in Sources */,
 				8B64B46721987C37005C2E07 /* Lesson.swift in Sources */,
 				8B7C75D6219D51FA00FCCD75 /* BandingStudentVC.swift in Sources */,
 				8B7C75AB219C015800FCCD75 /* PropertyManagerVC.swift in Sources */,
@@ -2160,6 +2212,7 @@
 				8B7C759C219C007B00FCCD75 /* IdleGoodVC.swift in Sources */,
 				8B64B46B21987C37005C2E07 /* Race.swift in Sources */,
 				8B64B48721991C65005C2E07 /* UtilityMethod.swift in Sources */,
+				8B36CAC021AAE618001B62DB /* Holiday.swift in Sources */,
 				8B64B48421987C37005C2E07 /* User.swift in Sources */,
 				8BAEA3AC217EFB2E00FC2CBB /* LearnVC.swift in Sources */,
 				8B7A951321A2778A009CEB32 /* PostQuestionVC.swift in Sources */,
@@ -2167,6 +2220,7 @@
 				8B64B51F2199C809005C2E07 /* LibraryWebVC.swift in Sources */,
 				8B7C75B0219C017F00FCCD75 /* SchoolStoreVC.swift in Sources */,
 				8B53CB7921A3CF83002CE03C /* PostHonorVC.swift in Sources */,
+				8B36CAA521A8DB10001B62DB /* ViewManager.swift in Sources */,
 				8B64B52C2199D6CA005C2E07 /* RaceTableViewCell.swift in Sources */,
 				8B64B48321987C37005C2E07 /* Student.swift in Sources */,
 				8B7A952221A27836009CEB32 /* PostResourceVC.swift in Sources */,

@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 import MarkdownView
+import PopMenu
 
 class DetailEssayVC: UIViewController {
 
@@ -97,6 +98,7 @@ class DetailEssayVC: UIViewController {
         case .essay:
             if let essay = essay {
                 title = "文章内容"
+                navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow_down"), style: .plain, target: self, action: #selector(showMore))
                 commentView.setupCommentViewData(readCount: essay.readCount ?? 0, likeCount: essay.likeCount ?? 0, commentCount: essay.commentCount ?? 0)
                 markdownView.load(markdown: essay.content)
             }
@@ -125,8 +127,91 @@ class DetailEssayVC: UIViewController {
         // 设计API为类型标识，可以通过变量来访问不同的API
         Alamofire.request(baseURL + "/api/v1/\(type.apiName)/\(id)/read", method: .patch, headers: headers)
     }
+    
+    private func focusBack() {
+        guard let essay = essay else {
+            self.view.makeToast("资源不存在，稍后再试", position: .top)
+            return
+        }
+        let parameters: Parameters = [
+            "userID": GlobalData.sharedInstance.userID,
+            "focusUserID": essay.userID
+        ]
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/focus", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    // 显示服务器的提示信息
+                    self.view.makeToast(json["message"].stringValue, position: .top)
+                case .failure(let error):
+                    self.view.makeToast("关注失败，请稍后再试", position: .top)
+                    print(error)
+                }
+                // 无论请求成功或失败，加载栏都必须消失
+                MBProgressHUD.hide(for: self.view, animated: true)
+            }
+        }
+    }
+    
+    private func collecteEssay() {
+        guard let essay = essay else {
+            self.view.makeToast("资源不存在，稍后再试", position: .top)
+            return
+        }
+        let parameters: Parameters = [
+            "userID": GlobalData.sharedInstance.userID,
+            "collectionID": essay.id ?? 0,
+            "type": "Essay"
+        ]
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/collection", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    // 收藏反馈
+                    self.view.makeToast(json["message"].stringValue, position: .top)
+                case .failure(let error):
+                    self.view.makeToast("收藏失败，稍后再试", position: .top)
+                    print(error)
+                }
+                MBProgressHUD.hide(for: self.view, animated: true)
+            }
+        }
+    }
+    
+    @objc func showMore() {
+        let manager = PopMenuManager.default
+        manager.popMenuDelegate = self
+        
+        manager.actions = [
+            PopMenuDefaultAction(title: "关注", image: UIImage(named: "focus")),
+            PopMenuDefaultAction(title: "收藏", image: UIImage(named: "star")),
+        ]
+        
+        // 显示的位置
+        manager.present(sourceView: navigationItem.rightBarButtonItem)
+    }
+    
 }
 
+extension DetailEssayVC: PopMenuViewControllerDelegate {
+    
+    func popMenuDidSelectItem(_ popMenuViewController: PopMenuViewController, at index: Int) {
+        switch index {
+        case 0:
+            focusBack()
+        case 1:
+            collecteEssay()
+        default:
+            print("错误选项")
+        }
+    }
+}
 // MARK: 用户交互[返回、写评论、点赞、看评论]
 extension DetailEssayVC: CommentViewDelegate {
     func goBackBtnPress() {

@@ -15,6 +15,38 @@ import Toast_Swift
 
 class PostIdleGoodVC: FormViewController {
     
+    lazy private var parameters: Parameters = form.values() as Parameters
+    let defaultImageURL = "/image/idlegoods/default.png"
+    
+    private var imagePath: String {
+        set {
+            guard newValue != "" else {
+                MBProgressHUD.hide(for: self.view, animated: true)
+                view.makeToast("图片过大(限制<1M)", position: .top)
+                return
+            }
+            parameters["imageURLs"] = [newValue]
+            Alamofire.request(baseURL + "/api/v1/idlegood", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+                if let self = self {
+                    switch response.result {
+                    case .success(let value):
+                        print(value)
+                        // 发布成功
+                        self.view.makeToast("发布成功，返回刷新查看", position: .top)
+                    case .failure(let error):
+                        self.view.makeToast("发布失败，请稍后再试", position: .top)
+                        print(error)
+                    }
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+            }
+            
+        }
+        get {
+            return defaultImageURL
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initData()
@@ -97,7 +129,9 @@ class PostIdleGoodVC: FormViewController {
                     }
             }
             <<< ImageRow() { row in
-                row.title = "上传图片"
+                row.title = "上传图片(可选)"
+                row.tag = "imageURLs"
+                row.placeholderImage = UIImage.fromURL(baseURL + defaultImageURL)
                 row.sourceTypes = [.PhotoLibrary, .Camera]
                 row.clearAction = .yes(style: UIAlertAction.Style.destructive)
             }
@@ -123,8 +157,77 @@ class PostIdleGoodVC: FormViewController {
         let errors = form.validate()
         if errors.count == 0 {
             print("验证成功")
+            doPost()
         } else {
             print("验证失败")
         }
+    }
+    
+    private func doPost() {
+        parameters["userID"] = GlobalData.sharedInstance.userID
+        
+        let image = form.values()["imageURLs"] as? UIImage
+        if image == nil {
+            imagePath = defaultImageURL
+        } else {
+            uploadImage(image!, type: "idlegoods")
+        }
+    }
+    
+    private func uploadImage(_ image: UIImage, type: String) {
+        let typeData = type.data(using: .utf8)
+        guard typeData != nil else {
+            view.makeToast("参数编码失败，稍后再试", position: .top)
+            return
+        }
+        
+        let comPressImage = image.wxCompress(type: .session)
+        var imageData = comPressImage.jpegData(compressionQuality: 1.0)
+        guard imageData != nil else {
+            view.makeToast("图片处理失败，稍后再试", position: .top)
+            return
+        }
+        // 将图片转换为Data(1048576)，需要在稍微压缩一点质量（4K图片）
+        if imageData!.count > 1_048_574 {
+            imageData = comPressImage.jpegData(compressionQuality: 0.9)!
+        }
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData!, withName: "image", fileName: "type.jpeg" ,mimeType: "image/jpeg")
+                multipartFormData.append(typeData!, withName: "type")
+        },
+            to: baseURL + "/api/v1/upload/image",
+            headers: headers,
+            encodingCompletion: { [weak self] encodingResult in
+                guard let self = self else {
+                    return
+                }
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        debugPrint(response)
+                        // 获取响应数据
+                        if let data = response.data {
+                            let json = JSON(data)
+                            // 图片可能过大(最大只能是1M)
+                            if json["status"].intValue == 0 {
+                                print(json["message"].stringValue)
+                                self.imagePath = json["message"].stringValue
+                            } else {
+                                self.view.makeToast(json["message"].stringValue, position: .top)
+                                MBProgressHUD.hide(for: self.view, animated: true)
+                            }
+                        }
+                    }
+                case .failure(let encodingError):
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.view.makeToast("图片上传失败，稍后再试", position: .top)
+                    print(encodingError)
+                }
+            }
+        )
+        
     }
 }

@@ -121,8 +121,7 @@ extension IQANDAnswerVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! QuestionCell
-        cell.setupModel(questions[indexPath.section])
-        cell.delegate = self
+        cell.setupModel(questions[indexPath.section])        
         cell.selectionStyle = .none
         return cell
     }
@@ -166,17 +165,17 @@ extension IQANDAnswerVC: UITableViewDataSource {
     }
 }
 
-extension IQANDAnswerVC: QuestionCellDelegate {
-    func showMoreInfoAboutQuestion(_ id: String?) {
-        guard let id = id else {
-            return
-        }
-        let AnswerSB = UIStoryboard(name: "Answer", bundle: nil)
-        let postAnswerVC = AnswerSB.instantiateViewController(withIdentifier: "PostAnswer") as! PostAnswerVC
-        postAnswerVC.questionID = Int(id) ?? 0
-        self.present(postAnswerVC, animated: true, completion: nil)
-    }
-}
+//extension IQANDAnswerVC: QuestionCellDelegate {
+//    func showMoreInfoAboutQuestion(_ id: String?) {
+//        guard let id = id else {
+//            return
+//        }
+//        let AnswerSB = UIStoryboard(name: "Answer", bundle: nil)
+//        let postAnswerVC = AnswerSB.instantiateViewController(withIdentifier: "PostAnswer") as! PostAnswerVC
+//        postAnswerVC.questionID = Int(id) ?? 0
+//        self.present(postAnswerVC, animated: true, completion: nil)
+//    }
+//}
 
 // MARK: 空视图-代理
 extension IQANDAnswerVC: DZNEmptyDataSetDelegate {

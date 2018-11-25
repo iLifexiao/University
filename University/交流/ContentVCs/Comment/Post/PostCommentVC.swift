@@ -70,14 +70,6 @@ class PostCommentVC: UIViewController {
         doPost(content)
     }
     
-    @IBAction func goBack(_ sender: UIButton) {
-        if presentingViewController == nil {
-            navigationController?.popViewController(animated: true)
-        } else {
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
     @IBAction func exitKeyboard(_ sender: UITapGestureRecognizer) {
         commentTextView.resignFirstResponder()
     }

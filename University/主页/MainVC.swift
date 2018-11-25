@@ -19,8 +19,33 @@ class MainVC: UIViewController {
     
     // UI
     @IBOutlet weak var tableView: UITableView!
-    var pagerView: FSPagerView?
-    var headlineView: HeadlineView?
+    
+    // 1. Banner
+    lazy var pagerView: FSPagerView = {
+        let pager = FSPagerView(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth, height: 250))
+        pager.automaticSlidingInterval = 3.0
+        pager.isInfinite = true
+        pager.dataSource = self
+        pager.delegate = self
+        pager.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "BannerCell")
+        return pager
+    }()
+    
+    // 2. 新闻栏
+    lazy var headlineView: HeadlineView = {
+        let headline = Bundle.main.loadNibNamed("HeadlineView", owner: nil, options: nil)?[0] as? HeadlineView
+        headline?.frame = CGRect.init(x: 0, y: 250, width: ScreenWidth, height: 50)
+        headline?.delegate = self
+        return headline!
+    }()
+    
+    // 3. 倒数日
+    lazy var countdownView: CountdownView = {
+        let countDownView = Bundle.main.loadNibNamed("CountdownView", owner: nil, options: nil)?[0] as! CountdownView
+        countDownView.frame = CGRect(x: 0, y: 0, width: ScreenWidth, height: 100)
+        countDownView.delegate = self
+        return countDownView
+    }()
     
     // UI配置
     let sectionCount = 3
@@ -29,8 +54,9 @@ class MainVC: UIViewController {
     let campusCell = "campusCell"
     
     // 网络数据
-    var adBanners: [ADBanner] = []
-    var notifications: [Notification] = []
+    private var adBanners: [ADBanner] = []
+    private var notifications: [Notification] = []
+    private var dateEvent: [(String, String)] = []
     var news: [String] {
         get {
             var titles: [String] = []
@@ -42,35 +68,12 @@ class MainVC: UIViewController {
     }
     
     // 倒数日、校园服务
-    var countdowns: [CountdownModel] = []
-    var campusFuncs: [CampusFuncModel] = []
-    
-    private let dateEvent: [(String, String)] = [
-        ("元旦节", "01-01"),
-        ("情人节", "02-14"),
-        ("寒假节", "02-19"),
-        ("妇女节", "03-08"),
-        ("植树节", "03-12"),
-        ("消权日", "03-15"),
-        ("植树节", "03-12"),
-        ("愚人节", "04-01"),
-        ("劳动节", "05-01"),
-        ("青年节", "05-04"),
-        ("儿童节", "06-01"),
-        ("建党节", "07-01"),
-        ("建军节", "08-01"),
-        ("中元节", "08-15"),
-        ("教师节", "09-10"),
-        ("国庆节", "10-01"),
-        ("CET", "12-15"),
-        ("考研", "12-22"),
-        ("平安夜", "12-24"),
-        ("圣诞节", "12-25")
-    ]
+    private var countdowns: [CountdownModel] = []
+    private var campusFuncs: [CampusFuncModel] = []
         
     // 日期默认
-    var week: String = "星期三"
-    var date: String = "2018-10-22"
+    private var week: String = "星期三"
+    private var date: String = "2018-10-22"
     
     // MARK: 程序入口
     override func viewDidLoad() {
@@ -104,26 +107,24 @@ class MainVC: UIViewController {
         getNotifications()
         
         // 日期
+        getHolidays()
         
         date = Date().toFormat("YYYY-MM-dd")
         week = Date().toFormat("EEEE")
         
-        // countdown
-        getCountDown(count: 6)
-        
         // 校园服务
-        let campusFuncModel = CampusFuncModel(icon: UIImage(named: "lesson"), name: "课程表")
-        let campusFuncModel2 = CampusFuncModel(icon: UIImage(named: "grade"), name: "成绩查询")
+        let campusFuncModel = CampusFuncModel(icon: #imageLiteral(resourceName: "lesson"), name: "课程表")
+        let campusFuncModel2 = CampusFuncModel(icon: #imageLiteral(resourceName: "grade"), name: "成绩查询")
 //        let campusFuncModel3 = CampusFuncModel(icon: UIImage(named: "classRoom"), name: "空教室"), campusFuncModel3
-        let campusFuncModel4 = CampusFuncModel(icon: UIImage(named: "library"), name: "图书馆")
-        let campusFuncModel5 = CampusFuncModel(icon: UIImage(named: "education"), name: "考试安排")
-        let campusFuncModel6 = CampusFuncModel(icon: UIImage(named: "speech"), name: "学术讲座")
-        let campusFuncModel7 = CampusFuncModel(icon: UIImage(named: "cup"), name: "竞赛信息")
-        let campusFuncModel8 = CampusFuncModel(icon: UIImage(named: "LostAndFound"), name: "失物招领")
-        let campusFuncModel9 = CampusFuncModel(icon: UIImage(named: "calendar"), name: "校历")
-        let campusFuncModel10 = CampusFuncModel(icon: UIImage(named: "eduArrange"), name: "教务通知")
-        let campusFuncModel11 = CampusFuncModel(icon: UIImage(named: "community"), name: "社团")
-        let campusFuncModel12 = CampusFuncModel(icon: UIImage(named: "directory"), name: "通讯录")
+        let campusFuncModel4 = CampusFuncModel(icon: #imageLiteral(resourceName: "library"), name: "图书馆")
+        let campusFuncModel5 = CampusFuncModel(icon: #imageLiteral(resourceName: "education"), name: "考试安排")
+        let campusFuncModel6 = CampusFuncModel(icon: #imageLiteral(resourceName: "speech"), name: "学术讲座")
+        let campusFuncModel7 = CampusFuncModel(icon: #imageLiteral(resourceName: "cup"), name: "竞赛信息")
+        let campusFuncModel8 = CampusFuncModel(icon: #imageLiteral(resourceName: "LostAndFound"), name: "失物招领")
+        let campusFuncModel9 = CampusFuncModel(icon: #imageLiteral(resourceName: "calendar"), name: "校历")
+        let campusFuncModel10 = CampusFuncModel(icon: #imageLiteral(resourceName: "eduArrange"), name: "教务通知")
+        let campusFuncModel11 = CampusFuncModel(icon: #imageLiteral(resourceName: "community"), name: "社团")
+        let campusFuncModel12 = CampusFuncModel(icon: #imageLiteral(resourceName: "notebook"), name: "通讯录")
         campusFuncs = [campusFuncModel, campusFuncModel2, campusFuncModel4, campusFuncModel5, campusFuncModel6, campusFuncModel7, campusFuncModel8, campusFuncModel9, campusFuncModel10, campusFuncModel11, campusFuncModel12]
     }
     
@@ -146,6 +147,7 @@ class MainVC: UIViewController {
             // 重新获取
             self?.getADBanner()
             self?.getNotifications()
+            self?.getHolidays()
             
             self?.tableView.mj_header.endRefreshing()
             self?.view.makeToast("刷新成功", position: .top)
@@ -171,15 +173,18 @@ class MainVC: UIViewController {
     
     private func getADBanner() {
         Alamofire.request(baseURL + "/api/v1/adbanner/all/main", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self?.adBanners.removeAll()
+                self.adBanners.removeAll()
                 // json是数组
                 for (_,subJson):(String, JSON) in json {
-                    self?.adBanners.append(ADBanner(jsonData: subJson))
+                    self.adBanners.append(ADBanner(jsonData: subJson))
                 }
-                self?.pagerView?.reloadData()
+                self.pagerView.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -188,14 +193,45 @@ class MainVC: UIViewController {
     
     private func getNotifications() {
         Alamofire.request(baseURL + "/api/v1/notification/all/main", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self?.notifications.removeAll()
+                self.notifications.removeAll()
                 for (_,subJson):(String, JSON) in json {
-                    self?.notifications.append(Notification(jsonData: subJson))
+                    self.notifications.append(Notification(jsonData: subJson))
                 }
-                self?.headlineView?.setNews(self?.news ?? [])
+                self.headlineView.setNews(self.news)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func getHolidays() {
+        Alamofire.request(baseURL + "/api/v1/holiday/all", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                // 设置事件
+                self.dateEvent.removeAll()
+                for (_,subJson):(String, JSON) in json {
+                    let holiday = Holiday(jsonData: subJson)
+                    self.dateEvent.append((holiday.name, holiday.time))
+                }
+                // 排序(按照日期正序)
+                // 采用函数式编程方式
+                self.dateEvent.sort(by: { (event1, event2) -> Bool in
+                    event1.1 < event2.1
+                })
+                
+                // countdown
+                self.getCountDown(count: 6)
             case .failure(let error):
                 print(error)
             }
@@ -263,10 +299,16 @@ class MainVC: UIViewController {
         }
         
         // 组合
+        countdowns.removeAll()
         for index in 0..<count {
             let countdown = CountdownModel(date: events[index].1, event: events[index].0, day: eventDistancesDay[index])
             countdowns.append(countdown)
         }
+        
+        // 清空 & 赋值 & 刷新
+        countdownView.countdowns.removeAll()
+        countdownView.countdowns = countdowns
+        countdownView.reloadData()
     }
 }
 
@@ -286,6 +328,10 @@ extension MainVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        // 末尾不显示
+        if section == sectionCount - 1 {
+            return 0
+        }
         switch section {
         case 0:
             return 20
@@ -341,32 +387,17 @@ extension MainVC: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: bannerCell, for: indexPath)
             if cell.contentView.subviews.count == 0 {
                 // Banner视图
-                pagerView = FSPagerView(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth, height: 250))
-                pagerView?.automaticSlidingInterval = 3.0
-                pagerView?.isInfinite = true
-                // 显示的样式下，需要调整itemSize才能显示完全
-//                pagerView?.transformer = FSPagerViewTransformer(type: .overlap)
-//                pagerView?.itemSize = CGSize(width: ScreenWidth - 40, height: 200)
-                pagerView?.dataSource = self
-                pagerView?.delegate = self
-                pagerView?.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "BannerCell")
-                cell.contentView.addSubview(pagerView!)
+                cell.contentView.addSubview(pagerView)
                 
                 // 通知栏
-                headlineView = Bundle.main.loadNibNamed("HeadlineView", owner: nil, options: nil)?[0] as? HeadlineView                
-                headlineView?.frame = CGRect.init(x: 0, y: 250, width: ScreenWidth, height: 50)
-                headlineView?.delegate = self
-                cell.contentView.addSubview(headlineView!)
+                cell.contentView.addSubview(headlineView)
             }
             cell.selectionStyle = .none
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: dateCell, for: indexPath)
             if cell.contentView.subviews.count == 0 {
-                let countdownView = Bundle.main.loadNibNamed("CountdownView", owner: nil, options: nil)?[0] as! CountdownView
-                countdownView.frame = CGRect(x: 0, y: 0, width: ScreenWidth, height: 100)
-                countdownView.delegate = self
-                countdownView.countdowns = countdowns
+                // 倒数日
                 cell.contentView.addSubview(countdownView)
             }
             cell.selectionStyle = .none
@@ -479,9 +510,9 @@ extension MainVC: UICollectionViewDelegate {
         case "社团":
             let clubVC = ClubVC()
             navigationController?.pushViewController(clubVC, animated: true)
-        case "空教室":
-            let emptyClassRoomVC = EmptyClassRoomVC()
-            navigationController?.pushViewController(emptyClassRoomVC, animated: true)
+//        case "空教室":
+//            let emptyClassRoomVC = EmptyClassRoomVC()
+//            navigationController?.pushViewController(emptyClassRoomVC, animated: true)
         case "学术讲座":
             let speechVC = SpeechVC()
             navigationController?.pushViewController(speechVC, animated: true)

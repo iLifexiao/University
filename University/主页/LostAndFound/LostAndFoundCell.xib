@@ -63,7 +63,7 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="体育课上丢失的，联系方式：13424564326" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="llV-pQ-JPz">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="体育课上丢失的，联系方式：13424564326" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="llV-pQ-JPz">
                         <rect key="frame" x="10" y="220" width="160" height="70"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

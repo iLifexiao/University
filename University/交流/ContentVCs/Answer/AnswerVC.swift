@@ -25,7 +25,13 @@ class AnswerVC: UIViewController {
         initData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     private func initUI() {
+        title = "回答列表"
         setupTableView()
     }
     
@@ -77,12 +83,11 @@ class AnswerVC: UIViewController {
         }
     }
     
-    @IBAction func goBack(_ sender: UIButton) {
-        if presentingViewController == nil {
-            navigationController?.popViewController(animated: true)
-        } else {
-            dismiss(animated: true, completion: nil)
-        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goPostAnswerVC",
+            let postAnswerVC = segue.destination as? PostAnswerVC {
+                postAnswerVC.questionID = questionID
+            }
     }
 }
 
@@ -93,11 +98,7 @@ extension AnswerVC: UITableViewDelegate {
         detailEssayVC.answer = answer
         detailEssayVC.type = .answer
         detailEssayVC.id = answer.id ?? 0
-        if presentingViewController == nil {
-            navigationController?.pushViewController(detailEssayVC, animated: true)
-        } else {
-            self.present(detailEssayVC, animated: true, completion: nil)
-        }
+        ViewManager.share.secondNVC?.pushViewController(detailEssayVC, animated: true)        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

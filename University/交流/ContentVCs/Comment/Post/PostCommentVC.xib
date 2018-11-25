@@ -12,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostCommentVC" customModule="University" customModuleProvider="target">
             <connections>
-                <outlet property="backButton" destination="lQE-zw-o4c" id="8fZ-Lt-xwO"/>
                 <outlet property="commentTextView" destination="WLB-rV-JBx" id="1xf-OO-6VT"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MGs-6I-Ttu"/>
             </connections>
@@ -71,17 +70,6 @@
                         <action selector="sendComment:" destination="-1" eventType="touchUpInside" id="5uZ-4X-MdI"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQE-zw-o4c">
-                    <rect key="frame" x="20" y="622" width="25" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="25" id="1bJ-76-1Xw"/>
-                        <constraint firstAttribute="width" constant="25" id="7H4-kQ-Sgd"/>
-                    </constraints>
-                    <state key="normal" image="back"/>
-                    <connections>
-                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="Mgf-uW-pr1"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <gestureRecognizers/>
@@ -90,8 +78,6 @@
                 <constraint firstItem="MY1-mv-CRX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="2ZF-dA-6dv"/>
                 <constraint firstItem="ipq-DK-Bch" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="99k-YU-Kn4"/>
                 <constraint firstItem="ipq-DK-Bch" firstAttribute="top" secondItem="MY1-mv-CRX" secondAttribute="bottom" constant="8" id="B3O-o4-ERJ"/>
-                <constraint firstItem="lQE-zw-o4c" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="TAI-78-tQn"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lQE-zw-o4c" secondAttribute="bottom" constant="20" id="YWm-jN-K3n"/>
                 <constraint firstItem="uRL-tQ-utN" firstAttribute="leading" secondItem="MY1-mv-CRX" secondAttribute="trailing" constant="8" id="Z1p-4I-bz3"/>
                 <constraint firstItem="3u5-Xg-r3g" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="ZW1-0g-U5O"/>
                 <constraint firstItem="MY1-mv-CRX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dk5-La-Zra"/>
@@ -114,7 +100,4 @@
             </connections>
         </tapGestureRecognizer>
     </objects>
-    <resources>
-        <image name="back" width="40" height="40"/>
-    </resources>
 </document>

@@ -13,9 +13,14 @@ class AnalyseGradeVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var sectionTitles = ["成绩柱状图", "绩点折线图", "通过率"]
+    // 成绩
+    var lessonGrades: [LessonGrade] = []
+    private var passValue = 50
+    private var points: [Float] = []
+    
+    var sectionTitles = ["通过率", "绩点图"]
     var sectionOneCell = "sectionOneCell"
-    var sectionTwoCell = "sectionTwoCell"
+//    var sectionTwoCell = "sectionTwoCell"
     var sectionThreeCell = "sectionThreeCell"
     
     override func viewDidLoad() {
@@ -31,7 +36,14 @@ class AnalyseGradeVC: UIViewController {
 
     
     private func initData() {
-        
+        var passCount = 0
+        for lesson in lessonGrades {
+            if lesson.grade >= 60 {
+                passCount += 1
+            }
+            points.append(lesson.gradePoint)
+        }
+        passValue = passCount / lessonGrades.count * 100
     }
     
     private func initUI() {
@@ -45,10 +57,10 @@ class AnalyseGradeVC: UIViewController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-        // 清空-空Cell
         tableView.tableFooterView = UIView()
     }
     
+    // MARK: 图标样式
     // 设置柱状图
     private func setup(barLineChartView chartView: BarLineChartViewBase) {
         chartView.chartDescription?.enabled = false
@@ -57,7 +69,6 @@ class AnalyseGradeVC: UIViewController {
         chartView.setScaleEnabled(true)
         chartView.pinchZoomEnabled = false
         
-        // ChartYAxis *leftAxis = chartView.leftAxis;
         
         let xAxis = chartView.xAxis
         xAxis.labelPosition = .bottom
@@ -67,6 +78,7 @@ class AnalyseGradeVC: UIViewController {
     
     // 设置饼状图
     private func setup(pieChartView chartView: PieChartView) {
+        // 1. 设置样式
         chartView.usePercentValuesEnabled = true
         chartView.drawSlicesUnderHoleEnabled = false
         chartView.holeRadiusPercent = 0.58
@@ -80,20 +92,13 @@ class AnalyseGradeVC: UIViewController {
         paragraphStyle.lineBreakMode = .byTruncatingTail
         paragraphStyle.alignment = .center
         
-        let centerText = NSMutableAttributedString(string: "Charts\nby Daniel Cohen Gindi")
-        centerText.setAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 13)!,
-                                  .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
-        centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
-                                  .foregroundColor : UIColor.gray], range: NSRange(location: 10, length: centerText.length - 10))
-        centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
-                                  .foregroundColor : UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)], range: NSRange(location: centerText.length - 19, length: 19))
-        chartView.centerAttributedText = centerText;
         
         chartView.drawHoleEnabled = true
         chartView.rotationAngle = 0
         chartView.rotationEnabled = true
         chartView.highlightPerTapEnabled = true
         
+        // 表格样式
         let l = chartView.legend
         l.horizontalAlignment = .right
         l.verticalAlignment = .top
@@ -102,8 +107,86 @@ class AnalyseGradeVC: UIViewController {
         l.xEntrySpace = 7
         l.yEntrySpace = 0
         l.yOffset = 0
-        //        chartView.legend = l
     }
+    
+    // MARK: 图标数据
+    // 设置饼状图数据
+    func setDataCount(pieChartView chartView: PieChartView) {
+        // 1. 设置DataEntry
+        let entries = [
+            PieChartDataEntry(value: Double(passValue), label: "通过"),
+            PieChartDataEntry(value: Double(100 - passValue), label: "失败")
+        ]
+        
+        // 2. 设置数据集合
+        let set = PieChartDataSet(values: entries, label: "通过率")
+        set.drawIconsEnabled = false
+        set.sliceSpace = 2
+        
+        // 3. 设置显示颜色(春天绿色、红色)
+        set.colors = [
+            UIColor(red: 60/255, green: 179/255, blue: 113/255, alpha: 1),
+            UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
+        ]
+        
+        // 4. 设置数据
+        let data = PieChartData(dataSet: set)
+        
+        // 5. 设置数据格式
+        let pFormatter = NumberFormatter()
+        pFormatter.numberStyle = .percent
+        pFormatter.maximumFractionDigits = 1
+        pFormatter.multiplier = 1
+        pFormatter.percentSymbol = " %"
+        data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+        
+        data.setValueFont(.systemFont(ofSize: 11, weight: .light))
+        data.setValueTextColor(.white)
+        
+        // 6. 设置数据
+        chartView.data = data
+        chartView.highlightValues(nil)
+    }
+    
+    func setDataCount(lineChartView chartView: LineChartView) {
+        // [1, 2, 3]为设设置数据的基本步骤
+        // 1. 设置DataEntry
+        var values: [ChartDataEntry] = []
+        for (index, point) in points.enumerated() {
+            values.append(ChartDataEntry(x: Double(index), y: Double(point)))
+        }
+        
+        // 2. 设置数据集合
+        let set1 = LineChartDataSet(values: values, label: "绩点")
+        set1.drawIconsEnabled = false
+        
+        // 3. 设置数据样式
+        set1.lineDashLengths = [5, 2.5]
+        set1.highlightLineDashLengths = [5, 2.5]
+        set1.setColor(.black)
+        set1.setCircleColor(.black)
+        set1.lineWidth = 1
+        set1.circleRadius = 3
+        set1.drawCircleHoleEnabled = false
+        set1.valueFont = .systemFont(ofSize: 9)
+        set1.formLineDashLengths = [5, 2.5]
+        set1.formLineWidth = 1
+        set1.formSize = 15
+        
+        // 4.设置数据颜色(透明度 & 颜色)
+        let gradientColors = [ChartColorTemplates.colorFromString("#ff0098A3").cgColor,
+                              ChartColorTemplates.colorFromString("#000098A3").cgColor]
+        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
+        
+        set1.fillAlpha = 1
+        set1.fill = Fill(linearGradient: gradient, angle: 90)
+        set1.drawFilledEnabled = true
+        
+        // 5. 设置数据
+        let data = LineChartData(dataSet: set1)
+        chartView.data = data
+    }
+        
 }
 
 extension AnalyseGradeVC: ChartViewDelegate {
@@ -131,7 +214,15 @@ extension AnalyseGradeVC: UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let tipsHeaderView = Bundle.main.loadNibNamed("TipsHeaderView", owner: nil, options: nil)?[0] as! TipsHeaderView
-        tipsHeaderView.setTips(title: sectionTitles[section])
+        switch section {
+        case 0:
+            tipsHeaderView.setTips(title: sectionTitles[section], icon: #imageLiteral(resourceName: "pie"))
+        case 1:
+            tipsHeaderView.setTips(title: sectionTitles[section], icon: #imageLiteral(resourceName: "line"))
+        default:
+            print("NOT Here")
+        }
+        
         return tipsHeaderView
     }
     
@@ -161,6 +252,7 @@ extension AnalyseGradeVC: UITableViewDataSource {
                 
                 chartView.delegate = self
                 
+                // 设置表格
                 let l = chartView.legend
                 l.horizontalAlignment = .right
                 l.verticalAlignment = .top
@@ -168,81 +260,20 @@ extension AnalyseGradeVC: UITableViewDataSource {
                 l.xEntrySpace = 7
                 l.yEntrySpace = 0
                 l.yOffset = 0
-                //        chartView.legend = l
                 
-                // entry label styling
+                
+                // 图标内字体样式
                 chartView.entryLabelColor = .white
-                chartView.entryLabelFont = .systemFont(ofSize: 12, weight: .light)
+                chartView.entryLabelFont = .systemFont(ofSize: 14, weight: .light)
                 
                 chartView.animate(xAxisDuration: 1.4, easingOption: .easeOutBack)
+                
+                setDataCount(pieChartView: chartView)
+                cell.contentView.addSubview(chartView)
             }
             cell.selectionStyle = .none
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: sectionTwoCell) ?? UITableViewCell(style: .default, reuseIdentifier: sectionTwoCell)
-            if cell.contentView.subviews.count == 0 {
-                let chartView = BarChartView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: 300))
-                setup(barLineChartView: chartView)
-                
-                chartView.delegate = self
-                
-                chartView.drawBarShadowEnabled = false
-                chartView.drawValueAboveBarEnabled = false
-                
-                chartView.maxVisibleCount = 60
-                
-                let xAxis = chartView.xAxis
-                xAxis.labelPosition = .bottom
-                xAxis.labelFont = .systemFont(ofSize: 10)
-                xAxis.granularity = 1
-                xAxis.labelCount = 7
-                xAxis.valueFormatter = DayAxisValueFormatter(chart: chartView)
-                
-                let leftAxisFormatter = NumberFormatter()
-                leftAxisFormatter.minimumFractionDigits = 0
-                leftAxisFormatter.maximumFractionDigits = 1
-                leftAxisFormatter.negativeSuffix = " $"
-                leftAxisFormatter.positiveSuffix = " $"
-                
-                let leftAxis = chartView.leftAxis
-                leftAxis.labelFont = .systemFont(ofSize: 10)
-                leftAxis.labelCount = 8
-                leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
-                leftAxis.labelPosition = .outsideChart
-                leftAxis.spaceTop = 0.15
-                leftAxis.axisMinimum = 0 // FIXME: HUH?? this replaces startAtZero = YES
-                
-                let rightAxis = chartView.rightAxis
-                rightAxis.enabled = true
-                rightAxis.labelFont = .systemFont(ofSize: 10)
-                rightAxis.labelCount = 8
-                rightAxis.valueFormatter = leftAxis.valueFormatter
-                rightAxis.spaceTop = 0.15
-                rightAxis.axisMinimum = 0
-                
-                let l = chartView.legend
-                l.horizontalAlignment = .left
-                l.verticalAlignment = .bottom
-                l.orientation = .horizontal
-                l.drawInside = false
-                l.form = .circle
-                l.formSize = 9
-                l.font = UIFont(name: "HelveticaNeue-Light", size: 11)!
-                l.xEntrySpace = 4
-                //        chartView.legend = l
-                
-                let marker = XYMarkerView(color: UIColor(white: 180/250, alpha: 1),
-                                          font: .systemFont(ofSize: 12),
-                                          textColor: .white,
-                                          insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8),
-                                          xAxisValueFormatter: chartView.xAxis.valueFormatter!)
-                marker.chartView = chartView
-                marker.minimumSize = CGSize(width: 80, height: 40)
-                chartView.marker = marker
-            }
-            cell.selectionStyle = .none
-            return cell
-        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: sectionThreeCell) ?? UITableViewCell(style: .default, reuseIdentifier: sectionThreeCell)
             if cell.contentView.subviews.count == 0 {
                 let chartView = LineChartView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: 300))
@@ -253,42 +284,24 @@ extension AnalyseGradeVC: UITableViewDataSource {
                 chartView.setScaleEnabled(true)
                 chartView.pinchZoomEnabled = true
                 
-                // x-axis limit line
-                let llXAxis = ChartLimitLine(limit: 10, label: "Index 10")
-                llXAxis.lineWidth = 4
-                llXAxis.lineDashLengths = [10, 10, 0]
-                llXAxis.labelPosition = .rightBottom
-                llXAxis.valueFont = .systemFont(ofSize: 10)
-                
-                chartView.xAxis.gridLineDashLengths = [10, 10]
-                chartView.xAxis.gridLineDashPhase = 0
-                
-                let ll1 = ChartLimitLine(limit: 150, label: "Upper Limit")
-                ll1.lineWidth = 4
-                ll1.lineDashLengths = [5, 5]
-                ll1.labelPosition = .rightTop
-                ll1.valueFont = .systemFont(ofSize: 10)
-                
-                let ll2 = ChartLimitLine(limit: -30, label: "Lower Limit")
-                ll2.lineWidth = 4
-                ll2.lineDashLengths = [5,5]
-                ll2.labelPosition = .rightBottom
-                ll2.valueFont = .systemFont(ofSize: 10)
+                // 绩点下限
+                let limitlLine = ChartLimitLine(limit: 1.0, label: "及格线")
+                limitlLine.lineWidth = 4
+                limitlLine.lineDashLengths = [5,5]
+                limitlLine.labelPosition = .rightTop
+                limitlLine.valueFont = .systemFont(ofSize: 10)
                 
                 let leftAxis = chartView.leftAxis
                 leftAxis.removeAllLimitLines()
-                leftAxis.addLimitLine(ll1)
-                leftAxis.addLimitLine(ll2)
-                leftAxis.axisMaximum = 200
-                leftAxis.axisMinimum = -50
+                leftAxis.axisMaximum = 5
+                leftAxis.axisMinimum = 0
+                leftAxis.addLimitLine(limitlLine)
                 leftAxis.gridLineDashLengths = [5, 5]
                 leftAxis.drawLimitLinesBehindDataEnabled = true
                 
                 chartView.rightAxis.enabled = false
                 
-                //[_chartView.viewPortHandler setMaximumScaleY: 2.f];
-                //[_chartView.viewPortHandler setMaximumScaleX: 2.f];
-                
+                // 点击显示的标记
                 let marker = BalloonMarker(color: UIColor(white: 180/255, alpha: 1),
                                            font: .systemFont(ofSize: 12),
                                            textColor: .white,
@@ -298,8 +311,11 @@ extension AnalyseGradeVC: UITableViewDataSource {
                 chartView.marker = marker
                 
                 chartView.legend.form = .line
-                
                 chartView.animate(xAxisDuration: 2.5)
+                
+                // 设置数据
+                setDataCount(lineChartView: chartView)
+                cell.contentView.addSubview(chartView)
             }
             cell.selectionStyle = .none
             return cell

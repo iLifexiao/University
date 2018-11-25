@@ -8,9 +8,9 @@
 
 import UIKit
 
-@objc protocol QuestionCellDelegate {
-    func showMoreInfoAboutQuestion(_ id: String?)
-}
+//@objc protocol QuestionCellDelegate {
+//    func showMoreInfoAboutQuestion(_ id: String?)
+//}
 
 class QuestionCell: UITableViewCell {
     
@@ -21,7 +21,7 @@ class QuestionCell: UITableViewCell {
     @IBOutlet weak var postTimeLabel: UILabel!
     
     private var id: String?
-    weak var delegate: QuestionCellDelegate?
+//    weak var delegate: QuestionCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,9 +51,9 @@ class QuestionCell: UITableViewCell {
         postTimeLabel.text = nil
     }
     
-    @IBAction func moreAboutQuestion(_ sender: UIButton) {
-        if let delegate = delegate {
-            delegate.showMoreInfoAboutQuestion(id)
-        }
-    }
+//    @IBAction func moreAboutQuestion(_ sender: UIButton) {
+//        if let delegate = delegate {
+//            delegate.showMoreInfoAboutQuestion(id)
+//        }
+//    }
 }

@@ -133,11 +133,6 @@
                         <viewLayoutGuide key="safeArea" id="raP-I0-jWp"/>
                     </view>
                     <navigationItem key="navigationItem" title="交流" id="n8P-7s-hpB">
-                        <barButtonItem key="leftBarButtonItem" title="Search" image="search" id="bXE-xg-TUp">
-                            <connections>
-                                <action selector="searchEssayPress:" destination="uo6-zA-vA4" id="USK-Zw-Y9e"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" image="arrow_down" id="tgV-i4-0J1">
                             <connections>
                                 <action selector="learnFuns:" destination="uo6-zA-vA4" id="zWM-JT-gKe"/>
@@ -283,7 +278,6 @@
         <image name="life" width="32" height="32"/>
         <image name="me" width="32" height="32"/>
         <image name="school" width="32" height="32"/>
-        <image name="search" width="20" height="20"/>
         <image name="set" width="20" height="20"/>
     </resources>
 </document>

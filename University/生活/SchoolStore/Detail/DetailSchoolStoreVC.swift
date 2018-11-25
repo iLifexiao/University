@@ -67,7 +67,10 @@ class DetailSchoolStoreVC: UIViewController {
 }
 
 extension DetailSchoolStoreVC: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let infoValue = schoolStoreInfo[indexPath.row]
+        view.makeToast(infoValue, position: .top)
+    }
 }
 
 extension DetailSchoolStoreVC: UITableViewDataSource {

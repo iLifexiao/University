@@ -83,7 +83,7 @@ extension LostAndFoundVC: UICollectionViewDelegate {
     
 }
 
-extension LostAndFoundVC: UICollectionViewDataSource {
+extension LostAndFoundVC: UICollectionViewDataSource {    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return losts.count
     }

@@ -73,17 +73,17 @@ class UserVC: UIViewController {
         updateUserIMCountInfo()
         
         // 文化交流
-        let culture1 = MyServerModel(icon: UIImage.init(named: "friends"), title: "我的好友")
-        let culture2 = MyServerModel(icon: UIImage.init(named: "idea"), title: "我的经验")
-        let culture3 = MyServerModel(icon: UIImage.init(named: "answer"), title: "我的问答")
-        let culture4 = MyServerModel(icon: UIImage.init(named: "myBook"), title: "我的书籍")
-        let culture5 = MyServerModel(icon: UIImage.init(named: "myResources"), title: "我的资源")
+        let culture1 = MyServerModel(icon: #imageLiteral(resourceName: "friends"), title: "我的好友")
+        let culture2 = MyServerModel(icon: #imageLiteral(resourceName: "idea"), title: "我的经验")
+        let culture3 = MyServerModel(icon: #imageLiteral(resourceName: "answer"), title: "我的问答")
+        let culture4 = MyServerModel(icon: #imageLiteral(resourceName: "myBook"), title: "我的书籍")
+        let culture5 = MyServerModel(icon: #imageLiteral(resourceName: "myResources"), title: "我的资源")
         weCulture = [culture1, culture2, culture3, culture4, culture5]
         
         // 学籍信息
-        let schoolFunc1 = MyServerModel(icon: UIImage.init(named: "studentCard"), title: "我的学籍")
-        let schoolFunc2 = MyServerModel(icon: UIImage.init(named: "myGrade"), title: "我的成绩")
-        let schoolFunc3 = MyServerModel(icon: UIImage.init(named: "myHonner"), title: "我的荣誉")
+        let schoolFunc1 = MyServerModel(icon: #imageLiteral(resourceName: "studentCard"), title: "我的学籍")
+        let schoolFunc2 = MyServerModel(icon: #imageLiteral(resourceName: "myGrade"), title: "我的成绩")
+        let schoolFunc3 = MyServerModel(icon: #imageLiteral(resourceName: "myHonor"), title: "我的荣誉")
         studentStatus = [schoolFunc1 ,schoolFunc2, schoolFunc3]
     }
     
@@ -156,6 +156,10 @@ class UserVC: UIViewController {
                 print(error)
             }
         }
+        
+        // 顺便更新头像和名字
+        userView?.setUserName(GlobalData.sharedInstance.userName)
+        userView?.setUserHead(GlobalData.sharedInstance.userHeadImage)
     }
     
     // 接收通知
@@ -169,22 +173,8 @@ class UserVC: UIViewController {
     }
     
     @IBAction func userSettingPress(_ sender: UIBarButtonItem) {
-        view.makeToast("设置")
-        // 退出登录的时候，清除用户数据
-        UserDefaults.standard.set(0, forKey: userIDKey)
-        UserDefaults.standard.set(0, forKey: studentIDKey)
-        // 默认用户信息
-        UserDefaults.standard.set("用户未登录", forKey: userNameKey)
-        UserDefaults.standard.set("/image/defalut.png", forKey: userHeadKey)
-        GlobalData.sharedInstance.userID = 0
-        GlobalData.sharedInstance.studentID = 0
-        GlobalData.sharedInstance.userName = "用户未登录"
-        GlobalData.sharedInstance.userHeadImage = "/image/default.png"
-        
-        // 跳转到登录界面
-        let loginSB = UIStoryboard(name: "Login", bundle: nil)
-        let loginVC = loginSB.instantiateViewController(withIdentifier: "LoginVC")
-        navigationController?.pushViewController(loginVC, animated: true)
+        let settingVC = SettingVC()
+        navigationController?.pushViewController(settingVC, animated: true)
     }
     
 }

@@ -22,6 +22,7 @@ PODS:
   - SwiftDate (5.0.10)
   - SwiftyJSON (4.2.0)
   - Toast-Swift (4.0.0)
+  - WXImageCompress (0.1.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
@@ -42,6 +43,7 @@ DEPENDENCIES:
   - SwiftDate (~> 5.0)
   - SwiftyJSON (~> 4.0)
   - Toast-Swift (~> 4.0.0)
+  - WXImageCompress (~> 0.1.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -63,6 +65,7 @@ SPEC REPOS:
     - SwiftDate
     - SwiftyJSON
     - Toast-Swift
+    - WXImageCompress
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -83,7 +86,8 @@ SPEC CHECKSUMS:
   SwiftDate: fcdaa7ca22a903faf6d7ed231239a88d174dcae3
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
+  WXImageCompress: 4003213a788574c3e307faec0130359c52e43887
 
-PODFILE CHECKSUM: 6f0806f80e2e3552c0d9cf098bc6fa0ec171fb80
+PODFILE CHECKSUM: 84bfdaded1613fda05b1cfc45d07521da0d4ca45
 
 COCOAPODS: 1.6.0.beta.1

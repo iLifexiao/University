@@ -92,7 +92,8 @@ extension RecommandVC: UITableViewDelegate {
         detailEssayVC.essay = essay
         detailEssayVC.type = .essay
         detailEssayVC.id = essay.id ?? 0
-        self.present(detailEssayVC, animated: true, completion: nil)
+        // 通过获取到父视图的控制器来完成页面跳转
+        ViewManager.share.secondNVC?.pushViewController(detailEssayVC, animated: true)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -130,33 +131,6 @@ extension RecommandVC: UITableViewDelegate {
 }
 
 extension RecommandVC: EssayCellDelegate {
-    func showMoreInfoAboutEssay(_ id: String?) {
-        guard let id = id else {
-            return
-        }
-        let parameters: Parameters = [
-            "userID": GlobalData.sharedInstance.userID,
-            "collectionID": Int(id) ?? 0,
-            "type": "Essay"
-        ]
-        
-        MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/collection", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
-            if let self = self {
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    // 收藏反馈
-                    self.view.makeToast(json["message"].stringValue, position: .top)
-                case .failure(let error):
-                    self.view.makeToast("收藏失败，稍后再试", position: .top)
-                    print(error)
-                }
-                MBProgressHUD.hide(for: self.view, animated: true)
-            }
-        }
-    }
-    
     
     func showSameTypeEssay(_ type: String?) {
          view.makeToast(type)

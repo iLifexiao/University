@@ -63,11 +63,11 @@ class ReadingVC: UIViewController {
                 for (_, subJson):(String, JSON) in json {
                     self.books.append(Book(jsonData: subJson))
                 }
-                MBProgressHUD.hide(for: self.view, animated: true)
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
 }
@@ -78,7 +78,7 @@ extension ReadingVC: UITableViewDelegate {
         let detailBookVC = DetailBookVC()
         detailBookVC.book = book
         detailBookVC.id = book.id ?? 0
-        present(detailBookVC, animated: true, completion: nil)
+        ViewManager.share.secondNVC?.pushViewController(detailBookVC, animated: true)        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -62,11 +62,11 @@ class CampusVC: UIViewController {
                 for (_, subJson):(String, JSON) in json {
                     self.campusNews.append(CampusNews(jsonData: subJson))
                 }
-                MBProgressHUD.hide(for: self.view, animated: true)
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
 }
@@ -78,7 +78,7 @@ extension CampusVC: UITableViewDelegate {
         detailEssayVC.compusNews = news
         detailEssayVC.type = .campusNews
         detailEssayVC.id = news.id ?? 0
-        self.present(detailEssayVC, animated: true, completion: nil)
+        ViewManager.share.secondNVC?.pushViewController(detailEssayVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

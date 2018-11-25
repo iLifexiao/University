@@ -30,6 +30,10 @@ class CountdownView: UIView {
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "CountdownCell", bundle: nil), forCellWithReuseIdentifier: "CountdownCell")
     }
+    
+    func reloadData() {
+        collectionView.reloadData()
+    }
 
 }
 

@@ -91,7 +91,7 @@ extension AcdemicVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        return 80.0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -109,14 +109,12 @@ extension AcdemicVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: academicCell)
-        if cell == nil {
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: academicCell)
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: academicCell) ?? UITableViewCell(style: .subtitle, reuseIdentifier: academicCell)
         let academic = academics[indexPath.section]
-        cell?.textLabel?.text = academic.title
-        cell?.detailTextLabel?.text = academic.type + " | " + academic.time
-        cell?.selectionStyle = .none
-        return cell!
+        cell.textLabel?.text = academic.title
+        cell.detailTextLabel?.text = academic.type + " | " + academic.time
+        cell.detailTextLabel?.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+        cell.selectionStyle = .none
+        return cell
     }
 }

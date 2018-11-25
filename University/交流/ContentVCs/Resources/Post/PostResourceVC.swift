@@ -15,6 +15,38 @@ import Toast_Swift
 
 class PostResourceVC: FormViewController {
 
+    lazy private var parameters: Parameters = form.values() as Parameters
+    let defaultImageURL = "/image/resource/default.png"
+    
+    private var imagePath: String {
+        set {
+            guard newValue != "" else {
+                MBProgressHUD.hide(for: self.view, animated: true)
+                view.makeToast("图片过大(限制<1M)", position: .top)
+                return
+            }
+            parameters["imageURL"] = newValue
+            Alamofire.request(baseURL + "/api/v1/resource", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+                if let self = self {
+                    switch response.result {
+                    case .success(let value):
+                        print(value)
+                        // 发布成功
+                        self.view.makeToast("发布成功，返回刷新查看", position: .top)
+                    case .failure(let error):
+                        self.view.makeToast("发布失败，请稍后再试", position: .top)
+                        print(error)
+                    }
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+            }
+            
+        }
+        get {
+            return defaultImageURL
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initData()
@@ -73,7 +105,9 @@ class PostResourceVC: FormViewController {
                     }
             }
             <<< ImageRow() { row in
-                row.title = "封面图片"
+                row.title = "封面图片(可选)"
+                row.tag = "imageURL"
+                row.placeholderImage = UIImage.fromURL(baseURL + defaultImageURL)
                 row.sourceTypes = [.PhotoLibrary, .Camera]
                 row.clearAction = .yes(style: UIAlertAction.Style.destructive)
             }
@@ -106,25 +140,66 @@ class PostResourceVC: FormViewController {
     }
     
     private func doPost() {
-        // From的tag为post参数的名称
-        var parameters: Parameters = form.values() as Parameters
         parameters["userID"] = GlobalData.sharedInstance.userID
-        print(parameters)
+        
+        let image = form.values()["imageURL"] as? UIImage
+        if image == nil {
+            imagePath = defaultImageURL
+        } else {
+            uploadImage(image!, type: "resource")
+        }
+    }
+    
+    private func uploadImage(_ image: UIImage, type: String) {
+        let typeData = type.data(using: .utf8)
+        guard typeData != nil else {
+            view.makeToast("参数编码失败，稍后再试", position: .top)
+            return
+        }
+        
+        let comPressImage = image.wxCompress(type: .session)
+        var imageData = comPressImage.jpegData(compressionQuality: 1.0)
+        guard imageData != nil else {
+            view.makeToast("图片处理失败，稍后再试", position: .top)
+            return
+        }
+        if imageData!.count > 1_048_574 {
+            imageData = comPressImage.jpegData(compressionQuality: 0.9)!
+        }
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData!, withName: "image", fileName: "type.jpeg" ,mimeType: "image/jpeg")
+                multipartFormData.append(typeData!, withName: "type")
+        },
+            to: baseURL + "/api/v1/upload/image",
+            headers: headers,
+            encodingCompletion: { [weak self] encodingResult in
+                guard let self = self else {
+                    return
+                }
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        debugPrint(response)
+                        if let data = response.data {
+                            let json = JSON(data)
+                            if json["status"].intValue == 0 {
+                                print(json["message"].stringValue)
+                                self.imagePath = json["message"].stringValue
+                            } else {
+                                self.view.makeToast(json["message"].stringValue, position: .top)
+                                MBProgressHUD.hide(for: self.view, animated: true)
+                            }
+                        }
+                    }
+                case .failure(let encodingError):
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.view.makeToast("图片上传失败，稍后再试", position: .top)
+                    print(encodingError)
+                }
+            }
+        )
     }
 }
-/*
- MBProgressHUD.showAdded(to: view, animated: true)
- Alamofire.request(baseURL + "/api/v1/book", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
- if let self = self {
- switch response.result {
- case .success(let value):
- print(value)
- // 发布成功
- self.view.makeToast("书籍推荐成功", position: .top)
- MBProgressHUD.hide(for: self.view, animated: true)
- case .failure(let error):
- print(error)
- }
- }
-
- */

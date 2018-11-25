@@ -88,15 +88,6 @@ class CommentVC: UIViewController {
             }
         }
     }
-    
-    @IBAction func goBack(_ sender: UIButton) {
-        if presentingViewController == nil {
-            navigationController?.popViewController(animated: true)
-        } else {
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
 }
 
 extension CommentVC: UITableViewDelegate {

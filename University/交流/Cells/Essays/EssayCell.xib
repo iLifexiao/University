@@ -65,18 +65,7 @@
                             <constraint firstAttribute="height" constant="1" id="8zR-dj-tcc"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGz-6G-myj">
-                        <rect key="frame" x="278" y="11" width="26" height="26"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="26" id="8AQ-hD-2jQ"/>
-                            <constraint firstAttribute="height" constant="26" id="KB8-io-eHH"/>
-                        </constraints>
-                        <state key="normal" title="More" image="star"/>
-                        <connections>
-                            <action selector="aboutEssayPress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BdE-ad-j0f"/>
-                        </connections>
-                    </button>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="NPp-Fq-qOu">
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="NPp-Fq-qOu">
                         <rect key="frame" x="0.0" y="169.5" width="320" height="30"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdz-KY-jIO" userLabel="seeView">
@@ -110,7 +99,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2e-Hj-hhT" userLabel="likeView">
                                 <rect key="frame" x="112" y="0.0" width="96" height="30"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="Hq4-dw-FOL">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like_before" translatesAutoresizingMaskIntoConstraints="NO" id="Hq4-dw-FOL">
                                         <rect key="frame" x="20" y="3" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="4Mp-Ft-nca"/>
@@ -138,7 +127,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jge-ay-afL" userLabel="commitView">
                                 <rect key="frame" x="224" y="0.0" width="96" height="30"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commit" translatesAutoresizingMaskIntoConstraints="NO" id="5TE-jt-cQk">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment" translatesAutoresizingMaskIntoConstraints="NO" id="5TE-jt-cQk">
                                         <rect key="frame" x="20" y="3" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="0Z8-Zl-kvV"/>
@@ -186,14 +175,12 @@
                     <constraint firstItem="Yas-R1-3Fs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="8Gj-TL-wZg"/>
                     <constraint firstItem="J1r-kh-NOw" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="FMO-5q-P5L"/>
                     <constraint firstAttribute="trailing" secondItem="NPp-Fq-qOu" secondAttribute="trailing" id="Iuw-iS-Mt2"/>
-                    <constraint firstItem="uGz-6G-myj" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="LDK-hN-vwT"/>
                     <constraint firstItem="BhA-c3-d4V" firstAttribute="leading" secondItem="mPi-eg-eUr" secondAttribute="trailing" constant="10" id="PCQ-Ra-35S"/>
                     <constraint firstItem="NPp-Fq-qOu" firstAttribute="top" secondItem="u9M-Hv-mA9" secondAttribute="bottom" constant="2" id="SbP-og-bM2"/>
                     <constraint firstItem="mPi-eg-eUr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Y3G-am-Q9P"/>
                     <constraint firstItem="J1r-kh-NOw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="aLf-Wo-Dhh"/>
                     <constraint firstItem="i2f-kR-Pr8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="b7H-4Y-5ke"/>
                     <constraint firstItem="u9M-Hv-mA9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bCk-DA-CY8"/>
-                    <constraint firstItem="uGz-6G-myj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="c9E-r8-r4j"/>
                     <constraint firstItem="BDp-CV-gVM" firstAttribute="leading" secondItem="Yas-R1-3Fs" secondAttribute="trailing" constant="17" id="fzG-d2-7cl"/>
                     <constraint firstItem="BhA-c3-d4V" firstAttribute="top" secondItem="i2f-kR-Pr8" secondAttribute="bottom" constant="10" id="hwj-DX-yOq"/>
                     <constraint firstItem="BDp-CV-gVM" firstAttribute="top" secondItem="BhA-c3-d4V" secondAttribute="bottom" constant="6" id="kJZ-UI-ivz"/>
@@ -220,10 +207,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="commit" width="67" height="67"/>
-        <image name="like" width="40" height="40"/>
+        <image name="comment" width="40" height="40"/>
+        <image name="like_before" width="40" height="40"/>
         <image name="see" width="40" height="40"/>
-        <image name="star" width="40" height="40"/>
         <image name="userHead" width="200" height="200"/>
     </resources>
 </document>

@@ -63,11 +63,11 @@ class QuestionVC: UIViewController {
                 for (_, subJson):(String, JSON) in json {
                     self.questions.append(Question(jsonData: subJson))
                 }
-                MBProgressHUD.hide(for: self.view, animated: true)
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
 }
@@ -79,7 +79,7 @@ extension QuestionVC: UITableViewDelegate {
         let AnswerSB = UIStoryboard(name: "Answer", bundle: nil)
         let answerVC = AnswerSB.instantiateViewController(withIdentifier: "AnswerList") as! AnswerVC
         answerVC.questionID = question.id ?? 0
-        self.present(answerVC, animated: true, completion: nil)
+        ViewManager.share.secondNVC?.pushViewController(answerVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -108,20 +108,20 @@ extension QuestionVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! QuestionCell
         cell.setupModel(questions[indexPath.section])
-        cell.delegate = self
+//        cell.delegate = self
         cell.selectionStyle = .none
         return cell
     }
 }
 
-extension QuestionVC: QuestionCellDelegate {
-    func showMoreInfoAboutQuestion(_ id: String?) {
-        guard let id = id else {
-            return
-        }
-        let AnswerSB = UIStoryboard(name: "Answer", bundle: nil)
-        let postAnswerVC = AnswerSB.instantiateViewController(withIdentifier: "PostAnswer") as! PostAnswerVC
-        postAnswerVC.questionID = Int(id) ?? 0
-        self.present(postAnswerVC, animated: true, completion: nil)
-    }
-}
+//extension QuestionVC: QuestionCellDelegate {
+//    func showMoreInfoAboutQuestion(_ id: String?) {
+//        guard let id = id else {
+//            return
+//        }
+//        let AnswerSB = UIStoryboard(name: "Answer", bundle: nil)
+//        let postAnswerVC = AnswerSB.instantiateViewController(withIdentifier: "PostAnswer") as! PostAnswerVC
+//        postAnswerVC.questionID = Int(id) ?? 0
+//        self.present(postAnswerVC, animated: true, completion: nil)
+//    }
+//}

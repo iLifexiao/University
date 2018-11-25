@@ -28,17 +28,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGx-E6-67q">
-                        <rect key="frame" x="280" y="72.5" width="20" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="20" id="dgk-zb-I3c"/>
-                            <constraint firstAttribute="height" constant="20" id="vgR-Hd-Th6"/>
-                        </constraints>
-                        <state key="normal" title="Button" image="answer"/>
-                        <connections>
-                            <action selector="moreAboutQuestion:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kry-Zy-k1U"/>
-                        </connections>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13 条回答" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEF-C1-cqf">
                         <rect key="frame" x="10" y="73.5" width="58" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -46,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-11-11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gM-kY-Y3q">
-                        <rect key="frame" x="203" y="73.5" width="67" height="16"/>
+                        <rect key="frame" x="243" y="73.5" width="67" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -75,11 +64,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="4gM-kY-Y3q" firstAttribute="centerY" secondItem="k9X-5s-F7b" secondAttribute="centerY" id="6gh-yc-nrS"/>
+                    <constraint firstAttribute="trailing" secondItem="4gM-kY-Y3q" secondAttribute="trailing" constant="10" id="Ilj-M0-ETs"/>
                     <constraint firstAttribute="bottom" secondItem="WEF-C1-cqf" secondAttribute="bottom" constant="10" id="L2n-dF-fai"/>
                     <constraint firstItem="93K-dH-wH9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="QMv-rA-0le"/>
-                    <constraint firstAttribute="trailing" secondItem="yGx-E6-67q" secondAttribute="trailing" constant="20" id="T84-H6-S0a"/>
                     <constraint firstItem="HB2-Hd-Wve" firstAttribute="centerY" secondItem="Keq-Fg-rmR" secondAttribute="centerY" id="Voj-Ym-Moe"/>
-                    <constraint firstAttribute="bottom" secondItem="yGx-E6-67q" secondAttribute="bottom" constant="7" id="WDU-cW-Do0"/>
                     <constraint firstAttribute="trailing" secondItem="93K-dH-wH9" secondAttribute="trailing" constant="10" id="WlP-Lm-lIO"/>
                     <constraint firstItem="WEF-C1-cqf" firstAttribute="leading" secondItem="93K-dH-wH9" secondAttribute="leading" id="Zqy-qd-8rO"/>
                     <constraint firstItem="Keq-Fg-rmR" firstAttribute="leading" secondItem="WEF-C1-cqf" secondAttribute="trailing" constant="5" id="bBL-mB-1Lz"/>
@@ -87,7 +75,6 @@
                     <constraint firstItem="k9X-5s-F7b" firstAttribute="leading" secondItem="HB2-Hd-Wve" secondAttribute="trailing" constant="5" id="fLI-6F-u9g"/>
                     <constraint firstItem="Keq-Fg-rmR" firstAttribute="centerY" secondItem="WEF-C1-cqf" secondAttribute="centerY" id="kRS-5R-uaC"/>
                     <constraint firstItem="k9X-5s-F7b" firstAttribute="centerY" secondItem="HB2-Hd-Wve" secondAttribute="centerY" id="rcM-Wx-mpm"/>
-                    <constraint firstItem="yGx-E6-67q" firstAttribute="leading" secondItem="4gM-kY-Y3q" secondAttribute="trailing" constant="10" id="sdp-Un-XqV"/>
                     <constraint firstItem="93K-dH-wH9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="yzd-zs-CVJ"/>
                 </constraints>
             </tableViewCellContentView>
@@ -102,7 +89,4 @@
             <point key="canvasLocation" x="137.59999999999999" y="107.0464767616192"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="answer" width="43" height="40"/>
-    </resources>
 </document>

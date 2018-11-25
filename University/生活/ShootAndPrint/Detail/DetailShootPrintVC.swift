@@ -63,7 +63,10 @@ class DetailShootPrintVC: UIViewController {
 }
 
 extension DetailShootPrintVC: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let infoValue = sapInfoValue[indexPath.row]
+        view.makeToast(infoValue, position: .top)
+    }
 }
 
 extension DetailShootPrintVC: UITableViewDataSource {

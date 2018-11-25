@@ -33,7 +33,7 @@ class PostHonorVC: FormViewController {
     
     private func initUI() {
         title = "新增荣誉"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "submit"), style: .plain, target: self, action: #selector(submit))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "submit"), style: .plain, target: self, action: #selector(submit))
         initForm()
     }
     

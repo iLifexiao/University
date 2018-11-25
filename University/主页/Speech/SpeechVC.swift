@@ -84,7 +84,7 @@ class SpeechVC: UIViewController {
 
 extension SpeechVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160.0
+        return 186.0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

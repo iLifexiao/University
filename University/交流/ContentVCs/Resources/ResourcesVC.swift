@@ -63,11 +63,11 @@ class ResourcesVC: UIViewController {
                 for (_, subJson):(String, JSON) in json {
                     self.resources.append(Resource(jsonData: subJson))
                 }
-                MBProgressHUD.hide(for: self.view, animated: true)
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
 }
@@ -78,7 +78,7 @@ extension ResourcesVC: UITableViewDelegate {
         let detailResourceVC = DetailResourceVC()
         detailResourceVC.resource = resource
         detailResourceVC.id = resource.id ?? 0
-        present(detailResourceVC, animated: true, completion: nil)
+        ViewManager.share.secondNVC?.pushViewController(detailResourceVC, animated: true)        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

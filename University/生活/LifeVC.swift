@@ -24,6 +24,7 @@ class LifeVC: UIViewController {
     var campusAround: [LifeFuncModel] = []
     
     let bannerCell = "bannerCell"
+    let lifeSections = 3
     
     // 网络数据
     var adBanners: [ADBanner] = []
@@ -55,15 +56,15 @@ class LifeVC: UIViewController {
         getNotifications()
         
         // lifeServers
-        let lifeFunc1 = LifeFuncModel(icon: UIImage.init(named: "secondHand"), title: "校园闲鱼")
-        let lifeFunc2 = LifeFuncModel(icon: UIImage.init(named: "water"), title: "水电查询")
-        let lifeFunc3 = LifeFuncModel(icon: UIImage.init(named: "photos"), title: "摄影打印")
-        let lifeFunc4 = LifeFuncModel(icon: UIImage.init(named: "proporty"), title: "物业报修")
+        let lifeFunc1 = LifeFuncModel(icon: #imageLiteral(resourceName: "secondHand"), title: "校园闲鱼")
+        let lifeFunc2 = LifeFuncModel(icon: #imageLiteral(resourceName: "water"), title: "水电查询")
+        let lifeFunc3 = LifeFuncModel(icon: #imageLiteral(resourceName: "photos"), title: "摄影打印")
+        let lifeFunc4 = LifeFuncModel(icon: #imageLiteral(resourceName: "tools"), title: "物业报修")
         lifeServers = [lifeFunc1, lifeFunc2, lifeFunc3, lifeFunc4]
         
         // campusAround
-        let campusFunc1 = LifeFuncModel(icon: UIImage.init(named: "store"), title: "好店推荐")
-        let campusFunc2 = LifeFuncModel(icon: UIImage.init(named: "partJob"), title: "兼职信息")
+        let campusFunc1 = LifeFuncModel(icon: #imageLiteral(resourceName: "store"), title: "好店推荐")
+        let campusFunc2 = LifeFuncModel(icon: #imageLiteral(resourceName: "partTimeJob"), title: "兼职信息")
         campusAround = [campusFunc1, campusFunc2]
     }
     
@@ -186,6 +187,9 @@ extension LifeVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == lifeSections - 1 {
+            return 0
+        }
         switch section {
         case 0:
             return 20
@@ -222,7 +226,7 @@ extension LifeVC: UITableViewDelegate {
 
 extension LifeVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return lifeSections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

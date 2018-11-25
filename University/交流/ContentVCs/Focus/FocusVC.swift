@@ -62,11 +62,11 @@ class FocusVC: UIViewController {
                 for (_, subJson):(String, JSON) in json {
                     self.focusEssays.append(Essay(jsonData: subJson))
                 }
-                MBProgressHUD.hide(for: self.view, animated: true)
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
     
@@ -80,7 +80,7 @@ extension FocusVC: UITableViewDelegate {
         detailEssayVC.essay = essay
         detailEssayVC.type = .essay
         detailEssayVC.id = essay.id ?? 0
-        self.present(detailEssayVC, animated: true, completion: nil)
+        ViewManager.share.secondNVC?.pushViewController(detailEssayVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -118,9 +118,6 @@ extension FocusVC: UITableViewDataSource {
 }
 
 extension FocusVC: EssayCellDelegate {
-    func showMoreInfoAboutEssay(_ id: String?) {
-        view.makeToast(id)
-    }
     
     func showSameTypeEssay(_ type: String?) {
         view.makeToast(type)
