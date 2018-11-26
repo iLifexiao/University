@@ -12,6 +12,30 @@ import SwiftyJSON
 import Toast_Swift
 
 class PostCommentVC: UIViewController {
+    
+    var content: String?
+    
+    private var userStatus: Int {
+        set {
+            switch newValue {
+            case 0:
+                if GlobalData.sharedInstance.userID == 0 {
+                    view.makeToast("请先登录", position: .top)
+                } else {
+                    exitUser()
+                    view.makeToast("帐号被封禁，请联系管理员", position: .top)
+                }
+            case 1:
+                doPost(content!)
+            default:
+                print("错误类型")
+                
+            }
+        }
+        get {
+            return -1
+        }
+    }
 
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var backButton: UIButton!
@@ -56,18 +80,34 @@ class PostCommentVC: UIViewController {
     
     
     @IBAction func sendComment(_ sender: UIButton) {
-        let content = commentTextView.text.trimmingCharacters(in: .whitespaces)
+        content = commentTextView.text.trimmingCharacters(in: .whitespaces)
         if content == "" {
             view.makeToast("请输入评论", position: .top)
             return
         }
-        if content.count > 50 {
+        if content!.count > 50 {
             view.makeToast("限制50字以内", position: .top)
             return
         }
         
         // 发布评论
-        doPost(content)
+        checkUserStatus()
+    }
+    
+    public func checkUserStatus() {
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/userstatus", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.userStatus = json["status"].intValue
+                print("json[status]: \(json["status"].intValue)")
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     @IBAction func exitKeyboard(_ sender: UITapGestureRecognizer) {

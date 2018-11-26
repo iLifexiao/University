@@ -66,7 +66,10 @@ class DetailPTJVC: UIViewController {
 }
 
 extension DetailPTJVC: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let infoValue = jobInfoValue[indexPath.row]
+        view.makeToast(infoValue, position: .top)
+    }
 }
 
 extension DetailPTJVC: UITableViewDataSource {

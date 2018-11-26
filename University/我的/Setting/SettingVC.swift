@@ -59,16 +59,8 @@ extension SettingVC: UITableViewDelegate {
         case 1:
             let ctrl = UIAlertController(title: "温馨提示", message: "确定退出登录？\n将自动返回登录界面", preferredStyle: .alert)
             let sureAction = UIAlertAction(title: "确定", style: .destructive) { action in
-                // 退出登录的时候，清除用户数据
-                UserDefaults.standard.set(0, forKey: userIDKey)
-                UserDefaults.standard.set(0, forKey: studentIDKey)
-                // 默认用户信息
-                UserDefaults.standard.set("用户未登录", forKey: userNameKey)
-                UserDefaults.standard.set("/image/defalut.png", forKey: userHeadKey)
-                GlobalData.sharedInstance.userID = 0
-                GlobalData.sharedInstance.studentID = 0
-                GlobalData.sharedInstance.userName = "用户未登录"
-                GlobalData.sharedInstance.userHeadImage = "/image/default.png"
+                // 清空用户登录状态
+                exitUser()
                 // 跳转到登录界面
                 let loginSB = UIStoryboard(name: "Login", bundle: nil)
                 let loginVC = loginSB.instantiateViewController(withIdentifier: "LoginVC")

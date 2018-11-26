@@ -129,6 +129,11 @@ class DetailEssayVC: UIViewController {
     }
     
     private func focusBack() {
+        if GlobalData.sharedInstance.userID == 0 {
+            self.view.makeToast("请先登录", position: .top)
+            return
+        }
+        
         guard let essay = essay else {
             self.view.makeToast("资源不存在，稍后再试", position: .top)
             return
@@ -157,6 +162,11 @@ class DetailEssayVC: UIViewController {
     }
     
     private func collecteEssay() {
+        if GlobalData.sharedInstance.userID == 0 {
+            self.view.makeToast("请先登录", position: .top)
+            return
+        }
+        
         guard let essay = essay else {
             self.view.makeToast("资源不存在，稍后再试", position: .top)
             return

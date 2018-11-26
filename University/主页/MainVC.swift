@@ -553,6 +553,7 @@ extension MainVC: HeadlineViewDelegate {
 extension MainVC: CountdownViewDelegate {
     func countdownView(_ countdownView: CountdownView, didSelectItemAt index: Int) {
         let countdown = countdowns[index]
-        view.makeToast(countdown.event)
+        let meg = "距离 \(countdown.event) 还有 \(countdown.day) 天"
+        view.makeToast(meg, position: .center)
     }
 }

@@ -46,7 +46,7 @@ class ForgetPwdVC: UIViewController {
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    if json["status"].intValue == 0 {
+                    if json["status"].intValue == 1 {
                         self.view.makeToast(json["message"].stringValue, position: .top)
 //                        self.navigationController?.popViewController(animated: true)                        
                     } else {

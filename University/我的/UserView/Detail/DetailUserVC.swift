@@ -143,6 +143,11 @@ class DetailUserVC: UIViewController {
     }
     
     private func focusBack() {
+        if GlobalData.sharedInstance.userID == 0 {
+            self.view.makeToast("请先登录", position: .top)
+            return
+        }
+        
         guard let userInfo = userInfo else {
             return
         }

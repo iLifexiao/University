@@ -215,7 +215,7 @@ class EditUserVC: FormViewController {
                         if let data = response.data {
                             let json = JSON(data)
                             // 图片可能过大(最大只能是1M)
-                            if json["status"].intValue == 0 {
+                            if json["status"].intValue == 1 {
                                 print(json["message"].stringValue)
                                 self.imagePath = json["message"].stringValue
                             } else {

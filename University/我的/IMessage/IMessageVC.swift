@@ -182,7 +182,7 @@ extension IMessageVC: UITableViewDataSource {
             case .success(let value):
                 let json = JSON(value)
                 // 需要保证网络删除成功后，再删除本地
-                if json["status"].intValue == 0 {
+                if json["status"].intValue == 1 {
                     if indexPath.section == 0 {
                         self.recMessages.remove(at: indexPath.row)
                     } else {

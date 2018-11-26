@@ -15,6 +15,28 @@ import Toast_Swift
 
 class SendToUserMsgVC: FormViewController {
     
+    private var userStatus: Int {
+        set {
+            switch newValue {
+            case 0:
+                if GlobalData.sharedInstance.userID == 0 {
+                    view.makeToast("请先登录", position: .top)
+                } else {
+                    exitUser()
+                    view.makeToast("帐号被封禁，请联系管理员", position: .top)
+                }
+            case 1:
+                doPost()
+            default:
+                print("错误类型")
+                
+            }
+        }
+        get {
+            return -1
+        }
+    }
+    
     var toUserID = 0
     
     override func viewDidLoad() {
@@ -59,10 +81,26 @@ class SendToUserMsgVC: FormViewController {
         let errors = form.validate()
         if errors.count == 0 {
             print("验证成功")
-            doPost()
+            checkUserStatus()
         } else {
             self.view.makeToast("私信格式错误，请检查红色标记", position: .top)
             print("验证失败")
+        }
+    }
+    
+    public func checkUserStatus() {
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/userstatus", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.userStatus = json["status"].intValue
+                print("json[status]: \(json["status"].intValue)")
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     

@@ -123,41 +123,46 @@ extension IResourcesVC: UITableViewDataSource {
     }
     
     // 侧滑删除功能
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // 获取ID
-        let resource = resources[indexPath.section]
-        let resourceID = resource.id ?? 0
-        
-        // 执行逻辑删除操作
-        Alamofire.request(baseURL + "/api/v1/resource/\(resourceID)/logicdel", method: .patch, headers: headers).responseJSON { [weak self] response in
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .normal, title: "编辑") { [weak self] (edit, index) in
             guard let self = self else {
                 return
             }
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                if json["status"].intValue == 0 {
-                    self.resources.remove(at: indexPath.section)
-                    self.tableView.reloadData()
+            let resource = self.resources[index.section]
+            let postResourceVC = PostResourceVC()
+            postResourceVC.resource = resource
+            self.navigationController?.pushViewController(postResourceVC, animated: true)
+        }
+        editAction.backgroundColor = #colorLiteral(red: 0.2415607535, green: 0.571031791, blue: 1, alpha: 1)
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "删除") { [weak self] (delete, index) in
+            guard let self = self else {
+                return
+            }
+            // 获取ID
+            let resource = self.resources[indexPath.section]
+            let resourceID = resource.id ?? 0
+            
+            // 执行逻辑删除操作
+            Alamofire.request(baseURL + "/api/v1/resource/\(resourceID)/logicdel", method: .patch, headers: headers).responseJSON { [weak self] response in
+                guard let self = self else {
+                    return
                 }
-                self.view.makeToast(json["message"].stringValue, position: .top)
-            case .failure(let error):
-                self.view.makeToast("删除失败，稍后再试", position: .top)
-                print(error)
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    if json["status"].intValue == 1 {
+                        self.resources.remove(at: indexPath.section)
+                        self.tableView.reloadData()
+                    }
+                    self.view.makeToast(json["message"].stringValue, position: .top)
+                case .failure(let error):
+                    self.view.makeToast("删除失败，稍后再试", position: .top)
+                    print(error)
+                }
             }
         }
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "删除"
+        return [deleteAction, editAction]
     }
 }
 

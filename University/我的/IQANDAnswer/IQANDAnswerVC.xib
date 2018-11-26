@@ -29,10 +29,23 @@
                         <outlet property="delegate" destination="-1" id="aQO-29-RE9"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEa-1c-vQN">
+                    <rect key="frame" x="315" y="607" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="5Nc-0K-92L"/>
+                        <constraint firstAttribute="width" constant="40" id="OTv-Eu-MDS"/>
+                    </constraints>
+                    <state key="normal" image="myQuestion"/>
+                    <connections>
+                        <action selector="askQuestion:" destination="-1" eventType="touchUpInside" id="8Jd-TO-9zM"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="lEa-1c-vQN" secondAttribute="bottom" constant="20" id="20o-NL-Etq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Fom-YU-3vz" secondAttribute="bottom" id="AZx-zI-5KD"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lEa-1c-vQN" secondAttribute="trailing" constant="20" id="RZ1-1S-PLy"/>
                 <constraint firstItem="Fom-YU-3vz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Tmw-Gp-qAH"/>
                 <constraint firstItem="Fom-YU-3vz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="YVT-eI-SHP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Fom-YU-3vz" secondAttribute="trailing" id="w7u-CR-1w0"/>
@@ -40,4 +53,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <image name="myQuestion" width="40" height="40"/>
+    </resources>
 </document>

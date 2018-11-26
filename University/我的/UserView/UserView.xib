@@ -59,10 +59,25 @@
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns2-Mj-q0p" userLabel="redDot">
+                                    <rect key="frame" x="71" y="15" width="8" height="8"/>
+                                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="8" id="8rF-jA-dz5"/>
+                                        <constraint firstAttribute="width" constant="8" id="HJA-hw-4da"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="LTZ-Cb-Rex" firstAttribute="centerX" secondItem="Hcv-uo-L2b" secondAttribute="centerX" id="MiR-x6-oNX"/>
+                                <constraint firstAttribute="trailing" secondItem="Ns2-Mj-q0p" secondAttribute="trailing" constant="15" id="S20-m9-ISA"/>
+                                <constraint firstItem="Ns2-Mj-q0p" firstAttribute="top" secondItem="Hcv-uo-L2b" secondAttribute="top" constant="15" id="dES-kb-DHU"/>
                                 <constraint firstItem="QEf-0Q-7Rv" firstAttribute="centerX" secondItem="Hcv-uo-L2b" secondAttribute="centerX" id="keL-kB-n1Y"/>
                                 <constraint firstItem="LTZ-Cb-Rex" firstAttribute="top" secondItem="Hcv-uo-L2b" secondAttribute="top" constant="10" id="tOU-Xz-1GI"/>
                                 <constraint firstItem="QEf-0Q-7Rv" firstAttribute="top" secondItem="LTZ-Cb-Rex" secondAttribute="bottom" constant="10" id="zLS-ad-2iT"/>
@@ -180,6 +195,7 @@
                 <outlet property="fansLabel" destination="ie1-Mo-f1a" id="4fw-9c-uK5"/>
                 <outlet property="messageButton" destination="LTZ-Cb-Rex" id="DM9-ZH-wZh"/>
                 <outlet property="messageLabel" destination="QEf-0Q-7Rv" id="Sxf-l4-kb2"/>
+                <outlet property="redDotView" destination="Ns2-Mj-q0p" id="w6I-Zh-UBB"/>
                 <outlet property="userBGImageView" destination="Bbo-rQ-4oE" id="1WA-Nc-YSw"/>
                 <outlet property="userHeadImageView" destination="IDy-eT-70l" id="3a0-WM-UDf"/>
                 <outlet property="userNameLabel" destination="1Ca-d8-9wh" id="R73-Am-dsl"/>

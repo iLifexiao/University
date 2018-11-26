@@ -15,8 +15,36 @@ import Toast_Swift
 
 class PostBookVC: FormViewController {
     
+    private var userStatus: Int {
+        set {
+            switch newValue {
+            case 0:
+                if GlobalData.sharedInstance.userID == 0 {
+                    view.makeToast("请先登录", position: .top)
+                } else {
+                    exitUser()
+                    view.makeToast("帐号被封禁，请联系管理员", position: .top)
+                }
+            case 1:
+                if book == nil {
+                    doPost()
+                } else {
+                    doPatch()
+                }
+            default:
+                print("错误类型")
+            }
+        }
+        get {
+            return -1
+        }
+    }
+    
     lazy private var parameters: Parameters = form.values() as Parameters
     let defaultImageURL = "/image/book/default.png"
+    
+    var book: Book?
+    private var beforeImage: UIImage?
     
     private var imagePath: String {
         set {
@@ -26,21 +54,36 @@ class PostBookVC: FormViewController {
                 return
             }
             parameters["imageURL"] = newValue
-            Alamofire.request(baseURL + "/api/v1/book", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
-                if let self = self {
-                    switch response.result {
-                    case .success(let value):
-                        print(value)
-                        // 发布成功
-                        self.view.makeToast("发布成功，返回刷新查看", position: .top)
-                    case .failure(let error):
-                        self.view.makeToast("发布失败，请稍后再试", position: .top)
-                        print(error)
+            if book == nil {
+                Alamofire.request(baseURL + "/api/v1/book", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+                    if let self = self {
+                        switch response.result {
+                        case .success(let value):
+                            print(value)
+                            // 发布成功
+                            self.view.makeToast("发布成功，返回刷新查看", position: .top)
+                        case .failure(let error):
+                            self.view.makeToast("发布失败，请稍后再试", position: .top)
+                            print(error)
+                        }
+                        MBProgressHUD.hide(for: self.view, animated: true)
                     }
-                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+            } else {
+                Alamofire.request(baseURL + "/api/v1/book/\(book?.id ?? 0)", method: .patch, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+                    if let self = self {
+                        switch response.result {
+                        case .success(let value):
+                            print(value)                            
+                            self.view.makeToast("更新成功，返回刷新查看", position: .top)
+                        case .failure(let error):
+                            self.view.makeToast("更新失败，请稍后再试", position: .top)
+                            print(error)
+                        }
+                        MBProgressHUD.hide(for: self.view, animated: true)
+                    }
                 }
             }
-            
         }
         get {
             return defaultImageURL
@@ -60,12 +103,16 @@ class PostBookVC: FormViewController {
 
     
     private func initData() {
-        
+        beforeImage = UIImage.fromURL(baseURL + (book?.imageURL ?? defaultImageURL))
     }
     
     private func initUI() {
-        title = "推荐书籍"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "submit"), style: .plain, target: self, action: #selector(submit))
+        if book == nil {
+            title = "推荐书籍"
+        } else {
+            title = "更新书籍"
+        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "submit"), style: .plain, target: self, action: #selector(submit))
         initForm()
     }
     
@@ -74,6 +121,7 @@ class PostBookVC: FormViewController {
         form +++ Section("书籍的基本信息")
             <<< TextRow(){ row in
                 row.title = "书名"
+                row.value = book?.name
                 row.placeholder = "书籍名称"
                 row.add(rule: RuleRequired(msg: "书名不能为空"))
                 row.add(rule: RuleMaxLength(maxLength: 15, msg: "书名需小于15字"))
@@ -90,6 +138,7 @@ class PostBookVC: FormViewController {
             }
             <<< TextRow() {
                 $0.title = "类型"
+                $0.value = book?.type
                 $0.placeholder = "小说、出版物、辅导..."
                 $0.add(rule: RuleRequired(msg: "类型不能为空"))
                 $0.add(rule: RuleMaxLength(maxLength: 4, msg: "类型需小于4字"))
@@ -106,6 +155,7 @@ class PostBookVC: FormViewController {
             }
             <<< TextRow() {
                 $0.title = "作者"
+                $0.value = book?.author
                 $0.placeholder = "作者名、笔名"
                 $0.add(rule: RuleRequired(msg: "作者名不能为空"))
                 $0.add(rule: RuleMaxLength(maxLength: 10, msg: "名字需小于10字"))
@@ -122,6 +172,7 @@ class PostBookVC: FormViewController {
             }
             <<< IntRow() {
                 $0.title = "书籍页数"
+                $0.value = book?.bookPages
                 $0.placeholder = "123"
                 $0.add(rule: RuleRequired(msg: "书籍页数不能为空"))
                 $0.tag = "bookPages"
@@ -138,13 +189,14 @@ class PostBookVC: FormViewController {
             <<< ImageRow() { row in
                 row.title = "封面图片(可选)"
                 row.tag = "imageURL"
-                row.placeholderImage = UIImage.fromURL(baseURL + defaultImageURL)
+                row.value = beforeImage
                 row.sourceTypes = [.PhotoLibrary, .Camera]
                 row.clearAction = .yes(style: UIAlertAction.Style.destructive)
             }
             
             +++ Section("推荐书籍的理由")
             <<< TextAreaRow() {
+                $0.value = book?.introduce
                 $0.placeholder = "写出你独具慧眼的理由吧~"
                 $0.add(rule: RuleRequired(msg: "理由不能为空"))
                 $0.tag = "introduce"
@@ -163,10 +215,26 @@ class PostBookVC: FormViewController {
         let errors = form.validate()
         if errors.count == 0 {
             print("验证成功")
-            doPost()
+            checkUserStatus()
         } else {
             self.view.makeToast("书籍格式错误，请检查红色标记", position: .top)
             print("验证失败")
+        }
+    }
+    
+    public func checkUserStatus() {
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/userstatus", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.userStatus = json["status"].intValue
+                print("json[status]: \(json["status"].intValue)")
+            case .failure(let error):
+                print(error)
+            }
         }
     }
         
@@ -174,7 +242,18 @@ class PostBookVC: FormViewController {
         parameters["userID"] = GlobalData.sharedInstance.userID
         
         let image = form.values()["imageURL"] as? UIImage
-        if image == nil {
+        if image == beforeImage {
+            imagePath = defaultImageURL
+        } else {
+            uploadImage(image!, type: "resource")
+        }
+    }
+    
+    private func doPatch() {
+        parameters["userID"] = GlobalData.sharedInstance.userID
+        
+        let image = form.values()["imageURL"] as? UIImage
+        if image == beforeImage {
             imagePath = defaultImageURL
         } else {
             uploadImage(image!, type: "resource")
@@ -217,7 +296,7 @@ class PostBookVC: FormViewController {
                         debugPrint(response)
                         if let data = response.data {
                             let json = JSON(data)
-                            if json["status"].intValue == 0 {
+                            if json["status"].intValue == 1 {
                                 print(json["message"].stringValue)
                                 self.imagePath = json["message"].stringValue
                             } else {

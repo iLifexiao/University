@@ -15,6 +15,28 @@ import Toast_Swift
 
 class PostIdleGoodVC: FormViewController {
     
+    private var userStatus: Int {
+        set {
+            switch newValue {
+            case 0:
+                if GlobalData.sharedInstance.userID == 0 {
+                    view.makeToast("请先登录", position: .top)
+                } else {
+                    exitUser()
+                    view.makeToast("帐号被封禁，请联系管理员", position: .top)
+                }
+            case 1:
+                doPost()
+            default:
+                print("错误类型")
+                
+            }
+        }
+        get {
+            return -1
+        }
+    }
+    
     lazy private var parameters: Parameters = form.values() as Parameters
     let defaultImageURL = "/image/idlegoods/default.png"
     
@@ -157,9 +179,25 @@ class PostIdleGoodVC: FormViewController {
         let errors = form.validate()
         if errors.count == 0 {
             print("验证成功")
-            doPost()
+            checkUserStatus()
         } else {
             print("验证失败")
+        }
+    }
+    
+    public func checkUserStatus() {
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/userstatus", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.userStatus = json["status"].intValue
+                print("json[status]: \(json["status"].intValue)")
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     
@@ -212,7 +250,7 @@ class PostIdleGoodVC: FormViewController {
                         if let data = response.data {
                             let json = JSON(data)
                             // 图片可能过大(最大只能是1M)
-                            if json["status"].intValue == 0 {
+                            if json["status"].intValue == 1 {
                                 print(json["message"].stringValue)
                                 self.imagePath = json["message"].stringValue
                             } else {

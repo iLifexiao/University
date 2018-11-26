@@ -153,6 +153,7 @@
 		8B64B57F219B05A0005C2E07 /* SpeechCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B64B57D219B05A0005C2E07 /* SpeechCell.xib */; };
 		8B64B582219B22BA005C2E07 /* AddressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B64B580219B22BA005C2E07 /* AddressListCell.swift */; };
 		8B64B583219B22BA005C2E07 /* AddressListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B64B581219B22BA005C2E07 /* AddressListCell.xib */; };
+		8B6D2DBF21ABA76A00A01EF8 /* GlobalMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6D2DBE21ABA76A00A01EF8 /* GlobalMethod.swift */; };
 		8B796C2121A2DF600096BC32 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B796C2321A2DF600096BC32 /* Localization.strings */; };
 		8B7A950021A24262009CEB32 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A94FE21A24262009CEB32 /* WebVC.swift */; };
 		8B7A950421A27577009CEB32 /* PostLostAndFoundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A950221A27577009CEB32 /* PostLostAndFoundVC.swift */; };
@@ -436,6 +437,7 @@
 		8B64B57D219B05A0005C2E07 /* SpeechCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeechCell.xib; sourceTree = "<group>"; };
 		8B64B580219B22BA005C2E07 /* AddressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListCell.swift; sourceTree = "<group>"; };
 		8B64B581219B22BA005C2E07 /* AddressListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressListCell.xib; sourceTree = "<group>"; };
+		8B6D2DBE21ABA76A00A01EF8 /* GlobalMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalMethod.swift; sourceTree = "<group>"; };
 		8B796C2221A2DF600096BC32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
 		8B796C2421A2E0880096BC32 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localization.strings"; sourceTree = "<group>"; };
 		8B7A94FE21A24262009CEB32 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
@@ -1555,6 +1557,7 @@
 				8B64B48621991C65005C2E07 /* UtilityMethod.swift */,
 				8B7C75DE219DB09500FCCD75 /* GlobalData.swift */,
 				8BAEA354217EF89000FC2CBB /* LaunchScreen.storyboard */,
+				8B6D2DBE21ABA76A00A01EF8 /* GlobalMethod.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -2146,6 +2149,7 @@
 				8B7C75CF219D175D00FCCD75 /* LoginVC.swift in Sources */,
 				8B7C75F1219E5F2800FCCD75 /* ICollectionVC.swift in Sources */,
 				8B64B47A21987C37005C2E07 /* UtilityBill.swift in Sources */,
+				8B6D2DBF21ABA76A00A01EF8 /* GlobalMethod.swift in Sources */,
 				8B36CAB821AAA414001B62DB /* AboutSoftVC.swift in Sources */,
 				8BAEA3E4217F077700FC2CBB /* ADCell.swift in Sources */,
 				8B7C75BB219C0AD300FCCD75 /* IdleGoodCell.swift in Sources */,

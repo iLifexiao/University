@@ -16,7 +16,6 @@ class AnswerVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var questionID = 0
-    
     private var answers: [Answer] = []
     
     override func viewDidLoad() {
@@ -98,7 +97,13 @@ extension AnswerVC: UITableViewDelegate {
         detailEssayVC.answer = answer
         detailEssayVC.type = .answer
         detailEssayVC.id = answer.id ?? 0
-        ViewManager.share.secondNVC?.pushViewController(detailEssayVC, animated: true)        
+        
+        // 在没用导航栏的交流页面使用视图管理进行跳转
+        if navigationController != nil {
+            navigationController?.pushViewController(detailEssayVC, animated: true)
+        } else {
+            ViewManager.share.secondNVC?.pushViewController(detailEssayVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

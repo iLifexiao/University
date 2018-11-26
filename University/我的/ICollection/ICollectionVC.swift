@@ -151,7 +151,7 @@ extension ICollectionVC: UITableViewDataSource {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                if json["status"].intValue == 0 {
+                if json["status"].intValue == 1 {
                     self.collections.remove(at: indexPath.section)
                     self.tableView.reloadData()
                 }

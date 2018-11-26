@@ -86,7 +86,7 @@ class LoginVC: UIViewController {
                 case .success(let value):
                     let json = JSON(value)
                     // 登录成功
-                    if json["status"].intValue == 0 {
+                    if json["status"].intValue == 1 {
                         let userInfo = UserInfo(jsonData: json["data"])
                         // 并获取学生ID
                         self.loginSucceed = userInfo.userID
@@ -99,7 +99,7 @@ class LoginVC: UIViewController {
                         GlobalData.sharedInstance.userName = userInfo.nickname
                         GlobalData.sharedInstance.userHeadImage = userInfo.profilephoto
                         
-                        // 发送更新UserView的通知(并j携带数据)
+                        // 发送更新UserView的通知(并携带数据)
                         let info = ["userName": userInfo.nickname, "headImage": userInfo.profilephoto]
                         NotificationCenter.default.post(name: NSNotification.Name(updateUserViewNotification), object: nil, userInfo: info)
                         

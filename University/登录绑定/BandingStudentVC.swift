@@ -50,7 +50,7 @@ class BandingStudentVC: UIViewController {
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    if json["status"].intValue == 0 {                        
+                    if json["status"].intValue == 1 {                        
                         UserDefaults.standard.set(json["data"]["id"].intValue, forKey: studentIDKey)
                         GlobalData.sharedInstance.studentID = json["data"]["id"].intValue                        
                         self.navigationController?.popViewController(animated: true)                        

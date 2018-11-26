@@ -111,19 +111,9 @@ class ChangePwdVC: FormViewController {
                 case .success(let value):
                     print(value)
                     let json = JSON(value)
-                    if json["status"].intValue == 0 {
+                    if json["status"].intValue == 1 {
                         self.view.makeToast("修改成功，请重新登录", position: .top)
-                        // 退出登录的时候，清除用户数据
-                        UserDefaults.standard.set(0, forKey: userIDKey)
-                        UserDefaults.standard.set(0, forKey: studentIDKey)
-                        // 默认用户信息
-                        UserDefaults.standard.set("用户未登录", forKey: userNameKey)
-                        UserDefaults.standard.set("/image/defalut.png", forKey: userHeadKey)
-                        GlobalData.sharedInstance.userID = 0
-                        GlobalData.sharedInstance.studentID = 0
-                        GlobalData.sharedInstance.userName = "用户未登录"
-                        GlobalData.sharedInstance.userHeadImage = "/image/default.png"
-                        
+                        exitUser()                        
                         // 跳转到登录界面
                         let loginSB = UIStoryboard(name: "Login", bundle: nil)
                         let loginVC = loginSB.instantiateViewController(withIdentifier: "LoginVC")
