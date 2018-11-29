@@ -15,8 +15,10 @@ import PopMenu
 class IMessageVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private var recMessages: [Message] = []
-    private var sendMessages: [Message] = []
+//    private var recMessages: [Message] = []
+//    private var sendMessages: [Message] = []
+    private var messageDict: [Int: [Message]] = [:]
+    private var message: [[Message]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +43,7 @@ class IMessageVC: UIViewController {
     
     private func setupTableView() {
         // 每一个复用的Cell都需要注册，发现通过代码创建的cell有复用问题
-        tableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "MessageCell")
+        tableView.register(UINib(nibName: "IMCell", bundle: nil), forCellReuseIdentifier: "IMCell")
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -73,16 +75,18 @@ class IMessageVC: UIViewController {
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    self.recMessages.removeAll()
-                    self.sendMessages.removeAll()
-                    // json是数组
+                    self.message.removeAll()
+                    self.messageDict.removeAll()
+                    // 添加到字典里，通过ID
                     for (_, subJson):(String, JSON) in json {
                         let msg = Message(jsonData: subJson)
-                        if msg.userID == msg.toUserID {
-                            self.recMessages.append(msg)
-                        } else {
-                            self.sendMessages.append(msg)
-                        }
+                        var msgArray = self.messageDict[msg.friendID] ?? [Message]()
+                        msgArray.append(msg)
+                        self.messageDict[msg.friendID] = msgArray
+                    }
+                    // 取出
+                    for (_, msgs) in self.messageDict {
+                        self.message.append(msgs)
                     }
                     self.tableView.reloadData()
                 case .failure(let error):
@@ -101,109 +105,91 @@ class IMessageVC: UIViewController {
 
 // MARK: 信息代理
 extension IMessageVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let messages = message[indexPath.section]
+        let detailMsgVC = DetailMsgVC()
+        detailMsgVC.messages = messages
+        detailMsgVC.friendID = messages.last?.friendID ?? 0
+        navigationController?.pushViewController(detailMsgVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch section {
-        case 0:
-            return nil
-        case 1:
-            let tipsHeaderView = Bundle.main.loadNibNamed("TipsHeaderView", owner: nil, options: nil)?[0] as! TipsHeaderView
-            tipsHeaderView.setTips(title: "已发信息")
-            return tipsHeaderView
-        default:
-            return nil
-        }
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        switch section {
+//        case 0:
+//            return nil
+//        case 1:
+//            let tipsHeaderView = Bundle.main.loadNibNamed("TipsHeaderView", owner: nil, options: nil)?[0] as! TipsHeaderView
+//            tipsHeaderView.setTips(title: "已发信息")
+//            return tipsHeaderView
+//        default:
+//            return nil
+//        }
+//    }
     
     // HeadView-height
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 0:
-            return 0
-        default:
-            return 50
-        }
+        return 10
     }
 }
 
 extension IMessageVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return message.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return recMessages.count
-        default:
-            return sendMessages.count
-        }        
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
-        
-        switch indexPath.section {
-        case 0:
-            cell.setupModel(recMessages[indexPath.row])
-        default:
-            cell.setupModel(sendMessages[indexPath.row])
-        }
-        
+        // 取得最后一条信息
+        let lastMsg = message[indexPath.section].last
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IMCell", for: indexPath) as! IMCell
+        cell.setupModel(lastMsg!)
         cell.selectionStyle = .none
         return cell
     }
     
-    // 侧滑删除功能
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        var msgID = 0
-        switch indexPath.section {
-        case 0:
-            let msg = recMessages[indexPath.row]
-            msgID = msg.id!
-        default:
-            let msg = sendMessages[indexPath.row]
-            msgID = msg.id!
-        }
-        // 执行删除操作
-        // 删除操作的API最好要返回相应信息
-        Alamofire.request(baseURL + "/api/v1/message/\(msgID)", method: .delete, headers: headers).responseJSON { [weak self] response in
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "删除") { [weak self] (delete, index) in
             guard let self = self else {
                 return
             }
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                // 需要保证网络删除成功后，再删除本地
-                if json["status"].intValue == 1 {
-                    if indexPath.section == 0 {
-                        self.recMessages.remove(at: indexPath.row)
-                    } else {
-                        self.sendMessages.remove(at: indexPath.row)
-                    }
-                    self.tableView.reloadData()
+            let lastMsg = self.message[indexPath.section].last
+            // 执行删除操作
+            // 删除操作的API最好要返回相应信息
+            let parameters: Parameters = [
+                "userID": GlobalData.sharedInstance.userID,
+                "friendID": lastMsg?.friendID ?? 0
+            ]
+            
+            Alamofire.request(baseURL + "/api/v1/message/delall",
+                              method: .post,
+                              parameters: parameters,
+                              headers: headers).responseJSON { [weak self] response in
+                guard let self = self else {
+                    return
                 }
-                self.view.makeToast(json["message"].stringValue, position: .top)
-            case .failure(let error):
-                self.view.makeToast("删除失败，稍后再试", position: .top)
-                print(error)
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    // 需要保证网络删除成功后，再删除本地
+                    if json["status"].intValue == 1 {
+                        self.message.remove(at: index.section)
+                        self.tableView.reloadData()
+                    }
+                    self.view.makeToast(json["message"].stringValue, position: .top)
+                case .failure(let error):
+                    self.view.makeToast("删除失败，稍后再试", position: .top)
+                    print(error)
+                }
             }
         }
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "删除"
+        return [deleteAction]
     }
 }
 

@@ -16,13 +16,14 @@ class DetailMsgVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var msgTextField: UITextField!
     
-    private var messages: [Message] = []
+    var messages: [Message] = []
     var friend: UserInfo?
+    var friendID: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initUI()
         initData()
+        initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,11 +32,16 @@ class DetailMsgVC: UIViewController {
     }
     
     private func initData() {
+        // 按照时间排序
+        messages.sort { (msg1, msg2) -> Bool in
+            msg1.createdAt! < msg2.createdAt!
+        }
         getMessages()
     }
     
     private func initUI() {
-        title = friend?.nickname
+//        title = friend?.nickname
+        title = String(friendID)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "me"), style: .plain, target: self, action: #selector(showUserInfo))
         setupTableView()
     }
@@ -48,13 +54,12 @@ class DetailMsgVC: UIViewController {
             tableView.contentInsetAdjustmentBehavior = .never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
-        }
-        
+        }        
         // 自动适应高度(代理的方法将失效)
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
         
-        // 清空-空Cell
+//        // 清空-空Cell
         tableView.tableFooterView = UIView()
         
         // 下拉刷新
@@ -72,7 +77,9 @@ class DetailMsgVC: UIViewController {
     }
     
     @objc func showUserInfo() {
-        
+        let detailUserVC = DetailUserVC()
+        detailUserVC.userID = friendID
+        navigationController?.pushViewController(detailUserVC, animated: true)
     }
 
     @IBAction func sendMsg(_ sender: UIButton) {
@@ -87,9 +94,9 @@ class DetailMsgVC: UIViewController {
     private func doPost(_ content: String) {
         let parameters: Parameters = [
             "userID": GlobalData.sharedInstance.userID,
-            "friendID": friend?.userID ?? 0,
+            "friendID": friendID,
             "fromUserID": GlobalData.sharedInstance.userID,
-            "toUserID": friend?.userID ?? 0,
+            "toUserID": friendID,
             "content": content,
             "type": "普通"
         ]
@@ -102,8 +109,10 @@ class DetailMsgVC: UIViewController {
                     let json = JSON(value)
                     // 发送成功后，清除输入框的内容
                     self.msgTextField.text = ""
+                    self.messages.append(Message(userID: GlobalData.sharedInstance.userID, friendID: self.friendID, fromUserID: GlobalData.sharedInstance.userID, toUserID: self.friendID, content: content))
                     // 显示服务器的提示信息
                     self.view.makeToast(json["message"].stringValue, position: .top)
+                    self.tableView.reloadData()
                 case .failure(let error):
                     self.view.makeToast("私信发送失败，请稍后再试", position: .top)
                     print(error)
@@ -117,43 +126,27 @@ class DetailMsgVC: UIViewController {
 
 // MARK: 信息代理
 extension DetailMsgVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch section {
-        case 0:
-            return nil
-        case 1:
-            let tipsHeaderView = Bundle.main.loadNibNamed("TipsHeaderView", owner: nil, options: nil)?[0] as! TipsHeaderView
-            tipsHeaderView.setTips(title: "已发信息")
-            return tipsHeaderView
-        default:
-            return nil
-        }
-    }
-    
-    // HeadView-height
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 0:
-            return 0
-        default:
-            return 50
-        }
-    }
+
 }
 
 extension DetailMsgVC: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return messages.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return messages.count
+       return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let msg = messages[indexPath.row]
+        let msg = messages[indexPath.section]
         // 判断消息的拥有者 和 接收者是否为同一人，是，则表示该消息为用户收到的
         if msg.userID == msg.toUserID {
             let cell = tableView.dequeueReusableCell(withIdentifier: "YouChatCell", for: indexPath) as! YouChatCell
             cell.setupModel(msg)
             cell.selectionStyle = .none
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MeChatCell", for: indexPath) as! MeChatCell

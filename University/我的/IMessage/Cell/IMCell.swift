@@ -28,4 +28,17 @@ class IMCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupModel(_ msg: Message) {
+        userHeadImageView.image = #imageLiteral(resourceName: "addressList")
+        nameLabel.text = String(msg.friendID)
+        contentLabel.text = msg.content
+        timeLabel.text = unixTime2StringDate(msg.createdAt ?? 0)
+    }
+    
+    override func prepareForReuse() {
+        userHeadImageView.image = nil
+        nameLabel.text = nil
+        contentLabel.text = nil
+        timeLabel.text = nil
+    }
 }
