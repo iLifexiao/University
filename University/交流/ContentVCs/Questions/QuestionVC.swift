@@ -16,6 +16,7 @@ class QuestionVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var questions: [Question] = []
+    private var currentPage = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +48,17 @@ class QuestionVC: UIViewController {
             self?.tableView.mj_header.endRefreshing()
             self?.view.makeToast("刷新成功", position: .top)
         }
+        
+        tableView.mj_footer = MJRefreshBackStateFooter { [weak self] in
+            self?.loadMore()
+            self?.tableView.mj_footer.endRefreshing()
+        }
     }
     
     private func getQuestions() {
+        currentPage = 1
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/question/sort", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/question/split?page=1", headers: headers).responseJSON { [weak self] response in
             guard let self = self else {
                 return
             }
@@ -64,6 +71,32 @@ class QuestionVC: UIViewController {
                     self.questions.append(Question(jsonData: subJson))
                 }
                 self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
+    }
+    
+    private func loadMore() {
+        currentPage += 1
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/question/split?page=\(currentPage)", headers: headers).responseJSON { [weak self]  response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                // 加载完毕
+                if json.count == 0 {
+                    self.view.makeToast("没有更多了~", position: .top)
+                } else {
+                    for (_, subJson):(String, JSON) in json {
+                        self.questions.append(Question(jsonData: subJson))
+                    }
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
                 print(error)
             }

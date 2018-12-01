@@ -17,6 +17,7 @@ class RaceVC: UIViewController {
     let raceCell = "raceCell"
     
     var races: [Race] = []
+    private var currentPage = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +63,9 @@ class RaceVC: UIViewController {
     }
     
     private func getRace() {
+        currentPage = 1
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/race/sort", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/race/split?page=1", headers: headers).responseJSON { [weak self] response in
             if let self = self {
                 switch response.result {
                 case .success(let value):
@@ -79,6 +81,38 @@ class RaceVC: UIViewController {
                     print(error)
                 }
             }
+        }
+        
+        tableView.mj_footer = MJRefreshBackStateFooter { [weak self] in
+            self?.loadMore()
+            self?.tableView.mj_footer.endRefreshing()
+        }
+
+    }
+    
+    private func loadMore() {
+        currentPage += 1
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/race/split?page=\(currentPage)", headers: headers).responseJSON { [weak self]  response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                // 加载完毕
+                if json.count == 0 {
+                    self.view.makeToast("没有更多了~", position: .top)
+                } else {
+                    for (_, subJson):(String, JSON) in json {
+                        self.races.append(Race(jsonData: subJson))
+                    }
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
 }

@@ -11,6 +11,9 @@ struct IdleGood {
     var id: Int?
     var userID: Int
     
+    var nickname: String?
+    var profilephoto: String?
+    
     var imageURLs: [String]? // 可以上传 0~9 图片，最多9张
     var title: String
     var content: String
@@ -37,6 +40,9 @@ struct IdleGood {
     init(jsonData: JSON) {
         self.id = jsonData["id"].intValue
         self.userID = jsonData["userID"].intValue
+        
+        self.nickname = jsonData["userInfo"]["nickname"].stringValue
+        self.profilephoto = jsonData["userInfo"]["profilephoto"].stringValue
         
         self.imageURLs = jsonData["imageURLs"].arrayObject as? [String]
         self.title = jsonData["title"].stringValue

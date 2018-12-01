@@ -36,7 +36,7 @@ class DetailInfoVC: UIViewController {
             typeLabel.text = academic.type
             timeLabel.text = academic.time
             contentTextView.text = academic.content
-            // 关闭复制后自动滚动
+            // 关闭赋值后自动滚动
             contentTextView.layoutManager.allowsNonContiguousLayout = false
         }
     }

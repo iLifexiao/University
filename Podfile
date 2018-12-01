@@ -25,6 +25,7 @@ target 'University' do
   pod 'ImageRow', '~> 3.1.0'
   pod 'Charts'
   pod 'WXImageCompress', '~> 0.1.1'
+  pod 'SKPhotoBrowser'
 
   target 'UniversityTests' do
     inherit! :search_paths

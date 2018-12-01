@@ -17,6 +17,7 @@ class IQANDAnswerVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private var answers: [Answer] = []
     private var questions: [Question] = []
+    private var currentPage = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,11 +69,24 @@ class IQANDAnswerVC: UIViewController {
             self?.tableView.mj_header.endRefreshing()
             self?.view.makeToast("刷新成功", position: .top)
         }
+        
+        tableView.mj_footer = MJRefreshBackStateFooter { [weak self] in
+            if self?.title == "我的提问" {
+                self?.loadMoreQuestions()
+            }
+            
+            if self?.title == "我的回答" {
+                self?.loadMoreAnswers()
+            }
+            
+            self?.tableView.mj_footer.endRefreshing()
+        }
     }
     
     private func getQuestions() {
+        currentPage = 1
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/questions", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/questions/split?page=1", headers: headers).responseJSON { [weak self] response in
             if let self = self {
                 switch response.result {
                 case .success(let value):
@@ -91,8 +105,9 @@ class IQANDAnswerVC: UIViewController {
     }
     
     private func getAnswers() {
+        currentPage = 1
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/answers", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/answers/split?page=1", headers: headers).responseJSON { [weak self] response in
             if let self = self {
                 switch response.result {
                 case .success(let value):
@@ -108,6 +123,58 @@ class IQANDAnswerVC: UIViewController {
                     print(error)
                 }
             }
+        }
+    }
+    
+    private func loadMoreQuestions() {
+        currentPage += 1
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/questions/split?page=\(currentPage)", headers: headers).responseJSON { [weak self]  response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                // 加载完毕
+                if json.count == 0 {
+                    self.view.makeToast("没有更多了~", position: .top)
+                } else {
+                    for (_, subJson):(String, JSON) in json {
+                        self.questions.append(Question(jsonData: subJson))
+                    }
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
+    }
+    
+    private func loadMoreAnswers() {
+        currentPage += 1
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/answers/split?page=\(currentPage)", headers: headers).responseJSON { [weak self]  response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                // 加载完毕
+                if json.count == 0 {
+                    self.view.makeToast("没有更多了~", position: .top)
+                } else {
+                    for (_, subJson):(String, JSON) in json {
+                        self.answers.append(Answer(jsonData: subJson))
+                    }
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
     

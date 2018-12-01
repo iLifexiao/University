@@ -15,6 +15,7 @@ class RecommandVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     private var essays: [Essay] = []
+    private var currentPage = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +48,17 @@ class RecommandVC: UIViewController {
             self?.tableView.mj_header.endRefreshing()
             self?.view.makeToast("刷新成功", position: .top)
         }
+        
+        tableView.mj_footer = MJRefreshBackStateFooter { [weak self] in
+            self?.loadMore()
+            self?.tableView.mj_footer.endRefreshing()
+        }
     }
     
     private func getEssays() {
+        currentPage = 1
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/essay/tuples", headers: headers).responseJSON { [weak self]  response in
+        Alamofire.request(baseURL + "/api/v1/essay/split?page=1", headers: headers).responseJSON { [weak self]  response in
             guard let self = self else {
                 return
             }
@@ -71,16 +78,30 @@ class RecommandVC: UIViewController {
         }
     }
     
-    func parentController() -> UIViewController? {
-        var next = self.next
-        while next != nil {
-            print("next:\(String(describing: next))")
-            if (next is LearnVC) {
-                return next as? UIViewController
+    private func loadMore() {
+        currentPage += 1
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/essay/split?page=\(currentPage)", headers: headers).responseJSON { [weak self]  response in
+            guard let self = self else {
+                return
             }
-            next = next?.next
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                // 加载完毕
+                if json.count == 0 {
+                    self.view.makeToast("没有更多了~", position: .top)
+                } else {
+                    for (_, subJson):(String, JSON) in json {
+                        self.essays.append(Essay(jsonData: subJson))
+                    }
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
-        return nil
     }
 }
 

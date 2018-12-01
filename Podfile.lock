@@ -19,6 +19,7 @@ PODS:
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
+  - SKPhotoBrowser (6.0.0)
   - SwiftDate (5.0.10)
   - SwiftyJSON (4.2.0)
   - Toast-Swift (4.0.0)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - NewPopMenu (~> 2.0)
   - SCLAlertView
   - SDWebImage (~> 4.0)
+  - SKPhotoBrowser
   - SwiftDate (~> 5.0)
   - SwiftyJSON (~> 4.0)
   - Toast-Swift (~> 4.0.0)
@@ -62,6 +64,7 @@ SPEC REPOS:
     - NewPopMenu
     - SCLAlertView
     - SDWebImage
+    - SKPhotoBrowser
     - SwiftDate
     - SwiftyJSON
     - Toast-Swift
@@ -83,11 +86,12 @@ SPEC CHECKSUMS:
   NewPopMenu: 60d67846a401964dcaa51bffb792f04f6fe2fc76
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SKPhotoBrowser: 76eb862685761707b5745fde7762757966565e07
   SwiftDate: fcdaa7ca22a903faf6d7ed231239a88d174dcae3
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
   WXImageCompress: 4003213a788574c3e307faec0130359c52e43887
 
-PODFILE CHECKSUM: 84bfdaded1613fda05b1cfc45d07521da0d4ca45
+PODFILE CHECKSUM: 2298f3d4c9aeb09475e57624d47f8d88510a40a4
 
 COCOAPODS: 1.6.0.beta.1

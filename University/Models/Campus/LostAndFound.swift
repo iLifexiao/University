@@ -11,6 +11,9 @@ struct LostAndFound {
     var id: Int?
     var userID: Int
     
+    var nickname: String?
+    var profilephoto: String?
+    
     var imageURL: [String]? // 上传 0~9张的图片
     var title: String
     var content: String
@@ -38,6 +41,9 @@ struct LostAndFound {
     init(jsonData: JSON) {
         self.id = jsonData["id"].intValue
         self.userID = jsonData["userID"].intValue
+        
+        self.nickname = jsonData["userInfo"]["nickname"].stringValue
+        self.profilephoto = jsonData["userInfo"]["profilephoto"].stringValue
         
         self.imageURL = jsonData["imageURL"].arrayObject as? [String]
         self.title = jsonData["title"].stringValue

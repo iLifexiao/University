@@ -17,6 +17,7 @@ class AnswerVC: UIViewController {
     
     var questionID = 0
     private var answers: [Answer] = []
+    private var currentPage = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,11 +59,17 @@ class AnswerVC: UIViewController {
             self?.tableView.mj_header.endRefreshing()
             self?.view.makeToast("刷新成功", position: .top)
         }
+        
+        tableView.mj_footer = MJRefreshBackStateFooter { [weak self] in
+            self?.loadMore()
+            self?.tableView.mj_footer.endRefreshing()
+        }
     }
     
     private func getAnswers() {
+        currentPage = 1
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/question/\(questionID)/answer", headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(baseURL + "/api/v1/question/\(questionID)/answer/split?page=1", headers: headers).responseJSON { [weak self] response in
             guard let self = self else {
                 return
             }
@@ -79,6 +86,32 @@ class AnswerVC: UIViewController {
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    private func loadMore() {
+        currentPage += 1
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/question/\(questionID)/answer/split?page=\(currentPage)", headers: headers).responseJSON { [weak self]  response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                // 加载完毕
+                if json.count == 0 {
+                    self.view.makeToast("没有更多了~", position: .top)
+                } else {
+                    for (_, subJson):(String, JSON) in json {
+                        self.answers.append(Answer(jsonData: subJson))
+                    }
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
     
