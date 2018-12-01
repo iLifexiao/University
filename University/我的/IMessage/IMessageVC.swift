@@ -77,15 +77,19 @@ class IMessageVC: UIViewController {
                     let json = JSON(value)
                     self.message.removeAll()
                     self.messageDict.removeAll()
-                    // 添加到字典里，通过ID
+                    // 将信息以friendID为键，组合添加到字典里
                     for (_, subJson):(String, JSON) in json {
                         let msg = Message(jsonData: subJson)
                         var msgArray = self.messageDict[msg.friendID] ?? [Message]()
                         msgArray.append(msg)
                         self.messageDict[msg.friendID] = msgArray
                     }
-                    // 取出
+                    // 取出 & 排序，让UI显示最后一条
                     for (_, msgs) in self.messageDict {
+                        var msgs = msgs
+                        msgs.sort { (msg1, msg2) -> Bool in
+                            msg1.createdAt! < msg2.createdAt!
+                        }
                         self.message.append(msgs)
                     }
                     self.tableView.reloadData()
@@ -107,9 +111,11 @@ class IMessageVC: UIViewController {
 extension IMessageVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let messages = message[indexPath.section]
+        let lastMsg = messages.last
         let detailMsgVC = DetailMsgVC()
         detailMsgVC.messages = messages
-        detailMsgVC.friendID = messages.last?.friendID ?? 0
+        detailMsgVC.friendID = lastMsg?.friendID ?? 0
+        detailMsgVC.nickName = lastMsg?.nickname
         navigationController?.pushViewController(detailMsgVC, animated: true)
     }
     

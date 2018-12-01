@@ -19,12 +19,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userHead" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-j1-Y7U">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userHead" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-j1-Y7U">
                         <rect key="frame" x="10" y="10" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="DXW-ma-dO2"/>
                             <constraint firstAttribute="width" constant="35" id="dGg-Yy-oaz"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <real key="value" value="17.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="雨后微笑的天空" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCN-cX-4V5">
                         <rect key="frame" x="53" y="10" width="107.5" height="18"/>

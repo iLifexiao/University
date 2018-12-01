@@ -33,8 +33,8 @@ class ExperienceCell: UITableViewCell {
     }
     
     func setupModel(_ exp: Experience) {
-        headImageView.image = UIImage(named: "userHead")
-        nameLabel.text = "雨后"
+        headImageView.sd_setImage(with: URL(string: baseURL + (exp.profilephoto ?? "/image/head/default.png")), completed: nil)
+        nameLabel.text = exp.nickname
         timeLabel.text = unixTime2StringDate(exp.createdAt ?? 0, format: "yyyy-MM-dd")
         titleLabel.text = exp.title
         contentLabel.text = exp.content

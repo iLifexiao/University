@@ -19,12 +19,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userHead" translatesAutoresizingMaskIntoConstraints="NO" id="6eg-Px-rrC">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userHead" translatesAutoresizingMaskIntoConstraints="NO" id="6eg-Px-rrC">
                         <rect key="frame" x="10" y="10" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="6eu-l9-nrE"/>
                             <constraint firstAttribute="height" constant="40" id="xFN-cX-26A"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="雨后微笑的天空" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slc-FN-WxJ">
                         <rect key="frame" x="58" y="10" width="121.5" height="21"/>
@@ -44,12 +49,12 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjj-Dm-Kmp">
+                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjj-Dm-Kmp">
                         <rect key="frame" x="36" y="10" width="14" height="14"/>
                         <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="14" id="5Rv-0o-saq"/>
-                            <constraint firstAttribute="width" constant="14" id="KkZ-cr-wPu"/>
+                            <constraint firstAttribute="height" constant="14" id="agL-MP-efY"/>
+                            <constraint firstAttribute="width" constant="14" id="wAQ-0g-aaI"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="8"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,10 +67,10 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="sjj-Dm-Kmp" firstAttribute="top" secondItem="6eg-Px-rrC" secondAttribute="top" id="ClO-Cx-CLP"/>
+                    <constraint firstItem="sjj-Dm-Kmp" firstAttribute="trailing" secondItem="6eg-Px-rrC" secondAttribute="trailing" id="BB4-yX-pZg"/>
                     <constraint firstItem="SxU-HP-dpg" firstAttribute="leading" secondItem="slc-FN-WxJ" secondAttribute="leading" id="DYU-l7-GVd"/>
                     <constraint firstItem="6eg-Px-rrC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Eqk-se-CML"/>
-                    <constraint firstItem="sjj-Dm-Kmp" firstAttribute="trailing" secondItem="6eg-Px-rrC" secondAttribute="trailing" id="FRi-at-WNx"/>
+                    <constraint firstItem="sjj-Dm-Kmp" firstAttribute="top" secondItem="6eg-Px-rrC" secondAttribute="top" id="LX8-wU-iXy"/>
                     <constraint firstAttribute="bottom" secondItem="SxU-HP-dpg" secondAttribute="bottom" constant="10" id="R4C-h3-f15"/>
                     <constraint firstItem="SxU-HP-dpg" firstAttribute="trailing" secondItem="P0n-Nm-3hl" secondAttribute="trailing" id="X8v-Xw-F8O"/>
                     <constraint firstItem="6eg-Px-rrC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="dtf-f3-9Ch"/>

@@ -32,8 +32,8 @@ class AnswerCell: UITableViewCell {
     
     func setupModel(_ answer: Answer) {
         id = String(answer.id ?? 0)
-        headImageView.image = UIImage(named: "userHead")
-        nameLabel.text = "小麦"
+        headImageView.sd_setImage(with: URL(string: baseURL + (answer.profilephoto ?? "/image/head/default.png")), completed: nil)
+        nameLabel.text = answer.nickname
         timeLabel.text = unixTime2StringDate(answer.createdAt ?? 0)
         answerLabel.text = answer.content
         readCountLabel.text = String(answer.readCount ?? 0) + " 阅读"

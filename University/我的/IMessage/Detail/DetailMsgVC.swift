@@ -17,12 +17,11 @@ class DetailMsgVC: UIViewController {
     @IBOutlet weak var msgTextField: UITextField!
     
     var messages: [Message] = []
-    var friend: UserInfo?
+    var nickName: String?
     var friendID: Int = 0
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        initData()
+        super.viewDidLoad()        
         initUI()
     }
     
@@ -31,18 +30,13 @@ class DetailMsgVC: UIViewController {
         tabBarController?.tabBar.isHidden = true
     }
     
-    private func initData() {
-        // 按照时间排序
-        messages.sort { (msg1, msg2) -> Bool in
-            msg1.createdAt! < msg2.createdAt!
-        }
-        getMessages()
+    override func viewDidAppear(_ animated: Bool) {
+        scrollToBottom()
     }
-    
+
     private func initUI() {
-//        title = friend?.nickname
-        title = String(friendID)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "me"), style: .plain, target: self, action: #selector(showUserInfo))
+        title = nickName
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "me2"), style: .plain, target: self, action: #selector(showUserInfo))
         setupTableView()
     }
     
@@ -62,20 +56,54 @@ class DetailMsgVC: UIViewController {
 //        // 清空-空Cell
         tableView.tableFooterView = UIView()
         
-        // 下拉刷新
-        tableView.mj_header = MJRefreshNormalHeader{ [weak self] in
+        // 上拉刷新
+        tableView.mj_header = MJRefreshNormalHeader { [weak self] in
             // 重新获取
             self?.getMessages()
-            
             self?.tableView.mj_header.endRefreshing()
             self?.view.makeToast("刷新成功", position: .top)
         }
     }
     
     private func getMessages() {
-
+        let parameters: Parameters = [
+            "userID": GlobalData.sharedInstance.userID,
+            "friendID": friendID
+        ]
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        Alamofire.request(baseURL + "/api/v1/message/showim", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+            if let self = self {
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    self.messages.removeAll()
+                    for (_, subJson): (String, JSON) in json {
+                        self.messages.append(Message(jsonData: subJson))
+                    }
+                    // 按照时间排序
+                    self.messages.sort { (msg1, msg2) -> Bool in
+                        msg1.createdAt! < msg2.createdAt!
+                    }
+                    self.tableView.reloadData()
+                    self.scrollToBottom()
+                case .failure(let error):
+                    self.view.makeToast("私信发送失败，请稍后再试", position: .top)
+                    print(error)
+                }
+                MBProgressHUD.hide(for: self.view, animated: true)
+            }
+        }
     }
     
+    private func scrollToBottom() {
+        let indexPath = tableView.numberOfSections
+        if indexPath > 0 {
+            let row = tableView.numberOfRows(inSection: indexPath - 1)
+            tableView.scrollToRow(at: IndexPath(row: row - 1, section: indexPath - 1), at: .bottom, animated: false)
+        }
+    }
+
     @objc func showUserInfo() {
         let detailUserVC = DetailUserVC()
         detailUserVC.userID = friendID
@@ -109,10 +137,16 @@ class DetailMsgVC: UIViewController {
                     let json = JSON(value)
                     // 发送成功后，清除输入框的内容
                     self.msgTextField.text = ""
-                    self.messages.append(Message(userID: GlobalData.sharedInstance.userID, friendID: self.friendID, fromUserID: GlobalData.sharedInstance.userID, toUserID: self.friendID, content: content))
+                    var msg = Message(userID: GlobalData.sharedInstance.userID,
+                                      friendID: self.friendID,
+                                      fromUserID: GlobalData.sharedInstance.userID,
+                                      toUserID: self.friendID, content: content)
+                    msg.createdAt = Date().timeIntervalSince1970                    
+                    self.messages.append(msg)
                     // 显示服务器的提示信息
                     self.view.makeToast(json["message"].stringValue, position: .top)
                     self.tableView.reloadData()
+                    self.scrollToBottom()
                 case .failure(let error):
                     self.view.makeToast("私信发送失败，请稍后再试", position: .top)
                     print(error)

@@ -12,6 +12,10 @@ struct Comment {
     var userID: Int
     var commentID: Int
     
+    // 新增用户信息
+    var nickname: String?
+    var profilephoto: String?
+    
     var content: String
     var type: String // [Resource, Essay, CampusNews, Book, Question, Answer, Experience]
     
@@ -35,6 +39,9 @@ struct Comment {
         self.id = jsonData["id"].intValue
         self.userID = jsonData["userID"].intValue
         self.commentID = jsonData["commentID"].intValue
+        
+        self.nickname = jsonData["userInfo"]["nickname"].stringValue
+        self.profilephoto = jsonData["userInfo"]["profilephoto"].stringValue
         
         self.content = jsonData["content"].stringValue        
         self.type = jsonData["type"].stringValue        

@@ -36,8 +36,8 @@ class CommentCell: UITableViewCell {
     
     func setupModel(_ comment: Comment) {
         commentID = String(comment.id ?? 0)
-        headImageView.image = UIImage(named: "userHead")
-        nameLabel.text = "琉璃"
+        headImageView.sd_setImage(with: URL(string: baseURL + (comment.profilephoto ?? "/image/head/default.png")), completed: nil)
+        nameLabel.text = comment.nickname
         timeLabel.text = unixTime2StringDate(comment.createdAt ?? 0)
         likeLabel.text = String(comment.likeCount ?? 0)
         commentLabel.text = String(comment.content)

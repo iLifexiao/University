@@ -11,6 +11,10 @@ struct Experience {
     var id: Int?
     var userID: Int
     
+    // 新增用户信息
+    var nickname: String?
+    var profilephoto: String?
+    
     var title: String
     var content: String
     var type: String
@@ -38,6 +42,9 @@ struct Experience {
     init(jsonData: JSON) {
         self.id = jsonData["id"].intValue
         self.userID = jsonData["userID"].intValue
+        
+        self.nickname = jsonData["userInfo"]["nickname"].stringValue
+        self.profilephoto = jsonData["userInfo"]["profilephoto"].stringValue
         
         self.title = jsonData["title"].stringValue
         self.content = jsonData["content"].stringValue

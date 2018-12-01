@@ -14,6 +14,10 @@ struct Message {
     var fromUserID: Int
     var toUserID: Int
     
+    // 新增用户信息
+    var nickname: String?
+    var profilephoto: String?
+    
     var content: String
     var type: String? // 类型「普通、系统」
     var status: Int? // 状态[0, 1, 2, 3] = [禁止、 未读、已读、删除]
@@ -36,6 +40,9 @@ struct Message {
         self.friendID = jsonData["friendID"].intValue
         self.fromUserID = jsonData["fromUserID"].intValue
         self.toUserID = jsonData["toUserID"].intValue
+        
+        self.nickname = jsonData["userInfo"]["nickname"].stringValue
+        self.profilephoto = jsonData["userInfo"]["profilephoto"].stringValue
        
         self.content = jsonData["content"].stringValue
         self.type = jsonData["type"].stringValue

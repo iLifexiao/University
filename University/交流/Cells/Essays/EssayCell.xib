@@ -19,12 +19,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userHead" translatesAutoresizingMaskIntoConstraints="NO" id="mPi-eg-eUr">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userHead" translatesAutoresizingMaskIntoConstraints="NO" id="mPi-eg-eUr">
                         <rect key="frame" x="16" y="11" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="fFc-Fs-7ia"/>
                             <constraint firstAttribute="width" constant="50" id="r5S-m9-9G6"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="25"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="雨后微笑的天空" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2f-kR-Pr8">
                         <rect key="frame" x="76" y="11" width="143" height="24"/>

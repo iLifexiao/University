@@ -232,8 +232,6 @@
 		8B7C760B219E635000FCCD75 /* ILessonGradeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C7609219E635000FCCD75 /* ILessonGradeVC.xib */; };
 		8B7C760F219E639300FCCD75 /* IHonorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C760D219E639300FCCD75 /* IHonorVC.swift */; };
 		8B7C7610219E639300FCCD75 /* IHonorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C760E219E639300FCCD75 /* IHonorVC.xib */; };
-		8B7C7614219E7E8700FCCD75 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C7612219E7E8700FCCD75 /* MessageCell.swift */; };
-		8B7C7615219E7E8700FCCD75 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C7613219E7E8700FCCD75 /* MessageCell.xib */; };
 		8B7C7618219EA28600FCCD75 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C7616219EA28600FCCD75 /* FriendCell.swift */; };
 		8B7C7619219EA28600FCCD75 /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C7617219EA28600FCCD75 /* FriendCell.xib */; };
 		8B7C761C219EE2A100FCCD75 /* HonorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C761A219EE2A100FCCD75 /* HonorCell.swift */; };
@@ -525,8 +523,6 @@
 		8B7C7609219E635000FCCD75 /* ILessonGradeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ILessonGradeVC.xib; sourceTree = "<group>"; };
 		8B7C760D219E639300FCCD75 /* IHonorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHonorVC.swift; sourceTree = "<group>"; };
 		8B7C760E219E639300FCCD75 /* IHonorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IHonorVC.xib; sourceTree = "<group>"; };
-		8B7C7612219E7E8700FCCD75 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
-		8B7C7613219E7E8700FCCD75 /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		8B7C7616219EA28600FCCD75 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		8B7C7617219EA28600FCCD75 /* FriendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
 		8B7C761A219EE2A100FCCD75 /* HonorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonorCell.swift; sourceTree = "<group>"; };
@@ -1431,8 +1427,6 @@
 				8B53CB9421A3F471002CE03C /* Post */,
 				8B7C75E0219E5CC300FCCD75 /* IMessageVC.swift */,
 				8B7C75E1219E5CC300FCCD75 /* IMessageVC.xib */,
-				8B7C7612219E7E8700FCCD75 /* MessageCell.swift */,
-				8B7C7613219E7E8700FCCD75 /* MessageCell.xib */,
 			);
 			path = IMessage;
 			sourceTree = "<group>";
@@ -1871,7 +1865,6 @@
 				8B7C75C0219C2A5500FCCD75 /* DetailUtilityVC.xib in Resources */,
 				8B64B57F219B05A0005C2E07 /* SpeechCell.xib in Resources */,
 				8B7A952E21A28DA2009CEB32 /* IResourcesVC.xib in Resources */,
-				8B7C7615219E7E8700FCCD75 /* MessageCell.xib in Resources */,
 				8B7C75E8219E5D9900FCCD75 /* IEssayVC.xib in Resources */,
 				8B64B559219AB3C4005C2E07 /* LostAndFoundVC.xib in Resources */,
 				8B7C75B7219C01B700FCCD75 /* PartTimeJobVC.xib in Resources */,
@@ -2260,7 +2253,6 @@
 				8B53CB8C21A3E71C002CE03C /* XYMarkerView.swift in Sources */,
 				8B6D2DCB21AEDCCC00A01EF8 /* MeChatCell.swift in Sources */,
 				8B0EF3232182FCE9000EA64E /* ExperienceVC.swift in Sources */,
-				8B7C7614219E7E8700FCCD75 /* MessageCell.swift in Sources */,
 				8B7C759C219C007B00FCCD75 /* IdleGoodVC.swift in Sources */,
 				8B64B46B21987C37005C2E07 /* Race.swift in Sources */,
 				8B64B48721991C65005C2E07 /* UtilityMethod.swift in Sources */,

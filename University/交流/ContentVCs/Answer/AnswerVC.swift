@@ -71,7 +71,7 @@ class AnswerVC: UIViewController {
                 let json = JSON(value)
                 self.answers.removeAll()
                 // json是数组
-                for (_, subJson):(String, JSON) in json["data"] {
+                for (_, subJson):(String, JSON) in json {
                     self.answers.append(Answer(jsonData: subJson))
                 }
                 MBProgressHUD.hide(for: self.view, animated: true)

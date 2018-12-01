@@ -51,7 +51,7 @@ class RecommandVC: UIViewController {
     
     private func getEssays() {
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/essay/sort", headers: headers).responseJSON { [weak self]  response in
+        Alamofire.request(baseURL + "/api/v1/essay/tuples", headers: headers).responseJSON { [weak self]  response in
             guard let self = self else {
                 return
             }

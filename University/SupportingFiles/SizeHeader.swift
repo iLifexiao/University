@@ -41,6 +41,7 @@ func ColorRGB(value: Float) -> UIColor {
 // 网络配置
 //let baseURL = "http://192.168.31.116:8080"
 let baseURL = "http://192.168.16.112:8080"
+//let baseURL = "http://172.18.132.114:8080"
 let headers: HTTPHeaders = [
     "Authorization": "Bearer aPD9AmZRf97np6glJ5PBBg5oMPCj8B/HGAFVOnI1l28=",
     "Accept": "application/json"

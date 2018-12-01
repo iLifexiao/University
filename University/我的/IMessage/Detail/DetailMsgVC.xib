@@ -44,7 +44,7 @@
                                 <constraint firstAttribute="width" constant="30" id="sxc-hA-g8k"/>
                                 <constraint firstAttribute="height" constant="30" id="yEE-C7-nGV"/>
                             </constraints>
-                            <state key="normal" image="fly"/>
+                            <state key="normal" image="sendMessage"/>
                             <connections>
                                 <action selector="sendMsg:" destination="-1" eventType="touchUpInside" id="Lmk-HU-6GB"/>
                             </connections>
@@ -87,6 +87,6 @@
         </view>
     </objects>
     <resources>
-        <image name="fly" width="67" height="67"/>
+        <image name="sendMessage" width="40" height="40"/>
     </resources>
 </document>

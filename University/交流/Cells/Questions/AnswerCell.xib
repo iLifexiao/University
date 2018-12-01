@@ -19,12 +19,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userHead" translatesAutoresizingMaskIntoConstraints="NO" id="juV-s4-28Y">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userHead" translatesAutoresizingMaskIntoConstraints="NO" id="juV-s4-28Y">
                         <rect key="frame" x="8" y="8" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="H4g-kd-3hj"/>
                             <constraint firstAttribute="height" constant="25" id="UXa-69-LA4"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <real key="value" value="12.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小麦" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gub-Hi-ked">
                         <rect key="frame" x="41" y="11.5" width="31" height="18"/>

@@ -10,6 +10,8 @@ import UIKit
 
 class YouChatCell: UITableViewCell {
     
+    
+    @IBOutlet weak var userHeadImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!    
 
@@ -25,6 +27,7 @@ class YouChatCell: UITableViewCell {
     }
     
     func setupModel(_ msg: Message) {
+        userHeadImageView.sd_setImage(with: URL(string: baseURL + (msg.profilephoto ?? "/image/head/default.png")), completed: nil)
         timeLabel.text = unixTime2StringDate(msg.createdAt ?? 0)
         contentLabel.text = msg.content
     }

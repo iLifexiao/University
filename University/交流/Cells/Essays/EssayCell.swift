@@ -44,8 +44,8 @@ class EssayCell: UITableViewCell {
     func setupModel(_ essay: Essay) {
         essayID = String(essay.id ?? 0)
         
-        userHeadImageView.image = UIImage(named: "userHead")
-        userNameLabel.text = "雨后"
+        userHeadImageView.sd_setImage(with: URL(string: baseURL + (essay.profilephoto ?? "/image/head/default.png")), completed: nil)
+        userNameLabel.text = essay.nickname
         essayPostTimeLabel.text = unixTime2StringDate(essay.createdAt ?? 0)
         essayTypeButton.setTitle(essay.type, for: .normal)
         essayTitleLabel.text = essay.title

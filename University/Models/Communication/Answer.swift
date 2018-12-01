@@ -12,6 +12,10 @@ struct Answer {
     var userID: Int
     var questionID: Int
     
+    // 新增用户信息
+    var nickname: String?
+    var profilephoto: String?
+    
     var content: String
     
     var readCount: Int?
@@ -39,6 +43,9 @@ struct Answer {
         self.id = jsonData["id"].intValue
         self.userID = jsonData["userID"].intValue
         self.questionID = jsonData["questionID"].intValue
+        
+        self.nickname = jsonData["userInfo"]["nickname"].stringValue
+        self.profilephoto = jsonData["userInfo"]["profilephoto"].stringValue
         
         self.content = jsonData["content"].stringValue
         self.readCount = jsonData["readCount"].intValue

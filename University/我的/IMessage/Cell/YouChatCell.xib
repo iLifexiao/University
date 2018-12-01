@@ -28,8 +28,28 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QqF-LC-F64">
+                        <rect key="frame" x="55" y="27" width="6" height="6"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="6" id="LwL-X6-thS"/>
+                            <constraint firstAttribute="height" constant="6" id="QAk-3Q-z2j"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userHead" translatesAutoresizingMaskIntoConstraints="NO" id="vUz-Xn-5Rf">
+                        <rect key="frame" x="10" y="27" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="SZA-c6-q5j"/>
+                            <constraint firstAttribute="width" constant="40" id="iUU-7h-l8n"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello，中午吃啥？" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNQ-wb-ubh">
-                        <rect key="frame" x="10" y="27" width="143" height="40"/>
+                        <rect key="frame" x="55" y="27" width="143" height="40"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="zA8-dz-cdk"/>
@@ -43,23 +63,17 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QqF-LC-F64">
-                        <rect key="frame" x="10" y="61" width="6" height="6"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="6" id="qPy-fl-JfV"/>
-                            <constraint firstAttribute="width" constant="6" id="up1-ga-iI7"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="vUz-Xn-5Rf" firstAttribute="leading" secondItem="F7J-EM-hrV" secondAttribute="leading" id="2PD-2B-pXo"/>
                     <constraint firstItem="F7J-EM-hrV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="A1Q-ce-Wm5"/>
-                    <constraint firstItem="QqF-LC-F64" firstAttribute="leading" secondItem="gNQ-wb-ubh" secondAttribute="leading" id="KxS-rc-SWc"/>
                     <constraint firstItem="F7J-EM-hrV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Lmi-K3-29u"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gNQ-wb-ubh" secondAttribute="trailing" constant="10" id="Tgs-mP-Y1R"/>
-                    <constraint firstItem="gNQ-wb-ubh" firstAttribute="leading" secondItem="F7J-EM-hrV" secondAttribute="leading" id="UjF-b6-NIw"/>
                     <constraint firstItem="gNQ-wb-ubh" firstAttribute="top" secondItem="F7J-EM-hrV" secondAttribute="bottom" constant="3" id="VXZ-ou-cQz"/>
-                    <constraint firstItem="QqF-LC-F64" firstAttribute="bottom" secondItem="gNQ-wb-ubh" secondAttribute="bottom" id="vx8-F2-mm7"/>
+                    <constraint firstItem="QqF-LC-F64" firstAttribute="top" secondItem="gNQ-wb-ubh" secondAttribute="top" id="ZVC-tP-Fss"/>
+                    <constraint firstItem="QqF-LC-F64" firstAttribute="leading" secondItem="gNQ-wb-ubh" secondAttribute="leading" id="j3H-KG-hIa"/>
+                    <constraint firstItem="vUz-Xn-5Rf" firstAttribute="top" secondItem="F7J-EM-hrV" secondAttribute="bottom" constant="3" id="o73-VU-Xsa"/>
+                    <constraint firstItem="gNQ-wb-ubh" firstAttribute="leading" secondItem="vUz-Xn-5Rf" secondAttribute="trailing" constant="5" id="uxJ-LK-mw2"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gNQ-wb-ubh" secondAttribute="bottom" constant="10" id="zHG-VQ-XFM"/>
                 </constraints>
             </tableViewCellContentView>
@@ -68,8 +82,12 @@
             <connections>
                 <outlet property="contentLabel" destination="gNQ-wb-ubh" id="th3-kJ-rKL"/>
                 <outlet property="timeLabel" destination="F7J-EM-hrV" id="rCd-Zf-WmW"/>
+                <outlet property="userHeadImageView" destination="vUz-Xn-5Rf" id="q1W-CF-rSD"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="154.72263868065968"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="userHead" width="200" height="200"/>
+    </resources>
 </document>
