@@ -254,7 +254,7 @@ class PostBookVC: FormViewController {
         
         let image = form.values()["imageURL"] as? UIImage
         if image == beforeImage {
-            imagePath = defaultImageURL
+            imagePath = book?.imageURL ?? ""
         } else {
             uploadImage(image!, type: "resource")
         }

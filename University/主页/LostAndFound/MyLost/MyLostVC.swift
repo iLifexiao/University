@@ -1,8 +1,8 @@
 //
-//  IEssayVC.swift
+//  MyLostVC.swift
 //  University
 //
-//  Created by 肖权 on 2018/11/16.
+//  Created by 肖权 on 2018/12/2.
 //  Copyright © 2018 肖权. All rights reserved.
 //
 
@@ -11,35 +11,30 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 
-class IEssayVC: UIViewController {
-
+class MyLostVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    private var essays: [Essay] = []
+    
+    var losts: [LostAndFound] = []
     private var currentPage = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initData()
-        initUI()        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = true
+        initUI()
     }
     
     private func initData() {
-        getEssays()
+        getMyLost()
     }
     
     private func initUI() {
-        title = "我的文章"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "add"), style: .plain, target: self, action: #selector(addEssay))
+        title = "我的失物"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "send"), style: .plain, target: self, action: #selector(goPostThing))
         setupTableView()
     }
     
     private func setupTableView() {
-        tableView.register(UINib(nibName: "EssayCell", bundle: nil), forCellReuseIdentifier: "EssayCell")
+        tableView.register(UINib(nibName: "MyLostCell", bundle: nil), forCellReuseIdentifier: "MyLostCell")
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -56,7 +51,7 @@ class IEssayVC: UIViewController {
         
         // 下拉刷新
         tableView.mj_header = MJRefreshNormalHeader { [weak self] in
-            self?.getEssays()
+            self?.getMyLost()
             
             self?.tableView.mj_header.endRefreshing()
             self?.view.makeToast("刷新成功", position: .top)
@@ -67,21 +62,21 @@ class IEssayVC: UIViewController {
             self?.tableView.mj_footer.endRefreshing()
         }
     }
-    
-    private func getEssays() {
+
+    private func getMyLost() {
         currentPage = 1
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/essays/split?page=1", headers: headers).responseJSON { [weak self]  response in
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/lostandfounds/split?page=1", headers: headers).responseJSON { [weak self]  response in
             guard let self = self else {
                 return
             }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                self.essays.removeAll()
+                self.losts.removeAll()
                 // json是数组
                 for (_, subJson):(String, JSON) in json {
-                    self.essays.append(Essay(jsonData: subJson))
+                    self.losts.append(LostAndFound(jsonData: subJson))
                 }
                 self.tableView.reloadData()
             case .failure(let error):
@@ -94,19 +89,18 @@ class IEssayVC: UIViewController {
     private func loadMore() {
         currentPage += 1
         MBProgressHUD.showAdded(to: view, animated: true)
-        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/essays/split?page=\(currentPage)", headers: headers).responseJSON { [weak self]  response in
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/lostandfounds/split?page=\(currentPage)", headers: headers).responseJSON { [weak self]  response in
             guard let self = self else {
                 return
             }
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                // 加载完毕
                 if json.count == 0 {
                     self.view.makeToast("没有更多了~", position: .top)
                 } else {
                     for (_, subJson):(String, JSON) in json {
-                        self.essays.append(Essay(jsonData: subJson))
+                        self.losts.append(LostAndFound(jsonData: subJson))
                     }
                     self.tableView.reloadData()
                 }
@@ -117,42 +111,33 @@ class IEssayVC: UIViewController {
         }
     }
     
-    @objc func addEssay() {
-        let postEssayVC = PostEssayVC()
-        navigationController?.pushViewController(postEssayVC, animated: true)
+    @objc private func goPostThing() {
+        let postLostAndFoundVC = PostLostAndFoundVC()
+        navigationController?.pushViewController(postLostAndFoundVC, animated: true)
     }
-    
+
 }
 
-
-extension IEssayVC: UITableViewDelegate {
+extension MyLostVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let essay = essays[indexPath.section]
-        let detailEssayVC = DetailEssayVC()
-        detailEssayVC.essay = essay
-        detailEssayVC.type = .essay
-        detailEssayVC.id = essay.id ?? 0
-        navigationController?.pushViewController(detailEssayVC, animated: true)
+        let lost = losts[indexPath.section]
+        let postLostAndFoundVC = PostLostAndFoundVC()
+        postLostAndFoundVC.lost = lost
+        navigationController?.pushViewController(postLostAndFoundVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 80
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 0:
-            return 1
-        default:
-            return 20
-        }
+        return 10
     }
 }
 
-extension IEssayVC: UITableViewDataSource {
-    // 每个section一篇文章
+extension MyLostVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return essays.count
+        return losts.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -160,37 +145,23 @@ extension IEssayVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EssayCell", for: indexPath) as! EssayCell
-        cell.setupModel(essays[indexPath.section])
-        cell.delegate = self
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyLostCell", for: indexPath) as! MyLostCell
+        cell.setupModel(losts[indexPath.section])
         cell.selectionStyle = .none
         return cell
     }
     
-    // 侧滑删除功能
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: .normal, title: "编辑") { [weak self] (edit, index) in
-            guard let self = self else {
-                return
-            }
-            let essay = self.essays[index.section]
-            let postEssayVC = PostEssayVC()
-            postEssayVC.essay = essay
-            self.navigationController?.pushViewController(postEssayVC, animated: true)
-        }
-        editAction.backgroundColor = #colorLiteral(red: 0.2415607535, green: 0.571031791, blue: 1, alpha: 1)
-        
         let deleteAction = UITableViewRowAction(style: .destructive, title: "删除") { [weak self] (delete, index) in
             guard let self = self else {
                 return
             }
             // 获取ID
-            let essay = self.essays[indexPath.section]
-            let essayID = essay.id ?? 0
+            let lost = self.losts[indexPath.section]
+            let lostID = lost.id ?? 0
             
             // 执行逻辑删除操作
-            Alamofire.request(baseURL + "/api/v1/essay/\(essayID)/logicdel", method: .patch, headers: headers).responseJSON { [weak self] response in
+            Alamofire.request(baseURL + "/api/v1/lostandfound/\(lostID)/logicdel", method: .patch, headers: headers).responseJSON { [weak self] response in
                 guard let self = self else {
                     return
                 }
@@ -198,7 +169,7 @@ extension IEssayVC: UITableViewDataSource {
                 case .success(let value):
                     let json = JSON(value)
                     if json["status"].intValue == 1 {
-                        self.essays.remove(at: indexPath.section)
+                        self.losts.remove(at: indexPath.section)
                         self.tableView.reloadData()
                     }
                     self.view.makeToast(json["message"].stringValue, position: .top)
@@ -208,32 +179,24 @@ extension IEssayVC: UITableViewDataSource {
                 }
             }
         }
-        return [deleteAction, editAction]
-    }
-}
-
-// MARK: 文章-MORE-点击代理
-extension IEssayVC: EssayCellDelegate {
-    
-    func showSameTypeEssay(_ type: String?) {
-        view.makeToast(type)
+        return [deleteAction]
     }
 }
 
 // MARK: 空视图-代理
-extension IEssayVC: DZNEmptyDataSetDelegate {
+extension MyLostVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        self.view.makeToast("点击右上角的加号,写一篇文章试试吧~", position: .top)
+        self.view.makeToast("点击右上角，可以发布失物招领哦~", position: .top)
     }
 }
 
-extension IEssayVC: DZNEmptyDataSetSource {
+extension MyLostVC: DZNEmptyDataSetSource {
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: "emptyEssay")
+        return #imageLiteral(resourceName: "emptyBook")
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView?) -> NSAttributedString? {
-        let text = "啊咧，还没有文章~"
+        let text = "我还没有丢失物品~"
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineBreakMode = .byWordWrapping
@@ -244,3 +207,4 @@ extension IEssayVC: DZNEmptyDataSetSource {
         return NSAttributedString(string: text, attributes: attributes)
     }
 }
+

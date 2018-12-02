@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 import SKPhotoBrowser
+import PopMenu
 
 class LostAndFoundVC: UIViewController {
 
@@ -36,7 +37,7 @@ class LostAndFoundVC: UIViewController {
     
     private func initUI() {
         title = "失物招领"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "send"), style: .plain, target: self, action: #selector(goPostThing))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "arrow_down"), style: .plain, target: self, action: #selector(showMore))
         setupCollectionView()
     }
     
@@ -116,12 +117,39 @@ class LostAndFoundVC: UIViewController {
         }
     }
     
-    @objc private func goPostThing() {
+    private func goPostThing() {
         let postLostAndFoundVC = PostLostAndFoundVC()
         navigationController?.pushViewController(postLostAndFoundVC, animated: true)
     }
-
+    
+    @objc private func showMore() {
+        let manager = PopMenuManager.default
+        manager.popMenuDelegate = self
+        manager.actions = [
+            PopMenuDefaultAction(title: "发布失物", image: #imageLiteral(resourceName: "send")),
+            PopMenuDefaultAction(title: "我的失物", image: #imageLiteral(resourceName: "search")),
+        ]
+        manager.present(sourceView: navigationItem.rightBarButtonItem)
+    }
+    
 }
+
+extension LostAndFoundVC: PopMenuViewControllerDelegate {
+    
+    func popMenuDidSelectItem(_ popMenuViewController: PopMenuViewController, at index: Int) {
+        switch index {
+        case 0:
+            goPostThing()
+        case 1:
+            let myLostVC = MyLostVC()
+            navigationController?.pushViewController(myLostVC, animated: true)
+        default:
+            print("错误选项")
+        }
+    }
+    
+}
+
 
 extension LostAndFoundVC: LostAndFoundCellDelegate {
     func sendMessageTo(userID: Int) {

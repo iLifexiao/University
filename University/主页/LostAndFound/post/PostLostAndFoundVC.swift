@@ -28,7 +28,11 @@ class PostLostAndFoundVC: FormViewController {
                     view.makeToast("帐号被封禁，请联系管理员", position: .top)
                 }
             case 1:
-                doPost()
+                if lost == nil {
+                    doPost()
+                } else {
+                    doPatch()
+                }
             default:
                 print("错误类型")
                 
@@ -38,6 +42,9 @@ class PostLostAndFoundVC: FormViewController {
             return -1
         }
     }    
+    
+    var lost: LostAndFound?
+    private var beforeImage: UIImage?
     
     lazy private var parameters: Parameters = form.values() as Parameters
     let defaultImageURL = "/image/lostandfound/default.png"
@@ -51,21 +58,36 @@ class PostLostAndFoundVC: FormViewController {
                 return
             }
             parameters["imageURL"] = [newValue]
-            Alamofire.request(baseURL + "/api/v1/lostandfound", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
-                if let self = self {
-                    switch response.result {
-                    case .success(let value):
-                        print(value)
-                        // 发布成功
-                        self.view.makeToast("发布成功，返回刷新查看", position: .top)
-                    case .failure(let error):
-                        self.view.makeToast("发布失败，请稍后再试", position: .top)
-                        print(error)
+            if lost == nil {
+                Alamofire.request(baseURL + "/api/v1/lostandfound", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+                    if let self = self {
+                        switch response.result {
+                        case .success(let value):
+                            print(value)
+                            // 发布成功
+                            self.view.makeToast("发布成功，返回刷新查看", position: .top)
+                        case .failure(let error):
+                            self.view.makeToast("发布失败，请稍后再试", position: .top)
+                            print(error)
+                        }
+                        MBProgressHUD.hide(for: self.view, animated: true)
                     }
-                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+            } else {
+                Alamofire.request(baseURL + "/api/v1/lostandfound/\(lost?.id ?? 0)", method: .patch, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+                    if let self = self {
+                        switch response.result {
+                        case .success(let value):
+                            print(value)
+                            self.view.makeToast("更新成功，返回刷新查看", position: .top)
+                        case .failure(let error):
+                            self.view.makeToast("更新失败，请稍后再试", position: .top)
+                            print(error)
+                        }
+                        MBProgressHUD.hide(for: self.view, animated: true)
+                    }
                 }
             }
-
         }
         get {
             return "/image/lostandfound/default.png"
@@ -79,11 +101,15 @@ class PostLostAndFoundVC: FormViewController {
     }
     
     private func initData() {
-        
+        beforeImage = UIImage.fromURL(baseURL + (lost?.imageURL?.first ?? defaultImageURL))
     }
     
     private func initUI() {
-        title = "发布失物"
+        if lost == nil {
+            title = "发布失物"
+        } else {
+            title = "更新失物"
+        }
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "submit"), style: .plain, target: self, action: #selector(submit))
         initForm()
     }
@@ -93,6 +119,7 @@ class PostLostAndFoundVC: FormViewController {
         form +++ Section("在这里填写物品的信息")
             <<< TextRow(){ row in
                 row.title = "标题"
+                row.value = lost?.title
                 row.placeholder = "简要说明丢失的物品"
                 row.add(rule: RuleRequired(msg: "标题不能为空"))
                 row.add(rule: RuleMaxLength(maxLength: 15, msg: "标题需小于15字"))
@@ -109,11 +136,12 @@ class PostLostAndFoundVC: FormViewController {
             }
             <<< DateRow() {
                 $0.title = "时间"
-                $0.value = Date()
+                $0.value = lost?.time.toDate()?.date ?? Date()
                 $0.tag = "time"
             }
             <<< TextRow() {
                 $0.title = "地点"
+                $0.value = lost?.site
                 $0.placeholder = "丢失的地点"
                 $0.add(rule: RuleRequired(msg: "地点不能为空"))
                 $0.add(rule: RuleMaxLength(maxLength: 10, msg: "地点需小于10字"))
@@ -131,12 +159,13 @@ class PostLostAndFoundVC: FormViewController {
             <<< ImageRow() { row in
                 row.title = "上传图片(可选)"
                 row.tag = "imageURL"
-                row.placeholderImage = UIImage.fromURL(baseURL + defaultImageURL)
+                row.value = beforeImage
                 row.sourceTypes = [.PhotoLibrary, .Camera]
                 row.clearAction = .yes(style: UIAlertAction.Style.destructive)
             }
             <<< TextAreaRow() {
                 $0.title = "详细"
+                $0.value = lost?.content
                 $0.placeholder = "详细说明丢失的物品和联系方式"
                 $0.add(rule: RuleRequired(msg: "描述不能为空"))
                 $0.tag = "content"
@@ -183,14 +212,25 @@ class PostLostAndFoundVC: FormViewController {
         // 将Date -> String格式
         let time = form.values()["time"] as? Date
         parameters["time"] = time?.toFormat("YYYY-MM-dd") ?? Date().toFormat("YYYY-MM-dd")
-        
-        // 提取图片
-        // 图库上传的是图片的assert地址，并非真实URL
+
         let image = form.values()["imageURL"] as? UIImage
-        // 如果没有选择图片，使用默认图片
-        // 否则上传图片，并返回地址
-        if image == nil {
+        if image == beforeImage {
             imagePath = defaultImageURL
+        } else {
+            uploadImage(image!, type: "lostandfound")
+        }
+    }
+    
+    private func doPatch() {
+        parameters["userID"] = GlobalData.sharedInstance.userID
+        
+        // 将Date -> String格式
+        let time = form.values()["time"] as? Date
+        parameters["time"] = time?.toFormat("YYYY-MM-dd") ?? Date().toFormat("YYYY-MM-dd")
+        
+        let image = form.values()["imageURL"] as? UIImage
+        if image == beforeImage {
+            imagePath = lost?.imageURL?.first ?? ""
         } else {
             uploadImage(image!, type: "lostandfound")
         }

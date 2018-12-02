@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 import SKPhotoBrowser
+import PopMenu
 
 class IdleGoodVC: UIViewController {
     
@@ -37,7 +38,7 @@ class IdleGoodVC: UIViewController {
     
     private func initUI() {
         title = "校园闲鱼"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "send"), style: .plain, target: self, action: #selector(goPostThing))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "arrow_down"), style: .plain, target: self, action: #selector(showMore))
         setupCollectionView()
     }
     
@@ -117,7 +118,33 @@ class IdleGoodVC: UIViewController {
     @objc func goPostThing() {
         let postIdleGoodVC = PostIdleGoodVC()
         navigationController?.pushViewController(postIdleGoodVC, animated: true)
+    }
+    
+    @objc private func showMore() {
+        let manager = PopMenuManager.default
+        manager.popMenuDelegate = self
+        manager.actions = [
+            PopMenuDefaultAction(title: "发布闲置", image: #imageLiteral(resourceName: "send")),
+            PopMenuDefaultAction(title: "我的闲置", image: #imageLiteral(resourceName: "search")),
+        ]
+        manager.present(sourceView: navigationItem.rightBarButtonItem)
     }    
+}
+
+extension IdleGoodVC: PopMenuViewControllerDelegate {
+    
+    func popMenuDidSelectItem(_ popMenuViewController: PopMenuViewController, at index: Int) {
+        switch index {
+        case 0:
+            goPostThing()
+        case 1:
+            let myIdleGoodVC = MyIdleGoodVC()
+            navigationController?.pushViewController(myIdleGoodVC, animated: true)
+        default:
+            print("错误选项")
+        }
+    }
+    
 }
 
 extension IdleGoodVC: IdleGoodCellDelegate {

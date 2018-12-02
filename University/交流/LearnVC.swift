@@ -16,7 +16,7 @@ class LearnVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
-        print("LearnVC:", self)
+//        print("LearnVC:", self)
         ViewManager.share.secondNVC = self.navigationController
     }
     
@@ -56,11 +56,11 @@ class LearnVC: UIViewController {
         let manager = PopMenuManager.default
         manager.popMenuDelegate = self
         manager.actions = [
-            PopMenuDefaultAction(title: "写文章", image: UIImage(named: "writeEssay")),
-            PopMenuDefaultAction(title: "提问题", image: UIImage(named: "question")),
-            PopMenuDefaultAction(title: "推荐书", image: UIImage(named: "book")),
-            PopMenuDefaultAction(title: "写经验", image: UIImage(named: "exp")),
-            PopMenuDefaultAction(title: "荐资源", image: UIImage(named: "resource"))
+            PopMenuDefaultAction(title: "写文章", image: #imageLiteral(resourceName: "writeEssay")),
+            PopMenuDefaultAction(title: "提问题", image: #imageLiteral(resourceName: "question")),
+            PopMenuDefaultAction(title: "推荐书", image: #imageLiteral(resourceName: "book")),
+            PopMenuDefaultAction(title: "写经验", image: #imageLiteral(resourceName: "resource")),
+            PopMenuDefaultAction(title: "荐资源", image: #imageLiteral(resourceName: "exp"))
         ]
         manager.present(sourceView: sender)
     }

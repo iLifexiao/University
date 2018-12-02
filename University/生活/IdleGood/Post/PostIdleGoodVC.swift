@@ -26,7 +26,11 @@ class PostIdleGoodVC: FormViewController {
                     view.makeToast("帐号被封禁，请联系管理员", position: .top)
                 }
             case 1:
-                doPost()
+                if idleGood == nil {
+                    doPost()
+                } else {
+                    doPatch()
+                }
             default:
                 print("错误类型")
                 
@@ -37,6 +41,8 @@ class PostIdleGoodVC: FormViewController {
         }
     }
     
+    var idleGood: IdleGood?
+    private var beforeImage: UIImage?
     lazy private var parameters: Parameters = form.values() as Parameters
     let defaultImageURL = "/image/idlegoods/default.png"
     
@@ -48,18 +54,35 @@ class PostIdleGoodVC: FormViewController {
                 return
             }
             parameters["imageURLs"] = [newValue]
-            Alamofire.request(baseURL + "/api/v1/idlegood", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
-                if let self = self {
-                    switch response.result {
-                    case .success(let value):
-                        print(value)
-                        // 发布成功
-                        self.view.makeToast("发布成功，返回刷新查看", position: .top)
-                    case .failure(let error):
-                        self.view.makeToast("发布失败，请稍后再试", position: .top)
-                        print(error)
+            if idleGood == nil {
+                Alamofire.request(baseURL + "/api/v1/idlegood", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+                    if let self = self {
+                        switch response.result {
+                        case .success(let value):
+                            print(value)
+                            // 发布成功
+                            self.view.makeToast("发布成功，返回刷新查看", position: .top)
+                        case .failure(let error):
+                            self.view.makeToast("发布失败，请稍后再试", position: .top)
+                            print(error)
+                        }
+                        MBProgressHUD.hide(for: self.view, animated: true)
                     }
-                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+            } else {
+                Alamofire.request(baseURL + "/api/v1/idlegood/\(idleGood?.id ?? 0)", method: .patch, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON { [weak self] response in
+                    if let self = self {
+                        switch response.result {
+                        case .success(let value):
+                            print(value)
+                            // 发布成功
+                            self.view.makeToast("更新成功，返回刷新查看", position: .top)
+                        case .failure(let error):
+                            self.view.makeToast("更新失败，请稍后再试", position: .top)
+                            print(error)
+                        }
+                        MBProgressHUD.hide(for: self.view, animated: true)
+                    }
                 }
             }
             
@@ -76,11 +99,15 @@ class PostIdleGoodVC: FormViewController {
     }
     
     private func initData() {
-        
+        beforeImage = UIImage.fromURL(baseURL + (idleGood?.imageURLs?.first ?? defaultImageURL))
     }
     
     private func initUI() {
-        title = "发布闲置物品"
+        if idleGood == nil {
+            title = "发布闲置"
+        } else {
+            title = "更新闲置"
+        }
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "submit"), style: .plain, target: self, action: #selector(submit))
         initForm()
     }
@@ -90,9 +117,10 @@ class PostIdleGoodVC: FormViewController {
         form +++ Section("在这里填写物品的信息")
             <<< TextRow(){ row in
                 row.title = "标题"
+                row.value = idleGood?.title
                 row.placeholder = "简要说明出售的闲置物品"
                 row.add(rule: RuleRequired(msg: "标题不能为空"))
-                row.add(rule: RuleMaxLength(maxLength: 15, msg: "标题需小于15字"))
+                row.add(rule: RuleMaxLength(maxLength: 20, msg: "标题需小于20字"))
                 row.tag = "title"
                 }.cellUpdate { [weak self] cell, row in
                     if !row.isValid {
@@ -106,6 +134,7 @@ class PostIdleGoodVC: FormViewController {
             }
             <<< TextRow() {
                 $0.title = "类型"
+                $0.value = idleGood?.type
                 $0.placeholder = "手机、衣物、游戏..."
                 $0.add(rule: RuleRequired(msg: "类型不能为空"))
                 $0.add(rule: RuleMaxLength(maxLength: 4, msg: "类型需小于4字"))
@@ -122,6 +151,7 @@ class PostIdleGoodVC: FormViewController {
             }
             <<< IntRow() {
                 $0.title = "原价"
+                $0.value = Int(idleGood?.originalPrice ?? 0)
                 $0.placeholder = "购买时的价格"
                 $0.add(rule: RuleRequired(msg: "原价不能为空"))
                 $0.tag = "originalPrice"
@@ -137,6 +167,7 @@ class PostIdleGoodVC: FormViewController {
             }
             <<< IntRow() {
                 $0.title = "售价"
+                $0.value = Int(idleGood?.price ?? 0)
                 $0.placeholder = "现在出售的价格"
                 $0.add(rule: RuleRequired(msg: "售价不能为空"))
                 $0.tag = "price"
@@ -153,7 +184,7 @@ class PostIdleGoodVC: FormViewController {
             <<< ImageRow() { row in
                 row.title = "上传图片(可选)"
                 row.tag = "imageURLs"
-                row.placeholderImage = UIImage.fromURL(baseURL + defaultImageURL)
+                row.value = beforeImage
                 row.sourceTypes = [.PhotoLibrary, .Camera]
                 row.clearAction = .yes(style: UIAlertAction.Style.destructive)
             }
@@ -161,6 +192,7 @@ class PostIdleGoodVC: FormViewController {
             +++ Section("在这里详细说明你物品的亮点")
             <<< TextAreaRow() {
                 $0.title = "详细"
+                $0.value = idleGood?.content
                 $0.placeholder = "详细说明物品信息和联系方式"
                 $0.add(rule: RuleRequired(msg: "描述不能为空"))
                 $0.tag = "content"
@@ -205,8 +237,19 @@ class PostIdleGoodVC: FormViewController {
         parameters["userID"] = GlobalData.sharedInstance.userID
         
         let image = form.values()["imageURLs"] as? UIImage
-        if image == nil {
+        if image == beforeImage {
             imagePath = defaultImageURL
+        } else {
+            uploadImage(image!, type: "idlegoods")
+        }
+    }
+    
+    private func doPatch() {
+        parameters["userID"] = GlobalData.sharedInstance.userID
+        
+        let image = form.values()["imageURLs"] as? UIImage
+        if image == beforeImage {
+            imagePath = idleGood?.imageURLs?.first ?? ""
         } else {
             uploadImage(image!, type: "idlegoods")
         }
