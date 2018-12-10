@@ -57,19 +57,25 @@ extension SettingVC: UITableViewDelegate {
             let changePwdVC = ChangePwdVC()
             navigationController?.pushViewController(changePwdVC, animated: true)
         case 1:
-            let ctrl = UIAlertController(title: "温馨提示", message: "确定退出登录？\n将自动返回登录界面", preferredStyle: .alert)
-            let sureAction = UIAlertAction(title: "确定", style: .destructive) { action in
-                // 清空用户登录状态
-                exitUser()
-                // 跳转到登录界面
+            if GlobalData.sharedInstance.userID == 0 {
                 let loginSB = UIStoryboard(name: "Login", bundle: nil)
                 let loginVC = loginSB.instantiateViewController(withIdentifier: "LoginVC")
                 self.navigationController?.pushViewController(loginVC, animated: true)
+            } else {
+                let ctrl = UIAlertController(title: "温馨提示", message: "确定退出登录？\n将自动返回登录界面", preferredStyle: .alert)
+                let sureAction = UIAlertAction(title: "确定", style: .destructive) { action in
+                    // 清空用户登录状态
+                    exitUser()
+                    // 跳转到登录界面
+                    let loginSB = UIStoryboard(name: "Login", bundle: nil)
+                    let loginVC = loginSB.instantiateViewController(withIdentifier: "LoginVC")
+                    self.navigationController?.pushViewController(loginVC, animated: true)
+                }
+                let cancelAction = UIAlertAction(title: "取消", style: .cancel) { action in}
+                ctrl.addAction(sureAction)
+                ctrl.addAction(cancelAction)
+                present(ctrl, animated: true, completion: nil)
             }
-            let cancelAction = UIAlertAction(title: "取消", style: .cancel) { action in}
-            ctrl.addAction(sureAction)
-            ctrl.addAction(cancelAction)
-            present(ctrl, animated: true, completion: nil)
         case 2:
             let aboutSoftVC = AboutSoftVC()
             navigationController?.pushViewController(aboutSoftVC, animated: true)

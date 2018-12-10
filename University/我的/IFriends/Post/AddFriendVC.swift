@@ -54,7 +54,7 @@ class AddFriendVC: FormViewController {
     }
     
     private func initUI() {
-        title = "写私信"
+        title = "查找好友"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "done"), style: .plain, target: self, action: #selector(submit))
         initForm()
     }
@@ -81,6 +81,11 @@ class AddFriendVC: FormViewController {
     @objc private func submit() {
         let errors = form.validate()
         if errors.count == 0 {
+            let account = form.values()["account"] as! String
+            if !Regex.checkPhone(account) {
+                view.makeToast("帐号格式错误", position: .top)
+                return
+            }
             print("验证成功")
             checkUserStatus()
         } else {

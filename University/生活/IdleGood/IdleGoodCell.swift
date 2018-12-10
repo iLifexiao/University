@@ -46,8 +46,8 @@ class IdleGoodCell: UICollectionViewCell {
         contentLabel.text = idleGood.content
         contentLabel.layoutManager.allowsNonContiguousLayout = false
         typeButton.setTitle(idleGood.type, for: .normal)
-        priceLabel.text = String(idleGood.price)
-        originPriceLabel.text = String(idleGood.originalPrice)
+        priceLabel.text = String(Int(idleGood.price))
+        originPriceLabel.text = String(Int(idleGood.originalPrice))
     }
     
     override func prepareForReuse() {

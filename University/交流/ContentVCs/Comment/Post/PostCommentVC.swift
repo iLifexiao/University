@@ -42,14 +42,22 @@ class PostCommentVC: UIViewController {
     
     var type: String = "Essay"
     var commentID: Int = 0
-    
+    var preComment = ""
+    /*
+    typealias backValueBlock = (Comment) -> ()
+    var sendBackValue: backValueBlock?
+    */
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()        
     }
     
     private func initUI() {
-        title = "发表评论"
+        if preComment == "" {
+            title = "发表评论"
+        } else {
+            title = preComment
+        }
     }
     
     private func doPost(_ content: String) {
@@ -58,7 +66,7 @@ class PostCommentVC: UIViewController {
             "userID": GlobalData.sharedInstance.userID,
             "commentID": commentID,
             "type": type,
-            "content": content
+            "content": preComment == "" ? content : (preComment + "：" + content)
         ]
         
         MBProgressHUD.showAdded(to: view, animated: true)
@@ -68,7 +76,7 @@ class PostCommentVC: UIViewController {
                 case .success(let value):
                     print(value)
                     // 发布成功
-                    self.view.makeToast("评论成功，点击右下角去看看吧~", position: .top)
+                    self.view.makeToast("评论成功，返回查看吧~", position: .top)
                 case .failure(let error):
                     self.view.makeToast("评论失败，稍后再试", position: .top)
                     print(error)

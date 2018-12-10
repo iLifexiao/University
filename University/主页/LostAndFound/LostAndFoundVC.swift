@@ -16,6 +16,8 @@ import PopMenu
 class LostAndFoundVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     var losts: [LostAndFound] = []
     var images: [SKPhoto] = []
     private var currentPage = 1
@@ -57,6 +59,11 @@ class LostAndFoundVC: UIViewController {
             self?.loadMore()
             self?.collectionView.mj_footer.endRefreshing()
         }
+        
+        // 流式布局设置
+        let itemWidth = (ScreenWidth - 30) / 2
+        let itemHeight = CGFloat(350)
+        flowLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
     }
 
     

@@ -108,7 +108,7 @@ extension CampusVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let news = campusNews[indexPath.section]
         let detailEssayVC = DetailEssayVC()
-        detailEssayVC.compusNews = news
+        detailEssayVC.campusNews = news
         detailEssayVC.type = .campusNews
         detailEssayVC.id = news.id ?? 0
         ViewManager.share.secondNVC?.pushViewController(detailEssayVC, animated: true)

@@ -85,6 +85,5 @@ class BandingStudentVC: UIViewController {
     @IBAction func exitKeyboard(_ sender: UITapGestureRecognizer) {
         numberTextField.resignFirstResponder()
         pwdTextField.resignFirstResponder()
-    }
-    
+    }    
 }

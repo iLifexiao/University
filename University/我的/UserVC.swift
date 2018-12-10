@@ -28,6 +28,14 @@ class UserVC: UIViewController {
             return 0
         }
     }
+    private var unreadMessageCount: Int {
+        set {
+            userView?.setUnreadMessage(count: newValue)
+        }
+        get {
+            return 0
+        }
+    }
     private var essayCount: Int {
         set {
             userView?.setEssayCount(newValue)
@@ -116,6 +124,18 @@ class UserVC: UIViewController {
             case .success(let value):
                 let json = JSON(value)
                 self.messageCount = json["data"]["value"].intValue
+            case .failure(let error):
+                print(error)
+            }
+        }
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/messages/unread/count", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.unreadMessageCount = json["data"]["value"].intValue
             case .failure(let error):
                 print(error)
             }

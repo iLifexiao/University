@@ -60,6 +60,11 @@ class CommentView: UIView {
     }
     
     @IBAction func likeBtnPress(_ sender: UIButton) {
+        // 检测用户是否登录，该功能具有侵入性，在复用时，需要注意
+        if GlobalData.sharedInstance.userID == 0 {
+            self.superview?.makeToast("请先登录", position: .top)
+            return
+        }
         // UI改变
         if sender.isSelected {
             sender.isSelected = false

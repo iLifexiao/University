@@ -41,20 +41,20 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="XZb-c2-a4X"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <state key="normal" title="书籍">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原价:59" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPe-rg-DEe">
-                        <rect key="frame" x="126.5" y="305.5" width="43.5" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <rect key="frame" x="130" y="306.5" width="40" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 39" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNv-at-f1W">
-                        <rect key="frame" x="79.5" y="296" width="42" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <rect key="frame" x="87" y="298.5" width="38" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -111,6 +111,7 @@
                 <constraint firstItem="7PE-xE-4am" firstAttribute="trailing" secondItem="KeQ-UF-xay" secondAttribute="trailing" id="8rr-u2-kAV"/>
                 <constraint firstAttribute="trailing" secondItem="yPe-rg-DEe" secondAttribute="trailing" constant="10" id="Ehg-mC-Ml7"/>
                 <constraint firstItem="7PE-xE-4am" firstAttribute="bottom" secondItem="MkU-Y6-QpR" secondAttribute="bottom" id="G4I-vb-ED6"/>
+                <constraint firstItem="CNv-at-f1W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="t59-3T-1oM" secondAttribute="trailing" constant="5" id="GeV-ex-Hp0"/>
                 <constraint firstAttribute="trailing" secondItem="CRI-gv-aZZ" secondAttribute="trailing" id="P4d-dH-l5V"/>
                 <constraint firstAttribute="trailing" secondItem="KeQ-UF-xay" secondAttribute="trailing" constant="10" id="RMA-7e-oth"/>
                 <constraint firstItem="MkU-Y6-QpR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Vef-u8-PjP"/>

@@ -59,25 +59,28 @@
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns2-Mj-q0p" userLabel="redDot">
-                                    <rect key="frame" x="71" y="15" width="8" height="8"/>
+                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwp-Wq-lMx">
+                                    <rect key="frame" x="70" y="8" width="16" height="16"/>
                                     <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="8" id="8rF-jA-dz5"/>
-                                        <constraint firstAttribute="width" constant="8" id="HJA-hw-4da"/>
+                                        <constraint firstAttribute="height" constant="16" id="jSa-0u-05A"/>
+                                        <constraint firstAttribute="width" constant="16" id="mrp-O2-IHj"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="4"/>
+                                            <integer key="value" value="8"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
-                                </view>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Cwp-Wq-lMx" secondAttribute="trailing" constant="8" id="7Bo-22-Iz8"/>
+                                <constraint firstItem="Cwp-Wq-lMx" firstAttribute="top" secondItem="Hcv-uo-L2b" secondAttribute="top" constant="8" id="HDH-jQ-I7d"/>
                                 <constraint firstItem="LTZ-Cb-Rex" firstAttribute="centerX" secondItem="Hcv-uo-L2b" secondAttribute="centerX" id="MiR-x6-oNX"/>
-                                <constraint firstAttribute="trailing" secondItem="Ns2-Mj-q0p" secondAttribute="trailing" constant="15" id="S20-m9-ISA"/>
-                                <constraint firstItem="Ns2-Mj-q0p" firstAttribute="top" secondItem="Hcv-uo-L2b" secondAttribute="top" constant="15" id="dES-kb-DHU"/>
                                 <constraint firstItem="QEf-0Q-7Rv" firstAttribute="centerX" secondItem="Hcv-uo-L2b" secondAttribute="centerX" id="keL-kB-n1Y"/>
                                 <constraint firstItem="LTZ-Cb-Rex" firstAttribute="top" secondItem="Hcv-uo-L2b" secondAttribute="top" constant="10" id="tOU-Xz-1GI"/>
                                 <constraint firstItem="QEf-0Q-7Rv" firstAttribute="top" secondItem="LTZ-Cb-Rex" secondAttribute="bottom" constant="10" id="zLS-ad-2iT"/>
@@ -195,7 +198,7 @@
                 <outlet property="fansLabel" destination="ie1-Mo-f1a" id="4fw-9c-uK5"/>
                 <outlet property="messageButton" destination="LTZ-Cb-Rex" id="DM9-ZH-wZh"/>
                 <outlet property="messageLabel" destination="QEf-0Q-7Rv" id="Sxf-l4-kb2"/>
-                <outlet property="redDotView" destination="Ns2-Mj-q0p" id="w6I-Zh-UBB"/>
+                <outlet property="redDotLabel" destination="Cwp-Wq-lMx" id="05o-bd-hzB"/>
                 <outlet property="userBGImageView" destination="Bbo-rQ-4oE" id="1WA-Nc-YSw"/>
                 <outlet property="userHeadImageView" destination="IDy-eT-70l" id="3a0-WM-UDf"/>
                 <outlet property="userNameLabel" destination="1Ca-d8-9wh" id="R73-Am-dsl"/>

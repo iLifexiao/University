@@ -154,6 +154,7 @@ extension DetailResourceVC: CommentViewDelegate {
         let commentVC = CommentVC()
         commentVC.type = "Resource"
         commentVC.commentID = id
+        commentVC.authorID = resource?.userID ?? 0
         
         if presentingViewController == nil {
             navigationController?.pushViewController(commentVC, animated: true)

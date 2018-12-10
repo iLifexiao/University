@@ -60,6 +60,7 @@
 		8B36CAB821AAA414001B62DB /* AboutSoftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CAB621AAA414001B62DB /* AboutSoftVC.swift */; };
 		8B36CAB921AAA414001B62DB /* AboutSoftVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B36CAB721AAA414001B62DB /* AboutSoftVC.xib */; };
 		8B36CAC021AAE618001B62DB /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36CABF21AAE618001B62DB /* Holiday.swift */; };
+		8B48996F21B6CB0F00CB716A /* RegexMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B48996E21B6CB0F00CB716A /* RegexMethod.swift */; };
 		8B53CB7921A3CF83002CE03C /* PostHonorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB7821A3CF83002CE03C /* PostHonorVC.swift */; };
 		8B53CB7D21A3DA84002CE03C /* AnalyseGradeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53CB7B21A3DA84002CE03C /* AnalyseGradeVC.swift */; };
 		8B53CB7E21A3DA84002CE03C /* AnalyseGradeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B53CB7C21A3DA84002CE03C /* AnalyseGradeVC.xib */; };
@@ -358,6 +359,7 @@
 		8B36CAB621AAA414001B62DB /* AboutSoftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSoftVC.swift; sourceTree = "<group>"; };
 		8B36CAB721AAA414001B62DB /* AboutSoftVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutSoftVC.xib; sourceTree = "<group>"; };
 		8B36CABF21AAE618001B62DB /* Holiday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
+		8B48996E21B6CB0F00CB716A /* RegexMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexMethod.swift; sourceTree = "<group>"; };
 		8B53CB7821A3CF83002CE03C /* PostHonorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHonorVC.swift; sourceTree = "<group>"; };
 		8B53CB7B21A3DA84002CE03C /* AnalyseGradeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyseGradeVC.swift; sourceTree = "<group>"; };
 		8B53CB7C21A3DA84002CE03C /* AnalyseGradeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalyseGradeVC.xib; sourceTree = "<group>"; };
@@ -1632,6 +1634,7 @@
 				8B7C75DE219DB09500FCCD75 /* GlobalData.swift */,
 				8BAEA354217EF89000FC2CBB /* LaunchScreen.storyboard */,
 				8B6D2DBE21ABA76A00A01EF8 /* GlobalMethod.swift */,
+				8B48996E21B6CB0F00CB716A /* RegexMethod.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -2210,6 +2213,7 @@
 				8B7C75CB219C840700FCCD75 /* PartTimeJobCell.swift in Sources */,
 				8B64B47721987C37005C2E07 /* PropertyManager.swift in Sources */,
 				8B64B542219A7003005C2E07 /* DetailInfoVC.swift in Sources */,
+				8B48996F21B6CB0F00CB716A /* RegexMethod.swift in Sources */,
 				8B53CBA821A4DF67002CE03C /* AddFriendVC.swift in Sources */,
 				8B7C75D3219D17F000FCCD75 /* ForgetPwdVC.swift in Sources */,
 				8B64B47821987C37005C2E07 /* SchoolStore.swift in Sources */,

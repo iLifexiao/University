@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IdleGoodVC" customModule="University" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Snb-4M-fVS" id="s8Y-Xz-svf"/>
+                <outlet property="flowLayout" destination="l7X-r1-37b" id="ofQ-r7-wxm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

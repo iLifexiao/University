@@ -17,8 +17,9 @@ class CommentVC: UIViewController {
     
     // 根据不同的 类型/具体的ID 来获取评论信息
     var type: String = "Essay"
-    var commentID: Int = 0
+    var commentID = 0
     var comments: [Comment] = []
+    var authorID = 0
     private var currentPage = 1
     
     // 在评论过多的时候，复用，这时需要重新设置状态
@@ -124,6 +125,18 @@ class CommentVC: UIViewController {
 }
 
 extension CommentVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let postCommentVC = PostCommentVC()
+//        postCommentVC.sendBackValue = { comment in
+//            self.comments.insert(comment, at: 0)
+//            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .bottom)
+//        }
+        postCommentVC.preComment = "回复 " + "\(comments.count - indexPath.row)# ："
+        postCommentVC.type = type
+        postCommentVC.commentID = commentID
+        navigationController?.pushViewController(postCommentVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -137,9 +150,9 @@ extension CommentVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
         
-        cell.setupModel(comments[indexPath.row])
+        cell.setupModel(comments[indexPath.row], authorID: authorID)
         // 评论回复，通过引用楼层
-        cell.floorLabel.text = String(indexPath.row) + "#"
+        cell.floorLabel.text = String(comments.count - indexPath.row) + "#"
         cell.delegate = self
         
         cell.selectionStyle = .none
@@ -151,6 +164,10 @@ extension CommentVC: UITableViewDataSource {
 // 直接通过更新数据源来完成，如何保证点击的按钮颜色不被改变「用数组保存状态」
 extension CommentVC: CommentCellDelegate {
     func commentLike(likeButton: UIButton, likeLabel: UILabel, commentID: String) {
+        if GlobalData.sharedInstance.userID == 0 {
+            view.makeToast("请先登录", position: .top)
+            return
+        }
         // 更新评论的点赞数量(考虑：数据源、复用)
         if likeButton.isSelected {
             likeButton.isSelected = false
@@ -178,7 +195,10 @@ extension CommentVC: CommentCellDelegate {
 // MARK: 空视图-代理
 extension CommentVC: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        self.view.makeToast("快来发表你的想法吧~", position: .top)
+        let postCommentVC = PostCommentVC()
+        postCommentVC.type = type
+        postCommentVC.commentID = commentID
+        navigationController?.pushViewController(postCommentVC, animated: true)
     }
 }
 

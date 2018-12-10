@@ -24,7 +24,7 @@ class UserView: UIView {
     @IBOutlet weak var collectionButton: UIButton!
     
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var redDotView: UIView!    
+    @IBOutlet weak var redDotLabel: UILabel!
     @IBOutlet weak var essayLabel: UILabel!
     @IBOutlet weak var fansLabel: UILabel!
     @IBOutlet weak var collectionLabel: UILabel!
@@ -49,8 +49,13 @@ class UserView: UIView {
         userNameLabel.text = name
     }
     
-    func setRedDot(hide: Bool) {
-        redDotView.isHidden = hide
+    func setUnreadMessage(count: Int) {
+        if count != 0 {
+            redDotLabel.isHidden = false
+            redDotLabel.text = String(count)
+        } else {
+            redDotLabel.isHidden = true
+        }
     }
     
     func setMessageCount(_ count: Int?) {

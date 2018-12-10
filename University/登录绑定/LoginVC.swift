@@ -127,6 +127,14 @@ class LoginVC: UIViewController {
         if password == "" {
             view.makeToast("密码不能为空", position: .top)
             return
+        }        
+        if !Regex.checkPhone(account!) {
+            view.makeToast("帐号格式错误", position: .top)
+            return
+        }
+        if !Regex.checkPwd(password!) {
+            view.makeToast("密码需为6-16位英文、数字、_.*的组合", position: .top)
+            return
         }
         
         // 如果设置了自动登录，记录用户输入的帐号密码，否则清空

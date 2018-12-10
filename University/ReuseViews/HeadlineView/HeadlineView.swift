@@ -40,7 +40,7 @@ class HeadlineView: UIView {
     weak var delegate: HeadlineViewDelegate?
     
     // 计算属性
-    var currentNewsIndex: Int {
+    private var currentNewsIndex: Int {
         set {
             // 循环操作
             if newValue >= news.count {

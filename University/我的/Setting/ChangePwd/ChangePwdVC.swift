@@ -94,6 +94,11 @@ class ChangePwdVC: FormViewController {
         let errors = form.validate()
         if errors.count == 0 {
             print("验证成功")
+            let password = form.values()["newPassword"] as! String
+            if !Regex.checkPwd(password) {
+                view.makeToast("密码需为6-16位英文、数字、_.*的组合", position: .top)
+                return
+            }
             doPost()
         } else {
             view.makeToast("修改密码格式错误，请检查红色标记", position: .top)

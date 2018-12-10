@@ -28,17 +28,18 @@ class IMCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupModel(_ msg: Message) {
+    func setupModel(_ msg: Message, unReadCount: Int) {
         userHeadImageView.sd_setImage(with: URL(string: baseURL + (msg.profilephoto ?? "/image/head/default.png")), completed: nil)
         nameLabel.text = msg.nickname
         contentLabel.text = msg.content
         timeLabel.text = unixTime2StringDate(msg.createdAt ?? 0)
         
-//        if msg.status == 1 {
-//            newMessageLabel.isHidden = false
-//        } else {
-//            newMessageLabel.isHidden = true
-//        }
+        if unReadCount != 0 {
+            newMessageLabel.isHidden = false
+            newMessageLabel.text = String(unReadCount)
+        } else {
+            newMessageLabel.isHidden = true
+        }
     }
     
     override func prepareForReuse() {

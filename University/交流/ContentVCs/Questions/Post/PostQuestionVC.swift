@@ -77,7 +77,7 @@ class PostQuestionVC: FormViewController {
                 row.value = question?.title
                 row.placeholder = "简要描述问题"
                 row.add(rule: RuleRequired(msg: "问题不能为空"))
-                row.add(rule: RuleMaxLength(maxLength: 15, msg: "问题需小于15字"))
+                row.add(rule: RuleMaxLength(maxLength: 25, msg: "问题需小于25字"))
                 row.tag = "title"
                 }.cellUpdate { [weak self] cell, row in
                     if !row.isValid {

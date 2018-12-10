@@ -15,7 +15,7 @@ class AnalyseGradeVC: UIViewController {
     
     // 成绩
     var lessonGrades: [LessonGrade] = []
-    private var passValue = 50
+    private var passValue = 50.0
     private var points: [Float] = []
     
     var sectionTitles = ["通过率", "绩点图"]
@@ -43,7 +43,7 @@ class AnalyseGradeVC: UIViewController {
             }
             points.append(lesson.gradePoint)
         }
-        passValue = passCount / lessonGrades.count * 100
+        passValue = Double(passCount) * 100.0 / Double(lessonGrades.count)
     }
     
     private func initUI() {

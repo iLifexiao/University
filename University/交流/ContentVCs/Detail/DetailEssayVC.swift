@@ -64,7 +64,7 @@ class DetailEssayVC: UIViewController {
     }
     
     var essay: Essay?
-    var compusNews: CampusNews?
+    var campusNews: CampusNews?
     var experience: Experience?
     var answer: Answer?
     
@@ -103,10 +103,10 @@ class DetailEssayVC: UIViewController {
                 markdownView.load(markdown: essay.content)
             }
         case .campusNews:
-            if let compusNews = compusNews {
+            if let campusNews = campusNews {
                 title = "新闻详情"
-                commentView.setupCommentViewData(readCount: compusNews.readCount ?? 0, likeCount: compusNews.likeCount ?? 0, commentCount: compusNews.commentCount ?? 0)
-                markdownView.load(markdown: compusNews.content)
+                commentView.setupCommentViewData(readCount: campusNews.readCount ?? 0, likeCount: campusNews.likeCount ?? 0, commentCount: campusNews.commentCount ?? 0)
+                markdownView.load(markdown: campusNews.content)
             }
         case .experience:
             if let experience = experience {
@@ -257,6 +257,19 @@ extension DetailEssayVC: CommentViewDelegate {
         let commentVC = CommentVC()
         commentVC.type = type.tableName
         commentVC.commentID = id
+        
+        // 在评论列表中显示作者的回复
+        switch type {
+        case .essay:
+            commentVC.authorID = essay!.userID
+        case .campusNews:
+            commentVC.authorID = 0
+        case .experience:
+            commentVC.authorID = experience!.userID
+        case .answer:
+            commentVC.authorID = answer!.userID
+        }
+        
         
         if presentingViewController == nil {
             navigationController?.pushViewController(commentVC, animated: true)

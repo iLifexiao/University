@@ -156,6 +156,7 @@ extension DetailBookVC: CommentViewDelegate {
         let commentVC = CommentVC()
         commentVC.type = "Book"
         commentVC.commentID = id
+        commentVC.authorID = book?.userID ?? 0
         
         if presentingViewController == nil {
             navigationController?.pushViewController(commentVC, animated: true)

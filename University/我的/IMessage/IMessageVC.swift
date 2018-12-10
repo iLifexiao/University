@@ -19,11 +19,12 @@ class IMessageVC: UIViewController {
 //    private var sendMessages: [Message] = []
     private var messageDict: [Int: [Message]] = [:]
     private var message: [[Message]] = []
+    private var unReadCountInMessages: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initUI()
         initData()
+        initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,12 +85,27 @@ class IMessageVC: UIViewController {
                         msgArray.append(msg)
                         self.messageDict[msg.friendID] = msgArray
                     }
+                    
+                    // 记录字典遍历的次数
+                    var index = 0
+                    // 填充相应的占位符，避免数组越界
+                    self.unReadCountInMessages = Array(repeating: 0, count: self.messageDict.count)
+                    
                     // 取出 & 排序，让UI显示最后一条
                     for (_, msgs) in self.messageDict {
                         var msgs = msgs
                         msgs.sort { (msg1, msg2) -> Bool in
                             msg1.createdAt! < msg2.createdAt!
                         }
+                        // 遍历信息集合中的未读信息数量
+                        for msg in msgs {
+                            if msg.fromUserID != GlobalData.sharedInstance.userID && msg.status == 1 {
+                                var count = self.unReadCountInMessages[index]
+                                count += 1
+                                self.unReadCountInMessages[index] = count
+                            }
+                        }
+                        index += 1
                         self.message.append(msgs)
                     }
                     self.tableView.reloadData()
@@ -116,25 +132,18 @@ extension IMessageVC: UITableViewDelegate {
         detailMsgVC.messages = messages
         detailMsgVC.friendID = lastMsg?.friendID ?? 0
         detailMsgVC.nickName = lastMsg?.nickname
+        // 清空信息标记
+        if unReadCountInMessages[indexPath.section] != 0 {
+            unReadCountInMessages[indexPath.section] = 0
+            tableView.reloadRows(at: [indexPath], with: .bottom)
+            detailMsgVC.hasUnreadMessage = true
+        }
         navigationController?.pushViewController(detailMsgVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        switch section {
-//        case 0:
-//            return nil
-//        case 1:
-//            let tipsHeaderView = Bundle.main.loadNibNamed("TipsHeaderView", owner: nil, options: nil)?[0] as! TipsHeaderView
-//            tipsHeaderView.setTips(title: "已发信息")
-//            return tipsHeaderView
-//        default:
-//            return nil
-//        }
-//    }
     
     // HeadView-height
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -155,7 +164,7 @@ extension IMessageVC: UITableViewDataSource {
         // 取得最后一条信息
         let lastMsg = message[indexPath.section].last
         let cell = tableView.dequeueReusableCell(withIdentifier: "IMCell", for: indexPath) as! IMCell
-        cell.setupModel(lastMsg!)
+        cell.setupModel(lastMsg!, unReadCount: unReadCountInMessages[indexPath.section])
         cell.selectionStyle = .none
         return cell
     }

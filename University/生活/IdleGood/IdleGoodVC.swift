@@ -16,6 +16,8 @@ import PopMenu
 class IdleGoodVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
 //    let idleCell = "idleCell"
     var idleGoods: [IdleGood] = []
     var images: [SKPhoto] = []
@@ -57,9 +59,15 @@ class IdleGoodVC: UIViewController {
             self?.loadMore()
             self?.collectionView.mj_footer.endRefreshing()
         }
+        
+        // 流式布局
+        let itemWidth = (ScreenWidth - 30) / 2
+        let itemHeight = CGFloat(330)
+        flowLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)        
     }
         
     private func getIdleGoods() {
+        currentPage = 1
         MBProgressHUD.showAdded(to: view, animated: true)
         Alamofire.request(baseURL + "/api/v1/idlegood/split?page=1", headers: headers).responseJSON { [weak self] response in
             if let self = self {

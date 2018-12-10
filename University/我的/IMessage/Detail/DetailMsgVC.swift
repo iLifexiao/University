@@ -19,9 +19,12 @@ class DetailMsgVC: UIViewController {
     var messages: [Message] = []
     var nickName: String?
     var friendID: Int = 0
+    
+    var hasUnreadMessage = false
 
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        initData()
         initUI()
     }
     
@@ -32,6 +35,13 @@ class DetailMsgVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         scrollToBottom()
+    }
+    
+    private func initData() {
+        // 当存在未读私信时
+        if hasUnreadMessage {
+            readAll()
+        }
     }
 
     private func initUI() {
@@ -53,16 +63,22 @@ class DetailMsgVC: UIViewController {
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
         
-//        // 清空-空Cell
+        // 清空-空Cell
         tableView.tableFooterView = UIView()
         
-        // 上拉刷新
         tableView.mj_header = MJRefreshNormalHeader { [weak self] in
-            // 重新获取
             self?.getMessages()
             self?.tableView.mj_header.endRefreshing()
             self?.view.makeToast("刷新成功", position: .top)
         }
+    }
+    
+    private func readAll() {
+        let parameters: Parameters = [
+            "userID": GlobalData.sharedInstance.userID,
+            "friendID": friendID
+        ]                
+        Alamofire.request(baseURL + "/api/v1/message/readall", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
     }
     
     private func getMessages() {
@@ -88,7 +104,7 @@ class DetailMsgVC: UIViewController {
                     self.tableView.reloadData()
                     self.scrollToBottom()
                 case .failure(let error):
-                    self.view.makeToast("私信发送失败，请稍后再试", position: .top)
+                    self.view.makeToast("聊天记录加载失败，请稍后再试", position: .top)
                     print(error)
                 }
                 MBProgressHUD.hide(for: self.view, animated: true)
@@ -191,39 +207,33 @@ extension DetailMsgVC: UITableViewDataSource {
     }
     
     // 侧滑删除功能
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let msg = messages[indexPath.row]
-        // 执行删除操作
-        // 删除操作的API最好要返回相应信息
-        Alamofire.request(baseURL + "/api/v1/message/\(msg.id ?? 0)", method: .delete, headers: headers).responseJSON { [weak self] response in
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "删除") { [weak self] (delete, index) in
             guard let self = self else {
                 return
             }
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                // 需要保证网络删除成功后，再删除本地
-                if json["status"].intValue == 1 {
-                    self.messages.remove(at: indexPath.row)
-                    self.tableView.reloadData()
+            let msg = self.messages[indexPath.section]
+            // 执行删除操作
+            // 删除操作的API最好要返回相应信息
+            Alamofire.request(baseURL + "/api/v1/message/\(msg.id ?? 0)/logicdel", method: .patch, headers: headers).responseJSON { [weak self] response in
+                guard let self = self else {
+                    return
                 }
-                self.view.makeToast(json["message"].stringValue, position: .top)
-            case .failure(let error):
-                self.view.makeToast("删除失败，稍后再试", position: .top)
-                print(error)
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    // 需要保证网络删除成功后，再删除本地
+                    if json["status"].intValue == 1 {
+                        self.messages.remove(at: indexPath.section)
+                        self.tableView.reloadData()
+                    }
+                    self.view.makeToast(json["message"].stringValue, position: .top)
+                case .failure(let error):
+                    self.view.makeToast("删除失败，稍后再试", position: .top)
+                    print(error)
+                }
             }
         }
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "删除"
+        return [deleteAction]
     }
 }

@@ -19,7 +19,9 @@ class CommentCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var floorLabel: UILabel!    
+    @IBOutlet weak var floorLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    
     
     weak var delegate: CommentCellDelegate?
     var commentID: String?
@@ -34,13 +36,18 @@ class CommentCell: UITableViewCell {
         
     }
     
-    func setupModel(_ comment: Comment) {
+    func setupModel(_ comment: Comment, authorID: Int) {
         commentID = String(comment.id ?? 0)
         headImageView.sd_setImage(with: URL(string: baseURL + (comment.profilephoto ?? "/image/head/default.png")), completed: nil)
         nameLabel.text = comment.nickname
         timeLabel.text = unixTime2StringDate(comment.createdAt ?? 0)
         likeLabel.text = String(comment.likeCount ?? 0)
         commentLabel.text = String(comment.content)
+        if comment.userID == authorID {
+            authorLabel.isHidden = false
+        } else {
+            authorLabel.isHidden = true
+        }        
     }
     
     override func prepareForReuse() {

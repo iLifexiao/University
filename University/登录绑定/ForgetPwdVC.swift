@@ -86,6 +86,14 @@ class ForgetPwdVC: UIViewController {
             view.makeToast("两次密码不一致", position: .top)
             return
         }
+        if !Regex.checkPhone(account!) {
+            view.makeToast("帐号格式错误", position: .top)
+            return
+        }
+        if !Regex.checkPwd(newPassword!) {
+            view.makeToast("密码需为6-16位英文、数字、_.*的组合", position: .top)
+            return
+        }
         
         doChangePwd(account: account!, password: newPassword!, code: code!)
     }
