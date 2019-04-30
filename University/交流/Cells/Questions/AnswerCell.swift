@@ -34,7 +34,7 @@ class AnswerCell: UITableViewCell {
         id = String(answer.id ?? 0)
         headImageView.sd_setImage(with: URL(string: baseURL + (answer.profilephoto ?? "/image/head/default.png")), completed: nil)
         nameLabel.text = answer.nickname
-        timeLabel.text = unixTime2StringDate(answer.createdAt ?? 0)
+        timeLabel.text = friendDateByUnixTime(answer.createdAt ?? 0)
         answerLabel.text = answer.content
         readCountLabel.text = String(answer.readCount ?? 0) + " 阅读"
         likeCountLabel.text = String(answer.likeCount ?? 0) + " 喜欢"

@@ -32,7 +32,7 @@ class IMCell: UITableViewCell {
         userHeadImageView.sd_setImage(with: URL(string: baseURL + (msg.profilephoto ?? "/image/head/default.png")), completed: nil)
         nameLabel.text = msg.nickname
         contentLabel.text = msg.content
-        timeLabel.text = unixTime2StringDate(msg.createdAt ?? 0)
+        timeLabel.text = friendDateByUnixTime(msg.createdAt ?? 0)
         
         if unReadCount != 0 {
             newMessageLabel.isHidden = false

@@ -36,7 +36,7 @@ class LostAndFoundCell: UICollectionViewCell {
         userID = lost.userID
         userHeadButton.setImage(UIImage.fromURL(baseURL + (lost.profilephoto ?? "/image/head/default.png")), for: .normal)
         nameLabel.text = lost.nickname
-        sendTimeLabel.text = unixTime2StringDate(lost.createdAt ?? 0)
+        sendTimeLabel.text = friendDateByUnixTime(lost.createdAt ?? 0)
         
         iconImageView.sd_setImage(with: URL(string: baseURL + (lost.imageURL?[0])!), completed: nil)
         titleLabel.text = lost.title

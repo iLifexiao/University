@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2850C7200F5675955E4B4D96 /* Pods_UniversityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB131C05EFFBB21E33E5C1B9 /* Pods_UniversityUITests.framework */; };
 		4611736C356E707FC6CE086C /* Pods_University.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9501AE27AA40D52E090DB849 /* Pods_University.framework */; };
+		8B0C0B4021C33F8800FEDC31 /* Hoedown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0C0B3F21C33F8800FEDC31 /* Hoedown.framework */; };
+		8B0C0B4221C33F9600FEDC31 /* SwiftHoedown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0C0B4121C33F9600FEDC31 /* SwiftHoedown.framework */; };
 		8B0EF30A2182F197000EA64E /* RecommandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0EF3082182F197000EA64E /* RecommandVC.swift */; };
 		8B0EF30B2182F197000EA64E /* RecommandVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0EF3092182F197000EA64E /* RecommandVC.xib */; };
 		8B0EF30E2182F1E8000EA64E /* FocusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0EF30C2182F1E8000EA64E /* FocusVC.swift */; };
@@ -308,6 +310,8 @@
 		6360141ADFF2DAC90E54A364 /* Pods-University.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-University.debug.xcconfig"; path = "Target Support Files/Pods-University/Pods-University.debug.xcconfig"; sourceTree = "<group>"; };
 		7AE10B5202AAC32A3941E7F5 /* Pods_UniversityTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UniversityTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		828E447D048F6F683ECCFAA7 /* Pods-University.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-University.release.xcconfig"; path = "Target Support Files/Pods-University/Pods-University.release.xcconfig"; sourceTree = "<group>"; };
+		8B0C0B3F21C33F8800FEDC31 /* Hoedown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hoedown.framework; path = Carthage/Build/iOS/Hoedown.framework; sourceTree = "<group>"; };
+		8B0C0B4121C33F9600FEDC31 /* SwiftHoedown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHoedown.framework; path = Carthage/Build/iOS/SwiftHoedown.framework; sourceTree = "<group>"; };
 		8B0EF3082182F197000EA64E /* RecommandVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandVC.swift; sourceTree = "<group>"; };
 		8B0EF3092182F197000EA64E /* RecommandVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommandVC.xib; sourceTree = "<group>"; };
 		8B0EF30C2182F1E8000EA64E /* FocusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusVC.swift; sourceTree = "<group>"; };
@@ -596,6 +600,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B0C0B4221C33F9600FEDC31 /* SwiftHoedown.framework in Frameworks */,
+				8B0C0B4021C33F8800FEDC31 /* Hoedown.framework in Frameworks */,
 				4611736C356E707FC6CE086C /* Pods_University.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,6 +628,8 @@
 		38FA68BC0DDCCF1F0541D8AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B0C0B4121C33F9600FEDC31 /* SwiftHoedown.framework */,
+				8B0C0B3F21C33F8800FEDC31 /* Hoedown.framework */,
 				9501AE27AA40D52E090DB849 /* Pods_University.framework */,
 				7AE10B5202AAC32A3941E7F5 /* Pods_UniversityTests.framework */,
 				EB131C05EFFBB21E33E5C1B9 /* Pods_UniversityUITests.framework */,
@@ -1804,6 +1812,7 @@
 				8BAEA345217EF88F00FC2CBB /* Frameworks */,
 				8BAEA346217EF88F00FC2CBB /* Resources */,
 				399B563ED19ABA7E59C40DEF /* [CP] Embed Pods Frameworks */,
+				8B0C0B4321C33F9E00FEDC31 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2073,6 +2082,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/WXImageCompress/WXImageCompress.framework",
+				"${BUILT_PRODUCTS_DIR}/markymark/markymark.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -2098,6 +2108,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WXImageCompress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/markymark.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2147,6 +2158,25 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8B0C0B4321C33F9E00FEDC31 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Hoedown.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftHoedown.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2505,6 +2535,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 54AK3K68R5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = University/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2528,6 +2562,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 54AK3K68R5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = University/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

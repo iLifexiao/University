@@ -39,7 +39,7 @@ class IdleGoodCell: UICollectionViewCell {
         userID = idleGood.userID
         userHeadButton.setImage(UIImage.fromURL(baseURL + (idleGood.profilephoto ?? "/image/head/default.png")), for: .normal)
         nameLabel.text = idleGood.nickname
-        sendTimeLabel.text = unixTime2StringDate(idleGood.createdAt ?? 0)
+        sendTimeLabel.text = friendDateByUnixTime(idleGood.createdAt ?? 0)
         
         iconImageView.sd_setImage(with: URL(string: baseURL + (idleGood.imageURLs?[0])!), completed: nil)
         titleLabel.text = idleGood.title

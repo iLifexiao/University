@@ -61,7 +61,7 @@ extension WebVC: WKNavigationDelegate{
     // 页面开始加载时调用
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!){
         title = "加载中..."
-        MBProgressHUD.showAdded(to: view, animated: true)
+//        MBProgressHUD.showAdded(to: view, animated: true)
         // 获取网页的progress
         UIView.animate(withDuration: 0.5) {
             self.progressView.progress = Float(self.webView.estimatedProgress)
@@ -75,9 +75,9 @@ extension WebVC: WKNavigationDelegate{
     }
     // 页面加载完成之后调用
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
-        /// 获取网页title
+        // 获取网页title
         self.title = self.webView.title
-        MBProgressHUD.hide(for: view, animated: true)
+//        MBProgressHUD.hide(for: view, animated: true)
         
         UIView.animate(withDuration: 0.5) {
             self.progressView.progress = 1.0

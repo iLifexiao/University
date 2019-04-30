@@ -51,8 +51,8 @@ class DetailUserVC: UIViewController {
                 userInfo.sex ?? "保密",
                 String(userInfo.age ?? 0),
                 userInfo.type  ?? "无",
-                userInfo.phone  ?? "无",
-                userInfo.email ?? "无"
+                "保密",
+                "保密"
             ]
             self.headImageView.sd_setImage(with: URL(string: baseURL + userInfo.profilephoto), completed: nil)
             self.nameLabel.text = userInfo.nickname
@@ -108,8 +108,8 @@ class DetailUserVC: UIViewController {
                     userInfo.sex ?? "保密",
                     String(userInfo.age ?? 0),
                     userInfo.type  ?? "无",
-                    userInfo.phone  ?? "无",
-                    userInfo.email ?? "无"
+                    "保密",
+                    "保密"
                 ]
                 MBProgressHUD.hide(for: self.view, animated: true)
                 self.tableView.reloadData()
@@ -123,7 +123,7 @@ class DetailUserVC: UIViewController {
     
     @objc private func goEditUserInfo() {
         guard let userInfo = userInfo else {
-            view.makeToast("找不到可编辑的用户信息")
+            view.makeToast("找不到可编辑的用户信息", position: .top)
             return
         }
         let editUserVC =  EditUserVC()

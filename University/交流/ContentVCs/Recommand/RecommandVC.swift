@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
+@_exported import Alamofire
+@_exported import SwiftyJSON
 import Toast_Swift
 
 class RecommandVC: UIViewController {
@@ -108,7 +108,7 @@ class RecommandVC: UIViewController {
 
 extension RecommandVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let essay = essays[indexPath.section]
+        let essay = essays[indexPath.section]        
         let detailEssayVC = DetailEssayVC()
         detailEssayVC.essay = essay
         detailEssayVC.type = .essay

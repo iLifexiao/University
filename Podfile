@@ -26,6 +26,7 @@ target 'University' do
   pod 'Charts'
   pod 'WXImageCompress', '~> 0.1.1'
   pod 'SKPhotoBrowser'
+  pod "markymark"
 
   target 'UniversityTests' do
     inherit! :search_paths

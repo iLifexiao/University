@@ -36,7 +36,7 @@ class CampusNewsCell: UITableViewCell {
         originalLabel.text = campusNews.from
         readCountLabel.text = String(campusNews.readCount ?? 0) + " 阅读"
         typeLabel.text = campusNews.type
-        dateLabel.text = unixTime2StringDate(campusNews.createdAt ?? 0, format: "yyyy-MM-dd")
+        dateLabel.text = friendDateByUnixTime(campusNews.createdAt ?? 0)
         newsImageView.sd_setImage(with: URL(string: baseURL + campusNews.imageURL), completed: nil)
     }
     

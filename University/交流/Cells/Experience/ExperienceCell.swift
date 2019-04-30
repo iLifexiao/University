@@ -35,7 +35,7 @@ class ExperienceCell: UITableViewCell {
     func setupModel(_ exp: Experience) {
         headImageView.sd_setImage(with: URL(string: baseURL + (exp.profilephoto ?? "/image/head/default.png")), completed: nil)
         nameLabel.text = exp.nickname
-        timeLabel.text = unixTime2StringDate(exp.createdAt ?? 0, format: "yyyy-MM-dd")
+        timeLabel.text = friendDateByUnixTime(exp.createdAt ?? 0)
         titleLabel.text = exp.title
         contentLabel.text = exp.content
         readLabel.text = String(exp.readCount ?? 0) + " 阅读"

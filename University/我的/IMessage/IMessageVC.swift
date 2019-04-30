@@ -86,17 +86,32 @@ class IMessageVC: UIViewController {
                         self.messageDict[msg.friendID] = msgArray
                     }
                     
-                    // 记录字典遍历的次数
-                    var index = 0
                     // 填充相应的占位符，避免数组越界
                     self.unReadCountInMessages = Array(repeating: 0, count: self.messageDict.count)
                     
                     // 取出 & 排序，让UI显示最后一条
-                    for (_, msgs) in self.messageDict {
+                    var messages: [[Message]] = []
+                    for message in self.messageDict.values {
+                        messages.append(message)
+                    }
+                    
+                    // 1. 总体排序
+                    messages.sort{ (msgs1, msgs2) -> Bool in
+                        msgs1.last!.createdAt! > msgs2.last!.createdAt!
+                    }
+                    
+                    // 2. 内部排序
+                    for msgs in messages {
                         var msgs = msgs
-                        msgs.sort { (msg1, msg2) -> Bool in
+                        msgs.sort(by: { (msg1, msg2) -> Bool in
                             msg1.createdAt! < msg2.createdAt!
-                        }
+                        })
+                        self.message.append(msgs)
+                    }
+                    
+                    // 记录字典遍历的次数
+                    var index = 0
+                    for msgs in self.message {
                         // 遍历信息集合中的未读信息数量
                         for msg in msgs {
                             if msg.fromUserID != GlobalData.sharedInstance.userID && msg.status == 1 {
@@ -106,8 +121,7 @@ class IMessageVC: UIViewController {
                             }
                         }
                         index += 1
-                        self.message.append(msgs)
-                    }
+                    }                    
                     self.tableView.reloadData()
                 case .failure(let error):
                     print(error)

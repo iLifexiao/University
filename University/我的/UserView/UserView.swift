@@ -52,7 +52,11 @@ class UserView: UIView {
     func setUnreadMessage(count: Int) {
         if count != 0 {
             redDotLabel.isHidden = false
-            redDotLabel.text = String(count)
+            if count <= 99 {
+                redDotLabel.text = String(count)
+            } else {
+                redDotLabel.text = "99+"
+            }
         } else {
             redDotLabel.isHidden = true
         }

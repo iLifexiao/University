@@ -131,7 +131,7 @@ extension CommentVC: UITableViewDelegate {
 //            self.comments.insert(comment, at: 0)
 //            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .bottom)
 //        }
-        postCommentVC.preComment = "回复 " + "\(comments.count - indexPath.row)# ："
+        postCommentVC.preComment = "回复 " + "\(comments.count - indexPath.row)#"
         postCommentVC.type = type
         postCommentVC.commentID = commentID
         navigationController?.pushViewController(postCommentVC, animated: true)

@@ -18,11 +18,14 @@ class UserVC: UIViewController {
     private var userView: UserView?
     private var weCulture: [MyServerModel] = []
     private var studentStatus: [MyServerModel] = []
+    private var softSettings: [MyServerModel] = []
     
     // 因为API时异步返回，所以需要设置计算属性，在赋值的时候，完成UI界面的更新
     private var messageCount: Int {
         set {
-            userView?.setMessageCount(newValue)
+            DispatchQueue.main.async {
+                self.userView?.setMessageCount(newValue)
+            }
         }
         get {
             return 0
@@ -30,7 +33,9 @@ class UserVC: UIViewController {
     }
     private var unreadMessageCount: Int {
         set {
-            userView?.setUnreadMessage(count: newValue)
+            DispatchQueue.main.async {
+                self.userView?.setUnreadMessage(count: newValue)
+            }
         }
         get {
             return 0
@@ -38,7 +43,9 @@ class UserVC: UIViewController {
     }
     private var essayCount: Int {
         set {
-            userView?.setEssayCount(newValue)
+            DispatchQueue.main.async {
+                self.userView?.setEssayCount(newValue)
+            }
         }
         get {
             return 0
@@ -46,7 +53,9 @@ class UserVC: UIViewController {
     }
     private var fansCount: Int {
         set {
-            userView?.setFansCount(newValue)
+            DispatchQueue.main.async {
+                self.userView?.setFansCount(newValue)
+            }
         }
         get {
             return 0
@@ -54,7 +63,9 @@ class UserVC: UIViewController {
     }
     private var collectionCount: Int {
         set {
-            userView?.setCollectionCount(newValue)
+            DispatchQueue.main.async {
+                self.userView?.setCollectionCount(newValue)
+            }
         }
         get {
             return 0
@@ -93,6 +104,11 @@ class UserVC: UIViewController {
         let schoolFunc2 = MyServerModel(icon: #imageLiteral(resourceName: "myGrade"), title: "我的成绩")
         let schoolFunc3 = MyServerModel(icon: #imageLiteral(resourceName: "myHonor"), title: "我的荣誉")
         studentStatus = [schoolFunc1 ,schoolFunc2, schoolFunc3]
+        
+        // 软件设置
+        let softset1 = MyServerModel(icon: #imageLiteral(resourceName: "settings"), title: "软件设置")
+        softSettings = [softset1]
+        
     }
     
     private func setupTableView() {
@@ -177,9 +193,24 @@ class UserVC: UIViewController {
             }
         }
         
-        // 顺便更新头像和名字
-        userView?.setUserName(GlobalData.sharedInstance.userName)
-        userView?.setUserHead(GlobalData.sharedInstance.userHeadImage)
+        Alamofire.request(baseURL + "/api/v1/user/\(GlobalData.sharedInstance.userID)/userInfo", headers: headers).responseJSON { [weak self] response in
+            guard let self = self else {
+                return
+            }
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let userInfo = UserInfo(jsonData: json);
+                // 需要在主线程中
+                DispatchQueue.main.async {
+                    // 顺便更新头像和名字
+                    self.userView?.setUserName(userInfo.nickname)
+                    self.userView?.setUserHead(userInfo.profilephoto)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     // 接收通知
@@ -252,6 +283,14 @@ extension UserVC: UITableViewDelegate {
             default:
                 print("不是这里哦")
             }
+        case 3:
+            switch indexPath.row {
+            case 0:
+                let settingVC = SettingVC()
+                navigationController?.pushViewController(settingVC, animated: true)
+            default:
+                print("不是这里哦")
+            }
         default:
             print("不是这里哦")
         }
@@ -281,7 +320,7 @@ extension UserVC: UITableViewDelegate {
 
 extension UserVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -292,6 +331,8 @@ extension UserVC: UITableViewDataSource {
             return weCulture.count
         case 2:
             return studentStatus.count
+        case 3:
+            return softSettings.count
         default:
             return 1
         }
@@ -328,6 +369,13 @@ extension UserVC: UITableViewDataSource {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
             let model = studentStatus[indexPath.row]
+            cell.imageView?.image = model.icon
+            cell.textLabel?.text = model.title
+            cell.selectionStyle = .none
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+            let model = softSettings[indexPath.row]
             cell.imageView?.image = model.icon
             cell.textLabel?.text = model.title
             cell.selectionStyle = .none

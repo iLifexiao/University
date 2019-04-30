@@ -40,7 +40,7 @@ class QuestionCell: UITableViewCell {
         answerCountLabel.text = String(question.answerCount ?? 0) + " 条回答"
         typeLabel.text = question.type
         fromLabel.text = question.from
-        postTimeLabel.text = unixTime2StringDate(question.createdAt ?? 0, format: "yyyy-MM-dd")
+        postTimeLabel.text = friendDateByUnixTime(question.createdAt ?? 0)
     }
     
     override func prepareForReuse() {

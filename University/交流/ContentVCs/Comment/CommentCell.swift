@@ -40,7 +40,7 @@ class CommentCell: UITableViewCell {
         commentID = String(comment.id ?? 0)
         headImageView.sd_setImage(with: URL(string: baseURL + (comment.profilephoto ?? "/image/head/default.png")), completed: nil)
         nameLabel.text = comment.nickname
-        timeLabel.text = unixTime2StringDate(comment.createdAt ?? 0)
+        timeLabel.text = friendDateByUnixTime(comment.createdAt ?? 0)
         likeLabel.text = String(comment.likeCount ?? 0)
         commentLabel.text = String(comment.content)
         if comment.userID == authorID {

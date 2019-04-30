@@ -28,7 +28,7 @@ class MeChatCell: UITableViewCell {
     
     func setupModel(_ msg: Message) {
         userHeadImageView.sd_setImage(with: URL(string: baseURL + GlobalData.sharedInstance.userHeadImage), completed: nil)
-        timeLabel.text = unixTime2StringDate(msg.createdAt ?? 0)
+        timeLabel.text = friendDateByUnixTime(msg.createdAt ?? 0)
         contentLabel.text = msg.content
     }
     
