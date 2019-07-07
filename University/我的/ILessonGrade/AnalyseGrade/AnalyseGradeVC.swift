@@ -119,7 +119,7 @@ class AnalyseGradeVC: UIViewController {
         ]
         
         // 2. 设置数据集合
-        let set = PieChartDataSet(values: entries, label: "通过率")
+        let set = PieChartDataSet(entries: entries, label: "通过率")
         set.drawIconsEnabled = false
         set.sliceSpace = 2
         
@@ -157,7 +157,7 @@ class AnalyseGradeVC: UIViewController {
         }
         
         // 2. 设置数据集合
-        let set1 = LineChartDataSet(values: values, label: "绩点")
+        let set1 = LineChartDataSet(entries: values, label: "绩点")
         set1.drawIconsEnabled = false
         
         // 3. 设置数据样式
@@ -288,7 +288,7 @@ extension AnalyseGradeVC: UITableViewDataSource {
                 let limitlLine = ChartLimitLine(limit: 1.0, label: "及格线")
                 limitlLine.lineWidth = 4
                 limitlLine.lineDashLengths = [5,5]
-                limitlLine.labelPosition = .rightTop
+                limitlLine.labelPosition = .topRight
                 limitlLine.valueFont = .systemFont(ofSize: 10)
                 
                 let leftAxis = chartView.leftAxis

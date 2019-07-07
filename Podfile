@@ -15,18 +15,18 @@ target 'University' do
   pod 'DNSPageView'
   pod 'NewPopMenu', '~> 2.0'
   pod 'MJRefresh'
-  pod "CurriculaTable"
+  pod 'CurriculaTable'
   pod 'MBProgressHUD', '~> 1.1.0'
   pod 'DZNEmptyDataSet'  
   pod 'SwiftDate', '~> 5.0'
   pod 'SCLAlertView'
-  pod "MarkdownView"
+  pod 'MarkdownView'
   pod 'Eureka'
   pod 'ImageRow', '~> 3.1.0'
   pod 'Charts'
   pod 'WXImageCompress', '~> 0.1.1'
   pod 'SKPhotoBrowser'
-  pod "markymark"
+  pod 'markymark'
 
   target 'UniversityTests' do
     inherit! :search_paths

@@ -39,12 +39,11 @@ func ColorRGB(value: Float) -> UIColor {
 }
 
 // 网络配置
-let baseURL = "http://192.168.1.27:8080" // 租房
+//let baseURL = "http://192.168.1.27:8080" // 租房
 //let baseURL = "http://192.168.16.112:8080" // 学校1
 //let baseURL = "http://192.168.31.116:8080" // 学校2
 //let baseURL = "http://172.20.10.2:8080" // 手机
-//let baseURL = "http://172.18.132.114:8080" // 公司
-//let baseURL = "http://172.18.132.114:8080" // 公司
+let baseURL = "http://172.18.186.4:8080" // 公司
 let headers: HTTPHeaders = [
     "Authorization": "Bearer aPD9AmZRf97np6glJ5PBBg5oMPCj8B/HGAFVOnI1l28=",
     "Accept": "application/json"
