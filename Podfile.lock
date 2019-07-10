@@ -6,10 +6,10 @@ PODS:
   - CurriculaTable (0.3.0)
   - DNSPageView (1.1.6)
   - DZNEmptyDataSet (1.8.1)
-  - Eureka (4.3.1)
+  - Eureka (5.0.0)
   - FSPagerView (0.8.2)
-  - ImageRow (3.1.0):
-    - Eureka (~> 4.0)
+  - ImageRow (4.0.0):
+    - Eureka (~> 5.0)
   - IQKeyboardManagerSwift (6.4.0)
   - MarkdownView (1.5.0)
   - markymark (9.1.3)
@@ -34,7 +34,7 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - Eureka
   - FSPagerView
-  - ImageRow (~> 3.1.0)
+  - ImageRow (~> 4.0.0)
   - IQKeyboardManagerSwift
   - MarkdownView
   - markymark
@@ -79,9 +79,9 @@ SPEC CHECKSUMS:
   CurriculaTable: 4451ba81157f4c474cbf28f4b3d62a2dbcd06e1c
   DNSPageView: df84b178394ddf4a73b2d19baf4deb24b4a4ba33
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  Eureka: 28ea296f06710f6745266b71f17862048941a32d
+  Eureka: 0f64f477ec8ef6201c6fec143d60ff5c201cf654
   FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
-  ImageRow: 1ea483078bfa3d880a7fc76fdfcddfd5f29a9e6b
+  ImageRow: e65b2e1a33f89062bf2a553a2aad61d975eb7428
   IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
   MarkdownView: 5bbee438c823db1cd189002d44c84fa909b3a896
   markymark: 469815a183deffacca870448e066c29e1a4b84cd
@@ -96,6 +96,6 @@ SPEC CHECKSUMS:
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
   WXImageCompress: 80e0ae96ff3af7d00917a380eba0e592bacaaada
 
-PODFILE CHECKSUM: fbb913f13a579fa5a830ab47c89ffee8a52f5ec2
+PODFILE CHECKSUM: 91fdb956307b0ad7362633227f05267ac3179b07
 
 COCOAPODS: 1.5.3
